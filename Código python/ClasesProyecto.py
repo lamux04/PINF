@@ -100,6 +100,23 @@ class clase:
         print(f"Clase: {self.nombre} de la asignatura {self.asignatura.nombre} del curso {self.asignatura.curso.nombre} de la carrera {self.asignatura.curso.carrera.nombre}", end = "\n")
         print(f"El tipo del aula es {self.tipo} y necesita un aula de tipo {self.tipo_aula}. Tambien tiene una duracion de {self.duracion} y ", end = "")
         if self.importante:
-            print("es importante")
+            print("es importante", end = "\n")
         else:
-            print("no es tan importante")
+            print("no es tan importante", end = "\n")
+
+class c_horario:
+    def __init__(self, Clase, H_ini, H_fin):
+        if not type(Clase) is clase:
+            raise TypeError("El tipo de la Clase de c_horario debe ser clase")
+        if not type(H_ini) is int:
+            raise TypeError("El tipo de H_ini de c_horario debe ser int")
+        if not type(H_fin) is int:
+            raise TypeError("El tipo de H_fin de c_horario debe ser int")
+        
+        self.clase = Clase
+        self.h_ini = H_ini
+        self.h_fin = H_fin
+    
+    def mostrar(self):
+        self.clase.mostrar()
+        print(f"Hora de inicio: {self.h_ini}, y hora de fin: {self.h_fin}", end = "\n")
