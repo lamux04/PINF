@@ -64,7 +64,7 @@ class profesor:
         print(f"Profesor: {self.nombre}", end = "\n")
 
 class clase:
-    def __init__(self, Nombre, Tipo, Tipo_aula, Duracion, Importante, Asignatura, Aula, Profesor):
+    def __init__(self, Nombre, Tipo, Tipo_aula, Duracion, Importante, Asignatura, Profesor):
         if not type(Nombre) is str:
             raise TypeError("El tipo del Nombre de la clase debe ser un string")
         if not type(Tipo) is str:
@@ -79,8 +79,6 @@ class clase:
             raise TypeError("El tipo de Importante de la clase debe ser un string")
         if not type(Asignatura) is asignatura:
             raise TypeError("El tipo de la Asignatura de la clase debe ser una asignatura")
-        if not type(Aula) is str:
-            raise TypeError("El tipo del Aula de la clase debe ser un aula")
         if not type(Profesor) is str:
             raise TypeError("El tipo de Profesor de la clase debe ser un profesor")
         
@@ -93,7 +91,6 @@ class clase:
         else:
             self.importante = False
         self.asignatura = Asignatura
-        self.aula = Aula
         self.profesor = profesor
 
     def mostrar(self):
@@ -105,7 +102,7 @@ class clase:
             print("no es tan importante", end = "\n")
 
 class c_horario:
-    def __init__(self, Clase, H_ini, H_fin):
+    def __init__(self, Clase, H_ini, H_fin, Aula):
         if not type(Clase) is clase:
             raise TypeError("El tipo de la Clase de c_horario debe ser clase")
         if not type(H_ini) is int:
@@ -116,6 +113,7 @@ class c_horario:
         self.clase = Clase
         self.h_ini = H_ini
         self.h_fin = H_fin
+        self.aula = Aula
     
     def mostrar(self):
         self.clase.mostrar()
