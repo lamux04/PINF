@@ -188,8 +188,8 @@ def AulaOcupado(horario, aula, h_ini, h_fin, dia) -> bool:
 
 #Esta función solo tendrá uso cuando haya mas de un calendario por día
 #Precondición: horario es el calendario del dia para en el dia concreto para el curso de la carrera que deseamos comprobar
-#Postcondición: devuelve True si la clase de baja aprobabilidad no coincide en esa franja horaria con 
-#otra clase de alta aprobabilidad del curso siguiente y False en caso contrario.
+#Postcondición: devuelve True si la clase de baja importancia no coincide en esa franja horaria con 
+#otra clase de alta importancia del curso siguiente y False en caso contrario.
 def NoImportSobreSi(horario, h_ini, h_fin) -> bool:
     puede = True
 
@@ -212,8 +212,7 @@ def NoImportSobreSi(horario, h_ini, h_fin) -> bool:
 
 
 #Precondición: horario es el calendario del dia para en el dia concreto para el curso de la carrera que deseamos comprobar
-#Postcondición: devuelve True si la clase de baja aprobabilidad no coincide en esa franja horaria con 
-#otra clase de alta aprobabilidad del curso siguiente y False en caso contrario.
+#Postcondición: devuelve True si la clase no coincide en esa franja horaria con otra clase y False en caso contrario.
 def HayYaClase(horario, h_ini, h_fin) -> bool:
     puede = True
     i = 0
