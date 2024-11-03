@@ -147,7 +147,7 @@ def ProfesorOcupado(horario, profesor, h_ini, h_fin, dia) -> bool:
 #Precondiciones: horario debe ser el horario completo de todas las carreras y aula ha de ser el nombre del
 #aula como cadena
 #Postcondiciones: devuelve True si el aula está ocupada en dicha franja horaria o False en caso contrario.
-def AulaOcupado(horario, aula, h_ini, h_fin, dia) -> bool:
+def AulaOcupada(horario, aula, h_ini, h_fin, dia) -> bool:
     ocupada = False
 
     carreras = horario.keys()
@@ -188,9 +188,9 @@ def AulaOcupado(horario, aula, h_ini, h_fin, dia) -> bool:
 
 #Esta función solo tendrá uso cuando haya mas de un calendario por día
 #Precondición: horario es el calendario del dia para en el dia concreto para el curso de la carrera que deseamos comprobar
-#Postcondición: devuelve True si la clase de baja importancia no coincide en esa franja horaria con 
+#Postcondición: devuelve True si la clase  no coincide en esa franja horaria con 
 #otra clase de alta importancia del curso siguiente y False en caso contrario.
-def NoImportSobreSi(horario, h_ini, h_fin) -> bool:
+def HayClaseImportante(horario, h_ini, h_fin) -> bool:
     puede = True
 
     i = 0
@@ -243,4 +243,20 @@ def HayYaClase(horario, h_ini, h_fin) -> bool:
                     
             i = i + 1
 
+    return puede
+
+
+#Precondiciones: horario debe ser la lista de horarios concreta donde se quiere insertar la clase del curso de la carrera en concreto
+def HayYaClaseLista(horario, h_ini, h_fin) -> bool:
+    i = 0
+    puede = True
+    while (i < len(horario)) and puede:
+        ch_ini = horario.h_ini
+        ch_fin = horario.h_fin
+
+        if coinciden(h_ini, h_fin, ch_ini, ch_fin):
+            puede = False
+        
+        i = i + 1
+    
     return puede
