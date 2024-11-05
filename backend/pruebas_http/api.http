@@ -1,0 +1,7 @@
+GET http://localhost:1234
+
+### Recuperar todas las aulas
+GET http://localhost:1234/api/aula
+
+### Recuperar un aula
+GET http://localhost:1234/api/aula/1
