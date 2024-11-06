@@ -22,6 +22,13 @@ def colocarClases(Clases, Aulas, Horarios):
             n_import += 1
         else:
             porcolocar.append(clase)
+    for clase in Clases:                    #Colocamos las clases 
+        if clase.importante:
+            porcolocar.insert(0, clase)
+            n_import += 1
+        else:
+            porcolocar.append(clase)
+
 
     colocado = False                        #Variable para indicar si una clase ha sido colocada
     tarde = []                              #Cola donde iremos colocando las clases que no se han podido colocar por la mañana.
