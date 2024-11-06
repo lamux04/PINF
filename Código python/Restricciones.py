@@ -19,40 +19,46 @@ def NoAprobableSobreSi(horario, c_actual, h_ini, h_fin, dia) -> bool:
     cursos = horario.keys()
     i = 0
 
-    while (i < len(cursos) and ((int(cursos[i][0]) - int(c_actual[0])) != 1)): #Buscamos el curso siguiente al que estamos actualmente fijándonos en el
-        i = i + 1                                                              #primer caracter del nombre del mismo
+    #while (i < len(cursos) and ((int(cursos[i][0]) - int(c_actual[0])) != 1)): #Buscamos el curso siguiente al que estamos actualmente fijándonos en el
+    #    i = i + 1                                                              #primer caracter del nombre del mismo
     
-    if i < len(cursos):
-        c_siguiente = cursos[i]
+    siguientes = []
+    for cur in cursos:
+        if (int(cur[0]) - int(c_actual[0]) == 1):
+            siguientes.append(cur)
 
-        calendario = horario[c_siguiente][dia]
-        if type(calendario[0]) is list():                                      #Si hay más de un horario por día, hay que comprobar uno a uno
-            i = 0
-            while (i < len(calendario) and puede):
-                j = 0
-                while(j < len(calendario[i]) and puede):
-                    ch_ini = calendario[i][j].h_ini
-                    ch_fin = calendario[i][j].h_fin
-                    aprobable = calendario[i][j].clase.asignatura.aprobable
+    if i < len(cursos):
+        #c_siguiente = cursos[i]
+        for c_siguiente in siguientes:
+
+            calendario = horario[c_siguiente][dia]
+            if type(calendario[0]) is list():                                      #Si hay más de un horario por día, hay que comprobar uno a uno
+                i = 0
+                while (i < len(calendario) and puede):
+                    j = 0
+                    while(j < len(calendario[i]) and puede):
+                        ch_ini = calendario[i][j].h_ini
+                        ch_fin = calendario[i][j].h_fin
+                        aprobable = calendario[i][j].clase.asignatura.aprobable
+
+                        if aprobable and coinciden(h_ini, h_fin, ch_ini, ch_fin):
+                            puede = False
+
+                        j = j + 1
+
+                    i = i + 1
+
+            else:
+                i = 0
+                while(i < len(calendario) and puede):
+                    ch_ini = calendario[i].h_ini
+                    ch_fin = calendario[i].h_fin
+                    aprobable = calendario[i].clase.asignatura.aprobable
 
                     if aprobable and coinciden(h_ini, h_fin, ch_ini, ch_fin):
                         puede = False
-                    
-                    j = j + 1
-                
-                i = i + 1
 
-        else:
-            i = 0
-            while(i < len(calendario) and puede):
-                ch_ini = calendario[i].h_ini
-                ch_fin = calendario[i].h_fin
-                aprobable = calendario[i].clase.asignatura.aprobable
-
-                if aprobable and coinciden(h_ini, h_fin, ch_ini, ch_fin):
-                    puede = False
-                    
-                i = i + 1
+                    i = i + 1
 
     return puede
 
@@ -65,40 +71,46 @@ def SiAprobableSobreNo(horario, c_actual, h_ini, h_fin, dia) -> bool:
     cursos = horario.keys()
     i = 0
 
-    while (i < len(cursos) and ((int(cursos[i][0]) - int(c_actual[0])) != -1)): #Buscamos el curso anterior al que estamos actualmente fijándonos en el
-        i = i + 1                                                               #primer caracter del nombre del mismo
+    #while (i < len(cursos) and ((int(cursos[i][0]) - int(c_actual[0])) != -1)): #Buscamos el curso anterior al que estamos actualmente fijándonos en el
+    #    i = i + 1                                                               #primer caracter del nombre del mismo
     
+    anteriores = []
+    for cur in cursos:
+        if (int(cur[0]) - int(c_actual[0]) == -1):
+            anteriores.append(cur)
+
     if i < len(cursos):
-        c_siguiente = cursos[i]
+        #c_anterior = cursos[i]
+        for c_anterior in anteriores:
 
-        calendario = horario[c_siguiente][dia]
-        if type(calendario[0]) is list:                                         #Si hay más de un horario por día, hay que comprobar uno a uno
-            i = 0
-            while (i < len(calendario) and puede):
-                j = 0
-                while(j < len(calendario[i]) and puede):
-                    ch_ini = calendario[i][j].h_ini
-                    ch_fin = calendario[i][j].h_fin
-                    aprobable = calendario[i][j].clase.asignatura.aprobable
+            calendario = horario[c_anterior][dia]
+            if type(calendario[0]) is list:                                         #Si hay más de un horario por día, hay que comprobar uno a uno
+                i = 0
+                while (i < len(calendario) and puede):
+                    j = 0
+                    while(j < len(calendario[i]) and puede):
+                        ch_ini = calendario[i][j].h_ini
+                        ch_fin = calendario[i][j].h_fin
+                        aprobable = calendario[i][j].clase.asignatura.aprobable
 
-                    if not aprobable and coinciden(h_ini, h_fin, ch_ini, ch_fin):         #Comprobamos si coinciden
+                        if not aprobable and coinciden(h_ini, h_fin, ch_ini, ch_fin):         #Comprobamos si coinciden
+                            puede = False
+
+                        j = j + 1
+
+                    i = i + 1
+
+            else:
+                i = 0
+                while(i < len(calendario) and puede):
+                    ch_ini = calendario[i].h_ini
+                    ch_fin = calendario[i].h_fin
+                    aprobable = calendario[i].clase.asignatura.aprobable
+
+                    if not aprobable and coinciden(h_ini, h_fin, ch_ini, ch_fin):
                         puede = False
-                    
-                    j = j + 1
-                
-                i = i + 1
 
-        else:
-            i = 0
-            while(i < len(calendario) and puede):
-                ch_ini = calendario[i].h_ini
-                ch_fin = calendario[i].h_fin
-                aprobable = calendario[i].clase.asignatura.aprobable
-
-                if not aprobable and coinciden(h_ini, h_fin, ch_ini, ch_fin):
-                    puede = False
-                    
-                i = i + 1
+                    i = i + 1
 
     return puede
 
