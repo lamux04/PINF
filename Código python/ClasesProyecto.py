@@ -31,9 +31,9 @@ class asignatura:
         self.nombre = Nombre
         self.curso = Curso
         if Aprobabilidad == "SI":
-            self.aprobable = False
-        else:
             self.aprobable = True
+        else:
+            self.aprobable = False
 
     def mostrar(self):
         print(f"Asignatura: {self.nombre} del curso {self.curso.nombre} de la carrera {self.curso.carrera.nombre}", end = "\n")
