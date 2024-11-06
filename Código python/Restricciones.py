@@ -259,6 +259,7 @@ def HayYaClase(horario, h_ini, h_fin) -> bool:
 
 
 #Precondiciones: horario debe ser la lista de horarios concreta donde se quiere insertar la clase del curso de la carrera en concreto
+#Postcondición: devuelve true si en la lista correspondiente al curso ya hay clase (esta función solo se utilizará cuando haya más de una lista por día)
 def HayYaClaseLista(horario, h_ini, h_fin) -> bool:
     i = 0
     puede = True
