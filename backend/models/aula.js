@@ -1,16 +1,12 @@
-const aulas = [
-    {
-        codigo: "1",
-        tipo: "grande"
-    },
-    {
-        codigo: "2",
-        tipo: "grande"
-    }
-]
-
 export class AulaModel
 {
+    // Precondicion: La plantilla existe
+    // Postcondicion: Devuelve un array con todas las aulas pertenecientes a dicha plantilla
+    static async getByPlantilla({ plant_cod })
+    {
+
+    }
+
     static async getAll()
     {
         // Llamada a la base de datos

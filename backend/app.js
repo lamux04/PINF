@@ -1,7 +1,6 @@
 import express from 'express'
 import cors from 'cors'
 
-
 const app = express()
 app.use(express.json())
 app.use(cors())
@@ -14,6 +13,8 @@ app.use('/api/aula', aulaRouter)
 import { AuthRouter } from './routes/auth.js'
 app.use('/api/auth', AuthRouter)
 
+import { PlantillaRouter } from './routes/plantilla.js'
+app.use('/api/plantilla', PlantillaRouter)
 
 // Error 404
 app.use('', (req, res) => {
