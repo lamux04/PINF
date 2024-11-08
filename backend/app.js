@@ -1,18 +1,28 @@
 import express from 'express'
 import cors from 'cors'
 
-import { aulaRouter } from './routes/aula.js'
 
 const app = express()
 app.use(express.json())
 app.use(cors())
 app.disable('x-powered-by')
 
+// Rutas
+import { aulaRouter } from './routes/aula.js'
 app.use('/api/aula', aulaRouter)
 
+import { AuthRouter } from './routes/auth.js'
+app.use('/api/auth', AuthRouter)
+
+
+// Error 404
 app.use('', (req, res) => {
     res.status(404).json({ message: 'Error 404 Not Found' })
 })
+
+// Manejo de errores
+import { errorMiddleware } from './middlewares/errorMiddleware.js'
+app.use(errorMiddleware)
 
 const PORT = process.env.PORT ?? 1234
 
