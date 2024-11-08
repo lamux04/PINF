@@ -7,6 +7,15 @@ content-type: application/json
     "password": "1234"
 }
 
+### login
+POST http://localhost:1234/api/auth/login
+content-type: application/json
+
+{
+    "username": "Mascayicle",
+    "password": "1234"
+}
+
 ### register
 POST http://localhost:1234/api/auth/register
 content-type: application/json
@@ -15,6 +24,16 @@ content-type: application/json
     "username": "lamux04",
     "password": "1234"
 }
+
+### register
+POST http://localhost:1234/api/auth/register
+content-type: application/json
+
+{
+    "username": "Mascayicle",
+    "password": "1234"
+}
+
 
 ### delete
 DELETE http://localhost:1234/api/auth/delete
