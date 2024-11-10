@@ -107,7 +107,6 @@ Horarios={}
 Horarios: dict
 gii={}
 gii: dict
-gii = {}
 gii[gii1a.nombre] = [[],[],[],[],[]]
 Horarios[giiC.nombre] = gii
 
