@@ -4,10 +4,6 @@ from ClasesProyecto import*
 import shutil
 import os
 
-#with open("aulas.txt") as f: 
-#    content = f.readlines()  #leer contenido de fichero, lista con elementos=línea de fichero
-
-
 #Usamos de momento a la ESI como sujeto de pruebas
 #Creamos todas las aulas
 mg = "Magna grande"
@@ -16,12 +12,12 @@ sem = "Seminario"
 pi = "Practicas Informáticas"
 lab = "Laboratorio"                 #DE MOMENTO SOLO CONSIDERAMOS LABORATORIOS EN GENERAL, AUNQUE HABRÍA QUE SEPARARLOS
 aulas_tipo = []
+Aulas= {}
 Aulas: dict
-Aulas = {}
 
 for aul in ["E01", "E02", "D01", "D02"]:
     aulas_tipo.append(aul)
-Aulas[mg] = aula
+Aulas[mg] = aulas_tipo
 aulas_tipo = []
 
 for aul in ["C01", "C02", "B01", "B02", "A01", "A02"]:
@@ -107,8 +103,9 @@ Clases.append(clase("Sistemas Digitales D5 Laboratorio", "Laboratorio", lab, 120
 Clases.append(clase("Sistemas Digitales D7 Laboratorio", "Laboratorio", lab, 120, "NO", sdig, Blanca))
 
 #Primera prueba con solo un curso de una carrera
+Horarios={}
 Horarios: dict
-Horarios = {}
+gii={}
 gii: dict
 gii = {}
 gii[gii1a.nombre] = [[],[],[],[],[]]

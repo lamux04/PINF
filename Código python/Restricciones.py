@@ -229,7 +229,7 @@ def HayYaClase(horario, h_ini, h_fin) -> bool:
     puede = True
     i = 0
 
-    if type(horario[0]) is list():                                      #Si hay más de un horario por día, hay que comprobar uno a uno
+    if horario and isinstance(horario[0], list):                                  #Si hay más de un horario por día, hay que comprobar uno a uno
         i = 0
         while (i < len(horario) and puede):
             j = 0

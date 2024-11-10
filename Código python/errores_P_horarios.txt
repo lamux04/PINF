@@ -1,0 +1,43 @@
+Traceback (most recent call last):
+  File "/home/saturno/python/PINF/Código python/P_horario.py", line 113, in <module>
+    colocarClases(Clases, Aulas, Horarios)
+  File "/home/saturno/python/PINF/Código python/Horario.py", line 41, in colocarClases
+    carrera = clase.asignatura.curso.carrera.nombre
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: type object 'carrera' has no attribute 'nombre'
+
+Este error es impreso cada vez que se intenta usar el método mostrar() de curso o bien cada vez que se intenta acceder a un atributo de una clase que está contenido en otra, ya que no falla cuando se usa giiC.mostrar(), pero sí cuando se usa gii1a.carrera.mostar() o se intenta acceder a algún atributo de una clase dentro de otra.
+
+
+ERROR DE ARRIBA SOLUCIONADO
+
+
+
+  File "/home/saturno/python/PINF/Código python/P_horario.py", line 113, in <module>
+    colocarClases(Clases, Aulas, Horarios)
+  File "/home/saturno/python/PINF/Código python/Horario.py", line 50, in colocarClases
+    if not HayYaClase(Horarios[carrera][curso][dia], h_ini, h_fin):                         #Se comprueba que no haya clase ya en esa franja
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/saturno/python/PINF/Código python/Restricciones.py", line 232, in HayYaClase
+    if type(horario[0]) is list():                                      #Si hay más de un horario por día, hay que comprobar uno a uno
+            ~~~~~~~^^^
+IndexError: list index out of range
+
+
+Error que lleva a la función HayYaClase, SOLUCIONADO? sustituyendo if "type(horario[0]) is list():" por " if horario and isinstance(horario[0], list):   "   
+
+
+
+
+
+
+^CTraceback (most recent call last):
+  File "/home/saturno/python/PINF/Código python/P_horario.py", line 113, in <module>
+    colocarClases(Clases, Aulas, Horarios)
+  File "/home/saturno/python/PINF/Código python/Horario.py", line 98, in colocarClases
+    while (h_fin <= fin) and not colocado:
+                                 ^^^^^^^^
+KeyboardInterrupt
+
+
+Bucle sin fin en la línea 98, en la función colocarClases, de Horario.py 

@@ -15,7 +15,7 @@ class curso:
         if not type(Carrera) is carrera:
             raise TypeError("El tipo de la Carrera debe ser carrera")
         self.nombre = Nombre
-        self.carrera = carrera
+        self.carrera = Carrera
 
     def mostrar(self):
         print(f"Curso: {self.nombre} de la carrera {self.carrera.nombre}", end = "\n")
@@ -91,7 +91,7 @@ class clase:
         else:
             self.importante = False
         self.asignatura = Asignatura
-        self.profesor = profesor
+        self.profesor = Profesor
 
     def mostrar(self):
         print(f"Clase: {self.nombre} de la asignatura {self.asignatura.nombre} del curso {self.asignatura.curso.nombre} de la carrera {self.asignatura.curso.carrera.nombre}", end = "\n")
