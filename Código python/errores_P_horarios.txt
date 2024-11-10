@@ -40,4 +40,7 @@ Error que lleva a la función HayYaClase, SOLUCIONADO? sustituyendo if "type(hor
 KeyboardInterrupt
 
 
-Bucle sin fin en la línea 98, en la función colocarClases, de Horario.py 
+Bucle sin fin en la línea 98, en la función colocarClases, de Horario.py, al debuggear no pasa de la condición de dos líneas más abajo, creo que sobre un "not",
+ya que devuelve la variable "puede" como true, pero la condición es contraria, si se cambia el programa sigue avanzando. [ECHAR UN VISTAZO]
+
+
