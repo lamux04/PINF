@@ -15,39 +15,38 @@ mp = "Magna pequeña"
 sem = "Seminario"
 pi = "Practicas Informáticas"
 lab = "Laboratorio"                 #DE MOMENTO SOLO CONSIDERAMOS LABORATORIOS EN GENERAL, AUNQUE HABRÍA QUE SEPARARLOS
-aulas = []
+aulas_tipo = []
 Aulas: dict
 
 for aul in ["E01", "E02", "D01", "D02"]:
-    aulas.append(aul)
-Aulas[mg] = aulas
-aulas = []
+    aulas_tipo.append(aul)
+Aulas[mg] = aula
+aulas_tipo = []
 
 for aul in ["C01", "C02", "B01", "B02", "A01", "A02"]:
-    aulas.append(aul)
-Aulas[mp] = aulas
-aulas = []
+    aulas_tipo.append(aul)
+Aulas[mp] = aulas_tipo
+aulas_tipo = []
 
 for aul in ["E0", "D0", "C0", "B0", "A0"]:
     for s in ["3", "4", "5", "6"]:
         nom = aul + s
-        aulas.append(nom)
-Aulas[sem] = aulas
-aulas = []
+        aulas_tipo.append(nom)
+Aulas[sem] = aulas_tipo
+aulas_tipo = []
 
 for aul in ["E0", "D0", "C0", "B0", "A0"]:
     for s in ["7", "8", "9"]:
         nom = aul + s
-        aulas.append(nom)
-Aulas[pi] = aulas
-aulas = []
+        aulas_tipo.append(nom)
+Aulas[pi] = aulas_tipo
+aulas_tipo = []
 
 for aul in ["E", "D", "C", "B", "A"]:
     for s in ["10", "11", "12", "13", "14", "15", "16", "17", "18", "19"]:
         nom = aul + s
-        aulas.append(nom)
-Aulas[lab] = aulas
-aulas = []
+        aulas_tipo.append(nom)
+Aulas[lab] = aulas_tipo
 
 #Creamos los profesores
 #De momento solo tenemos en cuenta algunos profesores que dan clase en 1ºA GII
