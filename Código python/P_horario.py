@@ -4,8 +4,8 @@ from ClasesProyecto import*
 import shutil
 import os
 
-with open("aulas.txt") as f: 
-    content = f.readlines()  #leer contenido de fichero, lista con elementos=línea de fichero
+#with open("aulas.txt") as f: 
+#    content = f.readlines()  #leer contenido de fichero, lista con elementos=línea de fichero
 
 
 #Usamos de momento a la ESI como sujeto de pruebas
@@ -17,6 +17,7 @@ pi = "Practicas Informáticas"
 lab = "Laboratorio"                 #DE MOMENTO SOLO CONSIDERAMOS LABORATORIOS EN GENERAL, AUNQUE HABRÍA QUE SEPARARLOS
 aulas_tipo = []
 Aulas: dict
+Aulas = {}
 
 for aul in ["E01", "E02", "D01", "D02"]:
     aulas_tipo.append(aul)
@@ -107,7 +108,9 @@ Clases.append(clase("Sistemas Digitales D7 Laboratorio", "Laboratorio", lab, 120
 
 #Primera prueba con solo un curso de una carrera
 Horarios: dict
+Horarios = {}
 gii: dict
+gii = {}
 gii[gii1a.nombre] = [[],[],[],[],[]]
 Horarios[giiC.nombre] = gii
 
