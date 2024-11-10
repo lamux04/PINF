@@ -41,6 +41,24 @@ KeyboardInterrupt
 
 
 Bucle sin fin en la línea 98, en la función colocarClases, de Horario.py, al debuggear no pasa de la condición de dos líneas más abajo, creo que sobre un "not",
-ya que devuelve la variable "puede" como true, pero la condición es contraria, si se cambia el programa sigue avanzando. [ECHAR UN VISTAZO]
+ya que devuelve la variable "puede" como true, pero la condición es contraria, si se cambia el programa sigue avanzando. SOLUCIONADO
+
+
+
+Traceback (most recent call last):
+  File "/home/saturno/python/PINF/Código python/P_horario.py", line 113, in <module>
+    colocarClases(Clases, Aulas, Horarios)
+  File "/home/saturno/python/PINF/Código python/Horario.py", line 51, in colocarClases
+    if not ProfesorOcupado(Horarios, clase.profesor.nombre, h_ini, h_fin, dia):         #Se comprueba que el profesor no esté ya ocupado en dicha franja
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/saturno/python/PINF/Código python/Restricciones.py", line 126, in ProfesorOcupado
+    cursos = horario[carreras[i]].keys()
+                     ~~~~~~~~^^^
+TypeError: 'dict_keys' object is not subscriptable
+
+
+ERROR  con los diccionarios, intentando asignar un 'dict_keys' a cursos, posible solución declarándolo como una lista, para poder indexarlo, ya que 
+como diccionario no se puede.
+
 
 
