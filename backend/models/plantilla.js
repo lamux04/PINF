@@ -121,4 +121,14 @@ export class PlantillaModel
 
         return { exists: true }
     }
+
+    // Precondicion: Ninguna
+    // Postcondicion: Devuelve si la plantilla pertenece al usuario
+    static async perteneceAUsuario({ plant_cod, username })
+    {
+        // Comprobamos que exista la plantilla
+        const [rows] = await promisePool.query('SELECT COUNT(*) as count FROM PLANTILLA WHERE plant_cod = ? AND usu_username = ?', [plant_cod, username])
+
+        return { valida: rows[0]["count"] > 0 }
+    }
 }

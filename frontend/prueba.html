@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horario de Clases - Facultad ESI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #383138;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Barra de navegación */
+        .navbar {
+            background-color: #2f2a2f;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Menú de navegación */
+        .menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .menu a {
+            color: #c2c0f2;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .menu a:hover {
+            color: #a3a0e1;
+        }
+
+        /* Menú desplegable de opciones */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-btn {
+            background-color: #4b434b;
+            color: #c2c0f2;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #2f2a2f;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            border-radius: 4px;
+            z-index: 1;
+            margin-top: 5px;
+            min-width: 200px;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 10px;
+            color: #c2c0f2;
+            text-decoration: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #554e55;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .username {
+            font-weight: bold;
+        }
+
+        /* Estilos para contenedor principal */
+        .main-container {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Filtros */
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            background-color: #2f2a2f;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .filters label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #c2c0f2;
+        }
+
+        .filters select {
+            background-color: #4b434b;
+            color: #e0e0e0;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Estilos para la tabla */
+        .schedule-container {
+            width: 90%;
+            max-width: 1200px;
+            background-color: #2f2a2f;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            border-radius: 8px;
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #4b434b;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #4b434b;
+            color: #c2c0f2;
+            font-weight: bold;
+        }
+
+        .time-column {
+            background-color: #554e55;
+            font-weight: bold;
+            color: #e0e0e0;
+            width: 120px;
+        }
+
+        .class {
+            border-radius: 4px;
+            padding: 8px;
+            margin-bottom: 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #000;
+        }
+
+        .md { background-color: #c2c0f2; }
+        .cal { background-color: #ff6b6b; }
+        .ig { background-color: #62b6cb; }
+        .ip { background-color: #99c24d; }
+        .sdig { background-color: #ffc75f; }
+
+        /* Barra de navegación */
+.navbar {
+    background-color: #2f2a2f;
+    padding: 25px 60px; /* Aumentar padding para hacerla aún más grande */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    font-size: 1.5em; /* Aumentar tamaño de fuente */
+}
+
+/* Menú de navegación */
+.menu a {
+    color: #c2c0f2;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 30px; /* Espaciado adicional entre enlaces */
+    font-size: 1.3em; /* Aumentar tamaño de fuente de los enlaces */
+}
+
+.menu a:hover {
+    color: #a3a0e1;
+}
+
+/* Menú desplegable de opciones */
+.dropdown-btn {
+    background-color: #4b434b;
+    color: #c2c0f2;
+    border: none;
+    padding: 18px 30px; /* Aumentar tamaño del botón */
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 1.3em; /* Aumentar tamaño de fuente */
+}
+
+.dropdown-content a {
+    padding: 18px 30px; /* Aumentar padding dentro del menú */
+    font-size: 1.3em; /* Aumentar tamaño de fuente en el menú desplegable */
+}
+
+/* Nombre de usuario */
+.username {
+    font-weight: bold;
+    font-size: 1.4em; /* Aumentar tamaño de la fuente para el nombre de usuario */
+}
+
+    </style>
+</head>
+<body>
+
+<!-- Barra de navegación superior -->
+<div class="navbar">
+    <div class="dropdown">
+        <button class="dropdown-btn">Menú</button>
+        <div class="dropdown-content">
+            <a href="#">Inicio</a>
+            <a href="#">Asignaturas</a>
+            <a href="#">Aulas</a>
+            <a href="#">Ayuda</a>
+        </div>
+    </div>
+
+    <!-- Menú principal -->
+    <div class="menu">
+        <a href="#">Crear plantillas</a>
+        <a href="#">Generar horarios</a>
+        <a href="#">Cerrar sesión</a>
+    </div>
+
+    <!-- Nombre de usuario -->
+    <div class="username">Hola, usuario1234</div>
+</div>
+
+<!-- Contenido principal -->
+<div class="main-container">
+    <h1>Horario de Clases - 1º GII ESI</h1>
+
+    <!-- Filtros -->
+    <div class="filters">
+        <div>
+            <label for="subject-filter">Asignaturas:</label>
+            <select id="subject-filter" multiple>
+                <option value="md">Matemáticas Discretas</option>
+                <option value="cal">Cálculo</option>
+                <option value="ig">Informática Gráfica</option>
+                <option value="ip">Introducción a la Programación</option>
+                <option value="sdig">Sistemas Digitales</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="type-filter">Tipo de clase:</label>
+            <select id="type-filter">
+                <option value="teoria">Teoría</option>
+                <option value="problemas">Problemas</option>
+                <option value="practicas">Prácticas</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Tabla de horarios -->
+    <div class="schedule-container">
+<table>
+    <tr>
+        <th>Hora</th>
+        <th>Lunes</th>
+        <th>Martes</th>
+        <th>Miércoles</th>
+        <th>Jueves</th>
+        <th>Viernes</th>
+    </tr>
+    
+    <tr>
+        <td class="time-column">08:30 - 10:00</td>
+        <td class="multi-class-cell">
+            <div class="class md">MD<br><span class="class-info">A1 - Teoría<br>Aula D01</span></div>
+            <div class="class cal">CAL<br><span class="class-info">B1 - Problemas<br>Aula C01</span></div>
+        </td>
+        <td class="multi-class-cell">
+            <div class="class md">MD<br><span class="class-info">A1 - Teoría<br>Aula D01</span></div>
+        </td>
+        <td>
+            <div class="class sdig">SDIG<br><span class="class-info">B2 - Problemas<br>Aula B04</span></div>
+        </td>
+        <td>
+            <div class="class ip">IP<br><span class="class-info">C1 - Prácticas<br>Aula E16</span></div>
+        </td>
+        <td>
+            <div class="class cal">CAL<br><span class="class-info">A2 - Teoría<br>Aula F01</span></div>
+        </td>
+    </tr>
+    
+    <tr>
+        <td class="time-column">10:00 - 11:30</td>
+        <td>
+            <div class="class cal">CAL<br><span class="class-info">A1 - Teoría<br>Aula D01</span></div>
+        </td>
+        <td>
+            <div class="class md">MD<br><span class="class-info">B2 - Teoría<br>Aula E05</span></div>
+        </td>
+        <td class="multi-class-cell">
+            <div class="class ig">IG<br><span class="class-info">B3 - Problemas<br>Aula E06</span></div>
+            <div class="class sdig">SDIG<br><span class="class-info">A2 - Teoría<br>Aula B03</span></div>
+        </td>
+        <td>
+            <div class="class ip">IP<br><span class="class-info">C7 - Prácticas<br>Aula E07</span></div>
+        </td>
+        <td>
+            <div class="class ig">IG<br><span class="class-info">A1 - Teoría<br>Aula G02</span></div>
+        </td>
+    </tr>
+
+    <tr>
+        <td class="time-column">11:30 - 13:00</td>
+        <td>
+            <div class="class ig">IG<br><span class="class-info">A1 - Teoría<br>Aula C01</span></div>
+        </td>
+        <td class="multi-class-cell">
+            <div class="class ip">IP<br><span class="class-info">A1 - Teoría<br>Aula C02</span></div>
+        </td>
+        <td class="multi-class-cell">
+            <div class="class sdig">SDIG<br><span class="class-info">B1 - Problemas<br>Aula E06</span></div>
+        </td>
+        <td>
+            <div class="class ip">IP<br><span class="class-info">C3 - Prácticas<br>Aula E16</span></div>
+        </td>
+        <td>
+            <div class="class md">MD<br><span class="class-info">B1 - Problemas<br>Aula H01</span></div>
+        </td>
+    </tr>
+
+    <tr>
+        <td class="time-column">13:00 - 14:30</td>
+        <td>
+            <div class="class ip">IP<br><span class="class-info">A1 - Teoría<br>Aula C01</span></div>
+        </td>
+        <td>
+            <div class="class cal">CAL<br><span class="class-info">B3 - Problemas<br>Aula B01</span></div>
+        </td>
+        <td class="multi-class-cell">
+            <div class="class sdig">SDIG<br><span class="class-info">A1 - Teoría<br>Aula E06</span></div>
+        </td>
+        <td>
+            <div class="class ig">IG<br><span class="class-info">C5 - Prácticas<br>Aula D09</span></div>
+        </td>
+        <td>
+            <div class="class sdig">SDIG<br><span class="class-info">C2 - Teoría<br>Aula F03</span></div>
+        </td>
+    </tr>
+
+    <tr>
+        <td class="time-column">15:30 - 17:00</td>
+        <td>
+            <div class="class ig">IG<br><span class="class-info">B3 - Problemas<br>Aula C04</span></div>
+        </td>
+        <td>
+            <div class="class md">MD<br><span class="class-info">A2 - Teoría<br>Aula C05</span></div>
+        </td>
+        <td>
+            <div class="class cal">CAL<br><span class="class-info">C3 - Prácticas<br>Aula B02</span></div>
+        </td>
+        <td class="multi-class-cell">
+            <div class="class sdig">SDIG<br><span class="class-info">A2 - Teoría<br>Aula B03</span></div>
+        </td>
+        <td>
+            <div class="class ip">IP<br><span class="class-info">C6 - Prácticas<br>Aula D02</span></div>
+        </td>
+    </tr>
+
+    <tr>
+        <td class="time-column">17:00 - 18:30</td>
+        <td>
+            <div class="class cal">CAL<br><span class="class-info">A1 - Teoría<br>Aula E01</span></div>
+        </td>
+        <td>
+            <div class="class ig">IG<br><span class="class-info">A2 - Teoría<br>Aula F02</span></div>
+        </td>
+        <td>
+            <div class="class md">MD<br><span class="class-info">B1 - Problemas<br>Aula E03</span></div>
+        </td>
+        <td class="multi-class-cell">
+            <div class="class sdig">SDIG<br><span class="class-info">C2 - Problemas<br>Aula B04</span></div>
+        </td>
+        <td>
+            <div class="class ig">IG<br><span class="class-info">C1 - Teoría<br>Aula F05</span></div>
+        </td>
+    </tr>
+</table>
+
+    </div>
+</div>
+
+</body>
+</html>

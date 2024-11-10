@@ -32,6 +32,10 @@ export class PlantillaController
         // Obtenemos el codigo de la plantilla
         const { plant_cod } = req.params
 
+        // La plantilla pertenece al usuario
+        const { valida } = await PlantillaModel.perteneceAUsuario({ plant_cod, username })
+        if (!valida) return res.status(400).json({ message: 'Plantilla no encontrada' })
+
         // Extraemos las plantilla con el modelo
         const { plantilla, exists: existsp } = await PlantillaModel.getByCodigo({ plant_cod })
         if (!existsp) return res.status(400).json({ message: 'Plantilla no encontrada' })
@@ -72,6 +76,10 @@ export class PlantillaController
         // Obtenemos el codigo de la plantilla
         const { plant_cod } = req.params
 
+        // La plantilla pertenece al usuario
+        const { valida } = await PlantillaModel.perteneceAUsuario({ plant_cod, username })
+        if (!valida) return res.status(400).json({ message: 'Plantilla no encontrada' })
+
         // Obtenemos el nombre de la plantilla
         const { nombre } = req.body
         if (!nombre)
@@ -101,6 +109,10 @@ export class PlantillaController
 
         // Obtenemos el codigo de la plantilla
         const { plant_cod } = req.params
+
+        // La plantilla pertenece al usuario
+        const { valida } = await PlantillaModel.perteneceAUsuario({ plant_cod, username })
+        if (!valida) return res.status(400).json({ message: 'Plantilla no encontrada' })
 
         // Eliminamos la plantilla con el modelo
         const { exists: existsp } = await PlantillaModel.delete({ plant_cod })
