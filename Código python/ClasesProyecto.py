@@ -79,7 +79,7 @@ class clase:
             raise TypeError("El tipo de Importante de la clase debe ser un string")
         if not type(Asignatura) is asignatura:
             raise TypeError("El tipo de la Asignatura de la clase debe ser una asignatura")
-        if not type(Profesor) is str:
+        if not type(Profesor) is profesor:
             raise TypeError("El tipo de Profesor de la clase debe ser un profesor")
         
         self.nombre = Nombre
