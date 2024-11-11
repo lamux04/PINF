@@ -1,0 +1,102 @@
+import { CarreraModel } from "../models/carrera.js";
+import { PlantillaModel } from "../models/plantilla.js";
+
+export class CarreraController
+{
+    // GET /api/carrera { plantilla }
+    static async getByPlantiilla(req, res)
+    {
+        // Obtenemos los atributos
+        const { plantilla } = req.body;
+        const { username } = req.user;
+
+        // Validamos los atributos
+        if (!plantilla) return res.status(400).json({ message: 'Plantilla es requerido' });
+
+        // Comprobamos que la plantilla sea del usuario
+        const { valida } = await PlantillaModel.perteneceAUsuario({ plantilla, username });
+        if (!valida) return res.status(401).json({ message: 'No autorizado' });
+
+        // Obtenemos las carreras
+        const { carreras } = await CarreraModel.getByPlantilla({ plantilla });
+
+        res.json({ carreras });
+    }
+
+    // GET /api/carrera/:carre_cod
+    static async getByCodigo(req, res)
+    {
+        // Obtenemos los atributos
+        const { carre_cod } = req.params;
+        const { username } = req.user;
+
+        // Comprobamos que la carrera sea del usuario
+        const { valida } = await CarreraModel.perteneceAUsuario({ carre_cod, username });
+        if (!valida) return res.status(401).json({ message: 'No autorizado' });
+
+        // Obtenemos la carrera
+        const { carrera } = await CarreraModel.getByCodigo({ carre_cod });
+
+        res.json(carrera);
+    }
+
+    // POST /api/carrera { plantilla, nombre }
+    static async create(req, res)
+    {
+        // Obtenemos los atributos
+        const { plantilla, nombre } = req.body;
+        const { username } = req.user;
+
+        // Validamos los atributos
+        if (!plantilla) return res.status(400).json({ message: 'Plantilla es requerido' });
+        if (!nombre) return res.status(400).json({ message: 'Nombre es requerido' });
+
+        // Comprobamos que la plantilla sea del usuario
+        const { valida } = await PlantillaModel.perteneceAUsuario({ plantilla, username });
+        if (!valida) return res.status(401).json({ message: 'No autorizado' });
+
+        // Creamos la carrera
+        const { carrera } = await CarreraModel.create({ plantilla, nombre });
+
+        res.json(carrera);
+    }
+
+    // PATCH /api/carrera/:carre_cod { nombre }
+    static async update(req, res)
+    {
+        // Obtenemos los atributos
+        const { carre_cod } = req.params;
+        const { nombre } = req.body;
+        const { username } = req.user;
+
+        // Comprobamos que la carrera sea del usuario
+        const { valida } = await CarreraModel.perteneceAUsuario({ carre_cod, username });
+        if (!valida) return res.status(401).json({ message: 'No autorizado' });
+
+        // Obtenemos el nombre actual de la carrera
+        const { nombre: nombreActual, exists } = await CarreraModel.getSoloCarrera({ carre_cod });
+        if (!exists) return res.status(404).json({ message: 'Carrera no encontrada' });
+
+        // Actualizamos la carrera
+        const { carrera } = await CarreraModel.update({ carre_cod, nombre: nombre ?? nombreActual });
+
+        res.json(carrera);
+    }
+
+    // DELETE /api/carrera/:carre_cod
+    static async delete(req, res)
+    {
+        // Obtenemos los atributos
+        const { carre_cod } = req.params;
+        const { username } = req.user;
+
+        // Comprobamos que la carrera sea del usuario
+        const { valida } = await CarreraModel.perteneceAUsuario({ carre_cod, username });
+        if (!valida) return res.status(401).json({ message: 'No autorizado' });
+
+        // Eliminamos la carrera
+        await CarreraModel.delete({ carre_cod });
+
+        res.json({ message: 'Carrera eliminada' });
+    }
+}
