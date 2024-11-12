@@ -25,6 +25,21 @@ export class CarreraModel
         return { carreras }
     }
 
+    // Precondicion: La carrera existe
+    // Postcondicion: Devuelve la carrera
+    static async getByCodigo({ carre_cod })
+    {
+        const [rows] = await promisePool.query('SELECT carre_cod AS codigo, carre_nombre AS nombre FROM CARRERA WHERE carre_cod = ?', [carre_cod])
+
+        const carrera = rows[0]
+
+        // Obtenemos todos los cursos de las carreras
+        const { cursos } = await CursoModel.getByCarrera({ carre_cod })
+        carrera["cursos"] = cursos
+
+        return { carrera }
+    }
+
     // Precondicion: Ninguna
     // Postcondicion: Devuelve si la carrera pertenece al usuario
     static async perteneceAUsuario({ carre_cod, username })
