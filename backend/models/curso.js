@@ -57,5 +57,17 @@ export class CursoModel
         return { curso_cod, carre_cod, nombre }
     }
 
-    
+    // Precondicion: Ninguna
+    // Postcondicion: Actualiza el curso con los datos dados
+    static async update({ curso_cod, nombre })
+    {
+        await promisePool.query('UPDATE CURSO SET curso_nombre = ? WHERE curso_cod = ?', [nombre, curso_cod])
+    }
+
+    // Precondicion: Existe el curso
+    // Postcondicion: Elimina el curso con el codigo dado
+    static async delete({ curso_cod })
+    {
+        await promisePool.query('DELETE FROM CURSO WHERE curso_cod = ?', [curso_cod])
+    }
 }
