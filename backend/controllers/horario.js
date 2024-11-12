@@ -33,9 +33,9 @@ export class HorarioController
         // Obtenemos el codigo del horario
         const { hor_cod } = req.params
 
-        // Comprobamos que el horario pertenece al usuario
-        const { valido } = await HorarioModel.perteneceAUsuario({ hor_cod, username })
-        if (!valido) return res.status(400).json({ message: 'Horario no encontrado' })
+        // Comprobamos q el usuario puede ver el horario
+        const { valido } = await HorarioModel.puedeVer({ hor_cod, username })
+        if (!valido) return res.status(400).json({ message: 'Horario no visible para el usuario' })
 
         // Extraemos el horario con el modelo
         const { horario, exists: existsh } = await HorarioModel.getByCodigo({ hor_cod })

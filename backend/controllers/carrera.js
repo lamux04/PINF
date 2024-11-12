@@ -1,4 +1,5 @@
 import { CarreraModel } from "../models/carrera.js";
+import { HorarioModel } from "../models/horario.js";
 import { PlantillaModel } from "../models/plantilla.js";
 
 export class CarreraController
@@ -58,6 +59,9 @@ export class CarreraController
         // Creamos la carrera
         const { carrera } = await CarreraModel.create({ plantilla, nombre });
 
+        // Eliminamos todos los horarios de la plantilla
+        await HorarioModel.deleteByPlantilla({ plant_cod: plantilla });
+
         res.json(carrera);
     }
 
@@ -96,6 +100,9 @@ export class CarreraController
 
         // Eliminamos la carrera
         await CarreraModel.delete({ carre_cod });
+
+        // Eliminamos todos los horarios de la plantilla
+        await HorarioModel.deleteByPlantilla({ plant_cod: plantilla });
 
         res.json({ message: 'Carrera eliminada' });
     }

@@ -1,0 +1,7 @@
+### GET /api/horario
+GET http://localhost:1234/api/horario
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxhbXV4MDQiLCJpYXQiOjE3MzE0NDI0NjAsImV4cCI6MTczMTQ0OTY2MH0.U4ABo_d31zS47pBmGXLiStoB33DstAFJcy3qTNMp5FQ
+
+### GET /api/horario/:horar_cod
+GET http://localhost:1234/api/horario/d27cb0f3-df15-44be-81cd-905791d47187
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxhbXV4MDQiLCJpYXQiOjE3MzE0NDI0NjAsImV4cCI6MTczMTQ0OTY2MH0.U4ABo_d31zS47pBmGXLiStoB33DstAFJcy3qTNMp5FQ

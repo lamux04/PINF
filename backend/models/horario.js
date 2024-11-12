@@ -62,7 +62,7 @@ export class HorarioModel
     // Postcondicion: Devuelve un array con los horarios que ve el usuario
     static async getHorariosQueVeUsuario({ username })
     {
-        const [rows] = await promisePool.query('SELECT horar_cod AS codigo, horar_nombre AS nombre FROM USUARIOVEHORARIO LEFT JOIN HORARIO ON USUARIOVEHORARIO.horar_cod = HORARIO.horar_cod WHERE USUARIOVEHORAIRO.usu_cod = ?', [username])
+        const [rows] = await promisePool.query('SELECT HORARIO.horar_cod AS codigo, horar_nombre AS nombre FROM USUARIOVEHORARIO LEFT JOIN HORARIO ON USUARIOVEHORARIO.horar_cod = HORARIO.horar_cod WHERE usu_cod = ?', [username])
 
         return { horarios: rows }
     }
@@ -72,5 +72,21 @@ export class HorarioModel
     static async deleteByCodigo({ horar_cod })
     {
         await promisePool.query('DELETE FROM HORARIO WHERE horar_cod = ?', [horar_cod])
+    }
+
+    // Precondicion: Existe la plantilla
+    // Postcondicion: Elimina todos los horarios de una plantilla
+    static async deleteByPlantilla({ plant_cod })
+    {
+        await promisePool.query('DELETE FROM HORARIO WHERE plant_cod = ?', [plant_cod])
+    }
+
+    // Precondicion: Ninguna
+    // Postcondicion: Comprobamos si el horario es visible para el usuario
+    static async puedeVer({ hor_cod, username })
+    {
+        const [rows] = await promisePool.query('SELECT * FROM USUARIOVEHORARIO WHERE horar_cod = ? AND usu_cod = ?', [hor_cod, username])
+
+        return { valido: rows.length > 0 }
     }
 }

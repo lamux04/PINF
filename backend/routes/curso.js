@@ -5,7 +5,7 @@ import { CursoController } from "../controllers/curso.js"
 export const CursoRouter = Router()
 
 CursoRouter.get('/', authMiddleware, CursoController.getAll)
-CursoRouter.get('/:curs_cod', authMiddleware, CursoController.getByCodigo)
+CursoRouter.get('/:curso_cod', authMiddleware, CursoController.getByCodigo)
 CursoRouter.post('/', authMiddleware, CursoController.create)
-CursoRouter.patch('/:curs_cod', authMiddleware, CursoController.update)
-CursoRouter.delete('/:curs_cod', authMiddleware, CursoController.delete)
+CursoRouter.patch('/:curso_cod', authMiddleware, CursoController.update)
+CursoRouter.delete('/:curso_cod', authMiddleware, CursoController.delete)

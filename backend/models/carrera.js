@@ -1,4 +1,3 @@
-import { promisePool } from "../db.js";
 import { CursoModel } from "./curso.js";
 import { promisePool } from "../db.js";
 import { v4 } from 'uuid'
@@ -75,5 +74,14 @@ export class CarreraModel
         const [rows] = await promisePool.query('DELETE FROM CARRERA WHERE carre_cod = ?', [carre_cod])
 
         return( { carre_cod } )
+    }
+
+    // Precondicion: La carrera existe
+    // Postcondicion: Devuelve el codigo de la plantilla de la carrera
+    static async getPlantilla({ carre_cod })
+    {
+        const [rows] = await promisePool.query('SELECT plant_cod FROM CARRERA WHERE carre_cod = ?', [carre_cod])
+
+        return( { plant_cod: rows[0]["plant_cod"] } )
     }
 }

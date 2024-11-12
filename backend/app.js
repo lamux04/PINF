@@ -19,6 +19,12 @@ app.use('/api/plantilla', PlantillaRouter)
 import { CarreraRouter } from './routes/carrera.js'
 app.use('/api/carrera', CarreraRouter)
 
+import { HorarioRouter } from './routes/horario.js'
+app.use('/api/horario', HorarioRouter)
+
+import { CursoRouter } from './routes/curso.js'
+app.use('/api/curso', CursoRouter)
+
 // Error 404
 app.use('', (req, res) => {
     res.status(404).json({ message: 'Error 404 Not Found' })
