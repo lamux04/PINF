@@ -116,5 +116,7 @@ class c_horario:
         self.aula = Aula
     
     def mostrar(self):
+        print("-----------------------------------------")
         self.clase.mostrar()
         print(f"Hora de inicio: {int(self.h_ini/60)}:{int(self.h_ini%60)}, y hora de fin: {int(self.h_fin/60)}:{int(self.h_fin%60)}", end = "\n")
+        print("-----------------------------------------")
