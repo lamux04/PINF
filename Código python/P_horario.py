@@ -12,8 +12,8 @@ sem = "Seminario"
 pi = "Practicas Informáticas"
 lab = "Laboratorio"                 #DE MOMENTO SOLO CONSIDERAMOS LABORATORIOS EN GENERAL, AUNQUE HABRÍA QUE SEPARARLOS
 aulas_tipo = []
-Aulas= {}
 Aulas: dict
+Aulas= {}
 
 for aul in ["E01", "E02", "D01", "D02"]:
     aulas_tipo.append(aul)
@@ -103,11 +103,13 @@ Clases.append(clase("Sistemas Digitales D5 Laboratorio", "Laboratorio", lab, 120
 Clases.append(clase("Sistemas Digitales D7 Laboratorio", "Laboratorio", lab, 120, "NO", sdig, Blanca))
 
 #Primera prueba con solo un curso de una carrera
-Horarios={}
 Horarios: dict
-gii={}
+Horarios={}
 gii: dict
+gii={}
 gii[gii1a.nombre] = [[],[],[],[],[]]
 Horarios[giiC.nombre] = gii
 
 colocarClases(Clases, Aulas, Horarios)
+
+print("Horario terminado")

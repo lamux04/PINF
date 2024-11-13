@@ -228,32 +228,33 @@ def HayClaseImportante(horario, h_ini, h_fin) -> bool:
 def HayYaClase(horario, h_ini, h_fin) -> bool:
     puede = True
     i = 0
+    
+    if len(horario) > 0:
+        if type(horario[0]) is list:                                  #Si hay más de un horario por día, hay que comprobar uno a uno
+            i = 0
+            while (i < len(horario) and puede):
+                j = 0
+                while(j < len(horario[i]) and puede):
+                    ch_ini = horario[i][j].h_ini
+                    ch_fin = horario[i][j].h_fin
 
-    if horario and isinstance(horario[0], list):                                  #Si hay más de un horario por día, hay que comprobar uno a uno
-        i = 0
-        while (i < len(horario) and puede):
-            j = 0
-            while(j < len(horario[i]) and puede):
-                ch_ini = horario[i][j].h_ini
-                ch_fin = horario[i][j].h_fin
+                    if coinciden(h_ini, h_fin, ch_ini, ch_fin):
+                        puede = False
+
+                    j = j + 1
+
+                i = i + 1
+
+        else:
+            i = 0
+            while(i < len(horario) and puede):
+                ch_ini = horario[i].h_ini
+                ch_fin = horario[i].h_fin
 
                 if coinciden(h_ini, h_fin, ch_ini, ch_fin):
                     puede = False
-                    
-                j = j + 1
-                
-            i = i + 1
 
-    else:
-        i = 0
-        while(i < len(horario) and puede):
-            ch_ini = horario[i].h_ini
-            ch_fin = horario[i].h_fin
-
-            if coinciden(h_ini, h_fin, ch_ini, ch_fin):
-                puede = False
-                    
-            i = i + 1
+                i = i + 1
 
     return puede
 

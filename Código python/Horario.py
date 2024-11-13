@@ -47,7 +47,7 @@ def colocarClases(Clases, Aulas, Horarios):
             h_fin = inicio + clase.duracion
 
             while (h_fin <= inicio_comer) and not colocado:
-                if  HayYaClase(Horarios[carrera][curso][dia], h_ini, h_fin):                         #Se comprueba que no haya clase ya en esa franja
+                if HayYaClase(Horarios[carrera][curso][dia], h_ini, h_fin):                         #Se comprueba que no haya clase ya en esa franja
                     if not ProfesorOcupado(Horarios, clase.profesor.nombre, h_ini, h_fin, dia):         #Se comprueba que el profesor no esté ya ocupado en dicha franja
                         if not clase.asignatura.aprobable:
                             if NoAprobableSobreSi(Horarios[carrera], curso, h_ini, h_fin, dia):         #Si la asignatura es de baja aprobabilidad que no coincida
@@ -96,7 +96,7 @@ def colocarClases(Clases, Aulas, Horarios):
             h_fin = inicio + clase.duracion
 
             while (h_fin <= fin) and not colocado:
-                if not HayYaClase(Horarios[carrera][curso][dia], h_ini, h_fin):                         #Se comprueba que no haya clase ya en esa franja
+                if HayYaClase(Horarios[carrera][curso][dia], h_ini, h_fin):                         #Se comprueba que no haya clase ya en esa franja
                     if not ProfesorOcupado(Horarios, clase.profesor.nombre, h_ini, h_fin, dia):         #Se comprueba que el profesor no esté ya ocupado en dicha franja
                         if not clase.asignatura.aprobable:
                             if NoAprobableSobreSi(Horarios[carrera], curso, h_ini, h_fin, dia):         #Si la asignatura es de baja aprobabilidad que no coincida
