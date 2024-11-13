@@ -120,10 +120,11 @@ def SiAprobableSobreNo(horario, c_actual, h_ini, h_fin, dia) -> bool:
 def ProfesorOcupado(horario, profesor, h_ini, h_fin, dia) -> bool:
     ocupado = False
 
-    carreras = horario.keys()
+    carreras = list(horario.keys())
+    print(carreras)
     i = 0
     while(i < len(carreras) and not ocupado):                                                           #Recorremos carrera a carrera
-        cursos = horario[carreras[i]].keys()
+        cursos = list(horario[carreras[i]].keys())
         j = 0
         while(j < len(cursos) and not ocupado):                                                         #Recorremos curso a curso
             calendario = horario[carreras[i]][cursos[j]][dia]
