@@ -118,12 +118,12 @@ def colocarClases(Clases, Aulas, Horarios):
                                         colocado = True
                 
                 #Miramos en la siguiente franja horaria
-                if (h_fin + 15 > inicio_comer):
-                    h_ini = fin_comer
-                    h_fin = fin_comer + clase.duracion
-                else:
+                if(h_ini >= fin_comer) or (h_fin < inicio_comer):
                     h_ini += 15
                     h_fin += 15
+                else:
+                    h_ini = fin_comer
+                    h_fin = fin_comer + clase.duracion
             
             dia += 1
         

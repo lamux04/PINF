@@ -113,3 +113,20 @@ Horarios[giiC.nombre] = gii
 colocarClases(Clases, Aulas, Horarios)
 
 print("Horario terminado")
+
+for Carrera in Horarios.keys():
+    print(f"Horarios de la carrera{Carrera}", end="\n")
+    for Curso in Horarios[Carrera].keys():
+        print(f"Horarios del {Curso} de {Carrera}")
+        for Dia in range(0,5):
+            print(f"Horarios del {Dia} de {Curso} de {Carrera}")
+            if type(Horarios[Carrera][Curso][Dia][0]) is list:
+                i = 0
+                while i < len(Horarios[Carrera][Curso][Dia]):
+                    print(f"Lista {i}")
+                    for Clase in Horarios[Carrera][Curso][Dia][i]:
+                        Clase.mostrar()
+            else:
+                for Clase in Horarios[Carrera][Curso][Dia]:
+                        Clase.mostrar()
+
