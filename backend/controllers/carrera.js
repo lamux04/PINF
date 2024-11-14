@@ -15,11 +15,11 @@ export class CarreraController
         if (!plantilla) return res.status(400).json({ message: 'Plantilla es requerido' });
 
         // Comprobamos que la plantilla sea del usuario
-        const { valida } = await PlantillaModel.perteneceAUsuario({ plantilla, username });
+        const { valida } = await PlantillaModel.perteneceAUsuario({ plant_cod: plantilla, username });
         if (!valida) return res.status(401).json({ message: 'No autorizado' });
 
         // Obtenemos las carreras
-        const { carreras } = await CarreraModel.getByPlantilla({ plantilla });
+        const { carreras } = await CarreraModel.getByPlantilla({ plant_cod: plantilla });
 
         res.json({ carreras });
     }
@@ -53,16 +53,19 @@ export class CarreraController
         if (!nombre) return res.status(400).json({ message: 'Nombre es requerido' });
 
         // Comprobamos que la plantilla sea del usuario
-        const { valida } = await PlantillaModel.perteneceAUsuario({ plantilla, username });
+        const { valida } = await PlantillaModel.perteneceAUsuario({ plant_cod: plantilla, username });
         if (!valida) return res.status(401).json({ message: 'No autorizado' });
 
         // Creamos la carrera
-        const { carrera } = await CarreraModel.create({ plantilla, nombre });
+        const carrera = await CarreraModel.create({ plant_cod: plantilla, carre_nombre: nombre });
 
         // Eliminamos todos los horarios de la plantilla
         await HorarioModel.deleteByPlantilla({ plant_cod: plantilla });
 
-        res.json(carrera);
+        res.json({
+            codigo: carrera.carre_cod,
+            nombre: carrera.carre_nombre
+        });
     }
 
     // PATCH /api/carrera/:carre_cod { nombre }
@@ -78,13 +81,13 @@ export class CarreraController
         if (!valida) return res.status(401).json({ message: 'No autorizado' });
 
         // Obtenemos el nombre actual de la carrera
-        const { nombre: nombreActual, exists } = await CarreraModel.getSoloCarrera({ carre_cod });
+        const { carre_nombre: nombreActual, exists } = await CarreraModel.getSoloCarrera({ carre_cod });
         if (!exists) return res.status(404).json({ message: 'Carrera no encontrada' });
 
         // Actualizamos la carrera
-        const { carrera } = await CarreraModel.update({ carre_cod, nombre: nombre ?? nombreActual });
+        const carrera = await CarreraModel.update({ carre_cod, carre_nombre: nombre ?? nombreActual });
 
-        res.json(carrera);
+        res.json({ codigo: carrera.carre_cod, nombre: carrera.carre_nombre });
     }
 
     // DELETE /api/carrera/:carre_cod

@@ -1,0 +1,35 @@
+### GET /api/curso
+GET http://localhost:1234/api/curso
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzE2MDgyNTQsImV4cCI6MTczMTYxNTQ1NH0.jKKz4w35wd6r1splKcIgUhWA1cEsm8fySOk8eCmjkJU
+Content-Type: application/json
+
+{
+    "carrera": "1e53fbca-5ad8-4d03-9790-c3c9f92e7e56"
+}
+
+### GET /api/curso/:curso_cod
+GET http://localhost:1234/api/curso/853b78be-a64e-4bae-88e4-59000768a5cd
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzE2MDgyNTQsImV4cCI6MTczMTYxNTQ1NH0.jKKz4w35wd6r1splKcIgUhWA1cEsm8fySOk8eCmjkJU
+
+### POST /api/curso    Elimina todos los horarios de la plantilla
+POST http://localhost:1234/api/curso
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzE2MDgyNTQsImV4cCI6MTczMTYxNTQ1NH0.jKKz4w35wd6r1splKcIgUhWA1cEsm8fySOk8eCmjkJU
+Content-Type: application/json
+
+{
+    "carrera": "1e53fbca-5ad8-4d03-9790-c3c9f92e7e56",
+    "nombre": "Primero"
+}
+
+### PATCH /api/curso/:curso_cod 
+PATCH http://localhost:1234/api/curso/4a620907-6223-4d84-ac26-150c18a9c3bf
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzE2MDgyNTQsImV4cCI6MTczMTYxNTQ1NH0.jKKz4w35wd6r1splKcIgUhWA1cEsm8fySOk8eCmjkJU
+Content-Type: application/json
+
+{
+    "nombre": "Primero"
+}
+
+### DELETE /api/curso/:curso_cod    Elimina todos los horarios de la plantilla
+DELETE http://localhost:1234/api/curso/e7bea6b1-a015-4335-a47e-54cf2abfedc1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzE2MDgyNTQsImV4cCI6MTczMTYxNTQ1NH0.jKKz4w35wd6r1splKcIgUhWA1cEsm8fySOk8eCmjkJU

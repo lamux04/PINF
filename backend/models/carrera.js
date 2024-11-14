@@ -50,21 +50,21 @@ export class CarreraModel
 
     // Precondicion: La plantilla existe
     // Postcondicion: Crea una carrera con los datos dados
-    static async create({ plant_cod, nombre })
+    static async create({ plant_cod, carre_nombre })
     {
         const carre_cod = v4()
-        const [rows] = await promisePool.query('INSERT INTO CARRERA (carre_cod, plant_cod, carre_nombre) VALUES (?, ?)', [carre_cod, plant_cod, nombre])
+        const [rows] = await promisePool.query('INSERT INTO CARRERA (carre_cod, plant_cod, carre_nombre) VALUES (?, ?, ?)', [carre_cod, plant_cod, carre_nombre])
 
-        return( { carre_cod, plant_cod, nombre } )
+        return( { carre_cod, plant_cod, carre_nombre } )
     }
 
     // Precondicion: La carrera existe
     // Postcondicion: Actualiza la carrera con los datos dados
-    static async update({ carre_cod, nombre })
+    static async update({ carre_cod, carre_nombre })
     {
-        const [rows] = await promisePool.query('UPDATE CARRERA SET carre_nombre = ? WHERE carre_cod = ?', [nombre, carre_cod])
+        const [rows] = await promisePool.query('UPDATE CARRERA SET carre_nombre = ? WHERE carre_cod = ?', [carre_nombre, carre_cod])
 
-        return( { carre_cod, nombre, plant_cod } )
+        return( { carre_cod, carre_nombre } )
     }
 
     // Precondicion: La carrera existe
@@ -83,5 +83,19 @@ export class CarreraModel
         const [rows] = await promisePool.query('SELECT plant_cod FROM CARRERA WHERE carre_cod = ?', [carre_cod])
 
         return( { plant_cod: rows[0]["plant_cod"] } )
+    }
+
+    // Precondicion: Ninguna
+    // Postcondicion: Devuelve la carrera sin los cursos
+    static async getSoloCarrera({ carre_cod })
+    {
+        const [rows] = await promisePool.query('SELECT carre_cod, carre_nombre FROM CARRERA WHERE carre_cod = ?', [carre_cod])
+
+        if (rows.length === 0)
+        {
+            return( { exists: false } )
+        }
+
+        return( { exists: rows.length > 0, carre_cod, carre_nombre: rows[0]["carre_nombre"] } )
     }
 }

@@ -1,0 +1,40 @@
+### GET /api/clase
+GET http://localhost:1234/api/clase
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzE2MjI2ODQsImV4cCI6MTczMTYyOTg4NH0.HCfjopY97vbBx4M9VHq6ygzTSg0JETpIFSQ4lKzSXag
+Content-Type: application/json
+
+{
+    "asignatura": "af037c51-cfe6-43bd-90ef-f5515de8599a"
+}
+
+### GET /api/clase/:clase_cod
+GET http://localhost:1234/api/clase/8c0d5e20-2cc3-4ca7-9ef1-cbd395a14b46
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzE2MjI2ODQsImV4cCI6MTczMTYyOTg4NH0.HCfjopY97vbBx4M9VHq6ygzTSg0JETpIFSQ4lKzSXag
+
+### POST /api/clase    Elimina todos los horarios de la plantilla
+POST http://localhost:1234/api/clase
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzE2MjI2ODQsImV4cCI6MTczMTYyOTg4NH0.HCfjopY97vbBx4M9VHq6ygzTSg0JETpIFSQ4lKzSXag
+Content-Type: application/json
+
+{
+    "asignatura": "af037c51-cfe6-43bd-90ef-f5515de8599a",
+    "descripcion": "Clase de problemas 60 minutos",
+    "tipo": "Problemas B1",
+    "tipo_aula": "Mediana",
+    "profesor": "9c037485-1df8-4667-a979-ecd7c660ef43",
+    "duracion": 60
+}
+
+### PATCH /api/clase/:clase_cod    Elimina todos los horarios de la plantilla
+PATCH http://localhost:1234/api/clase/8c0d5e20-2cc3-4ca7-9ef1-cbd395a14b46
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzE2MjI2ODQsImV4cCI6MTczMTYyOTg4NH0.HCfjopY97vbBx4M9VHq6ygzTSg0JETpIFSQ4lKzSXag
+Content-Type: application/json
+
+{
+    "descripcion": "Clase de problemas 55 minutos",
+    "duracion": 55
+}
+
+### DELETE /api/clase/:clase_cod    Elimina todos los horarios de la plantilla
+DELETE http://localhost:1234/api/clase/e731f8d3-1bfa-48d5-8e0c-770e753ee66c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzE2MjI2ODQsImV4cCI6MTczMTYyOTg4NH0.HCfjopY97vbBx4M9VHq6ygzTSg0JETpIFSQ4lKzSXag

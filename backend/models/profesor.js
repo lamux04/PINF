@@ -11,4 +11,16 @@ export class ProfesorModel
         
         return { profesores: rows }
     }
+
+    // Precondicion: Ninguna
+    // Postcondicion: Devuelve true si el profesor existe, false en caso contrario
+    static async existe({ prof_cod, plant_cod })
+    {
+        // Comprobamos si el profesor existe
+        const [rows] = await promisePool.query('SELECT COUNT(*) AS valida FROM PROFESOR WHERE prof_cod = ? AND plant_cod = ?', [prof_cod, plant_cod])
+
+        const { valida } = rows[0]
+
+        return { valida: valida === 1 }
+    }
 }

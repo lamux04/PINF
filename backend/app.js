@@ -7,8 +7,6 @@ app.use(cors())
 app.disable('x-powered-by')
 
 // Rutas
-import { aulaRouter } from './routes/aula.js'
-app.use('/api/aula', aulaRouter)
 
 import { AuthRouter } from './routes/auth.js'
 app.use('/api/auth', AuthRouter)
@@ -24,6 +22,12 @@ app.use('/api/horario', HorarioRouter)
 
 import { CursoRouter } from './routes/curso.js'
 app.use('/api/curso', CursoRouter)
+
+import { AsignaturaRouter } from './routes/asignatura.js'
+app.use('/api/asignatura', AsignaturaRouter)
+
+import { ClaseRouter } from './routes/clase.js'
+app.use('/api/clase', ClaseRouter)
 
 // Error 404
 app.use('', (req, res) => {

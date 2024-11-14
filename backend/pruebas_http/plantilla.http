@@ -1,6 +1,6 @@
 ### get todas las plantillas
 GET http://localhost:1234/api/plantilla
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzExNDgyMTQsImV4cCI6MTczMTE1NTQxNH0.7USZGbaSA17zZ7Tyzv5YRB2yOgisXXY4aTHDQwEXst0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzE2MDc5OTUsImV4cCI6MTczMTYxNTE5NX0.G51tz1SsJK6cDNC2GLaDmD9Q0W5MA91gFqJ_VvJdc7I
 
 ### get una plantilla
 GET http://localhost:1234/api/plantilla/f5cacd26-170b-465b-9720-430314945ef7
