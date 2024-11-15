@@ -22,7 +22,6 @@ content-type: application/json
 
 {
     "username": "lamux04",
-    "password": "1234"
 }
 
 ### register
