@@ -6,10 +6,10 @@ import { validateRequest } from "../middlewares/validateRequest.js";
 import { z } from 'zod';
 
 const registerSchema = z.object({
-    username: z.string().min(5),
-    password: z.string().min(8),
+    username: z.string(),
+    password: z.string(),
 });
 
 AuthRouter.post('/register', validateRequest(registerSchema) ,AuthController.register)
-AuthRouter.post('/login', AuthController.login)
+AuthRouter.post('/login', validateRequest(registerSchema), AuthController.login)
 AuthRouter.delete('/delete', authMiddleware, AuthController.delete)
