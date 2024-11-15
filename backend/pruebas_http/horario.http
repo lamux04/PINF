@@ -1,7 +1,20 @@
 ### GET /api/horario
 GET http://localhost:1234/api/horario
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxhbXV4MDQiLCJpYXQiOjE3MzE0NDI0NjAsImV4cCI6MTczMTQ0OTY2MH0.U4ABo_d31zS47pBmGXLiStoB33DstAFJcy3qTNMp5FQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzE2OTY2NjEsImV4cCI6MTczMTcwMzg2MX0.bEAEP3Crp2uaejQZY0mu5dM6b1jawyGCK6d9IlAePCw
 
 ### GET /api/horario/:horar_cod
-GET http://localhost:1234/api/horario/d27cb0f3-df15-44be-81cd-905791d47187
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxhbXV4MDQiLCJpYXQiOjE3MzE0NDI0NjAsImV4cCI6MTczMTQ0OTY2MH0.U4ABo_d31zS47pBmGXLiStoB33DstAFJcy3qTNMp5FQ
+GET http://localhost:1234/api/horario/cfd6a8f7-a385-11ef-951a-cecd02c24f20
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzE2OTY2NjEsImV4cCI6MTczMTcwMzg2MX0.bEAEP3Crp2uaejQZY0mu5dM6b1jawyGCK6d9IlAePCw
+
+### DELETE /api/horario/:horar_cod
+DELETE http://localhost:1234/api/horario/e23fc302-a382-11ef-951a-cecd02c24f20
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzE2OTY2NjEsImV4cCI6MTczMTcwMzg2MX0.bEAEP3Crp2uaejQZY0mu5dM6b1jawyGCK6d9IlAePCw
+
+### POST /api/horario/visualizar  { horario }
+POST http://localhost:1234/api/horario/visualizar
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzE2OTY2NjEsImV4cCI6MTczMTcwMzg2MX0.bEAEP3Crp2uaejQZY0mu5dM6b1jawyGCK6d9IlAePCw
+Content-Type: application/json
+
+{
+    "horario": "cfd6a8f7-a385-11ef-951a-cecd02c24f20"
+}

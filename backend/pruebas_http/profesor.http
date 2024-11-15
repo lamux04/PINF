@@ -1,0 +1,39 @@
+### GET /api/profesor { plantilla }
+GET http://localhost:1234/api/profesor
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzE2OTIwNzEsImV4cCI6MTczMTY5OTI3MX0.Gb1TsrSpNyLkGG01kbkPYVb4N7cC3IRGXk9iI4HGH84
+Content-Type: application/json
+
+{
+    "plantilla": "f5cacd26-170b-465b-9720-430314945ef7"
+}
+
+### GET /api/profesor/:prof_cod
+GET http://localhost:1234/api/profesor/187ab8f9-a1a7-4779-84ee-2e99d6bdf5f5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzE2OTIwNzEsImV4cCI6MTczMTY5OTI3MX0.Gb1TsrSpNyLkGG01kbkPYVb4N7cC3IRGXk9iI4HGH84
+
+### POST /api/profesor
+POST http://localhost:1234/api/profesor
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzE2OTIwNzEsImV4cCI6MTczMTY5OTI3MX0.Gb1TsrSpNyLkGG01kbkPYVb4N7cC3IRGXk9iI4HGH84
+Content-Type: application/json
+
+{
+    "plantilla": "f5cacd26-170b-465b-9720-430314945ef7",
+    "nombre": "Jose Antonio",
+    "apellido1": "Alonso",
+    "apellido2": "De la Huerta"
+}
+
+### PATCH /api/profesor/:prof_cod
+PATCH http://localhost:1234/api/profesor/8516ff8f-4752-4bff-b307-51b4f89495fa
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzE2OTIwNzEsImV4cCI6MTczMTY5OTI3MX0.Gb1TsrSpNyLkGG01kbkPYVb4N7cC3IRGXk9iI4HGH84
+Content-Type: application/json
+
+{
+    "plantilla": "f5cacd26-170b-465b-9720-430314945ef7",
+    "nombre": "El",
+    "apellido2": "Probeta"
+}
+
+### DELETE /api/profesor/:prof_cod
+GET http://localhost:1234/api/profesor/8516ff8f-4752-4bff-b307-51b4f89495fa
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzE2OTIwNzEsImV4cCI6MTczMTY5OTI3MX0.Gb1TsrSpNyLkGG01kbkPYVb4N7cC3IRGXk9iI4HGH84

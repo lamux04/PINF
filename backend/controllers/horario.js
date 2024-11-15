@@ -9,10 +9,6 @@ export class HorarioController
     {
         // Obtenemso el nombre de usuario del token
         const { username } = req.user
-
-        // Comprobamos que el usuario es valido
-        const { exists } = await AuthModel.getByUsername({ username })            // Devuelve un objeto con usuario y password
-        if (!exists) return res.status(400).json({ message: 'Usuario no encontrado' })
         
         // Extraemos los horarios con el modelo
         const { horarios } = await HorarioModel.getHorariosQueVeUsuario({ username })
@@ -20,62 +16,54 @@ export class HorarioController
         res.json({ horarios })
     }
 
-    // GET /horario/:hor_cod
+    // GET /horario/:horar_cod
     static async getByCodigo(req, res)
     {
         // Obtenemos el nombre de usuario del token
         const { username } = req.user
+        const { horar_cod } = req.params
 
         // Comprobamos que el usuario es valido
-        const { exists } = await AuthModel.getByUsername({ username })            // Devuelve un objeto con usuario y password
-        if (!exists) return res.status(400).json({ message: 'Usuario no encontrado' })
-
-        // Obtenemos el codigo del horario
-        const { hor_cod } = req.params
-
-        // Comprobamos q el usuario puede ver el horario
-        const { valido } = await HorarioModel.puedeVer({ hor_cod, username })
-        if (!valido) return res.status(400).json({ message: 'Horario no visible para el usuario' })
+        const { valido: puedeVer } = await HorarioModel.puedeVer({ horar_cod, username })
+        if (!puedeVer) return res.status(401).json({ message: 'No autorizado' })
 
         // Extraemos el horario con el modelo
-        const { horario, exists: existsh } = await HorarioModel.getByCodigo({ hor_cod })
+        const { horario, exists: existsh } = await HorarioModel.getByCodigo({ horar_cod })
         if (!existsh) return res.status(400).json({ message: 'Horario no encontrado' })
 
         res.json(horario)
     }
 
-    // POST /horario
+    // POST /horario { plantilla }
     static async create(req, res)
     {
         // Obtenemos el nombre de usuario del token
         const { username } = req.user
 
-        // Comprobamos que el usuario es valido
-        const { exists } = await AuthModel.getByUsername({ username })            // Devuelve un objeto con usuario y password
-        if (!exists) return res.status(400).json({ message: 'Usuario no encontrado' })
-
         // Obtenemos el codigo de la plantilla a usar
-        const { plant_cod } = req.body
+        const { plantilla: plant_cod } = req.body
 
         // Comprobamos que la plantilla es valida
         const { valida } = await PlantillaModel.perteneceAUsuario({ plant_cod, username })
         if (!valida) return res.status(400).json({ message: 'Plantilla no encontrada' })
         
+        // Obtenemos la inforamcion de la plantilla
         // Creamos el horario usando la API de javi
         // todo: crear horario
 
-        return res.json({ coidgo_horario: 1 })
+        const horar_cod = '1234'
+
+        // Agregamos al usuario como visualizador
+        await HorarioModel.addVisualizador({ horar_cod, username })
+
+        return res.json({ horar_cod})
     }
 
-    // DELETE /horario/:hor_cod
+    // DELETE /horario/:horar_cod
     static async delete(req, res)
     {
         // Obtenemos el nombre de usuario del token
         const { username } = req.user
-
-        // Comprobamos que el usuario es valido
-        const { exists } = await AuthModel.getByUsername({ username })            // Devuelve un objeto con usuario y password
-        if (!exists) return res.status(400).json({ message: 'Usuario no encontrado' })
 
         // Obtenemos el codigo del horario
         const { horar_cod } = req.params
@@ -85,8 +73,25 @@ export class HorarioController
         if (!valido) return res.status(400).json({ message: 'Horario no encontrado' })
 
         // Borramos el horario
-        await HorarioModel.delete({ horar_cod })
+        await HorarioModel.deleteByCodigo({ horar_cod })
 
         res.json({ message: 'Horario eliminado correctamente' })
+    }
+
+    // POST /horario/visualizar  { horario }
+    static async visualizar(req, res)
+    {
+        // Obtenemos los atributos
+        const { horario: horar_cod } = req.body
+        const { username } = req.user
+
+        // Comprobamos que exista el horario
+        const { exists } = await HorarioModel.existe({ horar_cod })
+        if (!exists) return res.status(400).json({ message: 'Horario no encontrado' })
+        
+        // Agregamos el usuario como visualizador
+        await HorarioModel.addVisualizador({ horar_cod, username })
+
+        res.json({ message: 'Usuario añadido correctamente' })
     }
 }

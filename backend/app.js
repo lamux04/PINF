@@ -29,6 +29,12 @@ app.use('/api/asignatura', AsignaturaRouter)
 import { ClaseRouter } from './routes/clase.js'
 app.use('/api/clase', ClaseRouter)
 
+import { AulaRouter } from './routes/aula.js'
+app.use('/api/aula', AulaRouter)
+
+import { ProfesorRouter } from './routes/profesor.js'
+app.use('/api/profesor', ProfesorRouter)
+
 // Error 404
 app.use('', (req, res) => {
     res.status(404).json({ message: 'Error 404 Not Found' })

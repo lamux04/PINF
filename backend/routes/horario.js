@@ -4,6 +4,7 @@ import { authMiddleware } from "../middlewares/authMiddleware.js";
 import { HorarioController } from "../controllers/horario.js";
 
 HorarioRouter.get('/', authMiddleware, HorarioController.getAll)
-HorarioRouter.get('/:hor_cod', authMiddleware, HorarioController.getByCodigo)
+HorarioRouter.get('/:horar_cod', authMiddleware, HorarioController.getByCodigo)
 HorarioRouter.post('/', authMiddleware, HorarioController.create)
-HorarioRouter.delete('/:hor_cod', authMiddleware, HorarioController.delete)
+HorarioRouter.delete('/:horar_cod', authMiddleware, HorarioController.delete)
+HorarioRouter.post('/visualizar', authMiddleware, HorarioController.visualizar)

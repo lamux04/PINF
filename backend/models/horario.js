@@ -1,4 +1,5 @@
 import { promisePool } from "../db.js"
+import { ClaseModel } from "./clase.js"
 import { PlantillaModel } from "./plantilla.js"
 
 export class HorarioModel
@@ -14,9 +15,9 @@ export class HorarioModel
 
     // Precondicion: Existe el horario
     // Postcondicion: Devuelve el horario con el codigo dado
-    static async getByCodigo({ hor_cod })
+    static async getByCodigo({ horar_cod })
     {
-        const [rows] = await promisePool.query('SELECT horar_cod AS codigo, horar_nombre AS nombre, plant_cod FROM HORARIO WHERE horar_cod = ?', [hor_cod])
+        const [rows] = await promisePool.query('SELECT horar_cod AS codigo, horar_nombre AS nombre, plant_cod FROM HORARIO WHERE horar_cod = ?', [horar_cod])
 
         if (rows.length == 0) return { horario: null, exists: false }
 
@@ -34,12 +35,19 @@ export class HorarioModel
                 {
                     for (let clase of asignatura["clases"])
                     {
-                        const { clase_generada } = await ClaseGeneradaModel.getByCodigo({ clase_cod: clase["codigo"], hor_cod: horario["codigo"] })
+                        const { clase_generada, exists } = await ClaseModel.getClaseGenerada({ clase_cod: clase["codigo"], horar_cod: horario["codigo"] })
+                        if (!exists) continue
                         clase["clase_gen_cod"] = clase_generada["codigo"]
                         clase["clase_gen_hinicio"] = clase_generada["hinicio"]
                         clase["clase_gen_hfin"] = clase_generada["hfin"]
                         clase["clase_gen_dia"] = clase_generada["dia"]
                         clase["aula_cod"] = clase_generada["aula_cod"]
+                        clase["asignatura_cod"] = asignatura["codigo"]
+                        clase["asignatura_nombre"] = asignatura["nombre"]
+                        clase["curso_cod"] = curso["codigo"]
+                        clase["curso_nombre"] = curso["nombre"]
+                        clase["carrera_cod"] = carrera["codigo"]
+                        clase["carrera_nombre"] = carrera["nombre"]
                     }
                 }
             }
@@ -51,9 +59,9 @@ export class HorarioModel
 
     // Precondicion: Existe el horario
     // Postcondicion: Devuelve si el horario pertenece al usuario
-    static async perteneceAUsuario({ hor_cod, username })
+    static async perteneceAUsuario({ horar_cod, username })
     {
-        const [rows] = await promisePool.query('SELECT * FROM HORARIO WHERE horar_cod = ? AND username = ?', [hor_cod, username])
+        const [rows] = await promisePool.query('SELECT * FROM HORARIO LEFT JOIN PLANTILLA ON HORARIO.plant_cod = PLANTILLA.plant_cod WHERE HORARIO.horar_cod = ? AND usu_username = ?', [horar_cod, username])
 
         return { valido: rows.length > 0 }
     }
@@ -83,10 +91,26 @@ export class HorarioModel
 
     // Precondicion: Ninguna
     // Postcondicion: Comprobamos si el horario es visible para el usuario
-    static async puedeVer({ hor_cod, username })
+    static async puedeVer({ horar_cod, username })
     {
-        const [rows] = await promisePool.query('SELECT * FROM USUARIOVEHORARIO WHERE horar_cod = ? AND usu_cod = ?', [hor_cod, username])
+        const [rows] = await promisePool.query('SELECT * FROM USUARIOVEHORARIO WHERE horar_cod = ? AND usu_cod = ?', [horar_cod, username])
 
         return { valido: rows.length > 0 }
+    }
+
+    // Precondicion: Ninguna
+    // Postcondicion: Devuelve true si el horario existe
+    static async existe({ horar_cod })
+    {
+        const [rows] = await promisePool.query('SELECT * FROM HORARIO WHERE horar_cod = ?', [horar_cod])
+
+        return { exists: rows.length > 0 }
+    }
+
+    // Precondicion: El horario existe
+    // Postcondicion: Añade el horario a los horarios que ve el usuario
+    static async addVisualizador({ horar_cod, username })
+    {
+        await promisePool.query('INSERT INTO USUARIOVEHORARIO VALUES (?, ?)', [username, horar_cod])
     }
 }

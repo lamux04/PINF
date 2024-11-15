@@ -59,4 +59,17 @@ export class ClaseModel
     {
         await promisePool.query('DELETE FROM CLASE WHERE clase_cod = ?', [clase_cod])
     }
+
+    // Precondicion: Existe la clase
+    // Postcondicion: Devuelve la clase generada de la clase en el horario
+    static async getClaseGenerada({ clase_cod, horar_cod })
+    {
+        const [rows] = await promisePool.query('SELECT clase_gen_cod AS codigo, clase_gen_hinicio AS hinicio, clase_gen_hfin AS hfin, clase_gen_dia AS dia, aula_cod FROM CLAE_GENERADA WHERE clase_cod = ? AND horar_cod = ?', [clase_cod, horar_cod])
+
+        if (rows.length === 0) return { exists: false }
+
+        const clase_generada = rows[0]
+
+        return { clase_generada, exists: true }
+    }
 }
