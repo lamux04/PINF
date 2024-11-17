@@ -4,8 +4,12 @@ from ClasesProyecto import*
 import shutil
 import os
 
+#PRUEBAS
+#Primera prueba: solo las clases de 1ºA de GII
+#Segunda prueba: añadimos las clases de 1ºB de GII
+
 #Usamos de momento a la ESI como sujeto de pruebas
-#Creamos todas las aulas
+#CREAMOS TODAS LAS AULAS
 mg = "Magna grande"
 mp = "Magna pequeña"
 sem = "Seminario"
@@ -45,8 +49,8 @@ for aul in ["E", "D", "C", "B", "A"]:
         aulas_tipo.append(nom)
 Aulas[lab] = aulas_tipo
 
-#Creamos los profesores
-#De momento solo tenemos en cuenta algunos profesores que dan clase en 1ºA GII
+#CREAMOS LOS PROFESORES
+#Primera prueba
 Paco = profesor("Paco")
 Belen = profesor("Belen")
 Carmina = profesor("Carmina")
@@ -55,8 +59,15 @@ Eugenio = profesor("Eugenio")
 Eloysa = profesor("Eloysa")
 Diego = profesor("Diego")
 Blanca = profesor("Blanca")
+#Segunda prueba
+Alicia = profesor("Alicia")
+Nuria = profesor("Nuria")
+Elena = profesor("Elena")
+MariaEugenia = profesor("MariaEugenia")
+Miguel = profesor("Miguel")
 
-#Creamos las carreras, los cursos y las asignaturas
+#CREAMOS LAS CARRERAS, LOS CURSOS Y LAS ASIGNATURAS
+#Primera prueba
 giiC = carrera("GII")
 gii1a = curso("1ºA GII", giiC)
 md = asignatura("Matemática discreta", "SI", gii1a)
@@ -64,11 +75,19 @@ cal = asignatura("Cálculo", "NO", gii1a)
 ig = asignatura("Informática general", "SI", gii1a)
 ip = asignatura("Introducción a la programación", "NO", gii1a)
 sdig = asignatura("Sistemas digitales", "SI", gii1a)
+#Segunda prueba
+gii1b = curso("1ºB GII", giiC)
+md2 = asignatura("Matemática discreta", "SI", gii1b)
+cal2 = asignatura("Cálculo", "NO", gii1b)
+ig2 = asignatura("Informática general", "SI", gii1b)
+ip2 = asignatura("Introducción a la programación", "NO", gii1b)
+sdig2 = asignatura("Sistemas digitales", "SI", gii1b)
 
-#Creamos las clases
+#CREAMOS LAS CLASES
+#Primera Prueba
 Clases = []
 Clases.append(clase("Matemática Discreta A1 Teoría 1", "Teoría", mg, 90, "SI", md, Paco))
-Clases.append(clase("Matemática Discreta A2 Teoría 2", "Teoría", mg, 90, "SI", md, Paco))
+Clases.append(clase("Matemática Discreta A1 Teoría 2", "Teoría", mg, 90, "SI", md, Paco))
 Clases.append(clase("Matemática Discreta B1 Problemas", "Problemas", sem, 90, "NO", md, Paco))
 Clases.append(clase("Matemática Discreta B3 Problemas", "Problemas", sem, 90, "NO", md, Paco))
 Clases.append(clase("Calculo A1 Teoria 1", "Teoria", mg, 90, "SI", cal, Belen))
@@ -102,12 +121,53 @@ Clases.append(clase("Sistemas Digitales D3 Laboratorio", "Laboratorio", lab, 120
 Clases.append(clase("Sistemas Digitales D5 Laboratorio", "Laboratorio", lab, 120, "NO", sdig, Blanca))
 Clases.append(clase("Sistemas Digitales D7 Laboratorio", "Laboratorio", lab, 120, "NO", sdig, Blanca))
 
-#Primera prueba con solo un curso de una carrera
+#Segunda Prueba
+Clases.append(clase("Matemática Discreta A2 Teoría 1", "Teoría", mg, 90, "SI", md2, MariaEugenia))
+Clases.append(clase("Matemática Discreta A2 Teoría 2", "Teoría", mg, 90, "SI", md2, MariaEugenia))
+Clases.append(clase("Matemática Discreta B2 Problemas", "Problemas", sem, 90, "NO", md2, MariaEugenia))
+Clases.append(clase("Matemática Discreta B4 Problemas", "Problemas", sem, 90, "NO", md2, MariaEugenia))
+Clases.append(clase("Calculo A2 Teoria 1", "Teoria", mg, 90, "SI", cal2, Alicia))
+Clases.append(clase("Calculo A2 Teoria 2", "Teoria", mg, 90, "SI", cal2, Alicia))
+Clases.append(clase("Calculo B2 Problemas", "Problemas", sem, 60, "NO", cal2, Alicia))
+Clases.append(clase("Calculo B4 Problemas", "Problemas", sem, 60, "NO", cal2, Alicia))
+Clases.append(clase("Calculo C2 Prácticas informáticas", "Prácticas", pi, 120, "NO", cal2, Alicia))
+Clases.append(clase("Calculo C4 Prácticas informáticas", "Prácticas", pi, 120, "NO", cal2, Alicia))
+Clases.append(clase("Calculo C6 Prácticas informáticas", "Prácticas", pi, 120, "NO", cal2, Belen))
+Clases.append(clase("Calculo C8 Prácticas informáticas", "Prácticas", pi, 120, "NO", cal2, Belen))
+Clases.append(clase("Informática general A2 Teoría", "Teoría", mp, 90, "SI", ig2, Carmina))
+Clases.append(clase("Informática general A2 Teoría Extra", "Teoría", mp, 90, "SI", ig2, Carmina))
+Clases.append(clase("Informática general B2 Problemas", "Problemas", sem, 60, "NO", ig2, Gabriel))
+Clases.append(clase("Informática general B4 Problemas", "Problemas", sem, 60, "NO", ig2, Gabriel))
+Clases.append(clase("Informática general C2 Prácticas informáticas", "Prácticas", pi, 120, "NO", ig2, Carmina))
+Clases.append(clase("Informática general C4 Prácticas informáticas", "Prácticas", pi, 120, "NO", ig2, Eugenio))
+Clases.append(clase("Informática general C6 Prácticas informáticas", "Prácticas", pi, 120, "NO", ig2, Eugenio))
+Clases.append(clase("Introducción a la programación A2 Teoría", "Teoría", mp, 90, "SI", ip2, Nuria))
+Clases.append(clase("Introducción a la programación A2 Teoría Extra", "Teoría", mp, 90, "SI", ip2, Nuria))
+Clases.append(clase("Introducción a la programación B2 Problemas", "Problemas", sem, 60, "NO", ip2, Nuria))
+Clases.append(clase("Introducción a la programación B4 Problemas", "Problemas", sem, 60, "NO", ip2, Elena))
+Clases.append(clase("Introducción a la programación C2 Prácticas Informáticas", "Prácticas", pi, 120, "NO", ip2, Nuria))
+Clases.append(clase("Introducción a la programación C4 Prácticas Informáticas", "Prácticas", pi, 120, "NO", ip2, Nuria))
+Clases.append(clase("Introducción a la programación C6 Prácticas Informáticas", "Prácticas", pi, 120, "NO", ip2, Elena))
+Clases.append(clase("Introducción a la programación C8 Prácticas Informáticas", "Prácticas", pi, 120, "NO", ip2, Elena))
+Clases.append(clase("Sistemas Digitales A2 Teoría", "Teoría", sem, 90, "SI", sdig2, Diego))
+Clases.append(clase("Sistemas Digitales A2 Teoría Extra", "Teoría", sem, 90, "SI", sdig2, Diego))
+Clases.append(clase("Sistemas Digitales B2 Problemas", "Problemas", sem, 60, "NO", sdig2, Diego))
+Clases.append(clase("Sistemas Digitales B4 Problemas", "Problemas", sem, 60, "NO", sdig2, Diego))
+Clases.append(clase("Sistemas Digitales D4 D8 Laboratorio 1", "Laboratorio", lab, 120, "NO", sdig2, Miguel))
+Clases.append(clase("Sistemas Digitales D4 D8 Laboratorio 2", "Laboratorio", lab, 120, "NO", sdig2, Miguel))
+Clases.append(clase("Sistemas Digitales D6 Laboratorio", "Laboratorio", lab, 120, "NO", sdig2, Miguel))
+Clases.append(clase("Sistemas Digitales D2 Laboratorio", "Laboratorio", lab, 120, "NO", sdig2, Miguel))
+
+#COMIENZAN LAS PRUEBAS
+#Primera prueba
 Horarios: dict
 Horarios={}
 gii: dict
 gii={}
 gii[gii1a.nombre] = [[],[],[],[],[]]
+#Segunda prueba
+gii[gii1b.nombre] = [[],[],[],[],[]]
+
 Horarios[giiC.nombre] = gii
 
 colocarClases(Clases, Aulas, Horarios)

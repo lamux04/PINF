@@ -204,7 +204,7 @@ def AulaOcupada(horario, aula, h_ini, h_fin, dia) -> bool:
 
 #Esta función solo tendrá uso cuando haya mas de un calendario por día
 #Precondición: horario es el calendario del dia para en el dia concreto para el curso de la carrera que deseamos comprobar
-#Postcondición: devuelve True si la clase  no coincide en esa franja horaria con 
+#Postcondición: devuelve True si la clase no coincide en esa franja horaria con 
 #otra clase de alta importancia del curso siguiente y False en caso contrario.
 def HayClaseImportante(horario, h_ini, h_fin) -> bool:
     puede = True
