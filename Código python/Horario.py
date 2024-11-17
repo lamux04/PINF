@@ -132,6 +132,9 @@ def colocarClases(Clases, Aulas, Horarios):
             denegadas.append(clase)
     #Tercer bucle para colocar las clases de la cola de denegadas
     print("toca denegadas")
+
+    Errores = []
+
     while (len(denegadas) != 0):
         colocado = False
         clase = denegadas[0]
@@ -197,6 +200,12 @@ def colocarClases(Clases, Aulas, Horarios):
                     h_fin += 15
             
             dia += 1
+        
+        if not colocado:
+            Errores.append(clase)
+    
+    if len(Errores) != 0:
+        raise ValueError("Ha habido un error. Han habido clases que no se han podido colocar por alguna razón")
 
 
 
