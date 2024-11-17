@@ -172,21 +172,68 @@ Horarios[giiC.nombre] = gii
 
 colocarClases(Clases, Aulas, Horarios)
 
-print("Horario terminado")
+print("Horario terminado", end="\n\n")
 
-for Carrera in Horarios.keys():
-    print(f"Horarios de la carrera{Carrera}", end="\n")
-    for Curso in Horarios[Carrera].keys():
-        print(f"Horarios del {Curso} de {Carrera}")
-        for Dia in range(0,5):
-            print(f"Horarios del {Dia} de {Curso} de {Carrera}")
-            if type(Horarios[Carrera][Curso][Dia][0]) is list:
-                i = 0
-                while i < len(Horarios[Carrera][Curso][Dia]):
-                    print(f"Lista {i}")
-                    for Clase in Horarios[Carrera][Curso][Dia][i]:
-                        Clase.mostrar()
-            else:
-                for Clase in Horarios[Carrera][Curso][Dia]:
-                        Clase.mostrar()
+print("Introduzca un 1 si quiere comprobar todos los horarios de la escuela o un 2 si quiere comprobar uno en concreto: ", end="")
+OpcionEscogida = int(input())
+while(OpcionEscogida != 1 and OpcionEscogida != 2):
+    OpcionEscogida = int(input("Introduzca simplemente 1 o 2: "))
+
+if OpcionEscogida == 1:
+    for Carrera in Horarios.keys():
+        print(f"Horarios de la carrera{Carrera}", end="\n")
+        for Curso in Horarios[Carrera].keys():
+            print(f"Horarios del {Curso} de {Carrera}")
+            for Dia in range(0,5):
+                print(f"Horarios del {Dia} de {Curso} de {Carrera}")
+                if type(Horarios[Carrera][Curso][Dia][0]) is list:
+                    i = 0
+                    while i < len(Horarios[Carrera][Curso][Dia]):
+                        print(f"Lista {i}")
+                        for Clase in Horarios[Carrera][Curso][Dia][i]:
+                            Clase.mostrar()
+                else:
+                    for Clase in Horarios[Carrera][Curso][Dia]:
+                            Clase.mostrar()
+
+else:
+    while(True):
+        print("Escoja una de las siguientes carreras:")
+        i = 1
+        Carrera = list(Horarios.keys())
+        for c in Carrera:
+            print(f"{i}: {c}")
+            i = i + 1
+        CarreraEscogida = int(input("Escriba el número de la carrera: "))
+        while(CarreraEscogida > len(Horarios.keys()) or CarreraEscogida <= 0):
+            CarreraEscogida = int(input("Por favor, introduzca uno de los valores que han aparecido antes: "))
+        print("Escoja uno de los cursos de la carrera:")
+        i = 1
+        Curso = list(Horarios[Carrera[CarreraEscogida - 1]].keys())
+        for c in Curso:
+            print(f"{i}: {c}")
+            i = i + 1
+        CursoEscogido = int(input("Escriba el número del curso: "))
+        while(CursoEscogido > len(Horarios[Carrera[CarreraEscogida - 1]].keys()) or CursoEscogido <= 0):
+            CursoEscogido = int(input("Por favor, introduzca uno de los valores que han aparecido antes: "))
+        print("Escoja uno de los días de la semana:")
+        print("1: Lunes")
+        print("2: Martes")
+        print("3: Miercoles")
+        print("4: Jueves")
+        print("5: Viernes")
+        DiaEscogido = int(input("Escriba el número del día: "))
+        while(DiaEscogido < 1 or DiaEscogido > 5):
+            DiaEscogido = int(input("Por favor, introduzca uno de los valores que han aparecido antes: "))
+        if type(Horarios[Carrera[CarreraEscogida - 1]][Curso[CursoEscogido - 1]][DiaEscogido - 1][0]) is list:
+            i = 0
+            while i < len(Horarios[Carrera[CarreraEscogida - 1]][Curso[CursoEscogido - 1]][DiaEscogido - 1]):
+                print(f"Lista {i}")
+                for Clase in Horarios[Carrera[CarreraEscogida - 1]][Curso[CursoEscogido - 1]][DiaEscogido - 1]:
+                    Clase.mostrar()
+                i = i + 1
+        else:
+            for Clase in Horarios[Carrera[CarreraEscogida - 1]][Curso[CursoEscogido - 1]][DiaEscogido - 1]:
+                    Clase.mostrar()
+
 
