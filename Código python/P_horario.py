@@ -4,11 +4,11 @@ from ClasesProyecto import*
 import shutil
 import os
 
+#Usamos de momento las clases del primer cuatrimestre de la ESI como sujeto de pruebas
 #PRUEBAS
 #Primera prueba: solo las clases de 1ºA de GII
 #Segunda prueba: añadimos las clases de 1ºB de GII
 
-#Usamos de momento a la ESI como sujeto de pruebas
 #CREAMOS TODAS LAS AULAS
 mg = "Magna grande"
 mp = "Magna pequeña"
