@@ -27,6 +27,7 @@ def colocarClases(Clases, Aulas, Horarios):
     tarde = []                              #Cola donde iremos colocando las clases que no se han podido colocar por la mañana.
 
     #Primer bucle para intentar colocar las clases por la mañana
+    print("toca mañana")
     while(len(porcolocar) != 0):
         colocado = False
         if(n_import > 0):
@@ -58,6 +59,7 @@ def colocarClases(Clases, Aulas, Horarios):
                                     if not AulaOcupada(Horarios, aulas[indice_aula], h_ini, h_fin, dia):
                                         Horarios[carrera][curso][dia].append(c_horario(clase, h_ini, h_fin, aulas[indice_aula]))
                                         colocado = True
+                                    indice_aula += 1
                         else:
                             if SiAprobableSobreNo(Horarios[carrera], curso, h_ini, h_fin, dia):         #Si la asignatura es de alta aprobabilidad que no coincida
                                 aulas = Aulas[clase.tipo_aula]                                          #con una del curso anterior con baja aprobabilidad
@@ -67,6 +69,7 @@ def colocarClases(Clases, Aulas, Horarios):
                                     if not AulaOcupada(Horarios, aulas[indice_aula], h_ini, h_fin, dia):
                                         Horarios[carrera][curso][dia].append(c_horario(clase, h_ini, h_fin, aulas[indice_aula]))
                                         colocado = True
+                                    indice_aula += 1
                 
                 h_ini += 15     #Miramos en la siguiente franja horaria
                 h_fin += 15
@@ -81,6 +84,7 @@ def colocarClases(Clases, Aulas, Horarios):
                 tarde.append(clase)
     #Segundo bucle para colocar las que no han podido colocarse por la mañana
     print("toca tarde")
+
     while(len(tarde) != 0):
         colocado = False
         clase = tarde[0]
@@ -107,6 +111,7 @@ def colocarClases(Clases, Aulas, Horarios):
                                     if not AulaOcupada(Horarios, aulas[indice_aula], h_ini, h_fin, dia):
                                         Horarios[carrera][curso][dia].append(c_horario(clase, h_ini, h_fin, aulas[indice_aula]))
                                         colocado = True
+                                    indice_aula += 1
                         else:
                             if SiAprobableSobreNo(Horarios[carrera], curso, h_ini, h_fin, dia):         #Si la asignatura es de alta aprobabilidad que no coincida
                                 aulas = Aulas[clase.tipo_aula]                                          #con una del curso anterior con baja aprobabilidad
@@ -116,6 +121,7 @@ def colocarClases(Clases, Aulas, Horarios):
                                     if not AulaOcupada(Horarios, aulas[indice_aula], h_ini, h_fin, dia):
                                         Horarios[carrera][curso][dia].append(c_horario(clase, h_ini, h_fin, aulas[indice_aula]))
                                         colocado = True
+                                    indice_aula += 1
                 
                 #Miramos en la siguiente franja horaria
                 if(h_ini >= fin_comer) or (h_fin < inicio_comer):
@@ -134,8 +140,9 @@ def colocarClases(Clases, Aulas, Horarios):
     print("toca denegadas")
 
     Errores = []
-
+    #print("Entra al bucle de colas de colas denegadas")
     while (len(denegadas) != 0):
+        #print(f"Clases denegadas por colocar: {len(denegadas)}")
         colocado = False
         clase = denegadas[0]
         del denegadas[0]
@@ -171,6 +178,7 @@ def colocarClases(Clases, Aulas, Horarios):
                                                 colocado = True
                                         else:
                                             Horarios[carrera][curso][dia] = [[Horarios[carrera][dia]], [c_horario(clase, h_ini, h_fin, aulas[indice_aula])]]
+                                    indice_aula += 1
                         else:
                             if SiAprobableSobreNo(Horarios[carrera], curso, h_ini, h_fin, dia):         #Si la asignatura es de alta aprobabilidad que no coincida
                                 aulas = Aulas[clase.tipo_aula]                                          #con una del curso anterior con baja aprobabilidad
@@ -190,6 +198,7 @@ def colocarClases(Clases, Aulas, Horarios):
                                                 colocado = True
                                         else:
                                             Horarios[carrera][curso][dia] = [[Horarios[carrera][dia]], [c_horario(clase, h_ini, h_fin, aulas[indice_aula])]]
+                                    indice_aula += 1
                 
                 #Miramos en la siguiente franja horaria
                 if (h_fin + 15 > inicio_comer):

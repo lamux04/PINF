@@ -122,6 +122,8 @@ def SiAprobableSobreNo(horario, c_actual, h_ini, h_fin, dia) -> bool:
 def ProfesorOcupado(horario, profesor, h_ini, h_fin, dia) -> bool:
     ocupado = False
 
+    #print(f"Entra en la funcion ProfesorOcupado con{h_ini} y {h_fin}")
+
     carreras = list(horario.keys())
     i = 0
     while(i < len(carreras) and not ocupado):                                                           #Recorremos carrera a carrera
@@ -164,6 +166,8 @@ def ProfesorOcupado(horario, profesor, h_ini, h_fin, dia) -> bool:
 #Postcondiciones: devuelve True si el aula está ocupada en dicha franja horaria o False en caso contrario.
 def AulaOcupada(horario, aula, h_ini, h_fin, dia) -> bool:
     ocupada = False
+
+    #print(f"Entra en la funcion AulaOcupada con {h_ini} y {h_fin} y el aula {aula}")
 
     carreras = list(horario.keys())
     i = 0
@@ -209,6 +213,8 @@ def AulaOcupada(horario, aula, h_ini, h_fin, dia) -> bool:
 def HayClaseImportante(horario, h_ini, h_fin) -> bool:
     puede = True
 
+    #print(f"Entra en la funcion HayClaseImportante con {h_ini} y {h_fin}")
+
     i = 0
     while (i < len(horario) and puede):
         j = 0
@@ -233,7 +239,7 @@ def HayYaClase(horario, h_ini, h_fin) -> bool:
     puede = True
     i = 0
 
-    #print(f"Entra en la funcion con {h_ini} y con {h_fin}")
+    #print(f"Entra en la funcion HayYaClase con {h_ini} y con {h_fin}")
 
     if len(horario) > 0:
         if type(horario[0]) is list:                                  #Si hay más de un horario por día, hay que comprobar uno a uno
@@ -272,6 +278,8 @@ def HayYaClase(horario, h_ini, h_fin) -> bool:
 #Precondiciones: horario debe ser la lista de horarios concreta donde se quiere insertar la clase del curso de la carrera en concreto
 #Postcondición: devuelve true si en la lista correspondiente al curso ya hay clase (esta función solo se utilizará cuando haya más de una lista por día)
 def HayYaClaseLista(horario, h_ini, h_fin) -> bool:
+    #print(f"Entra en la funcion HayYaClaseLista con {h_ini} y {h_fin}")
+
     i = 0
     puede = True
     while (i < len(horario)) and puede:
