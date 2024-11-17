@@ -79,8 +79,8 @@ def colocarClases(Clases, Aulas, Horarios):
                 tarde.insert(0, clase)
             else:
                 tarde.append(clase)
-
     #Segundo bucle para colocar las que no han podido colocarse por la mañana
+    print("toca tarde")
     while(len(tarde) != 0):
         colocado = False
         clase = tarde[0]
@@ -130,8 +130,8 @@ def colocarClases(Clases, Aulas, Horarios):
         #Si no se ha podido colocar se va a la cola de clase denegadas
         if not colocado:
             denegadas.append(clase)
-
     #Tercer bucle para colocar las clases de la cola de denegadas
+    print("toca denegadas")
     while (len(denegadas) != 0):
         colocado = False
         clase = denegadas[0]

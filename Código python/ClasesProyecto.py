@@ -95,7 +95,7 @@ class clase:
 
     def mostrar(self):
         print(f"Clase: {self.nombre} de la asignatura {self.asignatura.nombre} del curso {self.asignatura.curso.nombre} de la carrera {self.asignatura.curso.carrera.nombre}", end = "\n")
-        print(f"El tipo del aula es {self.tipo} y necesita un aula de tipo {self.tipo_aula}. Tambien tiene una duracion de {self.duracion} y ", end = "")
+        print(f"El tipo del aula es {self.tipo} y necesita un aula de tipo {self.tipo_aula}. Tambien tiene una duracion de {self.duracion/60} y ", end = "")
         if self.importante:
             print("es importante", end = "\n")
         else:
