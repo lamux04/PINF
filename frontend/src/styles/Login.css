@@ -1,0 +1,54 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+img {
+    width: 400px;
+}
+
+.bloque {
+    border: black 4px solid;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 300px;
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.button {
+    background-color: black;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: 0.2s;
+    width: 140px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+p {
+    font-size: 20px;
+}
+
+.button:hover {
+    background-color: #fa5b41;
+    color: white;
+    transition: 0.2s;
+}
