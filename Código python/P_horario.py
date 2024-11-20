@@ -8,6 +8,7 @@ import os
 #PRUEBAS
 #Primera prueba: solo las clases de 1ºA de GII
 #Segunda prueba: añadimos las clases de 1ºB de GII
+#Tercera prueba: añadimos las clases de 2º de GII
 
 #CREAMOS TODAS LAS AULAS
 mg = "Magna grande"
@@ -65,6 +66,21 @@ Nuria = profesor("Nuria")
 Elena = profesor("Elena")
 MariaEugenia = profesor("MariaEugenia")
 Miguel = profesor("Miguel")
+#Tercero prueba
+Alfonso = profesor("Alfonso")
+Blas = profesor("Blas")
+Mati = profesor("Manuel Matias")
+Angel = profesor("Angel")
+Luis = profesor("Luis")
+FJavier = profesor("Francisco Javier")
+AnJesus = profesor("Antonio Jesus")
+Mercedes = profesor("Mercedes")
+Juanjo = profesor("Prosesos")
+Leopoldo = profesor("Leopoldo")
+dlh = profesor("De la huerta")
+Josefi = profesor("Jose Fidel")
+Maite = profesor("Maite")
+Jesus_Roman = profesor("Jesus Roman")
 
 #CREAMOS LAS CARRERAS, LOS CURSOS Y LAS ASIGNATURAS
 #Primera prueba
@@ -82,6 +98,20 @@ cal2 = asignatura("Cálculo", "NO", gii1b)
 ig2 = asignatura("Informática general", "SI", gii1b)
 ip2 = asignatura("Introducción a la programación", "NO", gii1b)
 sdig2 = asignatura("Sistemas digitales", "SI", gii1b)
+#Tercera prueba
+gii2a = curso("2ºA GII", giiC)
+ac1 = asignatura("Arquitectura de computadores", "SI", gii2a)
+oge1 = asignatura("Organización y dirección de empresas", "SI", gii2a)
+rc1 = asignatura("Redes de computadoras", "SI", gii2a)
+so1 = asignatura("Sistemas Operativos", "SI", gii2a)
+aaed1 = asignatura("AAED", "NO", gii2a)
+gii2b = curso("2ºB GII", giiC)
+ac2 = asignatura("Arquitectura de computadores", "SI", gii2b)
+oge2 = asignatura("Organización y dirección de empresas", "SI", gii2b)
+rc2 = asignatura("Redes de computadoras", "SI", gii2b)
+so2 = asignatura("Sistemas Operativos", "SI", gii2b)
+aaed2 = asignatura("AAED", "NO", gii2b)
+
 
 #CREAMOS LAS CLASES
 #Primera Prueba
@@ -120,7 +150,6 @@ Clases.append(clase("Sistemas Digitales D1 Laboratorio", "Laboratorio", lab, 120
 Clases.append(clase("Sistemas Digitales D3 Laboratorio", "Laboratorio", lab, 120, "NO", sdig, Blanca))
 Clases.append(clase("Sistemas Digitales D5 Laboratorio", "Laboratorio", lab, 120, "NO", sdig, Blanca))
 Clases.append(clase("Sistemas Digitales D7 Laboratorio", "Laboratorio", lab, 120, "NO", sdig, Blanca))
-
 #Segunda Prueba
 Clases.append(clase("Matemática Discreta A2 Teoría 1", "Teoría", mg, 90, "SI", md2, MariaEugenia))
 Clases.append(clase("Matemática Discreta A2 Teoría 2", "Teoría", mg, 90, "SI", md2, MariaEugenia))
@@ -157,6 +186,74 @@ Clases.append(clase("Sistemas Digitales D4 D8 Laboratorio 1", "Laboratorio", lab
 Clases.append(clase("Sistemas Digitales D4 D8 Laboratorio 2", "Laboratorio", lab, 120, "NO", sdig2, Miguel))
 Clases.append(clase("Sistemas Digitales D6 Laboratorio", "Laboratorio", lab, 120, "NO", sdig2, Miguel))
 Clases.append(clase("Sistemas Digitales D2 Laboratorio", "Laboratorio", lab, 120, "NO", sdig2, Miguel))
+#Tercera prueba
+Clases.append(clase("AAED A1 Teoría", "Teoría", mp, 90, "SI", aaed1, Josefi))
+Clases.append(clase("AAED A1 Teoría Extra", "Teoría", mp, 90, "SI", aaed1, Josefi))
+Clases.append(clase("AAED B1 Problemas", "Problemas", sem, 60, "NO", aaed1, Maite))
+Clases.append(clase("AAED B3 Problemas", "Problemas", sem, 60, "NO", aaed1, Maite))
+Clases.append(clase("AAED C1 Prácticas", "Prácticas", pi, 120, "NO", aaed1, Josefi))
+Clases.append(clase("AAED C7 Prácticas", "Prácticas", pi, 120, "NO", aaed1, Josefi))
+Clases.append(clase("AAED C3 Prácticas", "Prácticas", pi, 120, "NO", aaed1, Jesus_Roman))
+Clases.append(clase("AAED C5 Prácticas", "Prácticas", pi, 120, "NO", aaed1, Jesus_Roman))
+Clases.append(clase("AC A1 Teoría", "Teoría", mp, 120, "SI", ac1, Blas))
+Clases.append(clase("AC A1 Teoría Extra", "Teoría", mp, 120, "SI", ac1, Blas))
+Clases.append(clase("AC C1 Problemas", "Problemas", pi, 60, "NO", ac1, Mati))
+Clases.append(clase("AC C3 Problemas", "Problemas", pi, 60, "NO", ac1, Mati))
+Clases.append(clase("AC C5 Problemas", "Problemas", pi, 60, "NO", ac1, Mati))
+Clases.append(clase("AC D1 Laboratorio", "Laboratorio", lab, 90, "NO", ac1, Alfonso))
+Clases.append(clase("AC D1 Laboratorio Extra", "Laboratorio", lab, 90, "NO", ac1, Alfonso))
+Clases.append(clase("AC D3 Laboratorio", "Laboratorio", lab, 90, "NO", ac1, Alfonso))
+Clases.append(clase("AC D3 Laboratorio Extra", "Laboratorio", lab, 90, "NO", ac1, Alfonso))
+Clases.append(clase("AC D5 Laboratorio", "Laboratorio", lab, 90, "NO", ac1, Alfonso))
+Clases.append(clase("Redes A1 Teoría B1 Problemas", "Teoría", mp, 90, "SI", rc1, Mercedes))
+Clases.append(clase("Redes A1 Teoría B3 Problemas", "Teoría", mp, 90, "SI", rc1, Mercedes))
+Clases.append(clase("Redes D1 Laboratorio", "Laboratorio", lab, 120, "NO", rc1, AnJesus))
+Clases.append(clase("Redes D3 Laboratorio", "Laboratorio", lab, 120, "NO", rc1, AnJesus))
+Clases.append(clase("Redes D5 Laboratorio", "Laboratorio", lab, 120, "NO", rc1, AnJesus))
+Clases.append(clase("SO A1 Teoría", "Teoría", mp, 90, "SI", so1, Juanjo))
+Clases.append(clase("SO A1 Teoría Extra", "Teoría", mp, 90, "SI", so1, Juanjo))
+Clases.append(clase("SO B1 Problemas", "Problemas", sem, 90, "NO", so1, Juanjo))
+Clases.append(clase("SO B3 Problemas", "Problemas", sem, 90, "NO", so1, Juanjo))
+Clases.append(clase("SO C1 Prácticas", "Prácticas", pi, 120, "NO", so1, Juanjo))
+Clases.append(clase("SO C3 Prácticas", "Prácticas", pi, 120, "NO", so1, Juanjo))
+Clases.append(clase("SO C5 Prácticas", "Prácticas", pi, 120, "NO", so1, Leopoldo))
+Clases.append(clase("OGE A1 Teoría 1", "Teoría", mp, 90, "SI", oge1, Angel))
+Clases.append(clase("OGE A1 Teoría 2", "Teoría", mp, 90, "SI", oge1, Angel))
+Clases.append(clase("OGE B1 Problemas", "Problemas", sem, 90, "NO", oge1, Luis))
+Clases.append(clase("OGE B3 Problemas", "Problemas", sem, 90, "NO", oge1, Luis))
+Clases.append(clase("AAED A2 Teoría", "Teoría", mp, 90, "SI", aaed2, Josefi))
+Clases.append(clase("AAED A2 Teoría Extra", "Teoría", mp, 90, "SI", aaed2, Josefi))
+Clases.append(clase("AAED B2 Problemas", "Problemas", sem, 60, "NO", aaed2, Maite))
+Clases.append(clase("AAED B4 Problemas", "Problemas", sem, 60, "NO", aaed2, Maite))
+Clases.append(clase("AAED C2 Prácticas", "Prácticas", pi, 120, "NO", aaed2, dlh))
+Clases.append(clase("AAED C2 Prácticas Extra", "Prácticas", pi, 120, "NO", aaed2, dlh))
+Clases.append(clase("AAED C4 Prácticas", "Prácticas", pi, 120, "NO", aaed2, dlh))
+Clases.append(clase("AAED C4 Prácticas Extra", "Prácticas", pi, 120, "NO", aaed2, dlh))
+Clases.append(clase("AAED C6 Prácticas", "Prácticas", pi, 120, "NO", aaed2, dlh))
+Clases.append(clase("AAED C6 Prácticas Extra", "Prácticas", pi, 120, "NO", aaed2, dlh))
+Clases.append(clase("AAED C8 Prácticas", "Prácticas", pi, 120, "NO", aaed2, Jesus_Roman))
+Clases.append(clase("AC A2 Teoría", "Teoría", mp, 120, "SI", ac2, Blas))
+Clases.append(clase("AC A2 Teoría Extra", "Teoría", mp, 120, "SI", ac2, Blas))
+Clases.append(clase("AC C2 Problemas", "Problemas", pi, 60, "NO", ac2, Mati))
+Clases.append(clase("AC C4 Problemas", "Problemas", pi, 60, "NO", ac2, Mati))
+Clases.append(clase("AC D2 Laboratorio", "Laboratorio", lab, 90, "NO", ac2, Alfonso))
+Clases.append(clase("AC D2 Laboratorio Extra", "Laboratorio", lab, 90, "NO", ac2, Alfonso))
+Clases.append(clase("AC D4 Laboratorio", "Laboratorio", lab, 90, "NO", ac2, Alfonso))
+Clases.append(clase("AC D6 Laboratorio", "Laboratorio", lab, 90, "NO", ac2, Alfonso))
+Clases.append(clase("Redes A2 Teoría", "Teoría", mp, 90, "SI", rc2, Mercedes))
+Clases.append(clase("Redes A2 Teoría B2 Problemas", "Teoría", mp, 90, "SI", rc2, Mercedes))
+Clases.append(clase("Redes D2 Laboratorio", "Laboratorio", lab, 120, "NO", rc2, AnJesus))
+Clases.append(clase("Redes D4 Laboratorio", "Laboratorio", lab, 120, "NO", rc2, AnJesus))
+Clases.append(clase("Redes D6 Laboratorio", "Laboratorio", lab, 120, "NO", rc2, AnJesus))
+Clases.append(clase("SO A2 Teoría", "Teoría", mp, 90, "SI", so2, Juanjo))
+Clases.append(clase("SO A2 Teoría Extra", "Teoría", mp, 90, "SI", so2, Juanjo))
+Clases.append(clase("SO B1 Problemas", "Problemas", sem, 90, "NO", so2, Leopoldo))
+Clases.append(clase("SO B3 Problemas", "Problemas", sem, 90, "NO", so2, Leopoldo))
+Clases.append(clase("SO C2 Prácticas", "Prácticas", pi, 120, "NO", so2, Leopoldo))
+Clases.append(clase("SO C4 Prácticas", "Prácticas", pi, 120, "NO", so2, Juanjo))
+Clases.append(clase("OGE A2 Teoría 1", "Teoría", mp, 90, "SI", oge2, Angel))
+Clases.append(clase("OGE A2 Teoría 2", "Teoría", mp, 90, "SI", oge2, Angel))
+Clases.append(clase("OGE B2 Problemas", "Problemas", sem, 90, "NO", oge2, FJavier))
 
 #COMIENZAN LAS PRUEBAS
 #Primera prueba
@@ -167,6 +264,9 @@ gii={}
 gii[gii1a.nombre] = [[],[],[],[],[]]
 #Segunda prueba
 gii[gii1b.nombre] = [[],[],[],[],[]]
+#Tercera prueba
+gii[gii2a.nombre] = [[],[],[],[],[]]
+gii[gii2b.nombre] = [[],[],[],[],[]]
 
 Horarios[giiC.nombre] = gii
 
