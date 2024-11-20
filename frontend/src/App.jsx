@@ -5,16 +5,21 @@ import {
 } from "react-router-dom";
 import { Home } from './pages/Home'
 import { Login } from './pages/Login'
+import { IniciarSesion } from './pages/IniciarSesion'
 
 const router = createBrowserRouter([
     {
-        path: "/login",
+        path: '/login',
         element: <Login />
     },
     {
-        path: "/home",
+        path: '/home',
         element: <Home />,
     },
+    {
+        path: '/iniciar_sesion',
+        element: <IniciarSesion />
+    }
 ]);
 
 export function App() {
