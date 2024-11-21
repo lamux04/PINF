@@ -8,6 +8,9 @@ import { Principal } from './components/Principal'
 import { Login } from './components/Login'
 import { Register } from './components/Register'
 
+// Estilos
+import styles from './Auth.module.css'
+
 export const Auth = () => {
     const [formato, setFormato] = useState('default')
 
@@ -20,8 +23,8 @@ export const Auth = () => {
     }
 
     return (
-        <main>
-            <img src={logo} alt="Logo de Sched4All" />
+        <main className={styles.bloque}>
+            <img src={logo} alt="Logo de Sched4All" className={styles.logo}/>
             {
                 formato == 'default'
                     ? <Principal cambiarALogin={cambiarALogin} cambiarARegistro={cambiarARegistro} />

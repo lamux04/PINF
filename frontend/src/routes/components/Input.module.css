@@ -1,0 +1,46 @@
+.input {
+    width: 230px;
+    font-size: 20px;
+    padding: 5px 10px;
+    border: none;
+    border: 2px solid var(--text-color);
+    border-radius: 10px;
+    outline: none;
+}
+
+.input:focus {
+    outline: 2px solid var(--text-color);
+}
+
+.label {
+    position: relative;
+    display: flex;
+    width: 230px;
+}
+
+.input_password {
+    width: 100%;
+    font-size: 20px;
+    padding: 5px 10px;
+    border: none;
+    border: 2px solid var(--text-color);
+    border-radius: 10px;
+    outline: none;
+}
+
+.input_password:focus {
+    outline: 2px solid var(--text-color);
+}
+
+.icono {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    transform: translateY(-50%);
+}
+
+.icono:hover {
+    color: var(--boton-hover);
+}
