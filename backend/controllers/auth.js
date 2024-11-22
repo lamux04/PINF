@@ -19,6 +19,11 @@ export class AuthController
         
         // Generar un token JWT
         const token = jwt.sign({ username }, process.env.JWT_SECRET, { expiresIn: '2h' })
+        res.cookie('authToken', token, {
+            httpOnly: true,
+            sameSite: 'Strict',
+            maxAge: 2 * 60 * 60 * 1000
+        })
         
         res.json({ token })
     }
@@ -38,6 +43,12 @@ export class AuthController
         // Creamos el token para que el usuario ya este logueado
         const token = jwt.sign({ username }, process.env.JWT_SECRET, { expiresIn: '2h' })
 
+        res.cookie('authToken', token, {
+            httpOnly: true,
+            sameSite: 'Strict',
+            maxAge: 2 * 60 * 60 * 1000
+        })
+
         res.status(201).json({ message: 'Usuario registrado con exito ', token})
     }
 
@@ -52,5 +63,16 @@ export class AuthController
         await AuthModel.deleteByUsername({ username })
 
         res.json({ message: 'Usuario eliminado correctamente '})
+    }
+
+    static async verify(req, res)
+    {
+        const { username } = req.user        // Capturamos el parametro del token
+
+        // Verificamos que existe el usuario
+        const { exists } = await AuthModel.getByUsername({ username }) // Devuelve un objeto con usuario y password
+        if (!exists) return res.status(400).json({ message: 'Usuario no encontrado', token: false })
+
+        res.json({ message: 'Usuario verificado', token: true })
     }
 }

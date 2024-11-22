@@ -1,8 +1,17 @@
+.main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+}
+
 .bloque {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90vh;
 }
 
 .logo {

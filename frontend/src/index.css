@@ -66,6 +66,7 @@ body, :root {
   --button-text: #ffffff;
   --button-hover: #fa5b41;
   --input-placeholder: #828282;
+  --red: #d10000;
 }
 
 [data-theme='dark'] {

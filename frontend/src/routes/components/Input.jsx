@@ -29,7 +29,7 @@ export const Input = ({ type, value, setValue }) => {
             {
                 (type == 'text')
                 ? <input className={styles.input} type="text" onChange={(ev) => setValue(ev.target.value)} value={value} />
-                : <PasswordInput />
+                : <PasswordInput value={value} setValue={setValue} />
             }
         </>
     )

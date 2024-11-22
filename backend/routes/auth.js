@@ -10,6 +10,7 @@ const registerSchema = z.object({
     password: z.string(),
 });
 
+AuthRouter.get('/verify', authMiddleware, AuthController.verify)
 AuthRouter.post('/register', validateRequest(registerSchema) ,AuthController.register)
 AuthRouter.post('/login', validateRequest(registerSchema), AuthController.login)
 AuthRouter.delete('/delete', authMiddleware, AuthController.delete)
