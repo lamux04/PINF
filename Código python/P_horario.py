@@ -292,6 +292,7 @@ if OpcionEscogida == 1:
                         print(f"Lista {i}")
                         for Clase in Horarios[Carrera][Curso][Dia][i]:
                             Clase.mostrar()
+                        i += 1
                 else:
                     for Clase in Horarios[Carrera][Curso][Dia]:
                             Clase.mostrar()
