@@ -73,6 +73,15 @@ export class AuthController
         const { exists } = await AuthModel.getByUsername({ username }) // Devuelve un objeto con usuario y password
         if (!exists) return res.status(400).json({ message: 'Usuario no encontrado', token: false })
 
-        res.json({ message: 'Usuario verificado', token: true })
+        res.json({ message: 'Usuario verificado', token: true, username })
+    }
+
+    static async logout(req, res)
+    {
+        res.clearCookie('authToken', {
+            httpOnly: true,
+            sameSite: 'Strict'
+        })
+        res.json({ message: 'Sesion cerrada correctamente' })
     }
 }

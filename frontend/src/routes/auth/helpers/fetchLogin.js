@@ -14,13 +14,11 @@ export const fetchLogin = async ({ username, password }) => {
             })
         })
 
-        console.log(response)
-
         if (!response.ok) {
             return true
         }
         return false
     } catch (error) {
-        console.error('Error de red:', error)
+        return error
     }
 }

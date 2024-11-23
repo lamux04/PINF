@@ -1,4 +1,4 @@
-import { host } from "../../../variables";
+import { host } from "../../variables";
 
 export const fetchVerify = async () => {
     try {
@@ -8,13 +8,8 @@ export const fetchVerify = async () => {
         });
         
         const data = await response.json();
-        if (!data.token) {
-            return false;
-        } else {
-            return true;
-        }
+        return data.username
     } catch (error) {
-        console.error('Error de red:', error);
-        return false;
+        return error;
     }
 }

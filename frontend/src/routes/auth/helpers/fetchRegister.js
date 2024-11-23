@@ -19,6 +19,6 @@ export const fetchRegister = async ({ username, password }) => {
         }
         return false
     } catch (error) {
-        console.error('Error de red:', error)
+        return error
     }
 }

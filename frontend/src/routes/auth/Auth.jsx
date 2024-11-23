@@ -10,7 +10,7 @@ import { Register } from './components/Register'
 
 // Estilos
 import styles from './Auth.module.css'
-import { useVerificar } from './hooks/useVerificar'
+import { useVerificar } from '../hooks/useVerificar'
 import { Validacion } from '../components/Validacion'
 
 export const Auth = () => {
