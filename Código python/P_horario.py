@@ -66,7 +66,7 @@ Nuria = profesor("Nuria")
 Elena = profesor("Elena")
 MariaEugenia = profesor("MariaEugenia")
 Miguel = profesor("Miguel")
-#Tercero prueba
+#Tercera prueba
 Alfonso = profesor("Alfonso")
 Blas = profesor("Blas")
 Mati = profesor("Manuel Matias")
