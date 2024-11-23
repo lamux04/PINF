@@ -329,11 +329,11 @@ else:
             i = 0
             while i < len(Horarios[Carrera[CarreraEscogida - 1]][Curso[CursoEscogido - 1]][DiaEscogido - 1]):
                 print(f"Lista {i}")
-                for Clase in Horarios[Carrera[CarreraEscogida - 1]][Curso[CursoEscogido - 1]][DiaEscogido - 1]:
+                for Clase in Horarios[Carrera[CarreraEscogida - 1]][Curso[CursoEscogido - 1]][DiaEscogido - 1][i]:
                     Clase.mostrar()
                 i = i + 1
         else:
             for Clase in Horarios[Carrera[CarreraEscogida - 1]][Curso[CursoEscogido - 1]][DiaEscogido - 1]:
-                    Clase.mostrar()
+                Clase.mostrar()
 
 

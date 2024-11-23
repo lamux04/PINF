@@ -19,6 +19,8 @@ def NoAprobableSobreSi(horario, c_actual, h_ini, h_fin, dia) -> bool:
     cursos = list(horario.keys())
     i = 0
 
+    print(f"Entra en la función NoAprobableSobreSi con {h_ini} y {h_fin} en el dia {dia}")
+
     #while (i < len(cursos) and ((int(cursos[i][0]) - int(c_actual[0])) != 1)): #Buscamos el curso siguiente al que estamos actualmente fijándonos en el
     #    i = i + 1                                                              #primer caracter del nombre del mismo
     
@@ -33,7 +35,7 @@ def NoAprobableSobreSi(horario, c_actual, h_ini, h_fin, dia) -> bool:
 
             calendario = horario[c_siguiente][dia]
             if len(calendario) > 0:
-                if type(calendario[0]) is list():                                      #Si hay más de un horario por día, hay que comprobar uno a uno
+                if type(calendario[0]) is list:                                      #Si hay más de un horario por día, hay que comprobar uno a uno
                     i = 0
                     while (i < len(calendario) and puede):
                         j = 0
@@ -71,6 +73,8 @@ def SiAprobableSobreNo(horario, c_actual, h_ini, h_fin, dia) -> bool:
     puede = True
     cursos = list(horario.keys())
     i = 0
+
+    print(f"Entra en la función SiAprobableSobreNo con {h_ini} y {h_fin} en el dia {dia}")
 
     #while (i < len(cursos) and ((int(cursos[i][0]) - int(c_actual[0])) != -1)): #Buscamos el curso anterior al que estamos actualmente fijándonos en el
     #    i = i + 1                                                               #primer caracter del nombre del mismo
@@ -122,7 +126,7 @@ def SiAprobableSobreNo(horario, c_actual, h_ini, h_fin, dia) -> bool:
 def ProfesorOcupado(horario, profesor, h_ini, h_fin, dia) -> bool:
     ocupado = False
 
-    #print(f"Entra en la funcion ProfesorOcupado con{h_ini} y {h_fin}")
+    print(f"Entra en la funcion ProfesorOcupado con{h_ini} y {h_fin}")
 
     carreras = list(horario.keys())
     i = 0
@@ -167,7 +171,7 @@ def ProfesorOcupado(horario, profesor, h_ini, h_fin, dia) -> bool:
 def AulaOcupada(horario, aula, h_ini, h_fin, dia) -> bool:
     ocupada = False
 
-    #print(f"Entra en la funcion AulaOcupada con {h_ini} y {h_fin} y el aula {aula}")
+    print(f"Entra en la funcion AulaOcupada con {h_ini} y {h_fin} y el aula {aula}")
 
     carreras = list(horario.keys())
     i = 0
@@ -182,8 +186,13 @@ def AulaOcupada(horario, aula, h_ini, h_fin, dia) -> bool:
                     while(k < len(calendario) and not ocupada):
                         q = 0
                         while(q < len(calendario[k]) and not ocupada):
-                            ch_ini = calendario[k][q].h_ini
-                            ch_fin = calendario[k][q].h_fin
+
+                            #print(len(calendario[k]))
+                            #print(calendario[k][q])
+
+
+                            ch_ini = (calendario[k][q]).h_ini
+                            ch_fin = (calendario[k][q]).h_fin
                             p_aula = calendario[k][q].aula
                             if (p_aula == aula) and coinciden(h_ini, h_fin, ch_ini, ch_fin):                #Comprobamos si coinciden
                                 ocupada = True
@@ -208,29 +217,40 @@ def AulaOcupada(horario, aula, h_ini, h_fin, dia) -> bool:
 
 #Esta función solo tendrá uso cuando haya mas de un calendario por día
 #Precondición: horario es el calendario del dia para en el dia concreto para el curso de la carrera que deseamos comprobar
-#Postcondición: devuelve True si la clase no coincide en esa franja horaria con 
-#otra clase de alta importancia del curso siguiente y False en caso contrario.
+#Postcondición: devuelve True si la clase coincide en esa franja horaria con otra clase de 
+#alta importancia del curso siguiente y False en caso contrario.
 def HayClaseImportante(horario, h_ini, h_fin) -> bool:
-    puede = True
+    no_puede = False
 
-    #print(f"Entra en la funcion HayClaseImportante con {h_ini} y {h_fin}")
+    print(f"Entra en la funcion HayClaseImportante con {h_ini} y {h_fin}")
 
     i = 0
-    while (i < len(horario) and puede):
-        j = 0
-        while(j < len(horario[i]) and puede):
-            ch_ini = horario[i][j].h_ini
-            ch_fin = horario[i][j].h_fin
-            importante = horario[i][j].clase.importante
+    if type(horario[0]) is list:
+        while (i < len(horario) and not no_puede):
+            j = 0
+            while(j < len(horario[i]) and not no_puede):
+                ch_ini = horario[i][j].h_ini
+                ch_fin = horario[i][j].h_fin
+                importante = horario[i][j].clase.importante
 
+                if importante and coinciden(h_ini, h_fin, ch_ini, ch_fin):
+                    horario[i][j].mostrar()
+                    no_puede = True
+
+                j = j + 1
+
+            i = i + 1
+    else:
+        while(i < len(horario) and no_puede):
+            ch_ini = horario[i].h_ini
+            ch_fin = horario[i].h_fin
+            importante = horario[i].clase.importante
             if importante and coinciden(h_ini, h_fin, ch_ini, ch_fin):
-                puede = False
-                    
-            j = j + 1
-                
-        i = i + 1
+                horario[i].mostrar()
+                no_puede = True
+            i = i + 1
 
-    return puede
+    return no_puede
 
 
 #Precondición: horario es el calendario del dia para en el dia concreto para el curso de la carrera que deseamos comprobar
@@ -239,7 +259,7 @@ def HayYaClase(horario, h_ini, h_fin) -> bool:
     puede = True
     i = 0
 
-    #print(f"Entra en la funcion HayYaClase con {h_ini} y con {h_fin}")
+    print(f"Entra en la funcion HayYaClase con {h_ini} y con {h_fin}")
 
     if len(horario) > 0:
         if type(horario[0]) is list:                                  #Si hay más de un horario por día, hay que comprobar uno a uno
@@ -278,13 +298,14 @@ def HayYaClase(horario, h_ini, h_fin) -> bool:
 #Precondiciones: horario debe ser la lista de horarios concreta donde se quiere insertar la clase del curso de la carrera en concreto
 #Postcondición: devuelve true si en la lista correspondiente al curso ya hay clase (esta función solo se utilizará cuando haya más de una lista por día)
 def HayYaClaseLista(horario, h_ini, h_fin) -> bool:
-    #print(f"Entra en la funcion HayYaClaseLista con {h_ini} y {h_fin}")
+    
+    print(f"Entra en la funcion HayYaClaseLista con {h_ini} y {h_fin}")
 
     i = 0
     puede = True
     while (i < len(horario)) and puede:
-        ch_ini = horario.h_ini
-        ch_fin = horario.h_fin
+        ch_ini = horario[i].h_ini
+        ch_fin = horario[i].h_fin
 
         if coinciden(h_ini, h_fin, ch_ini, ch_fin):
             puede = False
