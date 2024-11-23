@@ -241,7 +241,7 @@ def HayClaseImportante(horario, h_ini, h_fin) -> bool:
 
             i = i + 1
     else:
-        while(i < len(horario) and no_puede):
+        while(i < len(horario) and not no_puede):
             ch_ini = horario[i].h_ini
             ch_fin = horario[i].h_fin
             importante = horario[i].clase.importante
@@ -313,3 +313,19 @@ def HayYaClaseLista(horario, h_ini, h_fin) -> bool:
         i = i + 1
     
     return puede
+
+#def HayYaClaseAsignatura(horario, h_ini, h_fin) -> bool:
+#    print(f"Entra en la funcion HayYaClaseLista con {h_ini} y {h_fin}")
+#
+#    i = 0
+#    puede = True
+#    while (i < len(horario)) and puede:
+#        ch_ini = horario[i].h_ini
+#        ch_fin = horario[i].h_fin
+#
+#        if coinciden(h_ini, h_fin, ch_ini, ch_fin):
+#            puede = False
+#        
+#        i = i + 1
+#    
+#    return puede
