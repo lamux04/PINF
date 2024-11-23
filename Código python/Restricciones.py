@@ -43,8 +43,12 @@ def NoAprobableSobreSi(horario, c_actual, h_ini, h_fin, dia) -> bool:
                             ch_ini = calendario[i][j].h_ini
                             ch_fin = calendario[i][j].h_fin
                             aprobable = calendario[i][j].clase.asignatura.aprobable
+                            importante = calendario[i][j].clase.importante          #Tenemos en cuenta si la clase es importante o no
 
-                            if aprobable and coinciden(h_ini, h_fin, ch_ini, ch_fin):
+                            if importante and aprobable and coinciden(h_ini, h_fin, ch_ini, ch_fin):
+
+                                calendario[i][j].clase.mostrar()
+
                                 puede = False
 
                             j = j + 1
@@ -57,8 +61,12 @@ def NoAprobableSobreSi(horario, c_actual, h_ini, h_fin, dia) -> bool:
                         ch_ini = calendario[i].h_ini
                         ch_fin = calendario[i].h_fin
                         aprobable = calendario[i].clase.asignatura.aprobable
+                        importante = calendario[i].clase.importante
 
-                        if aprobable and coinciden(h_ini, h_fin, ch_ini, ch_fin):
+                        if importante and aprobable and coinciden(h_ini, h_fin, ch_ini, ch_fin):
+
+                            calendario[i].clase.mostrar()
+
                             puede = False
 
                         i = i + 1
@@ -98,8 +106,9 @@ def SiAprobableSobreNo(horario, c_actual, h_ini, h_fin, dia) -> bool:
                             ch_ini = calendario[i][j].h_ini
                             ch_fin = calendario[i][j].h_fin
                             aprobable = calendario[i][j].clase.asignatura.aprobable
+                            importante = calendario[i][j].clase.importante              #Tenemos en cuenta si la clase es importante o no
 
-                            if not aprobable and coinciden(h_ini, h_fin, ch_ini, ch_fin):         #Comprobamos si coinciden
+                            if importante and not aprobable and coinciden(h_ini, h_fin, ch_ini, ch_fin):         #Comprobamos si coinciden
                                 puede = False
 
                             j = j + 1
@@ -112,8 +121,9 @@ def SiAprobableSobreNo(horario, c_actual, h_ini, h_fin, dia) -> bool:
                         ch_ini = calendario[i].h_ini
                         ch_fin = calendario[i].h_fin
                         aprobable = calendario[i].clase.asignatura.aprobable
+                        importante = calendario[i].clase.importante
 
-                        if not aprobable and coinciden(h_ini, h_fin, ch_ini, ch_fin):
+                        if importante and not aprobable and coinciden(h_ini, h_fin, ch_ini, ch_fin):
                             puede = False
 
                         i = i + 1
@@ -245,6 +255,7 @@ def HayClaseImportante(horario, h_ini, h_fin) -> bool:
             ch_ini = horario[i].h_ini
             ch_fin = horario[i].h_fin
             importante = horario[i].clase.importante
+
             if importante and coinciden(h_ini, h_fin, ch_ini, ch_fin):
                 horario[i].mostrar()
                 no_puede = True
@@ -314,18 +325,37 @@ def HayYaClaseLista(horario, h_ini, h_fin) -> bool:
     
     return puede
 
-#def HayYaClaseAsignatura(horario, h_ini, h_fin) -> bool:
-#    print(f"Entra en la funcion HayYaClaseLista con {h_ini} y {h_fin}")
-#
-#    i = 0
-#    puede = True
-#    while (i < len(horario)) and puede:
-#        ch_ini = horario[i].h_ini
-#        ch_fin = horario[i].h_fin
-#
-#        if coinciden(h_ini, h_fin, ch_ini, ch_fin):
-#            puede = False
-#        
-#        i = i + 1
-#    
-#    return puede
+#Precondiciones: horario debe ser las listas de horarios del dia del curso de la carrera de la clase
+#Postcondición: devuelve True si ya hay clase de dicha asignatura en esa franja horaria y False en caso contrario
+def HayYaClaseAsignatura(horario, clase, h_ini, h_fin) -> bool:
+    print(f"Entra en la funcion HayYaClaseAsignatura con {h_ini} y {h_fin}, y con la asignatura {clase.asignatura.nombre}")
+
+    no_puede = False
+    if type(horario[0]) is list:
+        i = 0
+        while i < len(horario) and not no_puede:
+            j = 0
+            while j < len(horario[i]) and not no_puede:
+                clase_actual = horario[i][j]
+
+                if (clase_actual.clase.asignatura == clase.asignatura) and coinciden(h_ini, h_fin, clase_actual.h_ini, clase_actual.h_fin):
+                    
+                    clase_actual.clase.mostrar()
+                    
+                    no_puede = True
+                j = j + 1
+
+            i = i + 1
+    else:
+        i = 0
+        while i < len(horario) and not no_puede:
+            clase_actual = horario[i]
+
+            if (clase_actual.clase.asignatura == clase.asignatura) and coinciden(h_ini, h_fin, clase_actual.h_ini, clase_actual.h_fin):
+                
+                clase_actual.clase.mostrar()
+
+                no_puede = True
+            i = i + 1
+    
+    return no_puede

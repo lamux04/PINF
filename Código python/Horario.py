@@ -161,49 +161,48 @@ def colocarClases(Clases, Aulas, Horarios):
                     if not ProfesorOcupado(Horarios, clase.profesor.nombre, h_ini, h_fin, dia):         #Se comprueba que el profesor no esté ya ocupado en dicha franja
                         if not clase.asignatura.aprobable:
                             if NoAprobableSobreSi(Horarios[carrera], curso, h_ini, h_fin, dia):         #Si la asignatura es de baja aprobabilidad que no coincida
-                                aulas = Aulas[clase.tipo_aula]                                          #con una del curso siguiente con alta aprobabilidad
-                                random.shuffle(aulas)
-                                indice_aula = 0                                                             #Pillamos un aula y vemos si la podemos utilizar, si no,
-                                while (indice_aula < len(aulas)) and not colocado:                          #pillamos otra hasta que no haya aulas
-                                    if not AulaOcupada(Horarios, aulas[indice_aula], h_ini, h_fin, dia):
-                                        if type(Horarios[carrera][curso][dia][0]) is list:
-                                            j = 1
-                                            while (j < len(Horarios[carrera][curso][dia])) and not colocado:    
-                                                #if not HayClaseImportante(Horarios[carrera][curso][dia][j], h_ini, h_fin):
-                                                #if not HayYaClase(Horarios[carrera][curso][dia][j], h_ini, h_fin):
-                                                if not HayYaClaseLista(Horarios[carrera][curso][dia][j], h_ini, h_fin):
-                                                    Horarios[carrera][curso][dia][j].append(c_horario(clase, h_ini, h_fin, aulas[indice_aula]))
+                                if not HayYaClaseAsignatura(Horarios[carrera][curso][dia], clase, h_ini, h_fin):    
+                                    aulas = Aulas[clase.tipo_aula]                                          #con una del curso siguiente con alta aprobabilidad
+                                    random.shuffle(aulas)
+                                    indice_aula = 0                                                             #Pillamos un aula y vemos si la podemos utilizar, si no,
+                                    while (indice_aula < len(aulas)) and not colocado:                          #pillamos otra hasta que no haya aulas
+                                        if not AulaOcupada(Horarios, aulas[indice_aula], h_ini, h_fin, dia):
+                                            if type(Horarios[carrera][curso][dia][0]) is list:
+                                                j = 1
+                                                while (j < len(Horarios[carrera][curso][dia])) and not colocado:
+                                                    if not HayYaClaseLista(Horarios[carrera][curso][dia][j], h_ini, h_fin):
+                                                        Horarios[carrera][curso][dia][j].append(c_horario(clase, h_ini, h_fin, aulas[indice_aula]))
+                                                        colocado = True
+                                                    j = j + 1
+                                                if not colocado:
+                                                    Horarios[carrera][curso][dia].append([c_horario(clase, h_ini, h_fin, aulas[indice_aula])])
                                                     colocado = True
-                                                j = j + 1
-                                            if not colocado:
-                                                Horarios[carrera][curso][dia].append([c_horario(clase, h_ini, h_fin, aulas[indice_aula])])
+                                            else:
+                                                Horarios[carrera][curso][dia] = [Horarios[carrera][curso][dia], [c_horario(clase, h_ini, h_fin, aulas[indice_aula])]]
                                                 colocado = True
-                                        else:
-                                            Horarios[carrera][curso][dia] = [Horarios[carrera][curso][dia], [c_horario(clase, h_ini, h_fin, aulas[indice_aula])]]
-                                            colocado = True
-                                    indice_aula += 1
+                                        indice_aula += 1
                         else:
                             if SiAprobableSobreNo(Horarios[carrera], curso, h_ini, h_fin, dia):         #Si la asignatura es de alta aprobabilidad que no coincida
-                                aulas = Aulas[clase.tipo_aula]                                          #con una del curso anterior con baja aprobabilidad
-                                random.shuffle(aulas)
-                                indice_aula = 0
-                                while (indice_aula < len(aulas)) and not colocado:
-                                    if not AulaOcupada(Horarios, aulas[indice_aula], h_ini, h_fin, dia):
-                                        if type(Horarios[carrera][curso][dia][0]) is list:
-                                            j = 1
-                                            while (j < len(Horarios[carrera][curso][dia])) and not colocado:
-                                                #if not HayYaClase(Horarios[carrera][curso][dia][j], h_ini, h_fin):
-                                                if not HayYaClaseLista(Horarios[carrera][curso][dia][j], h_ini, h_fin):
-                                                    Horarios[carrera][curso][dia][j].append(c_horario(clase, h_ini, h_fin, aulas[indice_aula]))
+                                if not HayYaClaseAsignatura(Horarios[carrera][curso][dia], clase, h_ini, h_fin):
+                                    aulas = Aulas[clase.tipo_aula]                                          #con una del curso anterior con baja aprobabilidad
+                                    random.shuffle(aulas)
+                                    indice_aula = 0
+                                    while (indice_aula < len(aulas)) and not colocado:
+                                        if not AulaOcupada(Horarios, aulas[indice_aula], h_ini, h_fin, dia):
+                                            if type(Horarios[carrera][curso][dia][0]) is list:
+                                                j = 1
+                                                while (j < len(Horarios[carrera][curso][dia])) and not colocado:
+                                                    if not HayYaClaseLista(Horarios[carrera][curso][dia][j], h_ini, h_fin):
+                                                        Horarios[carrera][curso][dia][j].append(c_horario(clase, h_ini, h_fin, aulas[indice_aula]))
+                                                        colocado = True
+                                                    j = j + 1
+                                                if not colocado:
+                                                    Horarios[carrera][curso][dia].append([c_horario(clase, h_ini, h_fin, aulas[indice_aula])])
                                                     colocado = True
-                                                j = j + 1
-                                            if not colocado:
-                                                Horarios[carrera][curso][dia].append([c_horario(clase, h_ini, h_fin, aulas[indice_aula])])
+                                            else:
+                                                Horarios[carrera][curso][dia] = [Horarios[carrera][curso][dia], [c_horario(clase, h_ini, h_fin, aulas[indice_aula])]]
                                                 colocado = True
-                                        else:
-                                            Horarios[carrera][curso][dia] = [Horarios[carrera][curso][dia], [c_horario(clase, h_ini, h_fin, aulas[indice_aula])]]
-                                            colocado = True
-                                    indice_aula += 1
+                                        indice_aula += 1
                 
                 #Miramos en la siguiente franja horaria
                 if(h_ini >= fin_comer) or (h_fin < inicio_comer):
@@ -216,7 +215,7 @@ def colocarClases(Clases, Aulas, Horarios):
             dia += 1
         
         if not colocado:
-            print(f"{h_ini} {h_fin} {dia}")
+            clase.mostrar()
             Errores.append(clase)
     
     if len(Errores) != 0:
