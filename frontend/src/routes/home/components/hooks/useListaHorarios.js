@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { fetchListaHorarios } from "../../helpers/fetchListaHorarios"
+import { fetchListaHorarios } from "../helpers/fetchListaHorarios"
 
 export const useListaHorarios = () => {
     const [horarios, setHorarios] = useState([])
