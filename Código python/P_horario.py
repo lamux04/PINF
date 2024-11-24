@@ -81,6 +81,21 @@ dlh = profesor("De la huerta")
 Josefi = profesor("Jose Fidel")
 Maite = profesor("Maite")
 Jesus_Roman = profesor("Jesus Roman")
+#Cuarta prueba
+David = profesor("David Lobo")
+NicoMiguel = profesor("Nicolas Miguel Madrid")
+AlbertoSanchez = profesor("Alberto Sanchez Alzola")
+AlfonsoJose = profesor("Alfonso Jose Bello")
+InmaculadaRamos = profesor("Inmaculada Concepción Ramon")
+AguedaVazquez = profesor("Agueda Vazquez Lopez-Escobar")
+JoseLuisCardenas = profesor("Jose Luis Cardenas Leal")
+MariaIsabelEgea = profesor("Maria Isabel Egea Gonzalez")
+VictorPerez = profesor("Victor Perez Fernandez")
+IsabelRamirez = profesor("Isabel Ramirez Brenes")
+FJavierMoreno = profesor("Francisco Javier Moreno Dorado")
+JuanCarlosGarcia = profesor("Juan Carlos García Galindo")
+MiriamInmaculada = profesor("Miriam Inmaculada Martinez Gonzalez")
+
 
 #CREAMOS LAS CARRERAS, LOS CURSOS Y LAS ASIGNATURAS
 #Primera prueba
@@ -111,6 +126,14 @@ oge2 = asignatura("Organización y dirección de empresas", "SI", gii2b)
 rc2 = asignatura("Redes de computadoras", "SI", gii2b)
 so2 = asignatura("Sistemas Operativos", "SI", gii2b)
 aaed2 = asignatura("AAED", "NO", gii2b)
+#Cuarta prueba
+giaC = carrera("GIA")
+gia1 = curso("1º GIA", giaC)
+fis1 = asignatura("Fisica 1", "SI", gia1)
+cal1gia = asignatura("Calculo", "SI", gia1)
+qui = asignatura("Quimica", "SI", gia1)
+oge1gia = asignatura("Organización y dirección de empresas", "SI", gia1)
+est1gia = asignatura("Estadistica", "SI", gia1)
 
 
 #CREAMOS LAS CLASES
@@ -254,6 +277,42 @@ Clases.append(clase("SO C4 Prácticas", "Prácticas", pi, 120, "NO", so2, Juanjo
 Clases.append(clase("OGE A2 Teoría 1", "Teoría", mp, 90, "SI", oge2, Angel))
 Clases.append(clase("OGE A2 Teoría 2", "Teoría", mp, 90, "SI", oge2, Angel))
 Clases.append(clase("OGE B2 Problemas", "Problemas", sem, 90, "NO", oge2, FJavier))
+#Cuarta prueba
+Clases.append(clase("FIS1 A1 Teoría 1", "Teoría", mp, 90, "SI", fis1, InmaculadaRamos))
+Clases.append(clase("FIS1 A1 Teoría 2", "Teoría", mp, 90, "SI", fis1, InmaculadaRamos))
+Clases.append(clase("FIS1 B1 Problemas", "Problemas", sem, 60, "NO", fis1, JoseLuisCardenas))
+Clases.append(clase("FIS1 B2 Problemas", "Problemas", sem, 60, "NO", fis1, JoseLuisCardenas))
+Clases.append(clase("FIS1 D3 D4 Laboratorio", "Laboratorio", lab, 120, "NO", fis1, AguedaVazquez))
+Clases.append(clase("FIS1 D1 D2 Laboratorio", "Laboratorio", lab, 120, "NO", fis1, AguedaVazquez))
+Clases.append(clase("Calculo A1 Teoría 1", "Teoría", mp, 90, "SI", cal1gia, David))
+Clases.append(clase("Calculo A1 Teoría 2", "Teoría", mp, 60, "SI", cal1gia, David))
+Clases.append(clase("Calculo A1 Teoría Extra", "Teoría", sem, 60, "SI", cal1gia, David))
+Clases.append(clase("Calculo B1 Problemas 1", "Problemas", sem, 60, "NO", cal1gia, David))
+Clases.append(clase("Calculo B1 Problemas 2", "Problemas", sem, 60, "NO", cal1gia, David))
+Clases.append(clase("Calculo B2 Problemas 1", "Problemas", sem, 60, "NO", cal1gia, NicoMiguel))
+Clases.append(clase("Calculo B2 Problemas 2", "Problemas", sem, 60, "NO", cal1gia, NicoMiguel))
+Clases.append(clase("Calculo C1 Prácticas Informáticas", "Prácticas", pi, 120, "NO", cal1gia, David))
+Clases.append(clase("Calculo C4 Prácticas Informáticas", "Prácticas", pi, 120, "NO", cal1gia, NicoMiguel))
+Clases.append(clase("Calculo C2 C3 Prácticas Informáticas", "Prácticas", pi, 120, "NO", cal1gia, David))
+Clases.append(clase("Estadistica A1 Teoría 1", "Teoría", sem, 90, "SI", est1gia, AlbertoSanchez))
+Clases.append(clase("Estadistica A1 Teoría 2", "Teoría", sem, 90, "SI", est1gia, AlbertoSanchez))
+Clases.append(clase("Estadistica B1 Problemas", "Problemas", sem, 60, "NO", est1gia, AlfonsoJose))
+Clases.append(clase("Estadistica B2 Problemas", "Problemas", sem, 60, "NO", est1gia, AlfonsoJose))
+Clases.append(clase("Estadistica C2 C3 Prácticas", "Prácticas", pi, 60, "NO", est1gia, AlbertoSanchez))
+Clases.append(clase("Estadistica C1 C2 C3 Prácticas 1", "Prácticas", pi, 60, "NO", est1gia, AlbertoSanchez))
+Clases.append(clase("Estadistica C1 C2 C3 Prácticas 2", "Prácticas", pi, 60, "NO", est1gia, AlbertoSanchez))
+Clases.append(clase("OGE A1 Teoría 1", "Teoría", mp, 90, "SI", oge1gia, IsabelRamirez))
+Clases.append(clase("OGE A1 Teoría 2", "Teoría", mp, 90, "SI", oge1gia, IsabelRamirez))
+Clases.append(clase("OGE B1 Problemas", "Problemas", sem, 90, "NO", oge1gia, VictorPerez))
+Clases.append(clase("OGE B2 Problemas", "Problemas", sem, 90, "NO", oge1gia, VictorPerez))
+Clases.append(clase("Quimica A1 Teoría 1", "Teoría", mp, 90, "SI", qui, FJavierMoreno))
+Clases.append(clase("Quimica A1 Teoría 2", "Teoría", mp, 90, "SI", qui, FJavierMoreno))
+Clases.append(clase("Quimica B1 Problemas", "Problemas", sem, 60, "NO", qui, JuanCarlosGarcia))
+Clases.append(clase("Quimica B2 Problemas", "Problemas", sem, 60, "NO", qui, JuanCarlosGarcia))
+Clases.append(clase("Quimica D1 Laboratorio", "Laboratorio", lab, 60, "NO", qui, JuanCarlosGarcia))
+Clases.append(clase("Quimica D3 Laboratorio", "Laboratorio", lab, 60, "NO", qui, JuanCarlosGarcia))
+Clases.append(clase("Quimica D2 Laboratorio", "Laboratorio", lab, 60, "NO", qui, MiriamInmaculada))
+Clases.append(clase("Quimica D4 Laboratorio", "Laboratorio", lab, 60, "NO", qui, MiriamInmaculada))
 
 #COMIENZAN LAS PRUEBAS
 #Primera prueba
@@ -267,12 +326,18 @@ gii[gii1b.nombre] = [[],[],[],[],[]]
 #Tercera prueba
 gii[gii2a.nombre] = [[],[],[],[],[]]
 gii[gii2b.nombre] = [[],[],[],[],[]]
+#Cuarta prueba
+gia: dict
+gia = {}
+gia[gia1.nombre] = [[],[],[],[],[]]
 
 Horarios[giiC.nombre] = gii
+Horarios[giaC.nombre] = gia
+
 
 colocarClases(Clases, Aulas, Horarios)
-
 print("Horario terminado", end="\n\n")
+
 
 print("Introduzca un 1 si quiere comprobar todos los horarios de la escuela o un 2 si quiere comprobar uno en concreto: ", end="")
 OpcionEscogida = int(input())
