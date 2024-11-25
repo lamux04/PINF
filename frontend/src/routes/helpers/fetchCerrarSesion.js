@@ -5,7 +5,6 @@ export const fetchCerrarSesion = async () => {
             credentials: 'include'
         })
     } catch (error) {
-        console.error(error)
         return error
     }
 }

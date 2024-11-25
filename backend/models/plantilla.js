@@ -40,6 +40,16 @@ export class PlantillaModel
         return { plantillas }
     }
 
+    // Precondicion: El usuario existe
+    // Postcondicion: Devuelve un array con todas las plantillas creadas por el usuario
+    static async getListaPlantillas({ username })
+    {
+        // Seleccionamos todas las plantillas del usuario
+        const [rows] = await promisePool.query('SELECT plant_cod AS codigo, plant_nombre AS nombre FROM PLANTILLA WHERE usu_username = ?', [username])
+
+        return { plantillas: rows }
+    }
+
     // Precondicion: Ninguna
     // Postcondicion: Devuelve la plantilla con el codigo dado
     static async getByCodigo({ plant_cod })

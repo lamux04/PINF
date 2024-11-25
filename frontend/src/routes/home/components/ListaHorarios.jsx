@@ -1,18 +1,22 @@
 import { useNavigate } from "react-router-dom"
-import { useListaHorarios } from "./hooks/useListaHorarios"
 
 import styles from './ListaHorarios.module.css'
+import { fetchEliminarHorario } from "./helpers/fetchEliminarHorario"
 
-export const ListaHorarios = () => {
-    const { horarios, hayHorarios } = useListaHorarios()
+export const ListaHorarios = ({ horarios, hayHorarios, quitarHorario }) => {
     const navigator = useNavigate()
 
     const verHorario = (codigo) => {
         navigator(`/horario/${codigo}`)
     }
 
-    const eliminarHorario = (codigo) => {
-        confirm('¿Estas seguro que quieres eliminar el horario?')
+    const eliminarHorario = async (codigo) => {
+        if (confirm('¿Estas seguro que quieres eliminar el horario?'))
+        {
+            await fetchEliminarHorario({ codigo })
+            quitarHorario(codigo)
+        }
+
     }
 
     return (

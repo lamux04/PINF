@@ -19,6 +19,22 @@ export class PlantillaController
         res.json({ plantillas })
     }
 
+    // Funcion de /api/plantilla/lista_plantillas
+    static async getLista(req, res)
+    {
+        // Obtenemos el nombre de usuario del token
+        const { username } = req.user
+
+        // Comprobamos que el usuario es valido
+        const { exists } = await AuthModel.getByUsername({ username })            // Devuelve un objeto con usuario y password
+        if (!exists) return res.status(400).json({ message: 'Usuario no encontrado' })
+        
+        // Extraemos las plantillas con el modelo
+        const { plantillas } = await PlantillaModel.getListaPlantillas({ username })
+
+        res.json({ plantillas })
+    }
+
     // Funcion de /api/plantilla/:plant_cod
     static async getByCodigo(req, res)
     {

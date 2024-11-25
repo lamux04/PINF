@@ -89,9 +89,35 @@ export class HorarioController
         const { exists } = await HorarioModel.existe({ horar_cod })
         if (!exists) return res.status(400).json({ message: 'Horario no encontrado' })
         
+        // Comprobamos que el usuario no pueda ver el horario
+        const { valido } = await HorarioModel.puedeVer({ horar_cod, username })
+        if (valido) return res.status(400).json({ message: 'Ya puedes ver el horario' })
+        
         // Agregamos el usuario como visualizador
         await HorarioModel.addVisualizador({ horar_cod, username })
 
-        res.json({ message: 'Usuario añadido correctamente' })
+        // Obtenemos el nombre del horario
+        const { nombre } = await HorarioModel.getNombre({ horar_cod })
+
+        res.json({ message: 'Usuario añadido correctamente', codigo: horar_cod, nombre })
+    }
+
+    // DELETE /horario/visualizar  { horario }
+    static async noVisualizar(req, res)
+    {
+        // Obtenemos los atributos
+        const { horario: horar_cod } = req.body
+        const { username } = req.user
+
+        console.log("Horario -> ", horar_cod)
+
+        // Comprobamos que exista el horario
+        const { exists } = await HorarioModel.existe({ horar_cod })
+        if (!exists) return res.status(400).json({ message: 'Horario no encontrado' })
+
+        // Eliminamos al usuario como visualizador
+        await HorarioModel.deleteVisualizador({ horar_cod, username })
+
+        res.json({ message: 'Visualizacion eliminada correctamente' })
     }
 }

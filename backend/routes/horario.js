@@ -13,5 +13,6 @@ const horarioVisualizarScheme = z.object({
 HorarioRouter.get('/', authMiddleware, HorarioController.getAll)
 HorarioRouter.get('/:horar_cod', authMiddleware, HorarioController.getByCodigo)
 HorarioRouter.post('/', authMiddleware, HorarioController.create)
-HorarioRouter.delete('/:horar_cod', authMiddleware, HorarioController.delete)
 HorarioRouter.post('/visualizar', authMiddleware, validateRequest(horarioVisualizarScheme), HorarioController.visualizar)
+HorarioRouter.delete('/visualizar', authMiddleware, validateRequest(horarioVisualizarScheme), HorarioController.noVisualizar)
+HorarioRouter.delete('/:horar_cod', authMiddleware, HorarioController.delete)

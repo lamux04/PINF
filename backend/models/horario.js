@@ -113,4 +113,20 @@ export class HorarioModel
     {
         await promisePool.query('INSERT INTO USUARIOVEHORARIO VALUES (?, ?)', [username, horar_cod])
     }
+
+    // Precondicion: El horario existe
+    // Postcondicion: Elimina el horario de los horarios que ve el usuario
+    static async deleteVisualizador({ horar_cod, username })
+    {
+        await promisePool.query('DELETE FROM USUARIOVEHORARIO WHERE horar_cod = ? AND usu_cod = ?', [horar_cod, username])
+    }
+
+    // Precondicion: El horario existe
+    // Postcondicion: Devuelve el nombre del horario
+    static async getNombre({ horar_cod })
+    {
+        const [rows] = await promisePool.query('SELECT horar_nombre AS nombre FROM HORARIO WHERE horar_cod = ?', [horar_cod])
+
+        return { nombre: rows[0]["nombre"] }
+    }
 }
