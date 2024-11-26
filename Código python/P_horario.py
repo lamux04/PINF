@@ -104,6 +104,20 @@ Juantonipal = profesor("Juan Antonio Palacios García")
 Joseramsaenz = profesor("José Ramón Sáenz Ruiz")
 Miguelfosa = profesor("Miguel Ángel Fosas de Pando")
 Lauraromero = profesor("Laura Romero Rodriguez")
+#Sexta prueba
+PedroFdz = profesor("Pedro Fernández Fernández")
+PacoPalomo = profesor("Paco Palomo Lozano")
+AlfredoSnchz = profesor("Alfredo Sánchez-Roselly Navarro")
+AntonioTomeu = profesor("Antonio J Tomeu Hardasmal")
+JuanCarlosTorre = profesor("Juan Carlos de la TOrre Macías")
+KevinJesus = profesor("Kevin Jesus del Valle")
+JuanBoubeta = profesor("Juan Boubeta Puig")
+JesusRosa = profesor("Jesus Rosa Bilbao")
+JuanFranCabrera = profesor("Juan Francisco Cabrera Sánchez")
+PedroDelgado = profesor("Pedro Delgado Pérez")
+ElisaGuerrero = profesor("Elisa Guerrero Vázquez")
+CarlosRioja = profesor("Carlos Rioja del Rio")
+JoseAntonioOrtega = profesor("José Antonio Ortega Pérez")
 
 #CREAMOS LAS CARRERAS, LOS CURSOS Y LAS ASIGNATURAS
 #Primera prueba
@@ -149,8 +163,16 @@ mategia = asignatura("Ciencia e Ingeniería de materiales","SI",gia2)
 elecgia = asignatura("Electricidad","SI",gia2)
 flu1gia = asignatura("Mecánica de Fluidos I","NO",gia2)
 termogia = asignatura("Termodinámica","NO",gia2)
+#sexta prueba
+gii3 = curso("3º GII",giiC)
+disalg = asignatura("Diseño de Algoritmos","NO",gii3)
+ia = asignatura("Inteligencia Artificial","SI",gii3)
+pctr = asignatura("Programación Concurrente y de Tiempo Real","NO",gii3)
+pinf = asignatura("Proyectos Informático","SI",gii3)
+ssi = asignatura("Seguridad en los Sitemas Informáticos","SI",gii3)
+
 #CREAMOS LAS CLASES
-#Primera Prueba
+#Primera Prueba 1ªA GII
 Clases = []
 Clases.append(clase("Matemática Discreta A1 Teoría 1", "Teoría", mg, 90, "SI", md, Paco))
 Clases.append(clase("Matemática Discreta A1 Teoría 2", "Teoría", mg, 90, "SI", md, Paco))
@@ -186,7 +208,7 @@ Clases.append(clase("Sistemas Digitales D1 Laboratorio", "Laboratorio", lab, 120
 Clases.append(clase("Sistemas Digitales D3 Laboratorio", "Laboratorio", lab, 120, "NO", sdig, Blanca))
 Clases.append(clase("Sistemas Digitales D5 Laboratorio", "Laboratorio", lab, 120, "NO", sdig, Blanca))
 Clases.append(clase("Sistemas Digitales D7 Laboratorio", "Laboratorio", lab, 120, "NO", sdig, Blanca))
-#Segunda Prueba
+#Segunda Prueba 1ªB GII
 Clases.append(clase("Matemática Discreta A2 Teoría 1", "Teoría", mg, 90, "SI", md2, MariaEugenia))
 Clases.append(clase("Matemática Discreta A2 Teoría 2", "Teoría", mg, 90, "SI", md2, MariaEugenia))
 Clases.append(clase("Matemática Discreta B2 Problemas", "Problemas", sem, 90, "NO", md2, MariaEugenia))
@@ -222,7 +244,7 @@ Clases.append(clase("Sistemas Digitales D4 D8 Laboratorio 1", "Laboratorio", lab
 Clases.append(clase("Sistemas Digitales D4 D8 Laboratorio 2", "Laboratorio", lab, 120, "NO", sdig2, Miguel))
 Clases.append(clase("Sistemas Digitales D6 Laboratorio", "Laboratorio", lab, 120, "NO", sdig2, Miguel))
 Clases.append(clase("Sistemas Digitales D2 Laboratorio", "Laboratorio", lab, 120, "NO", sdig2, Miguel))
-#Tercera prueba
+#Tercera prueba 2º A y B GII
 Clases.append(clase("AAED A1 Teoría", "Teoría", mp, 90, "SI", aaed1, Josefi))
 Clases.append(clase("AAED A1 Teoría Extra", "Teoría", mp, 90, "SI", aaed1, Josefi))
 Clases.append(clase("AAED B1 Problemas", "Problemas", sem, 60, "NO", aaed1, Maite))
@@ -290,7 +312,7 @@ Clases.append(clase("SO C4 Prácticas", "Prácticas", pi, 120, "NO", so2, Juanjo
 Clases.append(clase("OGE A2 Teoría 1", "Teoría", mp, 90, "SI", oge2, Angel))
 Clases.append(clase("OGE A2 Teoría 2", "Teoría", mp, 90, "SI", oge2, Angel))
 Clases.append(clase("OGE B2 Problemas", "Problemas", sem, 90, "NO", oge2, FJavier))
-#Cuarta prueba
+#Cuarta prueba 1º GIA
 Clases.append(clase("FIS1 A1 Teoría 1", "Teoría", mp, 90, "SI", fis1, InmaculadaRamos))
 Clases.append(clase("FIS1 A1 Teoría 2", "Teoría", mp, 90, "SI", fis1, InmaculadaRamos))
 Clases.append(clase("FIS1 B1 Problemas", "Problemas", sem, 60, "NO", fis1, JoseLuisCardenas))
@@ -326,7 +348,7 @@ Clases.append(clase("Quimica D1 Laboratorio", "Laboratorio", lab, 60, "NO", qui,
 Clases.append(clase("Quimica D3 Laboratorio", "Laboratorio", lab, 60, "NO", qui, JuanCarlosGarcia))
 Clases.append(clase("Quimica D2 Laboratorio", "Laboratorio", lab, 60, "NO", qui, MiriamInmaculada))
 Clases.append(clase("Quimica D4 Laboratorio", "Laboratorio", lab, 60, "NO", qui, MiriamInmaculada))
-#Quinta prueba
+#Quinta prueba 2º GIA
 Clases.append(clase("Ampl. Mat A1 Teoría 1", "Teoría", mg, 60, "SI", amatgia,TamaraMaria ))
 Clases.append(clase("Ampl. Mat A1 Teoria 2", "Teoría",mg, 120,"SI",amatgia,TamaraMaria))
 Clases.append(clase("Ampl. Mat B1 Problemas","Problemas",mg,60,"NO",amatgia,TamaraMaria))
@@ -363,6 +385,53 @@ Clases.append(clase("Electricidad D1 Laboratorio","Laboratorio",lab,120,"NO", el
 Clases.append(clase("Electricidad D2 Laboratorio","Laboratorio",lab,120,"NO", elecgia, Joseramsaenz))
 Clases.append(clase("Electricidad D3 Laboratorio","Laboratorio",lab,120,"NO", elecgia, Juantonipal))
 Clases.append(clase("Electricidad D4 Laboratorio","Laboratorio",lab,120,"NO", elecgia, Joseramsaenz))
+#Sexta Prueba
+Clases.append(clase("Diseño de Algoritmos A1 Teoría","Teoría",sem,90,"SI",disalg,PacoPalomo))
+Clases.append(clase("Diseño de Algoritmos A2 Teoría","Teoría",sem,90,"SI",disalg,PacoPalomo))
+Clases.append(clase("Diseño de Algoritmos B1 Problemas","Problemas",sem,60,"NO",disalg,PedroFdz))
+Clases.append(clase("Diseño de Algoritmos B2 Problemas","Problemas",sem,60,"NO",disalg,PedroFdz))
+Clases.append(clase("Diseño de Algoritmos B3 Problemas","Problemas",sem,60,"NO",disalg,PacoPalomo))
+Clases.append(clase("Diseño de Algoritmos B4 Problemas","Problemas",sem,60,"NO",disalg,PacoPalomo))
+Clases.append(clase("Diseño de Algoritmos C1 Prácticas","Prácticas",pi,150,"NO",disalg,AlfredoSnchz))
+Clases.append(clase("Diseño de Algoritmos C2 Prácticas","Prácticas",pi,150,"NO",disalg,AlfredoSnchz))
+Clases.append(clase("Diseño de Algoritmos C3 Prácticas","Prácticas",pi,150,"NO",disalg,AlbertoSanchez))
+Clases.append(clase("Diseño de Algoritmos C4 Prácticas","Prácticas",pi,150,"NO",disalg,AlfredoSnchz))
+Clases.append(clase("Diseño de Algoritmos C5 Prácticas","Prácticas",pi,150,"NO",disalg,PedroFdz))
+Clases.append(clase("Diseño de Algoritmos C6 Prácticas","Prácticas",pi,150,"NO",disalg,PedroFdz))
+Clases.append(clase("Diseño de Algoritmos C7 Prácticas","Prácticas",pi,150,"NO",disalg,PedroFdz))
+Clases.append(clase("Programación Concurrente y de Tiempo Real A1 Teoria","Teoría",mp,90,"SI",pctr,KevinJesus))
+Clases.append(clase("Programación Concurrente y de Tiempo Real A1 Teoria Extra","Teoría",mp,90,"SI",pctr,KevinJesus))
+Clases.append(clase("Programación Concurrente y de Tiempo Real A2 Teoria","Teoría",mp,90,"SI",pctr,KevinJesus))
+Clases.append(clase("Programación Concurrente y de Tiempo Real A2 Teoria Extra","Teoría",mp,90,"SI",pctr,KevinJesus))
+Clases.append(clase("Programación Concurrente y de Tiempo Real B1 Problemas","Problemas",sem,60,"NO",pctr,JuanCarlosTorre))
+Clases.append(clase("Programación Concurrente y de Tiempo Real B2 Problemas","Problemas",sem,60,"NO",pctr,JuanCarlosGarcia))
+Clases.append(clase("Programación Concurrente y de Tiempo Real B3 Problemas","Problemas",sem,60,"NO",pctr,JuanCarlosGarcia))
+Clases.append(clase("Programación Concurrente y de Tiempo Real B4 Problemas","Problemas",sem,60,"NO",pctr,JuanCarlosGarcia))
+Clases.append(clase("Programación Concurrente y de Tiempo Real C1 Prácticas","Prácticas",pi,120,"N0",pctr,AntonioTomeu))
+Clases.append(clase("Programación Concurrente y de Tiempo Real C2 Prácticas","Prácticas",pi,120,"N0",pctr,AntonioTomeu))
+Clases.append(clase("Programación Concurrente y de Tiempo Real C3 Prácticas","Prácticas",pi,120,"N0",pctr,AntonioTomeu))
+Clases.append(clase("Programación Concurrente y de Tiempo Real C4 Prácticas","Prácticas",pi,120,"N0",pctr,AntonioTomeu))
+Clases.append(clase("Programación Concurrente y de Tiempo Real C5 Prácticas","Prácticas",pi,120,"N0",pctr,AntonioTomeu))
+Clases.append(clase("Programación Concurrente y de Tiempo Real C6 Prácticas","Prácticas",pi,120,"N0",pctr,AntonioTomeu))
+Clases.append(clase("Seguridad en los Sistemas Infomáticos A1 Teoría","Teoría", mg, 120,"SI",ssi,JuanBoubeta))
+Clases.append(clase("Seguridad en los Sistemas Infomáticos A1 Teoría extra","Teoría", mg, 120,"SI",ssi,JuanBoubeta))
+Clases.append(clase("Seguridad en los Sistemas Informáticos C1 Prácticas","Prácticas",pi,150,"NO",ssi,JuanBoubeta))
+Clases.append(clase("Seguridad en los Sistemas Informáticos C2 Prácticas","Prácticas",pi,150,"NO",ssi,JuanBoubeta))
+Clases.append(clase("Seguridad en los Sistemas Informáticos C3 Prácticas","Prácticas",pi,150,"NO",ssi,JesusRosa))
+Clases.append(clase("Seguridad en los Sistemas Informáticos C4 Prácticas","Prácticas",pi,150,"NO",ssi,JesusRosa))
+Clases.append(clase("Inteligencia Artificial A1 Teoría","Teoría",mp,90,"SI",ia,ElisaGuerrero))
+Clases.append(clase("Inteligencia Artificial A1 Teoría Extra","Teoría",mp,90,"SI",ia,ElisaGuerrero))
+Clases.append(clase("Inteligencia Artificial B1 Problemas","Problemas", sem, 60,"NO", ia,JuanFranCabrera))
+Clases.append(clase("Inteligencia Artificial B2 Problemas","Problemas", sem, 60,"NO", ia,JuanFranCabrera))
+Clases.append(clase("Inteligencia Artificial C1 Prácticas","Prácticas",sem,120,"NO",ia,PedroDelgado))
+Clases.append(clase("Inteligencia Artificial C2 Prácticas","Prácticas",sem,120,"NO",ia,PedroDelgado))
+Clases.append(clase("Inteligencia Artificial C3 Prácticas","Prácticas",sem,120,"NO",ia,PedroDelgado))
+Clases.append(clase("Inteligencia Artificial C4 Prácticas","Prácticas",sem,120,"NO",ia,PedroDelgado))
+Clases.append(clase("Proyectos Informáticos X1 Teorico-Prácticas","Teoría",mp,120,"SI",pinf,CarlosRioja))
+Clases.append(clase("Proyectos Informáticos X1 Teorico-Prácticas Extra","Teoría",mp,120,"SI",pinf,CarlosRioja))
+Clases.append(clase("Proyectos Informáticos C1 Prácticas","Prácticas",sem,150,"NO",pinf,JoseAntonioOrtega))
+Clases.append(clase("Proyectos Informáticos C2 Prácticas","Prácticas",sem,150,"NO",pinf,JoseAntonioOrtega))
+Clases.append(clase("Proyectos Informáticos C3 Prácticas","Prácticas",sem,150,"NO",pinf,JoseAntonioOrtega))
 
 #COMIENZAN LAS PRUEBAS
 #Primera prueba
@@ -382,8 +451,12 @@ gia = {}
 gia[gia1.nombre] = [[],[],[],[],[]]
 #Quinta prueba
 gia[gia2.nombre] = [[],[],[],[],[]]
+#Sexta prueba
+gii[gii3.nombre] = [[],[],[],[],[]]
+
 Horarios[giiC.nombre] = gii
 Horarios[giaC.nombre] = gia
+
 
 
 colocarClases(Clases, Aulas, Horarios)
