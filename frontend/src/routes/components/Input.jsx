@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styles from './Input.module.css'
 
-const PasswordInput = ({ value, setValue, placeholder }) => {
+const PasswordInput = ({ value, setValue, placeholder, disabled }) => {
     const [tipo, setTipo] = useState('password')
     
     const changeType = (ev) => {
@@ -13,7 +13,7 @@ const PasswordInput = ({ value, setValue, placeholder }) => {
 
     return (
         <div className={styles.label}>
-            <input placeholder={placeholder} className={styles.input_password} type={(tipo === 'texto' ? 'text' : 'password')} onChange={(ev) => setValue(ev.target.value)} value={value} />
+            <input disabled={disabled} placeholder={placeholder} className={styles.input_password} type={(tipo === 'texto' ? 'text' : 'password')} onChange={(ev) => setValue(ev.target.value)} value={value} />
             {
                 (tipo === 'texto')
                     ? <i onClick={changeType} className={`fa-solid fa-eye ${styles.icono}`}></i>
@@ -23,13 +23,13 @@ const PasswordInput = ({ value, setValue, placeholder }) => {
     )
 }
 
-export const Input = ({ type, value, setValue, placeholder = '' }) => {
+export const Input = ({ type, value, setValue, placeholder = '', disabled = false }) => {
     return (
         <>
             {
                 (type == 'text')
-                    ? <input className={styles.input} type="text" onChange={(ev) => setValue(ev.target.value)} value={value} placeholder={placeholder} />
-                    : <PasswordInput value={value} setValue={setValue} placeholder={placeholder} />
+                    ? <input disabled={disabled} className={styles.input} type="text" onChange={(ev) => setValue(ev.target.value)} value={value} placeholder={placeholder} />
+                    : <PasswordInput disabled={disabled} value={value} setValue={setValue} placeholder={placeholder} />
             }
         </>
     )

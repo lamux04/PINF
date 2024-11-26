@@ -9,7 +9,8 @@ export const NuevoHorario = ({ agregarHorario }) => {
     const [codigo, setCodigo] = useState('')
     const [validacion, setValidacion] = useState('')
 
-    const handleClick = async () => {
+    const handleClick = async (ev) => {
+        ev.preventDefault()
         const response = await fetchAgregarHorario({ codigo })
         if (!response.error)
         {
@@ -30,10 +31,10 @@ export const NuevoHorario = ({ agregarHorario }) => {
 
     return (
         <>
-            <div className={styles.bloque}>
+            <form onSubmit={handleClick} className={styles.bloque}>
                 <Input type="text" placeholder="Código del horario" value={codigo} setValue={setCodigo}></Input>
                 <Button text="Añadir" onClick={handleClick}></Button>
-            </div>
+            </form>
             {
                 (validacion !== '')
                     && <Validacion>{validacion}</Validacion>

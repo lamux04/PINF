@@ -136,4 +136,43 @@ export class PlantillaController
 
         res.json({ message: 'Plantilla eliminada' })
     }
+
+    // Funcion de /api/plantilla/verificar
+    static async verificar(req, res)
+    {
+        // Obtenemos el nombre de usuario del token
+        const { username } = req.user
+        const { plant_cod } = req.params
+
+        // Comprobamos que el usuario es valido
+        const { exists } = await AuthModel.getByUsername({ username })            // Devuelve un objeto con usuario y password
+        if (!exists) return res.status(400).json({ message: 'Usuario no encontrado' })
+        
+        // Comprobamos que la plantilla sea del usuario
+        const { valida } = await PlantillaModel.perteneceAUsuario({ plant_cod, username }) 
+        if (!valida) return res.status(400).json({ message: 'Plantilla no encontrada' })
+
+        res.json({ message: 'Usuario valido', username })
+    }
+
+    // Funcion de /api/plantilla/ver_plantilla
+    static async verPlantilla(req, res)
+    {
+        // Obtenemos el nombre de usuario del token
+        const { username } = req.user
+        const { plant_cod } = req.params
+
+        // Comprobamos que el usuario es valido
+        const { exists } = await AuthModel.getByUsername({ username })            // Devuelve un objeto con usuario y password
+        if (!exists) return res.status(400).json({ message: 'Usuario no encontrado' })
+        
+        // Comprobamos que la plantilla sea del usuario
+        const { valida } = await PlantillaModel.perteneceAUsuario({ plant_cod, username }) 
+        if (!valida) return res.status(400).json({ message: 'Plantilla no encontrada' })
+
+        // Extraemos las plantilla con el modelo
+        const { plantilla } = await PlantillaModel.getVerPlantilla({ plant_cod })
+
+        res.json(plantilla)
+    }
 }

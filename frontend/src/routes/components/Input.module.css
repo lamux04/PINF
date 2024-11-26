@@ -12,6 +12,12 @@
     outline: 2px solid var(--text-color);
 }
 
+.input:disabled {
+    background-color: var(--input-disabled);
+    border-color: var(--input-disabled);
+    cursor: not-allowed;
+}
+
 .label {
     position: relative;
     display: flex;

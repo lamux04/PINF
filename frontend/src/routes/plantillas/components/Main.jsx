@@ -17,7 +17,7 @@ export const Main = () => {
             <div className={styles.main}>
                 <Titulo>Mis plantillas</Titulo>
                 <ListaPlantillas plantillas={plantillas} hayPlantillas={hayPlantillas} eliminarPlantilla={eliminarPlantilla} />
-                <NuevaPlantilla />
+                <NuevaPlantilla plantillas={plantillas} crearPlantilla={crearPlantilla} />
             </div>
         </main>
     )

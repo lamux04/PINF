@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { Auth } from './auth/Auth'
 import { Home } from './home/Home'
 import { Plantillas } from "./plantillas/Plantillas";
+import { VerPlantilla } from "./ver_plantilla/VerPlantilla";
 
 export const AppRouter = () => {
     return (
@@ -11,6 +12,7 @@ export const AppRouter = () => {
             <Route path="/auth" element={<Auth />} />
             <Route path="/home" element={<Home />} />  
             <Route path="/plantillas" element={<Plantillas />} />    
+            <Route path="/plantillas/:codigo" element={<VerPlantilla />} />    
         </Routes>
     </BrowserRouter>
     );

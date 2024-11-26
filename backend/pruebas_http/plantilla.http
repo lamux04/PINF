@@ -4,7 +4,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc
 
 ### get una plantilla
 GET http://localhost:1234/api/plantilla/f5cacd26-170b-465b-9720-430314945ef7
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzIwMDk4NzQsImV4cCI6MTczMjAxNzA3NH0.u8tApxW3ewjEJoFt6qRT0wGZ1WkZ01fIQEDKmJHMgaQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzI2NDQ1NDEsImV4cCI6MTczMjY1MTc0MX0.sw0ypK5jZTO6jyhDOl85h_SsI3DA1l_co_NVDlKBDf4
+
+### get una plantilla (optimizado)
+GET http://localhost:1234/api/plantilla/ver_plantilla/f5cacd26-170b-465b-9720-430314945ef7
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzI2NDQ1NDEsImV4cCI6MTczMjY1MTc0MX0.sw0ypK5jZTO6jyhDOl85h_SsI3DA1l_co_NVDlKBDf4
 
 ### post
 POST http://localhost:1234/api/plantilla

@@ -141,4 +141,37 @@ export class PlantillaModel
 
         return { valida: rows[0]["count"] > 0 }
     }
+
+    // Precondicion: Existe la plantilla
+    // Postcondicion: Devuelve la plantilla con el codigo dado. Esto incluye unicamente los datos de la plantilla, carreras y cursos, asignaturas y profesores
+    static async getVerPlantilla({ plant_cod })
+    {
+        // Seleccionamos la plantilla con el codigo dado
+        const [rows] = await promisePool.query('SELECT plant_cod AS codigo, plant_nombre AS nombre FROM PLANTILLA WHERE plant_cod = ?', [plant_cod])
+
+        if (rows.length === 0) return { exists: false }
+
+        const plantilla = rows[0]
+
+        // Seleccionamos las carreras de dicha plantilla
+        const [carreras] = await promisePool.query('SELECT carre_cod AS codigo, carre_nombre AS nombre FROM CARRERA WHERE plant_cod = ?', [plant_cod])
+        plantilla["carreras"] = carreras
+
+        for (let carrera of plantilla["carreras"])
+        {
+            // Seleccionamos los cursos de dicha carrera
+            const [cursos] = await promisePool.query('SELECT curso_cod AS codigo, curso_nombre AS nombre FROM CURSO WHERE carre_cod = ?', [carrera["codigo"]])
+            carrera["cursos"] = cursos
+        }
+        
+        // Seleccionamos las aulas de dicha plantilla
+        const { aulas } = await AulaModel.getByPlantilla({ plant_cod })
+        plantilla["aulas"] = aulas
+
+        // Seleccionamos los profesores de dicha plantilla
+        const { profesores } = await ProfesorModel.getByPlantilla({ plant_cod })
+        plantilla["profesores"] = profesores
+
+        return { plantilla, exists: true }
+    }
 }

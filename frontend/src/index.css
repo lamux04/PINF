@@ -65,9 +65,15 @@ body, :root {
   --button-bg: #000000;
   --button-text: #ffffff;
   --button-hover: #fa5b41;
+  --details: #000000;
+  --details-open: #fa5b41;
+  --orange: #fa5b41;
   --input-placeholder: #828282;
+  --gris: #f4f4f4;
   --red: #d10000;
   --red-hover: #880000;
+  --button-disabled: #383838;
+  --input-disabled: #dcdcdc;
 }
 
 [data-theme='dark'] {

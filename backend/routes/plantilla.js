@@ -16,6 +16,9 @@ const plantillaSchemePatch = z.object({
 
 PlantillaRouter.get('/', authMiddleware, PlantillaController.getAll)
 PlantillaRouter.get('/lista_plantillas', authMiddleware, PlantillaController.getLista)
+PlantillaRouter.get('/verificar/:plant_cod', authMiddleware, PlantillaController.verificar)
+PlantillaRouter.get('/ver_plantilla/:plant_cod', authMiddleware, PlantillaController.verPlantilla)
+
 PlantillaRouter.get('/:plant_cod', authMiddleware, PlantillaController.getByCodigo)
 PlantillaRouter.post('/', authMiddleware, validateRequest(plantillaSchemePost), PlantillaController.create)
 PlantillaRouter.patch('/:plant_cod', authMiddleware, validateRequest(plantillaSchemePatch), PlantillaController.update)
