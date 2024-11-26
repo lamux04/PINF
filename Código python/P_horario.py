@@ -95,7 +95,15 @@ IsabelRamirez = profesor("Isabel Ramirez Brenes")
 FJavierMoreno = profesor("Francisco Javier Moreno Dorado")
 JuanCarlosGarcia = profesor("Juan Carlos García Galindo")
 MiriamInmaculada = profesor("Miriam Inmaculada Martinez Gonzalez")
-
+#Quinta prueba
+TamaraMaria = profesor("Tamara María Garrido Letrán")
+DanielAraujo = profesor("Daniel Araujo Gay")
+DanielFernandez = profesor("Daniel Fenández de los Reyes")
+MarinaGutierrez = profesor("Marina Gutiérrez Peinado")
+Juantonipal = profesor("Juan Antonio Palacios García")
+Joseramsaenz = profesor("José Ramón Sáenz Ruiz")
+Miguelfosa = profesor("Miguel Ángel Fosas de Pando")
+Lauraromero = profesor("Laura Romero Rodriguez")
 
 #CREAMOS LAS CARRERAS, LOS CURSOS Y LAS ASIGNATURAS
 #Primera prueba
@@ -134,8 +142,13 @@ cal1gia = asignatura("Calculo", "SI", gia1)
 qui = asignatura("Quimica", "SI", gia1)
 oge1gia = asignatura("Organización y dirección de empresas", "SI", gia1)
 est1gia = asignatura("Estadistica", "SI", gia1)
-
-
+#Quinta prueba
+gia2 = curso("2º GIA",giaC)
+amatgia = asignatura("Ampliacion de Matemáticas","SI",gia2)
+mategia = asignatura("Ciencia e Ingeniería de materiales","SI",gia2)
+elecgia = asignatura("Electricidad","SI",gia2)
+flu1gia = asignatura("Mecánica de Fluidos I","NO",gia2)
+termogia = asignatura("Termodinámica","NO",gia2)
 #CREAMOS LAS CLASES
 #Primera Prueba
 Clases = []
@@ -313,6 +326,43 @@ Clases.append(clase("Quimica D1 Laboratorio", "Laboratorio", lab, 60, "NO", qui,
 Clases.append(clase("Quimica D3 Laboratorio", "Laboratorio", lab, 60, "NO", qui, JuanCarlosGarcia))
 Clases.append(clase("Quimica D2 Laboratorio", "Laboratorio", lab, 60, "NO", qui, MiriamInmaculada))
 Clases.append(clase("Quimica D4 Laboratorio", "Laboratorio", lab, 60, "NO", qui, MiriamInmaculada))
+#Quinta prueba
+Clases.append(clase("Ampl. Mat A1 Teoría 1", "Teoría", mg, 60, "SI", amatgia,TamaraMaria ))
+Clases.append(clase("Ampl. Mat A1 Teoria 2", "Teoría",mg, 120,"SI",amatgia,TamaraMaria))
+Clases.append(clase("Ampl. Mat B1 Problemas","Problemas",mg,60,"NO",amatgia,TamaraMaria))
+Clases.append(clase("Ampl. Mat B2 Problemas","Problemas",sem,60,"NO",amatgia,TamaraMaria))
+Clases.append(clase("Ampl. MAt C1 C3 Prácticas Informáticas","Prácticas", pi, 120, "NO",amatgia,TamaraMaria))
+Clases.append(clase("Ampl. MAt C2 Prácticas Informáticas","Prácticas", pi, 120, "NO",amatgia,TamaraMaria))
+Clases.append(clase("Ampl. MAt C1 Prácticas Informáticas Extra","Prácticas", pi, 120, "NO",amatgia,TamaraMaria))
+Clases.append(clase("Termodinámica A1 Teoria 1","Teoría", mg ,90,"SI",termogia,Lauraromero))
+Clases.append(clase("Termodinámica A1 Teoria 2","Teoría", mg ,90,"SI",termogia,Lauraromero))
+Clases.append(clase("Termodinámica B1 Problemas","Problemas", sem, 60, "NO",termogia,Lauraromero))
+Clases.append(clase("Termodinámica B2 Problemas","Problemas", mg, 60, "NO",termogia,Lauraromero))
+Clases.append(clase("Termodinámica C1 C3 Prácticas Informáticas","Prácticas", pi, 120,"NO",termogia,Lauraromero))
+Clases.append(clase("Termodinámica C2 C6 Prácticas Informáticas","Prácticas", pi, 120,"NO",termogia,Lauraromero))
+Clases.append(clase("Termodinámica C4 C5 Prácticas Informáticas","Prácticas", pi, 120,"NO",termogia,Lauraromero))
+Clases.append(clase("Termodinámica C7 Prácticas Informáticas","Prácticas", pi, 120,"NO",termogia,Lauraromero))
+Clases.append(clase("Mecánica de Fluidos I X1 Teorico-prácticas 1","Teoría", mg, 120,"SI",flu1gia,Miguelfosa))
+Clases.append(clase("Mecánica de Fluidos I X1 Teorico-prácticas 2","Teoría", mg, 120,"SI",flu1gia,Miguelfosa))
+Clases.append(clase("Mecánica de Fluidos I X1 Teorico-prácticas Extra","Teoría", mg, 120,"SI",flu1gia,Miguelfosa))
+Clases.append(clase("Mecánica de Fluidos I X1 Teorico-prácticas Extra 2","Teoría", mg, 60,"SI",flu1gia,Miguelfosa))
+Clases.append(clase("Mecánica de Fluidos I D1 D3 Laboratorio","Laboratório", lab, 120,"NO",flu1gia,Miguelfosa))
+Clases.append(clase("Mecánica de Fluidos I D2 D$ Laboratorio","Laboratório", lab, 120,"NO",flu1gia,Miguelfosa))
+Clases.append(clase("Mecánica de Fluidos I D5 D6 Laboratorio","Laboratório", lab, 120,"NO",flu1gia,Miguelfosa))
+Clases.append(clase("Ciencia e Ingeniería de Materiales A1 Teoría 1","Teoría",mg,120,"SI",mategia,DanielAraujo))
+Clases.append(clase("Ciencia e Ingeniería de Materiales A1 Teoría 2","Teoría",mg,120,"SI",mategia,DanielAraujo))
+Clases.append(clase("Ciencia e Ingeniería de Materiales B1 Problemas","Problemas",mg,60,"NO",mategia,DanielFernandez))
+Clases.append(clase("Ciencia e Ingeniería de Materiales B2 Problemas","Problemas",mg,60,"NO",mategia,DanielFernandez))
+Clases.append(clase("Ciencia e Ingeniería de Materiales D1 D3 Laboratorio","Laboratorio",lab,120,"NO",mategia,MarinaGutierrez))
+Clases.append(clase("Ciencia e Ingeniería de Materiales D2 D4 Laboratorio","Laboratorio",lab,120,"NO",mategia,MarinaGutierrez))
+Clases.append(clase("Electricidad A1 Teoría 1","Teoría",sem,60,"SI",elecgia,Juantonipal))
+Clases.append(clase("Electricidad A1 Teoría 2","Teoría", mg, 120, "SI",elecgia,Juantonipal))
+Clases.append(clase("ELectricidad B1 Problemas","Problemas", sem, 60,"NO",elecgia,Joseramsaenz))
+Clases.append(clase("ELectricidad B2 Problemas","Problemas", sem, 60,"NO",elecgia,Joseramsaenz))
+Clases.append(clase("Electricidad D1 Laboratorio","Laboratorio",lab,120,"NO", elecgia,Juantonipal))
+Clases.append(clase("Electricidad D2 Laboratorio","Laboratorio",lab,120,"NO", elecgia, Joseramsaenz))
+Clases.append(clase("Electricidad D3 Laboratorio","Laboratorio",lab,120,"NO", elecgia, Juantonipal))
+Clases.append(clase("Electricidad D4 Laboratorio","Laboratorio",lab,120,"NO", elecgia, Joseramsaenz))
 
 #COMIENZAN LAS PRUEBAS
 #Primera prueba
@@ -330,7 +380,8 @@ gii[gii2b.nombre] = [[],[],[],[],[]]
 gia: dict
 gia = {}
 gia[gia1.nombre] = [[],[],[],[],[]]
-
+#Quinta prueba
+gia[gia2.nombre] = [[],[],[],[],[]]
 Horarios[giiC.nombre] = gii
 Horarios[giaC.nombre] = gia
 
