@@ -307,23 +307,23 @@ def HayYaClase(horario, h_ini, h_fin) -> bool:
 
 
 #Precondiciones: horario debe ser la lista de horarios concreta donde se quiere insertar la clase del curso de la carrera en concreto
-#Postcondición: devuelve true si en la lista correspondiente al curso ya hay clase (esta función solo se utilizará cuando haya más de una lista por día)
+#Postcondición: devuelve True si en la lista correspondiente al curso no hay clase que coincida (esta función solo se utilizará cuando haya más de una lista por día)
 def HayYaClaseLista(horario, h_ini, h_fin) -> bool:
     
     print(f"Entra en la funcion HayYaClaseLista con {h_ini} y {h_fin}")
 
     i = 0
-    puede = True
-    while (i < len(horario)) and puede:
+    no_puede = False
+    while (i < len(horario)) and not no_puede:
         ch_ini = horario[i].h_ini
         ch_fin = horario[i].h_fin
 
         if coinciden(h_ini, h_fin, ch_ini, ch_fin):
-            puede = False
+            no_puede = True
         
         i = i + 1
     
-    return puede
+    return no_puede
 
 #Precondiciones: horario debe ser las listas de horarios del dia del curso de la carrera de la clase
 #Postcondición: devuelve True si ya hay clase de dicha asignatura en esa franja horaria y False en caso contrario
