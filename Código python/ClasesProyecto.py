@@ -132,7 +132,8 @@ class c_horario:
         else:
             print(f"{int(self.h_fin/60)}:", end="")
         if(int(self.h_fin%60)) < 10:
-            print(f"0{int(self.h_fin%60)}", end="\n")
+            print(f"0{int(self.h_fin%60)}", end="")
         else:
-            print(f"{int(self.h_fin%60)}", end="\n")
+            print(f"{int(self.h_fin%60)}", end="")
+        print(f" y usa el aula {self.aula}", end="\n")
         print("-----------------------------------------")
