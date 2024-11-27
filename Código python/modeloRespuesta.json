@@ -1,0 +1,34 @@
+{
+    "GII":
+    {
+        "1ºGII": 
+        [
+            [
+                [
+                    {
+                        "nombre": "Mecanico de fluidos A1 Teoría",
+                        "h_ini": 900,
+                        "h_fin": 1020,
+                        "aula": "nombre_del_aula",
+                        "tipo": "tipo_clase",
+                        "duracion": 120
+                    }
+                ]
+            ],
+            [
+               [
+                    [
+                        {
+                            "nombre": "Mecanica de fluidos"
+                        }
+                    ],
+                    [
+                        {
+                            "nombre": "Zapacapa"
+                        }
+                    ]
+                ] 
+            ]
+        ]
+    }
+}

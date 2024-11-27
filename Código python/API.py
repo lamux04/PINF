@@ -1,16 +1,19 @@
 from Horario import *
+from ClasesProyecto import *
 from bottle import *
 import json
 
 
-@post("/inserta")
+@get("/sched4allAPI")
 def insertar():
     try:
-        data = json.load((request.body))
-        print(data)
+        datos = json.load((request.body))
+        print(datos)
     except:
         raise ValueError
     
+    aulas_horario = {}
+
     
 
     
