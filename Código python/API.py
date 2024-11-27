@@ -10,7 +10,12 @@ def insertar():
         datos = json.load((request.body))
         print(datos)                        #DEBUG
     except:
-        raise ValueError
+        response.headers["Content-Type"] = "application/json"
+        response.status = 404
+
+        print("Error con el JSON")
+
+        return json.dumps({"Error": "Ha habido una excepción"})
     
     #Creamos las aulas
     aulas_horario = {}
@@ -43,8 +48,10 @@ def insertar():
 
     colocarClases(clases, aulas_horario, Horarios)
 
+    
+
     Respuesta = {}
-    n_carreras = 0
+    #n_carreras = 0
     carreras = list(Horarios.keys())
     Respuesta["carrera"] = []
     for i in range(len(carreras)):          #Carrera por carrera
@@ -52,20 +59,44 @@ def insertar():
             "nombre": carreras[i]
             }
         Respuesta["carrera"].append(carre)
-        cursos = list(Horarios[carreras].keys())
-        for j in len(cursos):
+        cursos = list(Horarios[carreras[i]].keys())
+        for j in range(len(cursos)):        #Curso por curso
             cur = {
                 "nombre": cursos[j]
                 }
             Respuesta["carrera"][i]["cursos"].append(cur)
-            Respuesta["carrera"][i]["cursos"][j]["clases"] = [[],[],[],[],[]]
+            Respuesta["carrera"][i]["cursos"][j]["clases"] = [[],[],[],[],[]]       #Campo del JSON inicialmente vacío
+            for k in range(5):                                                      #Día por día
+                if type(Horarios[carreras[i]][cursos[j]][k][0]) is list:
+                    for l1 in range(len(Horarios[carreras[i]][cursos[j]][k])):      #l1 va desde 0 hasta número_de_listas_del_dia - 1
+                        Respuesta["carrera"][i]["cursos"][j]["clases"][k][l1] = []
+                        for l2 in Horarios[carreras[i]][cursos[j]][k][l1]:
+                            classe = {
+                                "nombre": l2.clase.nombre,
+                                "h_ini": l2.h_ini,
+                                "h_fin": l2.h_fin,
+                                "aula": l2.aula,
+                                "tipo": l2.clase.tipo,
+                                "duracion": l2.clase.duracion
+                            }
+                            Respuesta["carrera"][i]["cursos"][j]["clases"][k][l1].append(classe)
 
 
-
-
-
-
+                else:
+                    for l2 in Horarios[carreras[i]][cursos[j]][k]:
+                        classe = {
+                                "nombre": l2.clase.nombre,
+                                "h_ini": l2.h_ini,
+                                "h_fin": l2.h_fin,
+                                "aula": l2.aula,
+                                "tipo": l2.clase.tipo,
+                                "duracion": l2.clase.duracion
+                            }
+                        Respuesta["carrera"][i]["cursos"][j]["clases"][k][l1].append(classe)
     
+    response.status = 400
+    response.headers["Content-Type"] = "application/json"
+    return json.dumps(Respuesta)
 
     
 
