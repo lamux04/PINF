@@ -9,13 +9,17 @@ import os
 #Primera prueba: solo las clases de 1ºA de GII
 #Segunda prueba: añadimos las clases de 1ºB de GII
 #Tercera prueba: añadimos las clases de 2º de GII
+#Cuarta prueba: añadimos las clases de 1º de GIA
+#Quinta prueba: añadimos las clases de 2º de GIA
+#Sexta prueba: añadimos las clases de 3º de GII
 
 #CREAMOS TODAS LAS AULAS
 mg = "Magna grande"
 mp = "Magna pequeña"
-sem = "Seminario"
+sem = "Problemas"
 pi = "Practicas Informáticas"
-lab = "Laboratorio"                 #DE MOMENTO SOLO CONSIDERAMOS LABORATORIOS EN GENERAL, AUNQUE HABRÍA QUE SEPARARLOS
+#DE MOMENTO SOLO CONSIDERAMOS LABORATORIOS EN GENERAL, AUNQUE HABRÍA QUE SEPARARLOS
+#lab = "Laboratorio"
 fs = "Seminario pasillo F"
 aulas_tipo = []
 Aulas: dict
@@ -26,32 +30,103 @@ for aul in ["E01", "E02", "D01", "D02"]:
 Aulas[mg] = aulas_tipo
 aulas_tipo = []
 
-for aul in ["C01", "C02", "B01", "B02", "A01", "A02"]:
+for aul in ["C01", "C02", "B01", "B02"]:
     aulas_tipo.append(aul)
 Aulas[mp] = aulas_tipo
 aulas_tipo = []
 
-for aul in ["E0", "D0", "C0", "B0", "A0"]:
+for aul in ["E0", "D0", "C0", "B0"]:
     for s in ["3", "4", "5", "6"]:
         nom = aul + s
         aulas_tipo.append(nom)
 Aulas[sem] = aulas_tipo
 aulas_tipo = []
 
-for aul in ["E0", "D0", "C0", "B0", "A0"]:
+for aul in ["E0", "D0", "C0", "B0"]:
     for s in ["7", "8", "9"]:
         nom = aul + s
         aulas_tipo.append(nom)
 Aulas[pi] = aulas_tipo
 aulas_tipo = []
 
-for aul in ["E", "D", "C", "B", "A"]:
-    for s in ["10", "11", "12", "13", "14", "15", "16", "17", "18", "19"]:
-        nom = aul + s
-        aulas_tipo.append(nom)
-Aulas[lab] = aulas_tipo
-aulas_tipo = []
+#for aul in ["E", "D", "C", "B"]:
+#    for s in ["10", "11", "12", "13", "14", "15", "16", "17", "18", "19"]:
+#        nom = aul + s
+#        aulas_tipo.append(nom)
+#Aulas[lab] = aulas_tipo
+#aulas_tipo = []
 
+Camara_climatica = "Camara_climatica"
+Aulas[Camara_climatica] = ["AS07"]
+Renovables = "Energias renovables"
+Aulas[Renovables] = ["AS08"]
+F_aditiva = "Fabricación aditiva"
+Aulas[F_aditiva] = ["AS09"]
+Leem = "Aeroestructuras y LEEM"
+Aulas[Leem] = ["AS10"]
+M_electricas = "Máquinas electricas"
+Aulas[M_electricas] = ["A12"]
+Metrologia = "Laboratorio de Metrologia"
+Aulas[Metrologia] = ["A14", "AS01"]
+Metro_electrica = "Metrologia electrica y calibracion"
+Aulas[Metro_electrica] = ["A16"]
+Fisica_lab = "Laboratorio de fisica"
+Aulas[Fisica_lab] = ["B11", "B12"]
+Quimica_lab = "Laboratorio de Quimica"
+Aulas[Quimica_lab] = ["B13"]
+Termica_lab = "Lab de Ingenieria Termina"
+Aulas[Termica_lab] = ["B14"]
+Corrosion_lab = "Laboratorio de corrosion"
+Aulas[Corrosion_lab] = ["B15"]
+Materiales_lab = "Laboratorio de materiales"
+Aulas[Materiales_lab] = ["B16", "B19", "C13", "A04"]
+Diseno_lab = "Taller de diseño"
+Aulas[Diseno_lab] = ["B17"]
+Exp_artistica = "Expresion artistica"
+Aulas[Exp_artistica] = ["B18"]
+Microelectronico = "lab de diseno microelectronico"
+Aulas[Microelectronico] = ["C11"]
+Mecanica_lab = "Laboratorio de Mecánica"
+Aulas[Mecanica_lab] = ["C12", "A03"]
+Gapsis = "Laboratorio GAPSIS"
+Aulas[Gapsis] = ["C14"]
+Electricidad_lab = "Laboratorio de electricidad"
+Aulas[Electricidad_lab] = ["C15", "A02"]
+Robotica_lab = "Laboratorio de robotica"
+Aulas[Robotica_lab] = ["D12", "D13"]
+ParalelDistrib = "Laboratorio de Paralelas y distribuida"
+Aulas[ParalelDistrib] = ["D14", "D15"]
+DisenoAsistido = "Laboratorio de diseño asistido"
+Aulas[DisenoAsistido] = ["D16", "D17"]
+Simulacion_lab = "Laboratorio de simulacion"
+Aulas[Simulacion_lab] = ["D18", "D19"]
+Electronica_lab = "Laboratorio de electronica"
+Aulas[Electricidad_lab] = ["E11", "E12"]
+Nav_aerea = "Navegacion aerea, avionica y telecomunicaciones"
+Aulas[Nav_aerea] = ["E13"]
+Computadores_lab = "Laboratorio de computadores"
+Aulas[Computadores_lab] = ["E15", "E16"]
+Redes_lab = "Laboratorio de redes"
+Aulas[Redes_lab] = ["E14"]
+Regulacion_lab = "Laboratorio de regulacion"
+Aulas[Regulacion_lab] = ["E17"]
+Automatizacion_lab = "Laboratorio de automatizacion y domotica"
+Aulas[Automatizacion_lab] = ["E18"]
+Biomedicina_lab = "Laboratorio de biomedicina"
+Aulas[Biomedicina_lab] = ["E19"]
+Maquinas_cnc = "Laboratorio de maquinas CNC"
+Aulas[Maquinas_cnc] = ["A05"]
+Soldadura = "Taller de soldadura"
+Aulas[Soldadura] = ["A06"]
+Fluidos_lab = "Laboratorio de fluidos"
+Aulas[Fluidos_lab] = ["A01"]
+SicFm = "Laboratorio de SIC y FM"
+Aulas[SicFm] = ["A15", "A17"]
+
+
+
+ 
+aulas_tipo = []
 for num in range(18):
     if num < 9:
         nom = "F0" + str(num + 1)
@@ -214,10 +289,10 @@ Clases.append(clase("Sistemas Digitales A1 Teoría", "Teoría", sem, 90, "SI", s
 Clases.append(clase("Sistemas Digitales A1 Teoría Extra", "Teoría", sem, 90, "SI", sdig, Diego))
 Clases.append(clase("Sistemas Digitales B1 Problemas", "Problemas", sem, 60, "NO", sdig, Diego))
 Clases.append(clase("Sistemas Digitales B3 Problemas", "Problemas", sem, 60, "NO", sdig, Diego))
-Clases.append(clase("Sistemas Digitales D1 Laboratorio", "Laboratorio", lab, 120, "NO", sdig, Blanca))
-Clases.append(clase("Sistemas Digitales D3 Laboratorio", "Laboratorio", lab, 120, "NO", sdig, Blanca))
-Clases.append(clase("Sistemas Digitales D5 Laboratorio", "Laboratorio", lab, 120, "NO", sdig, Blanca))
-Clases.append(clase("Sistemas Digitales D7 Laboratorio", "Laboratorio", lab, 120, "NO", sdig, Blanca))
+Clases.append(clase("Sistemas Digitales D1 Laboratorio", "Laboratorio", Computadores_lab, 120, "NO", sdig, Blanca))
+Clases.append(clase("Sistemas Digitales D3 Laboratorio", "Laboratorio", Computadores_lab, 120, "NO", sdig, Blanca))
+Clases.append(clase("Sistemas Digitales D5 Laboratorio", "Laboratorio", Computadores_lab, 120, "NO", sdig, Blanca))
+Clases.append(clase("Sistemas Digitales D7 Laboratorio", "Laboratorio", Computadores_lab, 120, "NO", sdig, Blanca))
 #Segunda Prueba 1ªB GII
 Clases.append(clase("Matemática Discreta A2 Teoría 1", "Teoría", mg, 90, "SI", md2, MariaEugenia))
 Clases.append(clase("Matemática Discreta A2 Teoría 2", "Teoría", mg, 90, "SI", md2, MariaEugenia))
@@ -250,10 +325,10 @@ Clases.append(clase("Sistemas Digitales A2 Teoría", "Teoría", sem, 90, "SI", s
 Clases.append(clase("Sistemas Digitales A2 Teoría Extra", "Teoría", sem, 90, "SI", sdig2, Diego))
 Clases.append(clase("Sistemas Digitales B2 Problemas", "Problemas", sem, 60, "NO", sdig2, Diego))
 Clases.append(clase("Sistemas Digitales B4 Problemas", "Problemas", sem, 60, "NO", sdig2, Diego))
-Clases.append(clase("Sistemas Digitales D4 D8 Laboratorio 1", "Laboratorio", lab, 120, "NO", sdig2, Miguel))
-Clases.append(clase("Sistemas Digitales D4 D8 Laboratorio 2", "Laboratorio", lab, 120, "NO", sdig2, Miguel))
-Clases.append(clase("Sistemas Digitales D6 Laboratorio", "Laboratorio", lab, 120, "NO", sdig2, Miguel))
-Clases.append(clase("Sistemas Digitales D2 Laboratorio", "Laboratorio", lab, 120, "NO", sdig2, Miguel))
+Clases.append(clase("Sistemas Digitales D4 D8 Laboratorio 1", "Laboratorio", Computadores_lab, 120, "NO", sdig2, Miguel))
+Clases.append(clase("Sistemas Digitales D4 D8 Laboratorio 2", "Laboratorio", Computadores_lab, 120, "NO", sdig2, Miguel))
+Clases.append(clase("Sistemas Digitales D6 Laboratorio", "Laboratorio", Computadores_lab, 120, "NO", sdig2, Miguel))
+Clases.append(clase("Sistemas Digitales D2 Laboratorio", "Laboratorio", Computadores_lab, 120, "NO", sdig2, Miguel))
 #Tercera prueba 2º A y B GII
 Clases.append(clase("AAED A1 Teoría", "Teoría", mp, 90, "SI", aaed1, Josefi))
 Clases.append(clase("AAED A1 Teoría Extra", "Teoría", mp, 90, "SI", aaed1, Josefi))
@@ -268,16 +343,16 @@ Clases.append(clase("AC A1 Teoría Extra", "Teoría", mp, 120, "SI", ac1, Blas))
 Clases.append(clase("AC C1 Problemas", "Problemas", pi, 60, "NO", ac1, Mati))
 Clases.append(clase("AC C3 Problemas", "Problemas", pi, 60, "NO", ac1, Mati))
 Clases.append(clase("AC C5 Problemas", "Problemas", pi, 60, "NO", ac1, Mati))
-Clases.append(clase("AC D1 Laboratorio", "Laboratorio", lab, 90, "NO", ac1, Alfonso))
-Clases.append(clase("AC D1 Laboratorio Extra", "Laboratorio", lab, 90, "NO", ac1, Alfonso))
-Clases.append(clase("AC D3 Laboratorio", "Laboratorio", lab, 90, "NO", ac1, Alfonso))
-Clases.append(clase("AC D3 Laboratorio Extra", "Laboratorio", lab, 90, "NO", ac1, Alfonso))
-Clases.append(clase("AC D5 Laboratorio", "Laboratorio", lab, 90, "NO", ac1, Alfonso))
+Clases.append(clase("AC D1 Laboratorio", "Laboratorio", Computadores_lab, 90, "NO", ac1, Alfonso))
+Clases.append(clase("AC D1 Laboratorio Extra", "Laboratorio", Computadores_lab, 90, "NO", ac1, Alfonso))
+Clases.append(clase("AC D3 Laboratorio", "Laboratorio", Computadores_lab, 90, "NO", ac1, Alfonso))
+Clases.append(clase("AC D3 Laboratorio Extra", "Laboratorio", Computadores_lab, 90, "NO", ac1, Alfonso))
+Clases.append(clase("AC D5 Laboratorio", "Laboratorio", Computadores_lab, 90, "NO", ac1, Alfonso))
 Clases.append(clase("Redes A1 Teoría B1 Problemas", "Teoría", mp, 90, "SI", rc1, Mercedes))
 Clases.append(clase("Redes A1 Teoría B3 Problemas", "Teoría", mp, 90, "SI", rc1, Mercedes))
-Clases.append(clase("Redes D1 Laboratorio", "Laboratorio", lab, 120, "NO", rc1, AnJesus))
-Clases.append(clase("Redes D3 Laboratorio", "Laboratorio", lab, 120, "NO", rc1, AnJesus))
-Clases.append(clase("Redes D5 Laboratorio", "Laboratorio", lab, 120, "NO", rc1, AnJesus))
+Clases.append(clase("Redes D1 Laboratorio", "Laboratorio", Redes_lab, 120, "NO", rc1, AnJesus))
+Clases.append(clase("Redes D3 Laboratorio", "Laboratorio", Redes_lab, 120, "NO", rc1, AnJesus))
+Clases.append(clase("Redes D5 Laboratorio", "Laboratorio", Redes_lab, 120, "NO", rc1, AnJesus))
 Clases.append(clase("SO A1 Teoría", "Teoría", mp, 90, "SI", so1, Juanjo))
 Clases.append(clase("SO A1 Teoría Extra", "Teoría", mp, 90, "SI", so1, Juanjo))
 Clases.append(clase("SO B1 Problemas", "Problemas", sem, 90, "NO", so1, Juanjo))
@@ -304,15 +379,15 @@ Clases.append(clase("AC A2 Teoría", "Teoría", mp, 120, "SI", ac2, Blas))
 Clases.append(clase("AC A2 Teoría Extra", "Teoría", mp, 120, "SI", ac2, Blas))
 Clases.append(clase("AC C2 Problemas", "Problemas", pi, 60, "NO", ac2, Mati))
 Clases.append(clase("AC C4 Problemas", "Problemas", pi, 60, "NO", ac2, Mati))
-Clases.append(clase("AC D2 Laboratorio", "Laboratorio", lab, 90, "NO", ac2, Alfonso))
-Clases.append(clase("AC D2 Laboratorio Extra", "Laboratorio", lab, 90, "NO", ac2, Alfonso))
-Clases.append(clase("AC D4 Laboratorio", "Laboratorio", lab, 90, "NO", ac2, Alfonso))
-Clases.append(clase("AC D6 Laboratorio", "Laboratorio", lab, 90, "NO", ac2, Alfonso))
+Clases.append(clase("AC D2 Laboratorio", "Laboratorio", Computadores_lab, 90, "NO", ac2, Alfonso))
+Clases.append(clase("AC D2 Laboratorio Extra", "Laboratorio", Computadores_lab, 90, "NO", ac2, Alfonso))
+Clases.append(clase("AC D4 Laboratorio", "Laboratorio", Computadores_lab, 90, "NO", ac2, Alfonso))
+Clases.append(clase("AC D6 Laboratorio", "Laboratorio", Computadores_lab, 90, "NO", ac2, Alfonso))
 Clases.append(clase("Redes A2 Teoría", "Teoría", mp, 90, "SI", rc2, Mercedes))
 Clases.append(clase("Redes A2 Teoría B2 Problemas", "Teoría", mp, 90, "SI", rc2, Mercedes))
-Clases.append(clase("Redes D2 Laboratorio", "Laboratorio", lab, 120, "NO", rc2, AnJesus))
-Clases.append(clase("Redes D4 Laboratorio", "Laboratorio", lab, 120, "NO", rc2, AnJesus))
-Clases.append(clase("Redes D6 Laboratorio", "Laboratorio", lab, 120, "NO", rc2, AnJesus))
+Clases.append(clase("Redes D2 Laboratorio", "Laboratorio", Redes_lab, 120, "NO", rc2, AnJesus))
+Clases.append(clase("Redes D4 Laboratorio", "Laboratorio", Redes_lab, 120, "NO", rc2, AnJesus))
+Clases.append(clase("Redes D6 Laboratorio", "Laboratorio", Redes_lab, 120, "NO", rc2, AnJesus))
 Clases.append(clase("SO A2 Teoría", "Teoría", mp, 90, "SI", so2, Juanjo))
 Clases.append(clase("SO A2 Teoría Extra", "Teoría", mp, 90, "SI", so2, Juanjo))
 Clases.append(clase("SO B1 Problemas", "Problemas", sem, 90, "NO", so2, Leopoldo))
@@ -327,8 +402,8 @@ Clases.append(clase("FIS1 A1 Teoría 1", "Teoría", mp, 90, "SI", fis1, Inmacula
 Clases.append(clase("FIS1 A1 Teoría 2", "Teoría", mp, 90, "SI", fis1, InmaculadaRamos))
 Clases.append(clase("FIS1 B1 Problemas", "Problemas", sem, 60, "NO", fis1, JoseLuisCardenas))
 Clases.append(clase("FIS1 B2 Problemas", "Problemas", sem, 60, "NO", fis1, JoseLuisCardenas))
-Clases.append(clase("FIS1 D3 D4 Laboratorio", "Laboratorio", lab, 120, "NO", fis1, AguedaVazquez))
-Clases.append(clase("FIS1 D1 D2 Laboratorio", "Laboratorio", lab, 120, "NO", fis1, AguedaVazquez))
+Clases.append(clase("FIS1 D3 D4 Laboratorio", "Laboratorio", Fisica_lab, 120, "NO", fis1, AguedaVazquez))
+Clases.append(clase("FIS1 D1 D2 Laboratorio", "Laboratorio", Fisica_lab, 120, "NO", fis1, AguedaVazquez))
 Clases.append(clase("Calculo A1 Teoría 1", "Teoría", mp, 90, "SI", cal1gia, David))
 Clases.append(clase("Calculo A1 Teoría 2", "Teoría", mp, 60, "SI", cal1gia, David))
 Clases.append(clase("Calculo A1 Teoría Extra", "Teoría", sem, 60, "SI", cal1gia, David))
@@ -354,10 +429,10 @@ Clases.append(clase("Quimica A1 Teoría 1", "Teoría", mp, 90, "SI", qui, FJavie
 Clases.append(clase("Quimica A1 Teoría 2", "Teoría", mp, 90, "SI", qui, FJavierMoreno))
 Clases.append(clase("Quimica B1 Problemas", "Problemas", sem, 60, "NO", qui, JuanCarlosGarcia))
 Clases.append(clase("Quimica B2 Problemas", "Problemas", sem, 60, "NO", qui, JuanCarlosGarcia))
-Clases.append(clase("Quimica D1 Laboratorio", "Laboratorio", lab, 60, "NO", qui, JuanCarlosGarcia))
-Clases.append(clase("Quimica D3 Laboratorio", "Laboratorio", lab, 60, "NO", qui, JuanCarlosGarcia))
-Clases.append(clase("Quimica D2 Laboratorio", "Laboratorio", lab, 60, "NO", qui, MiriamInmaculada))
-Clases.append(clase("Quimica D4 Laboratorio", "Laboratorio", lab, 60, "NO", qui, MiriamInmaculada))
+Clases.append(clase("Quimica D1 Laboratorio", "Laboratorio", Quimica_lab, 60, "NO", qui, JuanCarlosGarcia))
+Clases.append(clase("Quimica D3 Laboratorio", "Laboratorio", Quimica_lab, 60, "NO", qui, JuanCarlosGarcia))
+Clases.append(clase("Quimica D2 Laboratorio", "Laboratorio", Quimica_lab, 60, "NO", qui, MiriamInmaculada))
+Clases.append(clase("Quimica D4 Laboratorio", "Laboratorio", Quimica_lab, 60, "NO", qui, MiriamInmaculada))
 #Quinta prueba 2º GIA
 Clases.append(clase("Ampl. Mat A1 Teoría 1", "Teoría", mg, 60, "SI", amatgia,TamaraMaria ))
 Clases.append(clase("Ampl. Mat A1 Teoria 2", "Teoría",mg, 120,"SI",amatgia,TamaraMaria))
@@ -378,24 +453,24 @@ Clases.append(clase("Mecánica de Fluidos I X1 Teorico-prácticas 1","Teoría", 
 Clases.append(clase("Mecánica de Fluidos I X1 Teorico-prácticas 2","Teoría", mg, 120,"SI",flu1gia,Miguelfosa))
 Clases.append(clase("Mecánica de Fluidos I X1 Teorico-prácticas Extra","Teoría", mg, 120,"SI",flu1gia,Miguelfosa))
 Clases.append(clase("Mecánica de Fluidos I X1 Teorico-prácticas Extra 2","Teoría", mg, 60,"SI",flu1gia,Miguelfosa))
-Clases.append(clase("Mecánica de Fluidos I D1 D3 Laboratorio","Laboratório", lab, 120,"NO",flu1gia,Miguelfosa))
-Clases.append(clase("Mecánica de Fluidos I D2 D$ Laboratorio","Laboratório", lab, 120,"NO",flu1gia,Miguelfosa))
-Clases.append(clase("Mecánica de Fluidos I D5 D6 Laboratorio","Laboratório", lab, 120,"NO",flu1gia,Miguelfosa))
+Clases.append(clase("Mecánica de Fluidos I D1 D3 Laboratorio","Laboratório", Fluidos_lab, 120,"NO",flu1gia,Miguelfosa))
+Clases.append(clase("Mecánica de Fluidos I D2 D$ Laboratorio","Laboratório", Fluidos_lab, 120,"NO",flu1gia,Miguelfosa))
+Clases.append(clase("Mecánica de Fluidos I D5 D6 Laboratorio","Laboratório", Fluidos_lab, 120,"NO",flu1gia,Miguelfosa))
 Clases.append(clase("Ciencia e Ingeniería de Materiales A1 Teoría 1","Teoría",mg,120,"SI",mategia,DanielAraujo))
 Clases.append(clase("Ciencia e Ingeniería de Materiales A1 Teoría 2","Teoría",mg,120,"SI",mategia,DanielAraujo))
 Clases.append(clase("Ciencia e Ingeniería de Materiales B1 Problemas","Problemas",mg,60,"NO",mategia,DanielFernandez))
 Clases.append(clase("Ciencia e Ingeniería de Materiales B2 Problemas","Problemas",mg,60,"NO",mategia,DanielFernandez))
-Clases.append(clase("Ciencia e Ingeniería de Materiales D1 D3 Laboratorio","Laboratorio",lab,120,"NO",mategia,MarinaGutierrez))
-Clases.append(clase("Ciencia e Ingeniería de Materiales D2 D4 Laboratorio","Laboratorio",lab,120,"NO",mategia,MarinaGutierrez))
+Clases.append(clase("Ciencia e Ingeniería de Materiales D1 D3 Laboratorio","Laboratorio",Materiales_lab,120,"NO",mategia,MarinaGutierrez))
+Clases.append(clase("Ciencia e Ingeniería de Materiales D2 D4 Laboratorio","Laboratorio",Materiales_lab,120,"NO",mategia,MarinaGutierrez))
 Clases.append(clase("Electricidad A1 Teoría 1","Teoría",sem,60,"SI",elecgia,Juantonipal))
 Clases.append(clase("Electricidad A1 Teoría 2","Teoría", mg, 120, "SI",elecgia,Juantonipal))
 Clases.append(clase("ELectricidad B1 Problemas","Problemas", sem, 60,"NO",elecgia,Joseramsaenz))
 Clases.append(clase("ELectricidad B2 Problemas","Problemas", sem, 60,"NO",elecgia,Joseramsaenz))
-Clases.append(clase("Electricidad D1 Laboratorio","Laboratorio",lab,120,"NO", elecgia,Juantonipal))
-Clases.append(clase("Electricidad D2 Laboratorio","Laboratorio",lab,120,"NO", elecgia, Joseramsaenz))
-Clases.append(clase("Electricidad D3 Laboratorio","Laboratorio",lab,120,"NO", elecgia, Juantonipal))
-Clases.append(clase("Electricidad D4 Laboratorio","Laboratorio",lab,120,"NO", elecgia, Joseramsaenz))
-#Sexta Prueba
+Clases.append(clase("Electricidad D1 Laboratorio","Laboratorio",Electricidad_lab,120,"NO", elecgia,Juantonipal))
+Clases.append(clase("Electricidad D2 Laboratorio","Laboratorio",Electricidad_lab,120,"NO", elecgia, Joseramsaenz))
+Clases.append(clase("Electricidad D3 Laboratorio","Laboratorio",Electricidad_lab,120,"NO", elecgia, Juantonipal))
+Clases.append(clase("Electricidad D4 Laboratorio","Laboratorio",Electricidad_lab,120,"NO", elecgia, Joseramsaenz))
+#Sexta Prueba 3º GII
 Clases.append(clase("Diseño de Algoritmos A1 Teoría","Teoría",sem,90,"SI",disalg,PacoPalomo))
 Clases.append(clase("Diseño de Algoritmos A2 Teoría","Teoría",sem,90,"SI",disalg,PacoPalomo))
 Clases.append(clase("Diseño de Algoritmos B1 Problemas","Problemas",sem,60,"NO",disalg,PedroFdz))
@@ -417,26 +492,26 @@ Clases.append(clase("Programación Concurrente y de Tiempo Real B1 Problemas","P
 Clases.append(clase("Programación Concurrente y de Tiempo Real B2 Problemas","Problemas",sem,60,"NO",pctr,JuanCarlosGarcia))
 Clases.append(clase("Programación Concurrente y de Tiempo Real B3 Problemas","Problemas",sem,60,"NO",pctr,JuanCarlosGarcia))
 Clases.append(clase("Programación Concurrente y de Tiempo Real B4 Problemas","Problemas",sem,60,"NO",pctr,JuanCarlosGarcia))
-Clases.append(clase("Programación Concurrente y de Tiempo Real C1 Prácticas","Prácticas",pi,120,"N0",pctr,AntonioTomeu))
-Clases.append(clase("Programación Concurrente y de Tiempo Real C2 Prácticas","Prácticas",pi,120,"N0",pctr,AntonioTomeu))
-Clases.append(clase("Programación Concurrente y de Tiempo Real C3 Prácticas","Prácticas",pi,120,"N0",pctr,AntonioTomeu))
-Clases.append(clase("Programación Concurrente y de Tiempo Real C4 Prácticas","Prácticas",pi,120,"N0",pctr,AntonioTomeu))
-Clases.append(clase("Programación Concurrente y de Tiempo Real C5 Prácticas","Prácticas",pi,120,"N0",pctr,AntonioTomeu))
-Clases.append(clase("Programación Concurrente y de Tiempo Real C6 Prácticas","Prácticas",pi,120,"N0",pctr,AntonioTomeu))
+Clases.append(clase("Programación Concurrente y de Tiempo Real C1 Prácticas","Prácticas",ParalelDistrib,120,"N0",pctr,AntonioTomeu))
+Clases.append(clase("Programación Concurrente y de Tiempo Real C2 Prácticas","Prácticas",ParalelDistrib,120,"N0",pctr,AntonioTomeu))
+Clases.append(clase("Programación Concurrente y de Tiempo Real C3 Prácticas","Prácticas",ParalelDistrib,120,"N0",pctr,AntonioTomeu))
+Clases.append(clase("Programación Concurrente y de Tiempo Real C4 Prácticas","Prácticas",ParalelDistrib,120,"N0",pctr,AntonioTomeu))
+Clases.append(clase("Programación Concurrente y de Tiempo Real C5 Prácticas","Prácticas",ParalelDistrib,120,"N0",pctr,AntonioTomeu))
+Clases.append(clase("Programación Concurrente y de Tiempo Real C6 Prácticas","Prácticas",ParalelDistrib,120,"N0",pctr,AntonioTomeu))
 Clases.append(clase("Seguridad en los Sistemas Infomáticos A1 Teoría","Teoría", mg, 120,"SI",ssi,JuanBoubeta))
 Clases.append(clase("Seguridad en los Sistemas Infomáticos A1 Teoría extra","Teoría", mg, 120,"SI",ssi,JuanBoubeta))
-Clases.append(clase("Seguridad en los Sistemas Informáticos C1 Prácticas","Prácticas",pi,150,"NO",ssi,JuanBoubeta))
-Clases.append(clase("Seguridad en los Sistemas Informáticos C2 Prácticas","Prácticas",pi,150,"NO",ssi,JuanBoubeta))
-Clases.append(clase("Seguridad en los Sistemas Informáticos C3 Prácticas","Prácticas",pi,150,"NO",ssi,JesusRosa))
-Clases.append(clase("Seguridad en los Sistemas Informáticos C4 Prácticas","Prácticas",pi,150,"NO",ssi,JesusRosa))
+Clases.append(clase("Seguridad en los Sistemas Informáticos C1 Prácticas","Prácticas",ParalelDistrib,150,"NO",ssi,JuanBoubeta))
+Clases.append(clase("Seguridad en los Sistemas Informáticos C2 Prácticas","Prácticas",ParalelDistrib,150,"NO",ssi,JuanBoubeta))
+Clases.append(clase("Seguridad en los Sistemas Informáticos C3 Prácticas","Prácticas",ParalelDistrib,150,"NO",ssi,JesusRosa))
+Clases.append(clase("Seguridad en los Sistemas Informáticos C4 Prácticas","Prácticas",ParalelDistrib,150,"NO",ssi,JesusRosa))
 Clases.append(clase("Inteligencia Artificial A1 Teoría","Teoría",mp,90,"SI",ia,ElisaGuerrero))
 Clases.append(clase("Inteligencia Artificial A1 Teoría Extra","Teoría",mp,90,"SI",ia,ElisaGuerrero))
 Clases.append(clase("Inteligencia Artificial B1 Problemas","Problemas", sem, 60,"NO", ia,JuanFranCabrera))
 Clases.append(clase("Inteligencia Artificial B2 Problemas","Problemas", sem, 60,"NO", ia,JuanFranCabrera))
-Clases.append(clase("Inteligencia Artificial C1 Prácticas","Prácticas",sem,120,"NO",ia,PedroDelgado))
-Clases.append(clase("Inteligencia Artificial C2 Prácticas","Prácticas",sem,120,"NO",ia,PedroDelgado))
-Clases.append(clase("Inteligencia Artificial C3 Prácticas","Prácticas",sem,120,"NO",ia,PedroDelgado))
-Clases.append(clase("Inteligencia Artificial C4 Prácticas","Prácticas",sem,120,"NO",ia,PedroDelgado))
+Clases.append(clase("Inteligencia Artificial C1 Prácticas","Prácticas",pi,120,"NO",ia,PedroDelgado))
+Clases.append(clase("Inteligencia Artificial C2 Prácticas","Prácticas",pi,120,"NO",ia,PedroDelgado))
+Clases.append(clase("Inteligencia Artificial C3 Prácticas","Prácticas",pi,120,"NO",ia,PedroDelgado))
+Clases.append(clase("Inteligencia Artificial C4 Prácticas","Prácticas",pi,120,"NO",ia,PedroDelgado))
 Clases.append(clase("Proyectos Informáticos X1 Teorico-Prácticas","Teoría",mp,120,"SI",pinf,CarlosRioja))
 Clases.append(clase("Proyectos Informáticos X1 Teorico-Prácticas Extra","Teoría",mp,120,"SI",pinf,CarlosRioja))
 Clases.append(clase("Proyectos Informáticos C1 Prácticas","Prácticas",sem,150,"NO",pinf,JoseAntonioOrtega))
