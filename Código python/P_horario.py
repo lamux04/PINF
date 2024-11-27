@@ -16,6 +16,7 @@ mp = "Magna pequeña"
 sem = "Seminario"
 pi = "Practicas Informáticas"
 lab = "Laboratorio"                 #DE MOMENTO SOLO CONSIDERAMOS LABORATORIOS EN GENERAL, AUNQUE HABRÍA QUE SEPARARLOS
+fs = "Seminario pasillo F"
 aulas_tipo = []
 Aulas: dict
 Aulas= {}
@@ -49,6 +50,15 @@ for aul in ["E", "D", "C", "B", "A"]:
         nom = aul + s
         aulas_tipo.append(nom)
 Aulas[lab] = aulas_tipo
+aulas_tipo = []
+
+for num in range(18):
+    if num < 9:
+        nom = "F0" + str(num + 1)
+    else:
+        nom = "F" + str(num + 1)
+    aulas_tipo.append(nom)
+Aulas[fs] = aulas_tipo
 
 #CREAMOS LOS PROFESORES
 #Primera prueba
