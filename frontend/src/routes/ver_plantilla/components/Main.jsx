@@ -7,7 +7,7 @@ import { useVerPlantilla } from '../hooks/useVerPlantilla'
 import { VerCarreras } from './VerCarreras'
 import { VerProfesores } from './VerProfesores'
 import { VerAulas } from './VerAulas'
-import { GenerarHorario } from './GenerarHorario'
+import { HorariosGenerados } from './HorariosGenerados'
 
 export const Main = ({ codigo }) => {
     const navigator = useNavigate()
@@ -20,7 +20,7 @@ export const Main = ({ codigo }) => {
                 (plantilla) && 
                     <div className={styles.main}>
                         <Titulo>Plantilla - {plantilla.nombre}</Titulo>
-                        <GenerarHorario codigo={codigo} />
+                        <HorariosGenerados codigo={codigo} />
                         <div className={styles.bloque}>
                             <p><span className={styles.clave}>Código:</span> {plantilla.codigo}</p>
                             <p><span className={styles.clave}>Nombre:</span> {plantilla.nombre}</p>

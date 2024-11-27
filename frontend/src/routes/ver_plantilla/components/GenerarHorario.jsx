@@ -3,13 +3,15 @@ import { Input } from '../../components/Input'
 import styles from './GenerarHorario.module.css'
 import { Loading } from '../../components/Loading'
 
-export const GenerarHorario = ({ codigo }) => {
+export const GenerarHorario = ({ codigo, agregarHorario }) => {
     const [nombre, setNombre] = useState('')
     const [cargando, setCargando] = useState(false)
     
 
     const handleClickGenerarHorario = (ev) => {
         ev.preventDefault()
+
+        // LLamar a agregarHorario
     }
 
     return (

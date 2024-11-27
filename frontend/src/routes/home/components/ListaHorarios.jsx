@@ -1,9 +1,8 @@
 import { useNavigate } from "react-router-dom"
 
 import styles from './ListaHorarios.module.css'
-import { fetchEliminarHorario } from "./helpers/fetchEliminarHorario"
 
-export const ListaHorarios = ({ horarios, hayHorarios, quitarHorario }) => {
+export const ListaHorarios = ({ horarios, hayHorarios, quitarHorario, fetchEliminarHorario }) => {
     const navigator = useNavigate()
 
     const verHorario = (codigo) => {

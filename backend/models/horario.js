@@ -2,6 +2,8 @@ import { promisePool } from "../db.js"
 import { ClaseModel } from "./clase.js"
 import { PlantillaModel } from "./plantilla.js"
 
+import { v4 } from 'uuid'
+
 export class HorarioModel
 {   
     // Precondicion: Existe la plantilla
@@ -129,4 +131,145 @@ export class HorarioModel
 
         return { nombre: rows[0]["nombre"] }
     }
+
+    // Precondicion: Existe la plantilla
+    // Postcondicion: Crea un horario con la plantilla dada
+    static async create({ plant_cod, nombre })
+    {
+        const horar_cod = v4()
+        const [rows] = await promisePool.query('INSERT INTO HORARIO (horar_cod, horar_nombre, plant_cod) VALUES (?, ?, ?)', [horar_cod, nombre, plant_cod])
+
+        return { horar_cod, nombre }
+    }
+
+    // Precondicion: Existe la plantilla
+    // Postcondicion: Devuelve los datos necesarios para generar el horario
+    static async getDatos({ plant_cod })
+    {
+        const datos = {}
+
+        // Obtenemos las aulas
+        const aulas = {}
+        const [rows] = await promisePool.query('SELECT aula_cod, aula_tipo FROM AULA WHERE plant_cod = ?', [plant_cod])
+
+        for (let aula of rows)
+        {
+            if (!aulas[aula["aula_tipo"]])
+            {
+                aulas[aula["aula_tipo"]] = [aula["aula_cod"]]
+            } else
+            {
+                aulas[aula["aula_tipo"]].push(aula["aula_cod"])
+            }
+        }
+        datos["aulas"] = aulas
+
+        // Obtenemos los profesores
+        const profesores = []
+        const [rows2] = await promisePool.query('SELECT prof_cod FROM PROFESOR WHERE plant_cod = ?', [plant_cod])
+
+        for (let profesor of rows2)
+        {
+            profesores.push(profesor["prof_cod"])
+        }
+        datos["profesores"] = profesores
+
+        // Obtenemos las carreras
+        const carreras = []
+        const [rows3] = await promisePool.query('SELECT carre_cod AS nombre FROM CARRERA WHERE plant_cod = ?', [plant_cod])
+
+        for (let carrera of rows3)
+        {
+            // Obtenemos los cursos
+            const cursos = []
+            const [rows4] = await promisePool.query('SELECT curso_cod AS nombre FROM CURSO WHERE carre_cod = ?', [carrera["nombre"]])
+
+            let c = 1
+            for (let curso of rows4)
+            {
+                curso["nombre"] = `${c}º${curso["nombre"]}`
+                // Obtenemos las asignaturas
+                const asignaturas = []
+                const [rows5] = await promisePool.query('SELECT asig_cod AS nombre, asig_probabilidad AS aprobable FROM ASIGNATURA WHERE curso_cod = ?', [curso["nombre"]])
+
+                for (let asignatura of rows5)
+                {
+                    if (asignatura["aprobable"] == 1)
+                        asignatura["aprobable"] = "SI"
+                    else
+                        asignatura["aprobable"] = "NO"
+
+                    // Obtenemos las clases
+                    const clases = []
+                    const [rows6] = await promisePool.query('SELECT clase_cod AS nombre, clase_tipo_aula AS tipo_aula, clase_tipo AS tipo, clase_duracion AS duracion, clase_importante AS importante, prof_cod AS profesor FROM CLASE WHERE asig_cod = ?', [asignatura["nombre"]])
+
+                    for (let clase of rows6)
+                    {
+                        if (clase["importante"] == 1)
+                            clase["importante"] = "SI"
+                        else
+                            clase["importante"] = "NO"
+                        clases.push(clase)
+                        
+                    }
+
+                    asignatura["clases"] = clases
+                    asignaturas.push(asignatura)
+                }
+
+                curso["asignaturas"] = asignaturas
+                cursos.push(curso)
+            }
+
+            carrera["cursos"] = cursos
+            carreras.push(carrera)
+        }
+
+        datos["carrera"] = carreras
+
+        return { datos }
+    }
+
+    // Precondicion: Existe el horario
+    // Postcondicion: Guarda el horario en la base de datos
+    static async saveData({ horar_cod, data })
+    {
+        const { carrera: carreras } = data
+
+        for (let carrera of carreras)
+        {
+            for (let curso of carrera["cursos"])
+            {
+                let d = 0
+                for (let dia of carrera["clases"])
+                {
+                    for (let lista of dia)
+                    {
+                        if (typeof lista === 'object')
+                        {
+                            const clase_gen_cod = v4()
+                            promisePool.query('INSERT INTO CLAE_GENERADA (clase_gen_cod, clase_gen_hinicio, clase_gen_hfin, clase_gen_dia, clase_cod, aula_cod, horar_cod) VALUES (?, ?, ?, ?, ?, ?, ?)', [clase_gen_cod, lista["h_ini"], lista["h_fin"], d, lista["nombre"], lista["aula"], horar_cod])
+                        }
+                        for (let clase of lista)
+                        {
+                            const clase_gen_cod = v4()
+                            promisePool.query('INSERT INTO CLAE_GENERADA (clase_gen_cod, clase_gen_hinicio, clase_gen_hfin, clase_gen_dia, clase_cod, aula_cod, horar_cod) VALUES (?, ?, ?, ?, ?, ?, ?)', [clase_gen_cod, clase["h_ini"], clase["h_fin"], d, clase["nombre"], clase["aula"], horar_cod])
+                        }
+                    }
+                    d++
+                }
+            }
+        }
+    }
+
+    // Precondicion: Existe la plantilla
+    // Postcondicion: Devuelve el código y nombre de los horarios generados a partir de una plantilla
+    static async getHorariosGenerados({ plant_cod })
+    {
+        const [rows] = await promisePool.query('SELECT horar_cod AS codigo, horar_nombre AS nombre FROM HORARIO WHERE plant_cod = ?', [plant_cod])
+
+        return { horarios: rows }
+    }
+
+
 }

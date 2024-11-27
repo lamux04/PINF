@@ -2,6 +2,8 @@ import { HorarioModel } from '../models/horario.js'
 import { AuthModel } from '../models/auth.js'
 import { PlantillaModel } from '../models/plantilla.js'
 
+const endpoint = 'http://localhost:3000/Sched4AllAPI'
+
 export class HorarioController
 {
     // GET /horario
@@ -41,22 +43,36 @@ export class HorarioController
         const { username } = req.user
 
         // Obtenemos el codigo de la plantilla a usar
-        const { plantilla: plant_cod } = req.body
+        const { plantilla: plant_cod, nombre } = req.body
 
         // Comprobamos que la plantilla es valida
         const { valida } = await PlantillaModel.perteneceAUsuario({ plant_cod, username })
         if (!valida) return res.status(400).json({ message: 'Plantilla no encontrada' })
         
-        // Obtenemos la inforamcion de la plantilla
-        // Creamos el horario usando la API de javi
-        // todo: crear horario
+        // Creamos el horario
+        const { horar_cod } = await HorarioModel.create({ plant_cod, nombre })
 
-        const horar_cod = '1234'
+        // ----------- Generamos el horario con la API ------------
+        // Obtenemos los datos necesarios
+        const { datos } = HorarioModel.getDatos({ plant_cod })
+
+        // Creamos el horario con la API
+        const response = await fetch(`${endpoint}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(datos)
+        })
+
+        // Guardamos los datos en la base de datos
+        const data = await response.json()
+        await HorarioModel.saveData({ horar_cod, data })
 
         // Agregamos al usuario como visualizador
         await HorarioModel.addVisualizador({ horar_cod, username })
 
-        return res.json({ horar_cod})
+        return res.json({ horar_cod })
     }
 
     // DELETE /horario/:horar_cod
@@ -109,8 +125,6 @@ export class HorarioController
         const { horario: horar_cod } = req.body
         const { username } = req.user
 
-        console.log("Horario -> ", horar_cod)
-
         // Comprobamos que exista el horario
         const { exists } = await HorarioModel.existe({ horar_cod })
         if (!exists) return res.status(400).json({ message: 'Horario no encontrado' })
@@ -119,5 +133,22 @@ export class HorarioController
         await HorarioModel.deleteVisualizador({ horar_cod, username })
 
         res.json({ message: 'Visualizacion eliminada correctamente' })
+    }
+
+    // GET /horario/horarios_generados/:horar_cod
+    static async getHorariosGenerados(req, res)
+    {
+        // Obtenemos el nombre de usuario del token
+        const { username } = req.user
+        const { plant_cod } = req.params
+
+        // Comprobamos que la plantilla sea del usuario
+        const { valida } = await PlantillaModel.perteneceAUsuario({ plant_cod, username })
+        if (!valida) return res.status(400).json({ message: 'Plantilla no encontrada' })
+
+        // Extraemos los horarios generados
+        const { horarios } = await HorarioModel.getHorariosGenerados({ plant_cod })
+
+        res.json({ horarios })
     }
 }

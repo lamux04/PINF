@@ -3,6 +3,7 @@ import { Auth } from './auth/Auth'
 import { Home } from './home/Home'
 import { Plantillas } from "./plantillas/Plantillas";
 import { VerPlantilla } from "./ver_plantilla/VerPlantilla";
+import { VerCurso } from "./ver_curso/VerCurso";
 
 export const AppRouter = () => {
     return (
@@ -13,6 +14,7 @@ export const AppRouter = () => {
             <Route path="/home" element={<Home />} />  
             <Route path="/plantillas" element={<Plantillas />} />    
             <Route path="/plantillas/:codigo" element={<VerPlantilla />} />    
+            <Route path="/cursos/:codigo" element={<VerCurso />} />    
         </Routes>
     </BrowserRouter>
     );

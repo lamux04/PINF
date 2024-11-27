@@ -21,6 +21,7 @@ const cursoSchemePatch = z.object({
 })
 
 CursoRouter.get('/', authMiddleware, validateRequest(cursoSchemeGet), CursoController.getAll)
+CursoRouter.get('/verificar/:curso_cod', authMiddleware, CursoController.verifyCurso)
 CursoRouter.get('/:curso_cod', authMiddleware, CursoController.getByCodigo)
 CursoRouter.post('/', authMiddleware, validateRequest(cursoSchemePost), CursoController.create)
 CursoRouter.patch('/:curso_cod', authMiddleware, validateRequest(cursoSchemePatch), CursoController.update)

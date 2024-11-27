@@ -62,7 +62,7 @@ export class CursoController
         const { plant_cod } = await CarreraModel.getPlantilla({ carre_cod: carrera })
 
         // Eliminamos todos los horarios de la plantilla
-        // await HorarioModel.deleteByPlantilla({ plant_cod });
+        await HorarioModel.deleteByPlantilla({ plant_cod });
 
         res.json({ codigo: curso_cod, nombre })
     }
@@ -113,8 +113,22 @@ export class CursoController
         await CursoModel.delete({ curso_cod })
 
         // Eliminamos todos los horarios de la plantilla
-        // await HorarioModel.deleteByPlantilla({ plant_cod });
+        await HorarioModel.deleteByPlantilla({ plant_cod });
 
         res.json({ message: 'Curso eliminado' })
+    }
+
+    // GET /api/curso/verificar/:curso_cod
+    static async verifyCurso(req, res)
+    {
+        // Obtenemos los atributos
+        const { username } = req.user
+        const { curso_cod } = req.params
+
+        // Comprobamos que el curso sea del usuario
+        const { valida } = await CursoModel.perteneceAUsuario({ curso_cod, username })
+        if (!valida) return res.status(400).json({ message: 'Curso no encontrado' })
+
+        res.json({ message: 'Curso valido', username })
     }
 }

@@ -18,6 +18,7 @@ const claseSchemePost = z.object({
     tipo_aula: z.string(),
     profesor: z.string().length(36),
     duracion: z.number().int().positive(),
+    importante: z.boolean(),
 })
 
 const claseSchemePatch = z.object({
@@ -26,6 +27,7 @@ const claseSchemePatch = z.object({
     tipo_aula: z.string().optional(),
     profesor: z.string().length(36).optional(),
     duracion: z.number().int().positive().optional(),
+    importante: z.boolean().optional(),
 })
 
 ClaseRouter.get('/', authMiddleware, validateRequest(claseSchemeGet), ClaseController.getClases);

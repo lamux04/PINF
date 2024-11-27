@@ -1,4 +1,5 @@
 import { Titulo } from "../../components/Titulo"
+import { fetchEliminarHorario } from "./helpers/fetchEliminarHorario"
 import { useListaHorarios } from "./hooks/useListaHorarios"
 import { ListaHorarios } from "./ListaHorarios"
 
@@ -13,7 +14,7 @@ export const Main = () => {
         <main className={styles.bloque_principal}>
             <div className={styles.main}>
                 <Titulo>Horarios visibles</Titulo>
-                <ListaHorarios horarios={horarios} hayHorarios={hayHorarios} quitarHorario={quitarHorario}/>
+                <ListaHorarios horarios={horarios} hayHorarios={hayHorarios} quitarHorario={quitarHorario} fetchEliminarHorario={fetchEliminarHorario}/>
                 <NuevoHorario agregarHorario={agregarHorario} />
             </div>
         </main>
