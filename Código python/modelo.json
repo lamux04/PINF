@@ -1,0 +1,40 @@
+{
+"aulas": 
+    {
+        "seminario": ["b03", "b06"],
+        "magna grande": ["e01", "e02"]
+    },
+
+"profesores": ["De la huerta", "Palomo", "Sus muertos"],
+
+"carrera": 
+[
+    {
+        "nombre": "GII",
+        "cursos": 
+        [
+            {
+                "nombre": "1ºGII",
+                "asignaturas": 
+                [
+                    {
+                        "nombre": "Mecanica de fluidos",
+                        "aprobable": "SI",
+                        "clases": 
+                        [
+                            {
+                                "nombre": "Mecanica de fluidos A1 Teoría",
+                                "tipo": "Teoría",
+                                "tipo_aula": "magna grande",
+                                "duracion": 90,
+                                "importante": "SI",
+                                "profesor": "Gabriel"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]
+}
