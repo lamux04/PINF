@@ -42,11 +42,11 @@ export class ClaseController
         res.json(clase)
     }
 
-    // POST /api/clase { descripcion: string, tipo: string, tipo aula: string, duracion: int, profesor codigo: string }
+    // POST /api/clase { descripcion: string, tipo: string, tipo aula: string, duracion: int, profesor codigo: string, importante: int }
     static async postClase(req, res)
     {
         // Obtenemos los atributos
-        const { descripcion, tipo, tipo_aula, duracion, profesor, asignatura: asig_cod } = req.body
+        const { descripcion, tipo, tipo_aula, duracion, profesor, asignatura: asig_cod, importante } = req.body
         const { username } = req.user
 
         // Validamos los atributos
@@ -56,6 +56,7 @@ export class ClaseController
         if (!duracion) return res.status(400).json({ message: 'Duracion es requerida' })
         if (!profesor) return res.status(400).json({ message: 'Profesor es requerido' })
         if (!asig_cod) return res.status(400).json({ message: 'Asignatura es requerida' })
+        if (importante === undefined) return res.status(400).json({ message: 'Importante es requerido' })
             
         // Comprobamos que la asignatura sea del usuario
         const { valida, plant_cod } = await AsignaturaModel.perteneceAUsuario({ asig_cod, username })
@@ -66,12 +67,12 @@ export class ClaseController
         if (!validop) return res.status(400).json({ message: 'Profesor no existe' })
         
         // Insertamos la clase
-        const { clase_cod } = await ClaseModel.create({ clase_descrip: descripcion, clase_tipo: tipo, clase_tipo_aula: tipo_aula, clase_duracion: duracion, prof_cod: profesor, asig_cod })
+        const { clase_cod } = await ClaseModel.create({ clase_descrip: descripcion, clase_tipo: tipo, clase_tipo_aula: tipo_aula, clase_duracion: duracion, prof_cod: profesor, asig_cod, clase_importante: importante })
 
         // Eliminamos todos los horarios de la plantilla
         await PlantillaModel.deleteHorarios({ plant_cod })
 
-        res.json({ codigo: clase_cod, descripcion, tipo, tipo_aula, duracion, profesor })
+        res.json({ codigo: clase_cod, descripcion, tipo, tipo_aula, duracion, profesor, importante })
     }
 
     // PATCH /api/clase/:clase_cod { descripcion: string, tipo: string, tipo aula: string, duracion: int, profesor codigo: string }

@@ -18,7 +18,7 @@ export class ClaseModel
     // Postcondicion: Devuelve la clase
     static async getByCodigo({ clase_cod })
     {
-        const [rows] = await promisePool.query('SELECT clase_cod AS codigo, clase_descrip AS descripcion, clase_tipo AS tipo, clase_duracion AS duracion, clase_tipo_aula AS "tipo aula", CLASE.prof_cod AS "codigo profesor", CONCAT(prof_nombre, " ", prof_apell1, " ", prof_apell2) AS "profesor nombre" FROM CLASE LEFT JOIN PROFESOR ON CLASE.prof_cod = PROFESOR.prof_cod WHERE clase_cod = ?', [clase_cod])
+        const [rows] = await promisePool.query('SELECT clase_cod AS codigo, clase_descrip AS descripcion, clase_tipo AS tipo, clase_duracion AS duracion, clase_tipo_aula AS "tipo aula", CLASE.prof_cod AS "codigo profesor", CONCAT(prof_nombre, " ", prof_apell1, " ", prof_apell2) AS "profesor nombre", clase_importante AS importante FROM CLASE LEFT JOIN PROFESOR ON CLASE.prof_cod = PROFESOR.prof_cod WHERE clase_cod = ?', [clase_cod])
 
         const clase = rows[0]
 
@@ -38,10 +38,10 @@ export class ClaseModel
 
     // Precondicion: Ninguna
     // Postcondicion: Inserta una clase en la base de datos
-    static async create({ clase_descrip, clase_tipo, clase_tipo_aula, clase_duracion, prof_cod, asig_cod })
+    static async create({ clase_descrip, clase_tipo, clase_tipo_aula, clase_duracion, prof_cod, asig_cod, clase_importante })
     {
         const clase_cod = v4();
-        const [rows] = await promisePool.query('INSERT INTO CLASE (clase_cod, clase_descrip, clase_tipo, clase_tipo_aula, clase_duracion, prof_cod, asig_cod) VALUES (?, ?, ?, ?, ?, ?, ?)', [clase_cod, clase_descrip, clase_tipo, clase_tipo_aula, clase_duracion, prof_cod, asig_cod])
+        const [rows] = await promisePool.query('INSERT INTO CLASE (clase_cod, clase_descrip, clase_tipo, clase_tipo_aula, clase_duracion, prof_cod, asig_cod, clase_importante) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', [clase_cod, clase_descrip, clase_tipo, clase_tipo_aula, clase_duracion, prof_cod, asig_cod, clase_importante])
 
         return { clase_cod }
     }

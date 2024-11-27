@@ -131,4 +131,21 @@ export class CursoController
 
         res.json({ message: 'Curso valido', username })
     }
+
+    // GET /api/curso/ver_curso/:curso_cod
+    static async verCurso(req, res)
+    {
+        // Obtenemos los atributos
+        const { username } = req.user
+        const { curso_cod } = req.params
+
+        // Comprobamos que el curso sea del usuario
+        const { valida } = await CursoModel.perteneceAUsuario({ curso_cod, username })
+        if (!valida) return res.status(400).json({ message: 'Curso no encontrado' })
+
+        // Obtenemos el curso
+        const { curso } = await CursoModel.getByCodigo({ curso_cod })
+
+        res.json(curso)
+    }
 }

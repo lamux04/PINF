@@ -9,7 +9,7 @@ Content-Type: application/json
 
 ### GET /api/curso/:curso_cod
 GET http://localhost:1234/api/curso/853b78be-a64e-4bae-88e4-59000768a5cd
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzE2MDgyNTQsImV4cCI6MTczMTYxNTQ1NH0.jKKz4w35wd6r1splKcIgUhWA1cEsm8fySOk8eCmjkJU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzI3MzYzODEsImV4cCI6MTczMjc0MzU4MX0.CP0CddAdQukT0WxJ-43gayFpeUYhVj1v5guTdZ4De5g
 
 ### POST /api/curso    Elimina todos los horarios de la plantilla
 POST http://localhost:1234/api/curso

@@ -174,4 +174,12 @@ export class PlantillaModel
 
         return { plantilla, exists: true }
     }
+
+    // Precondicion: Ninguna
+    // Postcondicion: Elimina todos los horarios de una plantilla dada
+    static async deleteHorarios({ plant_cod })
+    {
+        // Eliminamos todos los horarios de la plantilla
+        await HorarioModel.deleteByPlantilla({ plant_cod })
+    }
 }

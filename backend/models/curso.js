@@ -28,13 +28,22 @@ export class CursoModel
     // Postcondicion: Devuelve el curso
     static async getByCodigo({ curso_cod })
     {
-        const [rows] = await promisePool.query('SELECT curso_cod AS codigo, curso_nombre AS nombre FROM CURSO WHERE curso_cod = ?', [curso_cod])
+        const [rows] = await promisePool.query('SELECT curso_cod AS codigo, curso_nombre AS nombre, carre_cod FROM CURSO WHERE curso_cod = ?', [curso_cod])
 
         const curso = rows[0]
 
         // Obtenemos todas las asignaturas de los cursos
         const { asignaturas } = await AsignaturaModel.getByCurso({ curso_cod })
         curso["asignaturas"] = asignaturas
+
+        // Obtenemos el nombre de la carrera
+        const [rows2] = await promisePool.query('SELECT carre_nombre AS nombre, plant_cod FROM CARRERA WHERE carre_cod = ?', [curso["carre_cod"]])
+        curso["carre_nombre"] = rows2[0]["nombre"]
+
+        // Obtenemos el nombre de la plantilla
+        const [rows3] = await promisePool.query('SELECT plant_nombre AS nombre FROM PLANTILLA WHERE plant_cod = ?', [rows2[0]["plant_cod"]])
+        curso["plant_nombre"] = rows3[0]["nombre"]
+        curso["plant_cod"] = rows2[0]["plant_cod"]
 
         return { curso }
     }

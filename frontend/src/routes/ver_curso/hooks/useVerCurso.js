@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { fetchVerCurso } from "../helpers/fetchVerCurso"
 
 export const useVerCurso = ({ codigo }) => {
     const [curso, setCurso] = useState(null)
