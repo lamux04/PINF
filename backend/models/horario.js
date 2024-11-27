@@ -84,6 +84,8 @@ export class HorarioModel
         await promisePool.query('DELETE FROM HORARIO WHERE horar_cod = ?', [horar_cod])
     }
 
+
+    
     // Precondicion: Existe la plantilla
     // Postcondicion: Elimina todos los horarios de una plantilla
     static async deleteByPlantilla({ plant_cod })
