@@ -1,0 +1,43 @@
+.botones {
+    display: flex;
+    gap: 10px;
+}
+
+.editar {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    padding: 3px 6px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.3s;
+}
+
+.editar:hover {
+    background-color: var(--button-hover);
+}
+
+.borrar {
+    background-color: var(--red);
+    color: var(--button-text);
+    padding: 3px 6px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.3s;
+}
+
+.borrar:hover {
+    background-color: var(--red-hover);
+}
+
+.li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid var(--button-bg);
+}

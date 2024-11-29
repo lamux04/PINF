@@ -13,7 +13,7 @@ export const HorariosGenerados = ({ codigo }) => {
         <div className={styles.bloque}>
             <Titulo2>Horarios generados</Titulo2>
             <ListaHorarios horarios={horarios} hayHorarios={hayHorarios} quitarHorario={quitarHorario} fetchEliminarHorario={fetchEliminarHorario}></ListaHorarios>
-            <GenerarHorario codigo={codigo} agregarHorario={agregarHorario} />
+            <GenerarHorario horarios={horarios} codigo={codigo} agregarHorario={agregarHorario} />
         </div>
     )
 }

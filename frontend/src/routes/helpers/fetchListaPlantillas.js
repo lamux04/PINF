@@ -1,4 +1,4 @@
-import { host } from '../../../variables'
+import { host } from '../../variables'
 
 export const fetchListaPlantillas = async () => {
     const response = await fetch(`${host}/api/plantilla/lista_plantillas`, {

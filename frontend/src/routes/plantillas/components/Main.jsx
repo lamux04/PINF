@@ -1,5 +1,5 @@
 import { Titulo } from '../../components/Titulo'
-import { usePlantillas } from '../hooks/usePlantillas'
+import { usePlantillas } from '../../hooks/usePlantillas'
 import { ListaPlantillas } from './ListaPlantillas'
 import { Atras } from '../../components/Atras'
 

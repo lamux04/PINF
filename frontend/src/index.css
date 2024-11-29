@@ -83,3 +83,7 @@ body, :root {
   --button-text: #007bff;
   --input-placeholder: #828282;
 }
+
+p {
+    font-size: 18px;
+}

@@ -28,5 +28,20 @@ export const usePlantillas = () => {
         setPlantillas([...plantillas, { codigo, nombre }])
     }
 
-    return { plantillas, hayPlantillas, eliminarPlantilla, crearPlantilla }
+    const cambiarNombre = ({ codigo, nombre }) => {
+        setPlantillas(plantillas.map(plantilla => {
+            if (plantilla.codigo === codigo) {
+                return { ...plantilla, nombre }
+            }
+            return plantilla
+        }))
+    }
+
+    const existeNombre = ({ codigo, nombre }) => {
+        if (plantillas.find(plantilla => plantilla.nombre === nombre && plantilla.codigo !== codigo))
+            return true
+        return false
+    }
+
+    return { plantillas, hayPlantillas, eliminarPlantilla, crearPlantilla, cambiarNombre, existeNombre }
 }

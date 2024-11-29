@@ -79,7 +79,7 @@ export class ClaseController
     static async patchClase(req, res)
     {
         // Obtenemos los atributos
-        const { descripcion, tipo, tipo_aula, duracion, profesor } = req.body
+        const { descripcion, tipo, tipo_aula, duracion, profesor, importante } = req.body
         const { clase_cod } = req.params
         const { username } = req.user
         
@@ -103,7 +103,8 @@ export class ClaseController
             clase_tipo: tipo ?? clase['tipo'],
             clase_tipo_aula: tipo_aula ?? clase['tipo aula'],
             clase_duracion: duracion ?? clase['duracion'],
-            prof_cod: profesor ?? clase['codigo profesor']
+            prof_cod: profesor ?? clase['codigo profesor'],
+            clase_importante: importante ?? clase['importante']
         }
         
         // Actualizamos la clase
@@ -112,7 +113,7 @@ export class ClaseController
         // Eliminamos todos los horarios de la plantilla
         // await PlantillaModel.deleteHorarios({ plant_cod })
 
-        res.json({ codigo: nuevaClase['clase_cod'], descripcion: nuevaClase['clase_descrip'], tipo: nuevaClase['clase_tipo'], tipo_aula: nuevaClase['clase_tipo_aula'], duracion: nuevaClase['clase_duracion'], profesor: nuevaClase['prof_cod'] })
+        res.json({ codigo: nuevaClase['clase_cod'], descripcion: nuevaClase['clase_descrip'], tipo: nuevaClase['clase_tipo'], tipo_aula: nuevaClase['clase_tipo_aula'], duracion: nuevaClase['clase_duracion'], profesor: nuevaClase['prof_cod'], importante: nuevaClase['clase_importante'] })
     }
 
     // DELETE /api/clase/:clase_cod
