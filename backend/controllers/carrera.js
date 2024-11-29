@@ -101,11 +101,14 @@ export class CarreraController
         const { valida } = await CarreraModel.perteneceAUsuario({ carre_cod, username });
         if (!valida) return res.status(401).json({ message: 'No autorizado' });
 
+        // Obtenemos el código de la plantilla
+        const { plant_cod } = await CarreraModel.getPlantilla({ carre_cod })
+        
         // Eliminamos la carrera
         await CarreraModel.delete({ carre_cod });
 
         // Eliminamos todos los horarios de la plantilla
-        await HorarioModel.deleteByPlantilla({ plant_cod: plantilla });
+        await HorarioModel.deleteByPlantilla({ plant_cod });
 
         res.json({ message: 'Carrera eliminada' });
     }

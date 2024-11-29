@@ -9,7 +9,12 @@ export const NuevaCarrera = ({ plantilla, setPlantilla, setValidacion }) => {
     const handleClick = async (ev) => {
         ev.preventDefault()
 
-        if (plantilla.carreras.find(carrera => carrera.nombre === nombre)) {
+        if (nombre === '')
+        {
+            setValidacion('El nombre no puede estar vacío')
+            setTimeout(() => setValidacion(''), 10000)
+        }
+        else if (plantilla.carreras.find(carrera => carrera.nombre === nombre)) {
             // Validación fallida
             setValidacion('Ya existe una plantilla con ese nombre')
             setTimeout(() => setValidacion(''), 10000)

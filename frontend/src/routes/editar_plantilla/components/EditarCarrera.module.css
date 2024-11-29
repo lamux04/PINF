@@ -6,3 +6,24 @@
     list-style-type: disc;
 }
 
+.titulo {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.boton {
+    font-size: inherit;
+    background-color: var(--red);
+    color: var(--button-text);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+.boton:hover {
+    cursor: pointer;
+    background-color: var(--red-hover);
+}
+ 

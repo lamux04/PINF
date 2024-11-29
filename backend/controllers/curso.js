@@ -1,5 +1,6 @@
 import { CursoModel } from '../models/curso.js'
 import { CarreraModel } from '../models/carrera.js'
+import { HorarioModel } from '../models/horario.js'
 
 export class CursoController
 {

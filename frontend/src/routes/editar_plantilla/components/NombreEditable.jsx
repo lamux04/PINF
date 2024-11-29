@@ -14,7 +14,12 @@ export const NombreEditable = ({ plantilla, setPlantilla }) => {
     const handleClick = (ev) => {
         ev.preventDefault()
 
-        if (plantillas.find(el => el.codigo !== plantilla.codigo && el.nombre === nombre)) {
+        if (nombre === '')
+        {
+            setValidacion('El nombre no puede estar vacío')
+            setTimeout(() => setValidacion(''), 10000)
+        }
+        else if (plantillas.find(el => el.codigo !== plantilla.codigo && el.nombre === nombre)) {
             // Validación fallida
             setValidacion('Existe una plantilla con el mismo nombre')
             setTimeout(() => setValidacion(''), 10000)

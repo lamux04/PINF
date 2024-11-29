@@ -16,7 +16,12 @@ export const NombreCarreraEditable = ({ plantilla, setPlantilla, codigoCarrera }
     const handleClick = (ev) => {
         ev.preventDefault()
 
-        if (plantilla.carreras.find(el => el.codigo !== codigoCarrera && el.nombre === nombre)) {
+        if (nombre === '')
+        {
+            setValidacion('El nombre no puede estar vacío')
+            setTimeout(() => setValidacion(''), 10000)
+        }
+        else if (plantilla.carreras.find(el => el.codigo !== codigoCarrera && el.nombre === nombre)) {
             // Validación fallida
             setValidacion('Existe una carrera con el mismo nombre')
             setTimeout(() => setValidacion(''), 10000)
