@@ -328,6 +328,7 @@ def HayYaClaseLista(horario, h_ini, h_fin) -> bool:
 #Precondiciones: horario debe ser las listas de horarios del dia del curso de la carrera de la clase
 #Postcondición: devuelve True si ya hay clase de dicha asignatura en esa franja horaria y False en caso contrario
 def HayYaClaseAsignatura(horario, clase, h_ini, h_fin) -> bool:
+    
     print(f"Entra en la funcion HayYaClaseAsignatura con {h_ini} y {h_fin}, y con la asignatura {clase.asignatura.nombre}")
 
     no_puede = False
