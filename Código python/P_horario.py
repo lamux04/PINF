@@ -12,6 +12,7 @@ import os
 #Cuarta prueba: añadimos las clases de 1º de GIA
 #Quinta prueba: añadimos las clases de 2º de GIA
 #Sexta prueba: añadimos las clases de 3º de GII
+#Séptima prueba: añadimos las clases de todas las ramas de 4º de GII
 
 #CREAMOS TODAS LAS AULAS
 mg = "Magna grande"
@@ -55,7 +56,8 @@ aulas_tipo = []
 #        aulas_tipo.append(nom)
 #Aulas[lab] = aulas_tipo
 #aulas_tipo = []
-
+Master = "Aulas Teoría Máster y 4to"
+Aulas[Master] = ["C16","C17","C18","C19"]
 Camara_climatica = "Camara_climatica"
 Aulas[Camara_climatica] = ["AS07"]
 Renovables = "Energias renovables"
@@ -203,7 +205,23 @@ PedroDelgado = profesor("Pedro Delgado Pérez")
 ElisaGuerrero = profesor("Elisa Guerrero Vázquez")
 CarlosRioja = profesor("Carlos Rioja del Rio")
 JoseAntonioOrtega = profesor("José Antonio Ortega Pérez")
-
+#Séptima prueba
+MariPaz = profesor("María de la Paz Guerrero Lebrero")
+GuillermoBar = profesor("Guillermo Bárcena González")
+AndresYa = profesor("Andrés Escolano")
+Joaquinpiz = profesor("Joaquín Pizarro")
+AlejandroCal = profesor("Alejandro Calderón")
+Nestormora = profesor("Néstor Mora")
+BernabeDorronsoro = profesor("Bernabé Dorronsoro")
+MiguelBol = profesor("Miguel Ángel Bolivar")
+Ivanruiz = profesor("Iván Ruiz")
+Andresmunoz = profesor("Andrés Muñoz Ortega")
+GuadalupeOrt = profesor("Guadalupe Ortiz Bellot")
+ManoloPal = profesor("Manuel Palono")
+Juantonicab = profesor("Juan Antonio Caballero")
+Juanmadodero = profesor("Juan Manuel Dodero")
+JosemariRdrigz = profesor("José María Rodríguez")
+PabloTorre = profesor("Pablo de la Torre")
 #CREAMOS LAS CARRERAS, LOS CURSOS Y LAS ASIGNATURAS
 #Primera prueba
 giiC = carrera("GII")
@@ -255,6 +273,36 @@ ia = asignatura("Inteligencia Artificial","SI",gii3)
 pctr = asignatura("Programación Concurrente y de Tiempo Real","NO",gii3)
 pinf = asignatura("Proyectos Informático","SI",gii3)
 ssi = asignatura("Seguridad en los Sitemas Informáticos","SI",gii3)
+#Séptima prueba
+gii4computacion = curso("4º GII itinerario Computación",giiC)
+apc = asignatura("Aprendizaje computacional","SI",gii4computacion)
+cc = asignatura("Complejidad Computacional","SI",gii4computacion)
+percep = asignatura("Percepción","SI",gii4computacion)
+pdellenguaje = asignatura("Procesadores de Lenguaje","SI",gii4computacion)
+
+gii4hardware = curso("4º GII itinerario de Ingeniería de  Computadores",giiC)
+adminredes = asignatura("Administración y Seguridad de Computadores","SI",gii4hardware)
+acpd = asignatura("Arquitectura de Computadores Paralelos y Distribuidos","SI",gii4hardware)
+daac = asignatura("Diseño Avanzado de Arquitectura de Computadores","SI",gii4hardware)
+ppd = asignatura("Programación Paralela y Distribuida","SI",gii4hardware)
+
+gii4software = curso("4º GII itinerario Ingeniería del Software",giiC)
+calsoft = asignatura("Calidad del Software","SI", gii4software)
+dgps = asignatura("Dirección y Gestión de Proyeyctos Software","SI",gii4software)
+evosoft = asignatura("Evolución del Software","SI",gii4software)
+mps = asignatura("Metodología y Procesos Software","SI",gii4software)
+
+gii4sisinfo = curso("4º GII itinerario de Sistemas de Información",giiC)
+adminbd = asignatura("Administración de Bases de Datos","SI",gii4sisinfo)
+isi = asignatura("Ingeniería de Sistemas de Información","SI",gii4sisinfo)
+recinfo = asignatura("Recuperación de la Información","SI",gii4sisinfo)
+tin = asignatura("Tecnologías de Inteligencia de Negocio","SI",gii4sisinfo)
+
+gii4tecinfo = curso("4º  GII itinerario de Tecnologías de la Información",giiC)
+calsi = asignatura("Calidad de los Sistemas Informáticos","SI",gii4tecinfo)
+iweb = asignatura("Ingenieía Web","SI ",gii4tecinfo)
+inet = asignatura("Internet y Negocio Electrónico","SI",gii4tecinfo)
+virtsis = asignatura("Virtualización de Sistemas","SI",gii4tecinfo)
 
 #CREAMOS LAS CLASES
 #Primera Prueba 1ªA GII
@@ -517,6 +565,77 @@ Clases.append(clase("Proyectos Informáticos X1 Teorico-Prácticas Extra","Teor�
 Clases.append(clase("Proyectos Informáticos C1 Prácticas","Prácticas",sem,150,"NO",pinf,JoseAntonioOrtega))
 Clases.append(clase("Proyectos Informáticos C2 Prácticas","Prácticas",sem,150,"NO",pinf,JoseAntonioOrtega))
 Clases.append(clase("Proyectos Informáticos C3 Prácticas","Prácticas",sem,150,"NO",pinf,JoseAntonioOrtega))
+#Séptima Prueba 4º GII(TODOS LOS ITINERARIOS)
+Clases.append(clase("Complejidad Computacional A1 Teoría","Teoría",Master,90,"SI",cc,Gabriel))
+Clases.append(clase("Complejidad Computacional B1 Problemas","Problemas",Master,60,"NO",cc,PacoPalomo))
+Clases.append(clase("Complejidad Computacional B1 Problemas Extra 1","Problemas",Master,150,"NO",cc,PacoPalomo))
+Clases.append(clase("Complejidad Computacional A1 Problemas Extra 2","Problemas",Master,120,"NO",cc,PacoPalomo))
+Clases.append(clase("Complejidad Computacional C1 Prácticas","Prácticas",Master,120,"NO",cc,Gabriel))
+Clases.append(clase("Procesadores del Lenguaje A1/B1 Teoria/Problemas","Teoría",Master,120,"SI",pdellenguaje,MariPaz))
+Clases.append(clase("Procesadores del Lenguaje A1 Teoria Extra 1","Teoría",Master,120,"SI",pdellenguaje,MariPaz))
+Clases.append(clase("Procesadores del Lenguaje A1 Teoria Extra 2","Teoría",Master,120,"SI",pdellenguaje,MariPaz))
+Clases.append(clase("Procesadores del Lenguaje C1 Prácticas","Prácticas",pi,150,"NO",pdellenguaje,MariPaz))
+Clases.append(clase("Aprendizaje Computacional A1 Teoría","Teoría",Master,120,"SI",apc,Joaquinpiz))
+Clases.append(clase("Aprendizaje Computacional C1 Prácticas","Prácticas",Master,180,"NO",apc,Joaquinpiz))
+Clases.append(clase("Aprendizaje Computacional C1 Prácticas Extra","Prácticas",Master,180,"NO",apc,Joaquinpiz))
+Clases.append(clase("Percepción A1 Teoría","Teoría",pi,120,"SI",percep,AndresYa))
+Clases.append(clase("Percepción C1 Prácticas","Prácticas",pi,180,"NO",percep,GuillermoBar))
+
+Clases.append(clase("Arquitectura de Computadores Paralelos y Distribuidos A1 Teoría","Teoría",Computadores_lab,90,"SI",acpd,Alfonso))
+Clases.append(clase("Arquitectura de Computadores Paralelos y Distribuidos A1/B1 Teoría/Problemas","Teoría",Computadores_lab,90,"SI",acpd,Alfonso))
+Clases.append(clase("Arquitectura de Computadores Paralelos y Distribuidos D1 Prácticas de laboratoio","Prácticas",Redes_lab,90,"NO",acpd,Alfonso))
+Clases.append(clase("Administración y Seguridad de Redes de Computadores A1 Teoría","Teoría",Master,120,"SI",adminredes,JoseAntonioOrtega))
+Clases.append(clase("Administración y Seguridad de Redes de Computadores B1 Problemas","Problemas",Master,150,"NO",adminredes,CarlosRioja))
+Clases.append(clase("Administración y Seguridad de Redes de Computadores C1 Prácticas","Prácticas",ParalelDistrib,150,"NO",adminredes,CarlosRioja))
+Clases.append(clase("Diseño Avanzado de Arquitectura de Computadores A1 Teoría","Teoría",Master,120,"SI",daac,Nestormora))
+Clases.append(clase("Diseño Avanzado de Arquitectura de Computadores A1/B1 Teoría/Problemas","Teoría",Master,120,"SI",daac,Nestormora))
+Clases.append(clase("Diseño Avanzado de Arquitectura de Computadores B1 Problemas","Problemas",Master,150,"NO",daac,Nestormora))
+Clases.append(clase("Diseño Avanzado de Arquitectura de Computadores D1 Prácticas","Prácticas",Electricidad_lab,120,"NO",daac,Nestormora))
+Clases.append(clase("Diseño Avanzado de Arquitectura de Computadores D1 Prácticas Extra","Prácticas",Electricidad_lab,150,"NO",daac,Nestormora))
+Clases.append(clase("Programación Paralela y Distribuida A1/C1 Teoría/Prácticas","Teoría",ParalelDistrib,270,"SI",ppd,BernabeDorronsoro))
+Clases.append(clase("Programación Paralela y Distribuida C1 Prácticas Extra","Prácticas",ParalelDistrib,180,"NO",ppd,JuanCarlosTorre))
+
+Clases.append(clase("Calidad del Software A1 Teoría","Teoría",Master,120,"SI",calsoft,Mercedes))
+Clases.append(clase("Calidad del Software B1 Problemas","Problemas",Master,150,"NO",calsoft,AlejandroCal))
+Clases.append(clase("Calidad del Software C1 Prácticas","Prácticas",Master,150,"NO",calsoft,AlejandroCal))
+Clases.append(clase("Evolución del Software A1/B1 Teoría/Problemas","Teoría",Master,120,"SI",evosoft,AlejandroCal))
+Clases.append(clase("Evolución del Software A1/B1 Teoría/Problemas Extra","Teoría",Master,180,"SI",evosoft,AlejandroCal))
+Clases.append(clase("Evolución del Software C1 Prácticas","Prácticas",Master,180,"NO",evosoft,Nuria))
+Clases.append(clase("Metodologías y Procesos Software A1/B1 Teoría/Problemas","Teoría",Master,120,"SI",mps,AlejandroCal))
+Clases.append(clase("Metodologías y Procesos Software A1 Teoría Extra","Teoría",Master,120,"SI",mps,AlejandroCal))
+Clases.append(clase("Metodologías y Procesos Software C1 Prácticas informáticas","Prácticas",Master,120,"NO",mps,Elena))
+Clases.append(clase("Dirección y Gestión de Proyectos Software A1 Teoría","Teoría",Master,120,"SI",dgps,Mercedes))
+Clases.append(clase("Dirección y Gestión de Proyectos Software B1 Problemas","Problemas",Master,120,"NO",dgps,Mercedes))
+Clases.append(clase("Dirección y Gestión de Proyectos Software C1 Prácticas","Prácticas",Master,180,"NO",dgps,Mercedes))
+
+Clases.append(clase("Recuperación de la Información A1 Teoría","Teoría",sem,120,"SI",recinfo,Andresmunoz))
+Clases.append(clase("Recuperación de la Información A1 Teoría Extra","Teoría",Master,120,"SI",recinfo,Andresmunoz))
+Clases.append(clase("Recuperación de la Información C1 Prácticas Informáticas","Prácticas",pi,120,"NO",recinfo,JesusRosa))
+Clases.append(clase("Tecnologías de Inteligencia de Negocio A1/B1 Teoría/Problemas","Teoría",Master,120,"SI",tin,Ivanruiz))
+Clases.append(clase("Tecnologías de Inteligencia de Negocio A1 Teoría Extra","Teoría",Master,180,"SI",tin,Ivanruiz))
+Clases.append(clase("Tecnologías de Inteligencia de Negocio  C1 Prácticas informáticas","Prácticas",Master,150,"NO",tin,MiguelBol))  
+Clases.append(clase("Ingeniería de Sistemas de Información A1/C1 Teoría/Prácticas","Teoría",Master,270,"SI",isi,GuadalupeOrt))
+Clases.append(clase("Administración de Bases de Datos A1 Teoría","Teoría",pi,150,"SI",adminbd,ManoloPal))
+Clases.append(clase("Administración de Bases de Datos A1 Teoría Extra","Teoría",pi,150,"SI",adminbd,ManoloPal))
+Clases.append(clase("Administración de Bases de Datos C1 Prácticas","Prácticas",pi,150,"NO",adminbd,Andresmunoz))
+Clases.append(clase("Administración de Bases de Datos C1 Prácticas Extra","Prácticas",Master,150,"NO",adminbd,Andresmunoz))
+
+Clases.append(clase("Virtualización de Sistemas A1 Teoría","Teoría",Master,120,"SI",virtsis,Juantonicab))
+Clases.append(clase("Virtualización de Sistemas A1 Teoría Extra","Teoría",mp,120,"SI",virtsis,Juantonicab))
+Clases.append(clase("Virtualización de Sistemas D1 Prácticas de Laboratorio","Prácticas",sem,150,"NO",virtsis,Juanmadodero))
+Clases.append(clase("Virtualización de Sistemas D2 Prácticas de Laboratorio","Prácticas",sem,150,"NO",virtsis,Juanmadodero))
+Clases.append(clase("Internet y Negocio Electrónico A1 Teoría","Teoría",sem,120,"SI",inet,PabloTorre))
+Clases.append(clase("Internet y Negocio Electrónico A1 Teoría Extra","Teoría",sem,120,"SI",inet,PabloTorre))
+Clases.append(clase("Internet y Negocio Electrónico C1 Prácticas Infórmáticas","Prácticas",sem,150,"NO",inet,JosemariRdrigz))
+Clases.append(clase("Internet y Negocio Electrónico C2 Prácticas Infórmáticas","Prácticas",sem,150,"NO",inet,JosemariRdrigz))
+Clases.append(clase("Ingeniería Web A1 Teoría","Teoría",sem,120,"SI",iweb,Ivanruiz))
+Clases.append(clase("Ingeniería Web A1 Teoría Extra","Teoría",sem,120,"SI",iweb,Ivanruiz))
+Clases.append(clase("Ingeniería Web C1 Prácticas Informáticas","Prácticas",pi,150,"NO",iweb,Ivanruiz))
+Clases.append(clase("Ingeniería Web C2 Prácticas Informáticas","Prácticas",pi,150,"NO",iweb,Ivanruiz))
+Clases.append(clase("Calidad de los Sistemas Informáticos A1 Teoría","Teoría",sem,120,"SI",calsi,AndresYa))
+Clases.append(clase("Calidad de los Sistemas Informáticos A1 Teoría Extra","Teoría",sem,120,"SI",calsi,AndresYa))
+Clases.append(clase("Calidad de los Sistemas Informáticos C1 Prácticas","Prácticas",sem,150,"NO",calsi,PabloTorre))
+Clases.append(clase("Calidad de los Sistemas Informáticos C2 Prácticas","Prácticas",sem,150,"NO",calsi,PabloTorre))
 
 #COMIENZAN LAS PRUEBAS
 #Primera prueba
@@ -538,11 +657,16 @@ gia[gia1.nombre] = [[],[],[],[],[]]
 gia[gia2.nombre] = [[],[],[],[],[]]
 #Sexta prueba
 gii[gii3.nombre] = [[],[],[],[],[]]
+#Séptima Prueba
+gii[gii4tecinfo.nombre] = [[],[],[],[],[]]
+gii[gii4computacion.nombre] = [[],[],[],[],[]]
+gii[gii4hardware.nombre] = [[],[],[],[],[]]
+gii[gii4sisinfo.nombre] = [[],[],[],[],[]]
+gii[gii4software.nombre] = [[],[],[],[],[]]
+
 
 Horarios[giiC.nombre] = gii
 Horarios[giaC.nombre] = gia
-
-
 
 colocarClases(Clases, Aulas, Horarios)
 print("Horario terminado", end="\n\n")
