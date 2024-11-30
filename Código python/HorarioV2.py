@@ -176,7 +176,7 @@ def colocarClases(Clases, Aulas, Horarios):
                                                         Horarios[carrera][curso][dia][j].append(c_horario(clase, h_ini, h_fin, aulas[indice_aula]))
                                                         colocado = True
                                                     j = j + 1
-                                                if not colocado:
+                                                if not colocado and j < 3:
                                                     Horarios[carrera][curso][dia].append([c_horario(clase, h_ini, h_fin, aulas[indice_aula])])
                                                     colocado = True
                                             else:
