@@ -1,4 +1,5 @@
-from Horario import* 
+import Horario as v1
+import HorarioV2 as v2
 from ClasesProyecto import*
 
 import shutil
@@ -668,7 +669,8 @@ gii[gii4software.nombre] = [[],[],[],[],[]]
 Horarios[giiC.nombre] = gii
 Horarios[giaC.nombre] = gia
 
-colocarClases(Clases, Aulas, Horarios)
+#v1.colocarClases(Clases, Aulas, Horarios)
+v2.colocarClases(Clases, Aulas, Horarios)
 print("Horario terminado", end="\n\n")
 
 
