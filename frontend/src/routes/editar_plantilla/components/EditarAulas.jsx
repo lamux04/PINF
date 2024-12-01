@@ -1,13 +1,26 @@
 import styles from './EditarAulas.module.css'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Titulo2 } from '../../components/Titulo2'
 import { MiniValidacion } from '../../components/MiniValidacion'
 import { NuevaAula } from './NuevaAula'
-import { EditarAula } from './EditarAula'
+import { EditarTipoAula } from './EditarTipoAula'
 
 export const EditarAulas = ({ plantilla, setPlantilla }) => {
     const [validacion, setValidacion] = useState('')
+    const [aulas, setAulas] = useState({})
+
+    useEffect(() => {
+        const nuevaAulas = {}
+        for (let aula of plantilla.aulas)
+        {
+            if (nuevaAulas[aula.tipo])
+                nuevaAulas[aula.tipo].push(aula)
+            else
+                nuevaAulas[aula.tipo] = [aula]
+        }
+        setAulas(nuevaAulas)
+    }, [plantilla])
 
     return (
         <div className={styles.bloque_carreras}>
@@ -20,9 +33,9 @@ export const EditarAulas = ({ plantilla, setPlantilla }) => {
             </div>
             <div className={styles.bloque}>
             {
-                (plantilla.aulas.length !== 0) ?
-                plantilla.aulas.map(aula => (
-                    <EditarAula key={aula.codigo} aula={aula} plantilla={plantilla} setPlantilla={setPlantilla} />
+                (Object.keys(aulas).length !== 0) ?
+                Object.keys(aulas).map(tipo => (
+                    <EditarTipoAula key={tipo} tipoAula={tipo} aulas={aulas[tipo]} plantilla={plantilla} setPlantilla={setPlantilla} />
                 ))
                 : <p>No hay aulas</p>
             }

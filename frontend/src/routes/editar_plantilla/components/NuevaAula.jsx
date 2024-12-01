@@ -1,11 +1,13 @@
 import styles from './NuevaAula.module.css'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { fetchCrearAula } from '../helpers/fetchCrearAula'
 
 export const NuevaAula = ({ plantilla, setPlantilla, setValidacion }) => {
     const [nombre, setNombre] = useState('')
     const [tipo, setTipo] = useState('')
+
+    const inputNombre = useRef()
 
     const handleClick = async (ev) => {
         ev.preventDefault()
@@ -27,7 +29,7 @@ export const NuevaAula = ({ plantilla, setPlantilla, setValidacion }) => {
             const data = await fetchCrearAula({ plantilla: plantilla.codigo, nombre, tipo })
             setValidacion('')
             setNombre('')
-            setTipo('')
+            inputNombre.current.focus()
             setPlantilla(plantilla => ({
                 ...plantilla,
                 aulas: [...plantilla.aulas, data]
@@ -37,7 +39,7 @@ export const NuevaAula = ({ plantilla, setPlantilla, setValidacion }) => {
 
     return (
         <form onSubmit={handleClick}>
-            <input className={styles.input} type="text" placeholder='Nombre aula' value={nombre} onChange={ev => setNombre(ev.target.value)} />
+            <input ref={inputNombre} className={styles.input} type="text" placeholder='Nombre aula' value={nombre} onChange={ev => setNombre(ev.target.value)} />
             <input className={styles.input} type="text" placeholder='Tipo aula' value={tipo} onChange={ev => setTipo(ev.target.value)} />
             <button className={styles.button} onClick={handleClick}><i className="fa-solid fa-plus"></i></button>
         </form>
