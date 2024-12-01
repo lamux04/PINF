@@ -1,0 +1,29 @@
+.bloque_carreras {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.bloque {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.bloque_input {
+    display: flex;
+    gap: 30px;
+    font-size: 18px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bloque_nuevo {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}

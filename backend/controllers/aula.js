@@ -71,7 +71,7 @@ export class AulaController
         const { username } = req.user
 
         // Comprobamos que el aula sea del usuario
-        const { valida } = await AulaModel.perteneceAUsuario({ aula_cod, username })
+        const { valida, plant_cod } = await AulaModel.perteneceAUsuario({ aula_cod, username })
         if (!valida) return res.status(401).json({ message: 'No autorizado' })
         
         // Obtenemos el aula
@@ -100,7 +100,7 @@ export class AulaController
         const { username } = req.user
 
         // Comprobamos que el aula sea del usuario
-        const { valida } = await AulaModel.perteneceAUsuario({ aula_cod, username })
+        const { valida, plant_cod } = await AulaModel.perteneceAUsuario({ aula_cod, username })
         if (!valida) return res.status(401).json({ message: 'No autorizado' })
         
         // Eliminamos el aula

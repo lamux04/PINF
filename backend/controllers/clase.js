@@ -111,7 +111,7 @@ export class ClaseController
         await ClaseModel.update(nuevaClase)
 
         // Eliminamos todos los horarios de la plantilla
-        // await PlantillaModel.deleteHorarios({ plant_cod })
+        await PlantillaModel.deleteHorarios({ plant_cod })
 
         res.json({ codigo: nuevaClase['clase_cod'], descripcion: nuevaClase['clase_descrip'], tipo: nuevaClase['clase_tipo'], tipo_aula: nuevaClase['clase_tipo_aula'], duracion: nuevaClase['clase_duracion'], profesor: nuevaClase['prof_cod'], importante: nuevaClase['clase_importante'] })
     }

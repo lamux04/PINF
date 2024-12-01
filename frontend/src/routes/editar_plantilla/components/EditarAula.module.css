@@ -1,0 +1,21 @@
+.borrar {
+    background-color: var(--red);
+    color: var(--button-text);
+    padding: 4px 8px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.borrar:hover {
+    background-color: var(--red-hover);
+}
+
+.bloque {
+    margin-left: 30px;
+    display: flex;
+    align-items: center;
+    gap: 30px
+}

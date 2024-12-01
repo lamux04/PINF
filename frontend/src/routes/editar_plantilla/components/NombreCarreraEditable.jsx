@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Editable } from '../../components/Editable'
 import { MiniValidacion } from '../../components/MiniValidacion'
 import { fetchModificarNombreCarrera } from '../helpers/fetchModificarNombreCarrera'
+import { fetchEliminarCarrera } from '../helpers/fetchEliminarCarrera'
 
 export const NombreCarreraEditable = ({ plantilla, setPlantilla, codigoCarrera }) => {
     const [editable, setEditable] = useState(false)
@@ -12,6 +13,14 @@ export const NombreCarreraEditable = ({ plantilla, setPlantilla, codigoCarrera }
         return plantilla.carreras[index].nombre
     })
     const [validacion, setValidacion] = useState('')
+
+    const handleEliminar = async () => {
+        await fetchEliminarCarrera({ codigo: codigoCarrera })
+        setPlantilla(plantilla => ({
+            ...plantilla,
+            carreras: plantilla.carreras.filter(el => el.codigo !== codigoCarrera)
+        }))
+    }
 
     const handleClick = (ev) => {
         ev.preventDefault()
@@ -45,7 +54,9 @@ export const NombreCarreraEditable = ({ plantilla, setPlantilla, codigoCarrera }
     return (
         <span className={styles.bloque}>
             <Editable editable={editable} setEditable={setEditable} value={nombre} setValue={setNombre} onClick={handleClick} />
+            <button onClick={handleEliminar} className={styles.boton}><i className="fa-solid fa-trash"></i></button>
             <MiniValidacion>{validacion}</MiniValidacion>
+
         </span>
     )
 }

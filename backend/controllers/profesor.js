@@ -82,7 +82,7 @@ export class ProfesorController
             prof_cod,
             prof_nombre: prof_nombre ?? profesor['prof_nombre'],
             prof_apell1: prof_apell1 ?? profesor['apellidos'].split(' ')[0],
-            prof_apell2: prof_apell2 ?? profesor['prof_apell2'].split(' ')[1]
+            prof_apell2: prof_apell2 ?? profesor['apellidos'].split(' ')[1]
         }
         
         // Actualizamos el profesor
