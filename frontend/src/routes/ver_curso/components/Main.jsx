@@ -1,7 +1,7 @@
 import styles from './Main.module.css'
 
 import { Atras } from '../../components/Atras'
-import { useVerCurso } from '../hooks/useVerCurso'
+import { useVerCurso } from '../../hooks/useVerCurso'
 import { Titulo } from '../../components/Titulo'
 import { ListaAsignaturas } from './ListaAsignaturas'
 import { useNavigate } from 'react-router-dom'

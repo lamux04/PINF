@@ -14,7 +14,7 @@ export const EditarCurso = () => {
     return (
         <>
             <Menu />
-            <Main />
+            <Main codigo={codigo} />
         </>
     )
 

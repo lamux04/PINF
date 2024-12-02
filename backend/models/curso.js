@@ -52,9 +52,11 @@ export class CursoModel
     // Postcondicion: Comprueba si el usuario tiene acceso al curso
     static async perteneceAUsuario({ curso_cod, username })
     {
-        const [rows] = await promisePool.query('SELECT * FROM CARRERA ca, CURSO cu, PLANTILLA p WHERE ca.carre_cod = cu.carre_cod AND ca.plant_cod = p.plant_cod AND cu.curso_cod = ? AND p.usu_username = ?', [curso_cod, username])
+        const [rows] = await promisePool.query('SELECT ca.carre_cod FROM CARRERA ca, CURSO cu, PLANTILLA p WHERE ca.carre_cod = cu.carre_cod AND ca.plant_cod = p.plant_cod AND cu.curso_cod = ? AND p.usu_username = ?', [curso_cod, username])
 
-        return { valida: rows.length > 0 }
+        if (rows.length === 0) return { valida: false }
+
+        return { valida: rows.length > 0, carre_cod: rows[0]['carre_cod'] }
     }
 
     // Precondicion: Ninguna

@@ -98,4 +98,13 @@ export class CarreraModel
 
         return( { exists: rows.length > 0, carre_cod, carre_nombre: rows[0]["carre_nombre"] } )
     }
+
+    // Precondicion: Ninguna
+    // Postcondicion: Devuelve los cursos perteneciente a una carrera
+    static async getCursos({ carre_cod })
+    {
+        const [rows] = await promisePool.query('SELECT curso_cod, curso_nombre FROM CARRERA LEFT JOIN CURSO ON CARRERA.carre_cod = CURSO.curso_cod WHERE CARRERA.carre_cod = ?', [carre_cod])
+
+        return({ cursos: rows })
+    }
 }
