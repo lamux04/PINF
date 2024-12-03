@@ -1,0 +1,49 @@
+.input {
+    font-size: inherit;
+    outline: none;
+    border: 2px solid #000000;
+    padding: 6px 10px;
+    transition: border 0.3s;
+}
+
+.input:focus {
+    border: 2px solid var(--button-hover);
+}
+
+.button {
+    font-size: inherit;
+    border: 2px solid var(--button-bg);
+    border-radius: 0 10px 10px 0;
+    padding: 6px 10px;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    transition: background-color 0.3s, border 0.3s;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: var(--button-hover);
+    border: 2px solid var(--button-hover)
+}
+
+.checkbox {
+    display: none;
+}
+
+.label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: 2px solid #000000;
+    border-radius: 10px 0 0 10px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.checkbox:checked + .label {
+    background-color: var(--button-hover);
+    border: 2px solid var(--button-hover);
+    color: var(--button-text);
+}

@@ -103,7 +103,7 @@ export class CarreraModel
     // Postcondicion: Devuelve los cursos perteneciente a una carrera
     static async getCursos({ carre_cod })
     {
-        const [rows] = await promisePool.query('SELECT curso_cod, curso_nombre FROM CARRERA LEFT JOIN CURSO ON CARRERA.carre_cod = CURSO.curso_cod WHERE CARRERA.carre_cod = ?', [carre_cod])
+        const [rows] = await promisePool.query('SELECT curso_cod codigo, curso_nombre nombre FROM CARRERA LEFT JOIN CURSO ON CARRERA.carre_cod = CURSO.carre_cod WHERE CARRERA.carre_cod = ?', [carre_cod])
 
         return({ cursos: rows })
     }

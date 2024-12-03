@@ -5,6 +5,7 @@ import { useVerCurso } from '../../hooks/useVerCurso'
 import { Titulo } from '../../components/Titulo'
 import { useNavigate } from 'react-router-dom'
 import { NombreCursoEditable } from './NombreCursoEditable'
+import { EditarAsignaturas } from './EditarAsignaturas'
 
 export const Main = ({ codigo }) => {
     const { curso, setCurso } = useVerCurso({ codigo })
@@ -21,6 +22,7 @@ export const Main = ({ codigo }) => {
                             <p><span className={styles.clave}>Código: </span><span>{curso.codigo}</span></p>
                             <NombreCursoEditable curso={curso} setCurso={setCurso} />
                         </div>
+                        <EditarAsignaturas curso={curso} setCurso={setCurso} />
                     </div>
             }
         </main>
