@@ -109,6 +109,9 @@ def SiAprobableSobreNo(horario, c_actual, h_ini, h_fin, dia) -> bool:
                             importante = calendario[i][j].clase.importante              #Tenemos en cuenta si la clase es importante o no
 
                             if importante and not aprobable and coinciden(h_ini, h_fin, ch_ini, ch_fin):         #Comprobamos si coinciden
+                                
+                                calendario[i][j].mostrar()
+                                
                                 puede = False
 
                             j = j + 1
@@ -124,6 +127,9 @@ def SiAprobableSobreNo(horario, c_actual, h_ini, h_fin, dia) -> bool:
                         importante = calendario[i].clase.importante
 
                         if importante and not aprobable and coinciden(h_ini, h_fin, ch_ini, ch_fin):
+
+                            calendario[i].mostrar()
+
                             puede = False
 
                         i = i + 1
@@ -155,6 +161,9 @@ def ProfesorOcupado(horario, profesor, h_ini, h_fin, dia) -> bool:
                             ch_fin = calendario[k][q].h_fin
                             p_profesor = calendario[k][q].clase.profesor.nombre
                             if (p_profesor == profesor) and coinciden(h_ini, h_fin, ch_ini, ch_fin):        #Comprobamos si coinciden
+                                
+                                calendario[k][q].mostrar()
+                                
                                 ocupado = True
                             q = q + 1
 
@@ -166,6 +175,9 @@ def ProfesorOcupado(horario, profesor, h_ini, h_fin, dia) -> bool:
                         ch_fin = calendario[k].h_fin
                         p_profesor = calendario[k].clase.profesor.nombre
                         if (p_profesor == profesor) and coinciden(h_ini, h_fin, ch_ini, ch_fin):
+
+                            calendario[k].mostrar()
+
                             ocupado = True
                         k = k + 1
 

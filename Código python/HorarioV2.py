@@ -170,8 +170,11 @@ def colocarClases(Clases, Aulas, Horarios):
                                     while (indice_aula < len(aulas)) and not colocado:                          #pillamos otra hasta que no haya aulas
                                         if not AulaOcupada(Horarios, aulas[indice_aula], h_ini, h_fin, dia):
                                             if type(Horarios[carrera][curso][dia][0]) is list:
-                                                j = 1
+                                                j = 0
                                                 while (j < len(Horarios[carrera][curso][dia])) and not colocado:
+
+                                                    print(f"lista: {j}")
+
                                                     if not HayYaClaseLista(Horarios[carrera][curso][dia][j], h_ini, h_fin):
                                                         Horarios[carrera][curso][dia][j].append(c_horario(clase, h_ini, h_fin, aulas[indice_aula]))
                                                         colocado = True
@@ -192,7 +195,7 @@ def colocarClases(Clases, Aulas, Horarios):
                                     while (indice_aula < len(aulas)) and not colocado:
                                         if not AulaOcupada(Horarios, aulas[indice_aula], h_ini, h_fin, dia):
                                             if type(Horarios[carrera][curso][dia][0]) is list:
-                                                j = 1
+                                                j = 0
                                                 while (j < len(Horarios[carrera][curso][dia])) and not colocado:
                                                     if not HayYaClaseLista(Horarios[carrera][curso][dia][j], h_ini, h_fin):
                                                         Horarios[carrera][curso][dia][j].append(c_horario(clase, h_ini, h_fin, aulas[indice_aula]))
