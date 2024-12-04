@@ -219,6 +219,7 @@ def colocarClases(Clases, Aulas, Horarios):
         if not colocado:
             clase.mostrar()
             Errores.append(clase)
+            raise ValueError("Esta clase no se ha introducido")
     
     if len(Errores) != 0:
         for error in Errores:

@@ -181,7 +181,7 @@ def ProfesorOcupado(horario, profesor, h_ini, h_fin, dia) -> bool:
 def AulaOcupada(horario, aula, h_ini, h_fin, dia) -> bool:
     ocupada = False
 
-    print(f"Entra en la funcion AulaOcupada con {h_ini} y {h_fin} y el aula {aula}")
+    print(f"Entra en la funcion AulaOcupada con {h_ini} y {h_fin} , el día {dia} y el aula {aula}")
 
     carreras = list(horario.keys())
     i = 0
@@ -205,6 +205,9 @@ def AulaOcupada(horario, aula, h_ini, h_fin, dia) -> bool:
                             ch_fin = (calendario[k][q]).h_fin
                             p_aula = calendario[k][q].aula
                             if (p_aula == aula) and coinciden(h_ini, h_fin, ch_ini, ch_fin):                #Comprobamos si coinciden
+                                
+                                calendario[k][q].mostrar()
+                                
                                 ocupada = True
                             q = q + 1
 
@@ -216,6 +219,9 @@ def AulaOcupada(horario, aula, h_ini, h_fin, dia) -> bool:
                         ch_fin = calendario[k].h_fin
                         p_aula = calendario[k].aula
                         if (p_aula == aula) and coinciden(h_ini, h_fin, ch_ini, ch_fin):
+                            
+                            calendario[k].mostrar()
+                            
                             ocupada = True
                         k = k + 1
 
@@ -244,7 +250,9 @@ def HayClaseImportante(horario, h_ini, h_fin) -> bool:
                 importante = horario[i][j].clase.importante
 
                 if importante and coinciden(h_ini, h_fin, ch_ini, ch_fin):
+
                     horario[i][j].mostrar()
+
                     no_puede = True
 
                 j = j + 1
@@ -257,7 +265,9 @@ def HayClaseImportante(horario, h_ini, h_fin) -> bool:
             importante = horario[i].clase.importante
 
             if importante and coinciden(h_ini, h_fin, ch_ini, ch_fin):
+                
                 horario[i].mostrar()
+
                 no_puede = True
             i = i + 1
 
@@ -282,6 +292,9 @@ def HayYaClase(horario, h_ini, h_fin) -> bool:
                     ch_fin = horario[i][j].h_fin
 
                     if coinciden(h_ini, h_fin, ch_ini, ch_fin):
+
+                        horario[i][j].mostrar()
+
                         puede = False
 
                     j = j + 1
@@ -296,6 +309,9 @@ def HayYaClase(horario, h_ini, h_fin) -> bool:
                 ch_fin = horario[i].h_fin
 
                 if coinciden(h_ini, h_fin, ch_ini, ch_fin):
+
+                    horario[i].mostrar()
+
                     puede = False
 
                 i = i + 1
@@ -319,6 +335,9 @@ def HayYaClaseLista(horario, h_ini, h_fin) -> bool:
         ch_fin = horario[i].h_fin
 
         if coinciden(h_ini, h_fin, ch_ini, ch_fin):
+
+            horario[i].mostrar()
+
             no_puede = True
         
         i = i + 1
@@ -328,6 +347,7 @@ def HayYaClaseLista(horario, h_ini, h_fin) -> bool:
 #Precondiciones: horario debe ser las listas de horarios del dia del curso de la carrera de la clase
 #Postcondición: devuelve True si ya hay clase de dicha asignatura en esa franja horaria y False en caso contrario
 def HayYaClaseAsignatura(horario, clase, h_ini, h_fin) -> bool:
+    clase_actual: c_horario
 
     print(f"Entra en la funcion HayYaClaseAsignatura con {h_ini} y {h_fin}, y con la asignatura {clase.asignatura.nombre}")
 
@@ -341,7 +361,7 @@ def HayYaClaseAsignatura(horario, clase, h_ini, h_fin) -> bool:
 
                 if (clase_actual.clase.asignatura == clase.asignatura) and coinciden(h_ini, h_fin, clase_actual.h_ini, clase_actual.h_fin):
                     
-                    clase_actual.clase.mostrar()
+                    clase_actual.mostrar()
                     
                     no_puede = True
                 j = j + 1
@@ -354,7 +374,7 @@ def HayYaClaseAsignatura(horario, clase, h_ini, h_fin) -> bool:
 
             if (clase_actual.clase.asignatura == clase.asignatura) and coinciden(h_ini, h_fin, clase_actual.h_ini, clase_actual.h_fin):
                 
-                clase_actual.clase.mostrar()
+                clase_actual.mostrar()
 
                 no_puede = True
             i = i + 1

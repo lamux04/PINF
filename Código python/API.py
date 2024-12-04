@@ -1,4 +1,4 @@
-from Horario import *
+import HorarioV2 as v2
 from ClasesProyecto import *
 from bottle import *
 import json
@@ -46,7 +46,7 @@ def insertar():
                     clase_actual = clase(clas["nombre"], clas["tipo"], clas["tipo_aula"], int(clas["duracion"]), clas["importante"], asignatura_actual, profesores[clas["profesor"]])   #Creamos clase
                     clases.append(clase_actual)
 
-    colocarClases(clases, aulas_horario, Horarios)
+    v2.colocarClases(clases, aulas_horario, Horarios)
 
     
 

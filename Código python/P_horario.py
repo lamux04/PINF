@@ -321,7 +321,7 @@ prop = asignatura("Fundamentos de Propulsión","SI",gia3)
 vibra = asignatura("Mecánica y Vibraciones","NO",gia3)
 navaerea = asignatura("Navegación Aérea","SI",gia3)
 mataero = asignatura("Materiales Aeroespaciales","SI",gia3)
-elemestructaero = asignatura("Elementos Estructurales Aeronáuticos","NO",gii3)
+elemestructaero = asignatura("Elementos Estructurales Aeronáuticos","NO",gia3)
 
 #CREAMOS LAS CLASES
 #Primera Prueba 1ªA GII
@@ -726,7 +726,7 @@ gii[gii4hardware.nombre] = [[],[],[],[],[]]
 gii[gii4sisinfo.nombre] = [[],[],[],[],[]]
 gii[gii4software.nombre] = [[],[],[],[],[]]
 #Octava Prueba
-gia[gii3.nombre] = [[],[],[],[],[]]
+gia[gia3.nombre] = [[],[],[],[],[]]
 
 Horarios[giiC.nombre] = gii
 Horarios[giaC.nombre] = gia
