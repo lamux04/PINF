@@ -5,7 +5,8 @@ import cookieParser from 'cookie-parser'
 const app = express()
 app.use(express.json())
 app.use(cors({
-    origin: 'http://localhost:5173',
+    // Todos los origenes
+    origin: true,
     credentials: true
 }))
 app.disable('x-powered-by')

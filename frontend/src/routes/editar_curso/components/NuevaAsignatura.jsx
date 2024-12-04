@@ -23,7 +23,7 @@ export const NuevaAsignatura = ({ curso, setCurso, setValidacion }) => {
             setValidacion('')
             setCurso({
                 ...curso, 
-                asignaturas: [...curso.asignaturas, { codigo: data.codigo, nombre, aprobabilidad }]
+                asignaturas: [...curso.asignaturas, { codigo: data.codigo, nombre, aprobabilidad, clases: [] }]
             })
             setNombre('')
         }

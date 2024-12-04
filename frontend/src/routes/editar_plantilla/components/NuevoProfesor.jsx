@@ -20,7 +20,8 @@ export const NuevoProfesor = ({ plantilla, setPlantilla, setValidacion }) => {
             setTimeout(() => setValidacion(''), 10000)
         } else {
             // Validación correcta
-            const data = await fetchCrearProfesor({ plantilla: plantilla.codigo, nombre: nombre.split(' ')[0], apellido1: nombre.split(' ')[1] || '', apellido2: nombre.split(' ').slice(2).join(' ') || '' })
+            const data = await fetchCrearProfesor({ plantilla: plantilla.codigo, nombre: nombre.split(' ')[0], apellido1: nombre.split(' ')[1] || ' ', apellido2: nombre.split(' ').slice(2).join(' ') || ' ' })
+            console.log(data)
             setValidacion('')
             setNombre('')
             setPlantilla(plantilla => ({

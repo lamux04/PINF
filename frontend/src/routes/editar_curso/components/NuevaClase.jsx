@@ -62,9 +62,6 @@ export const NuevaClase = ({ asignatura, curso, setCurso, setValidacion }) => {
                 )
             })
             setTipo('')
-            setTipoAula('')
-            setDuracion('')
-            setProfesorSeleccionado('')
         }
     }
         

@@ -51,7 +51,7 @@ export class AsignaturaController
 
         // Validamos los atributos
         if (!nombre) return res.status(400).json({ message: 'Nombre es requerido' })
-        if (!aprobabilidad) return res.status(400).json({ message: 'Aprobabilidad es requerida' })
+        if (aprobabilidad === undefined) return res.status(400).json({ message: 'Aprobabilidad es requerida' })
 
         // Comprobamos que el curso sea del usuario
         const { valida, plant_cod } = await CursoModel.perteneceAUsuario({ curso_cod, username })
