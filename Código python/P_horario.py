@@ -125,8 +125,8 @@ Fluidos_lab = "Laboratorio de fluidos"
 Aulas[Fluidos_lab] = ["A01"]
 SicFm = "Laboratorio de SIC y FM"
 Aulas[SicFm] = ["A15", "A17"]
-
-
+Campo = "Salida de Campo"
+Aulas[Campo]=["Campo1"]
 
  
 aulas_tipo = []
@@ -223,6 +223,15 @@ Juantonicab = profesor("Juan Antonio Caballero")
 Juanmadodero = profesor("Juan Manuel Dodero")
 JosemariRdrigz = profesor("José María Rodríguez")
 PabloTorre = profesor("Pablo de la Torre")
+#Octava Prueba
+LuisRubio = profesor("Luis Ruibio García")
+AlbertoSolis = profesor("Alberto Solis")
+FranciscosFndz = profesor("Francisco Fernández")
+AntonioLuis = profesor("Antonio Luis Delgado")
+PabloMoreno = profesor("Pablo Moreno")
+CristobalRuiz= profesor("Cristobal Ruiz")
+Alvaroruiz = profesor("Álvaro Ruiz")
+
 #CREAMOS LAS CARRERAS, LOS CURSOS Y LAS ASIGNATURAS
 #Primera prueba
 giiC = carrera("GII")
@@ -304,6 +313,15 @@ calsi = asignatura("Calidad de los Sistemas Informáticos","SI",gii4tecinfo)
 iweb = asignatura("Ingenieía Web","SI ",gii4tecinfo)
 inet = asignatura("Internet y Negocio Electrónico","SI",gii4tecinfo)
 virtsis = asignatura("Virtualización de Sistemas","SI",gii4tecinfo)
+#Octava prueba
+gia3 = curso("3º GIA",giaC)
+aero1 = asignatura("Aoerdinámica I","SI",gia3)
+estructaero = asignatura("Estructuras Aeronáuticas","SI",gia3)
+prop = asignatura("Fundamentos de Propulsión","SI",gia3)
+vibra = asignatura("Mecánica y Vibraciones","NO",gia3)
+navaerea = asignatura("Navegación Aérea","SI",gia3)
+mataero = asignatura("Materiales Aeroespaciales","SI",gia3)
+elemestructaero = asignatura("Elementos Estructurales Aeronáuticos","NO",gii3)
 
 #CREAMOS LAS CLASES
 #Primera Prueba 1ªA GII
@@ -637,6 +655,49 @@ Clases.append(clase("Calidad de los Sistemas Informáticos A1 Teoría","Teoría"
 Clases.append(clase("Calidad de los Sistemas Informáticos A1 Teoría Extra","Teoría",sem,120,"SI",calsi,AndresYa))
 Clases.append(clase("Calidad de los Sistemas Informáticos C1 Prácticas","Prácticas",sem,150,"NO",calsi,PabloTorre))
 Clases.append(clase("Calidad de los Sistemas Informáticos C2 Prácticas","Prácticas",sem,150,"NO",calsi,PabloTorre))
+#Octava Prueba
+Clases.append(clase("Navegación Aérea X1 Teórico/Práctica 1","Teoría",sem,120,"SI",navaerea,AntonioLuis))
+Clases.append(clase("Navegación Aérea X1 Teórico/Práctica 2","Teoría",sem,60,"SI",navaerea,AntonioLuis))
+Clases.append(clase("Navegación Aérea X1 Teórico/Práctica Extra","Teoría",sem,150,"SI",navaerea,AntonioLuis))
+Clases.append(clase("Navegación Aérea D1/D3","Prácticas",Nav_aerea,150,"NO",navaerea,PabloMoreno))
+Clases.append(clase("Navegación Aérea D2/D4","Prácticas",Nav_aerea,150,"NO",navaerea,PabloMoreno))
+Clases.append(clase("Navegación Aérea D5/D6","Prácticas",Nav_aerea,150,"NO",navaerea,PabloMoreno))
+Clases.append(clase("Navegación Aérea D7","Prácticas",Nav_aerea,150,"NO",navaerea,PabloMoreno))
+Clases.append(clase("Aerodinámica X1 Teórico/Práctica 1","Teoría",mp,120,"SI",aero1,Miguelfosa))
+Clases.append(clase("Aerodinámica X1 Teórico/Práctica 2","Teoría",mp,120,"SI",aero1,Miguelfosa))
+Clases.append(clase("Aerodinámica I D1/D3 Prácticas Laboratorio","Prácticas",Fluidos_lab,120,"NO",aero1,Miguelfosa))
+Clases.append(clase("Aerodinámica I D2/D4 Prácticas Laboratorio","Prácticas",Fluidos_lab,120,"NO",aero1,Miguelfosa))
+Clases.append(clase("Aerodinámica I D1/D3 Prácticas Laboratorio","Prácticas",Simulacion_lab,120,"NO",aero1,Miguelfosa))
+Clases.append(clase("Aerodinámica I D2/D4 Prácticas Laboratorio","Prácticas",Simulacion_lab,120,"NO",aero1,Miguelfosa))
+Clases.append(clase("Estructuras Aeronáuticas A1 Teoría 1","Teoría",sem,90,"SI",estructaero,AlbertoSolis))
+Clases.append(clase("Estructuras Aeronáuticas A1 Teoría 2","Teoría",sem,90,"SI",estructaero,AlbertoSolis))
+Clases.append(clase("Estructuras Aeronáuticas B1  Problemas","Problemas",sem,120,"NO",estructaero,AlbertoSolis))
+Clases.append(clase("Estructuras Aeronáuticas C1  Prácticas Informáticas","Prácticas",Simulacion_lab,120,"NO",estructaero,AlbertoSolis))
+Clases.append(clase("Estructuras Aeronáuticas C2  Prácticas Informáticas","Problemas",Simulacion_lab,120,"NO",estructaero,AlbertoSolis))
+Clases.append(clase("Fundamentos de Propulsión A1 Teoría","Teoría",sem,90,"SI",prop,Alvaroruiz))
+Clases.append(clase("Fundamentos de Propulsión B1 Problemas","Problemas",sem,60,"NO",prop,Alvaroruiz))
+Clases.append(clase("Fundamentos de Propulsión B2 Problemas","Problemas",sem,60,"NO",prop,Alvaroruiz))
+Clases.append(clase("Fundamentos de Propulsión C1 Prácticas Informáticas","Prácticas",pi,120,"NO",prop,Alvaroruiz))
+Clases.append(clase("Fundamentos de Propulsión C2 Prácticas Informáticas","Prácticas",pi,120,"NO",prop,Alvaroruiz))
+Clases.append(clase("Fundamentos de Propulsión C3 Prácticas Informáticas","Prácticas",pi,120,"NO",prop,Alvaroruiz))
+Clases.append(clase("Mecánica y Vibraciones A1 Teoría 1","Teoría",sem,90,"SI",vibra,FranciscosFndz))
+Clases.append(clase("Mecánica y Vibraciones A1 Teoría 2","Teoría",sem,90,"SI",vibra,FranciscosFndz))
+Clases.append(clase("Mecánica y Vibraciones B1 Problemas","Problemas",sem,90,"SI",vibra,FranciscosFndz))
+Clases.append(clase("Mecánica y Vibraciones B2 Problemas","Problemas",sem,90,"SI",vibra,FranciscosFndz))
+Clases.append(clase("Mecánica y Vibraciones C1/C3 Prácticas Informáticas","Prácticas",pi,120,"SI",vibra,FranciscosFndz))
+Clases.append(clase("Mecánica y Vibraciones C2 Prácticas Informáticas","Prácticas",pi,120,"NO",vibra,FranciscosFndz))
+Clases.append(clase("Mecánica y Vibraciones C1/C3 Prácticas Informáticas","Prácticas",sem,120,"NO",vibra,FranciscosFndz))
+Clases.append(clase("Mecánica y Vibraciones D1 Prácticas Laboratorio","Prácticas",Mecanica_lab,120,"NO",vibra,FranciscosFndz))
+Clases.append(clase("Mecánica y Vibraciones D2 Prácticas Laboratorio","Prácticas",Mecanica_lab,120,"NO",vibra,FranciscosFndz))
+Clases.append(clase("Mecánica y Vibraciones D3 Prácticas Laboratorio","Prácticas",Mecanica_lab,120,"NO",vibra,FranciscosFndz))
+Clases.append(clase("Mecánica y Vibraciones D4 Prácticas Laboratorio","Prácticas",Mecanica_lab,120,"NO",vibra,FranciscosFndz))
+Clases.append(clase("Elementos Estructurales Aeronáuticos A1/B1 Teoría/Problemas","Teoría",sem,120,"SI",elemestructaero,AlbertoSolis))
+Clases.append(clase("Elementos Estructurales Aeronáuticos A1 Teoría","Teoría",sem,90,"SI",elemestructaero,AlbertoSolis))
+Clases.append(clase("Elementos Estructurales Aeronáuticos C1 Prácticas Informáticas","Prácticas",Simulacion_lab,120,"NO",elemestructaero,AlbertoSolis))
+Clases.append(clase("Materiales Aerospaciales A1 Teoría 1","Teoría",sem,120,"SI",mataero,DanielAraujo))
+Clases.append(clase("Materiales Aerospaciales A1 Teoría 2","Teoría",sem,120,"SI",mataero,DanielAraujo))
+Clases.append(clase("Materiales Aerospaciales B1 Problemas","Problemas",mp,120,"SI",mataero,LuisRubio))
+Clases.append(clase("Materiales Aerospaciales E1 Salidas de campo","Salida de Campo",Campo,240,"NO",mataero,LuisRubio))
 
 #COMIENZAN LAS PRUEBAS
 #Primera prueba
@@ -664,7 +725,8 @@ gii[gii4computacion.nombre] = [[],[],[],[],[]]
 gii[gii4hardware.nombre] = [[],[],[],[],[]]
 gii[gii4sisinfo.nombre] = [[],[],[],[],[]]
 gii[gii4software.nombre] = [[],[],[],[],[]]
-
+#Octava Prueba
+gia[gii3.nombre] = [[],[],[],[],[]]
 
 Horarios[giiC.nombre] = gii
 Horarios[giaC.nombre] = gia
