@@ -22,7 +22,7 @@ const aulaSchemePatch = z.object({
     tipo: z.string().min(1).optional(),
 })
 
-AulaRouter.get('/', authMiddleware, validateRequest(aulaSchemeGet), AulaController.getAulas)
+AulaRouter.get('/', authMiddleware, AulaController.getAulas)
 AulaRouter.get('/:aula_cod', authMiddleware, AulaController.getAula)
 AulaRouter.post('/', authMiddleware, validateRequest(aulaSchemePost), AulaController.createAula)
 AulaRouter.patch('/:aula_cod', authMiddleware, validateRequest(aulaSchemePatch), AulaController.updateAula)

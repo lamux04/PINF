@@ -7,7 +7,7 @@ export class AulaController
     static async getAulas(req, res)
     {
         // Obtenemos los atributos de la plantilla
-        const { plantilla: plant_cod } = req.body
+        const { plantilla: plant_cod } = req.query
         const { username } = req.user
 
         // Validamos los atributos

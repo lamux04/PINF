@@ -21,6 +21,7 @@ const cursoSchemePatch = z.object({
 })
 
 CursoRouter.get('/', authMiddleware, validateRequest(cursoSchemeGet), CursoController.getAll)
+CursoRouter.get('/ver_plantilla/:curso_cod', authMiddleware, CursoController.getCodigoPlantilla)
 CursoRouter.get('/consultar_cursos/:curso_cod', authMiddleware, CursoController.getCursosByCodigo)
 CursoRouter.get('/verificar/:curso_cod', authMiddleware, CursoController.verifyCurso)
 CursoRouter.get('/ver_curso/:curso_cod', authMiddleware, CursoController.verCurso)

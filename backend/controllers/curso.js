@@ -166,4 +166,21 @@ export class CursoController
 
         res.json({ cursos })
     }
+
+    // GET /api/curso/ver_plantilla/:curso_cod
+    static async getCodigoPlantilla(req, res)
+    {
+        // Obtenemos los atributos
+        const { username } = req.user
+        const { curso_cod } = req.params
+
+        // Comprobamos que el curso sea del usuario
+        const { valida } = await CursoModel.perteneceAUsuario({ curso_cod, username })
+        if (!valida) return res.status(400).json({ message: 'Curso no encontrado' })
+
+        // Obtenemos la plantilla del curso
+        const { plant_cod } = await CursoModel.getPlantilla({ curso_cod })
+
+        res.json({ plant_cod })
+    }
 }

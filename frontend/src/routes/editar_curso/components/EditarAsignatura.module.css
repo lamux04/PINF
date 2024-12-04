@@ -1,0 +1,80 @@
+.bloque {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.bloque_titulo {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.details {
+    background-color: var(--gris);
+    border: 2px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    width: 600px;
+}
+
+.summary {
+    list-style: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 5px;
+    background-color: var(--gris);
+    border-radius: 3px;
+    transition: color 0.3s;
+}
+
+.details:closed {
+    background-color: #f4f4f4; /* Color de fondo cuando está cerrado */
+    border-color: #ccc;        /* Borde cuando está cerrado */
+}
+
+.summary::before {
+    content: "▶"; /* Agrega un triángulo apuntando a la derecha */
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.summary:hover {
+    color: var(--button-hover);
+}
+
+.details[open] .summary::before {
+    content: "▼"; /* Cambia el triángulo a apuntar hacia abajo cuando está abierto */
+}
+
+.bloque_clase {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    background-color: var(--gris);
+}
+
+.clave {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+
+.borrar {
+    background-color: var(--red);
+    color: var(--button-text);
+    padding: 3px 6px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.borrar:hover {
+    background-color: var(--red-hover);
+}

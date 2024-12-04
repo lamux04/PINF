@@ -24,7 +24,7 @@ const profesorSchemePatch = z.object({
     apellido2: z.string().min(1).optional(),
 })
 
-ProfesorRouter.get('/', authMiddleware, validateRequest(profesorSchemeGet), ProfesorController.getProfesores)
+ProfesorRouter.get('/', authMiddleware, ProfesorController.getProfesores)
 ProfesorRouter.get('/:prof_cod', authMiddleware, ProfesorController.getProfesor)
 ProfesorRouter.post('/', authMiddleware, validateRequest(profesorSchemePost), ProfesorController.createProfesor)
 ProfesorRouter.patch('/:prof_cod', authMiddleware, validateRequest(profesorSchemePatch), ProfesorController.updateProfesor)
