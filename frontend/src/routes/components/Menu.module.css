@@ -34,3 +34,7 @@
     color: var(--button-hover);
     cursor: pointer;
 }
+
+.img:hover {
+    cursor: pointer;
+}

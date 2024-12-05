@@ -18,7 +18,7 @@ export const Menu = () => {
         <div className={styles.bloque}>
             <nav className={styles.menu}>
                 <div className={styles.bloque_izquierda}>
-                    <img src={logo} alt="Logo de Shed4All" onClick={() => navigator('/home')}/>
+                    <img className={styles.img} src={logo} alt="Logo de Shed4All" onClick={() => navigator('/home')}/>
                 </div>
                 <div className={styles.bloque_derecha}>
                     <a className={styles.enlace} onClick={() => navigator('/plantillas')}>Mis plantillas</a>

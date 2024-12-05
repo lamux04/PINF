@@ -7,11 +7,11 @@ import { validateRequest } from "../middlewares/validateRequest.js";
 import { z } from 'zod';
 
 const plantillaSchemePost = z.object({
-    nombre: z.string()
+    nombre: z.string().max(30)
 })
 
 const plantillaSchemePatch = z.object({
-    nombre: z.string().optional()
+    nombre: z.string().max(30).optional()
 })
 
 PlantillaRouter.get('/', authMiddleware, PlantillaController.getAll)

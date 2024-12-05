@@ -13,12 +13,12 @@ const asignaturaSchemeGet = z.object({
 
 const asignaturaSchemePost = z.object({
     curso: z.string().length(36),
-    nombre: z.string(),
+    nombre: z.string().max(30),
     aprobabilidad: z.number().int().min(0).max(1)
 })
 
 const asignaturaSchemePatch = z.object({
-    nombre: z.string().optional(),
+    nombre: z.string().max(30).optional(),
     aprobabilidad: z.number().int().min(0).max(1).optional()
 })
 

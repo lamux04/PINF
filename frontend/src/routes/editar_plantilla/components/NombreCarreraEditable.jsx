@@ -29,8 +29,10 @@ export const NombreCarreraEditable = ({ plantilla, setPlantilla, codigoCarrera }
         {
             setValidacion('El nombre no puede estar vacío')
             setTimeout(() => setValidacion(''), 10000)
-        }
-        else if (plantilla.carreras.find(el => el.codigo !== codigoCarrera && el.nombre === nombre)) {
+        } else if (nombre.length > 30) {
+            setValidacion('El nombre no puede tener más de 30 caracteres')
+            setTimeout(() => setValidacion(''), 10000)
+        } else if (plantilla.carreras.find(el => el.codigo !== codigoCarrera && el.nombre === nombre)) {
             // Validación fallida
             setValidacion('Existe una carrera con el mismo nombre')
             setTimeout(() => setValidacion(''), 10000)

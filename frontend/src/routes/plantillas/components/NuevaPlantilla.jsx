@@ -11,14 +11,17 @@ export const NuevaPlantilla = ({ plantillas, crearPlantilla }) => {
 
     const handleClick = async (ev) => {
         ev.preventDefault()
-        if (nombre === '')
-        {
+        if (nombre === '') {
             setValidacion('El nombre no puede estar vacío')
+            setTimeout(() => setValidacion(''), 10000)
             return
-        }
-        if (plantillas.find(el => el.nombre === nombre))
-        {
+        } else if (nombre.length > 30) {
+            setValidacion('El nombre no puede tener más de 30 caracteres')
+            setTimeout(() => setValidacion(''), 10000)
+            return
+        } else if (plantillas.find(el => el.nombre === nombre)) {
             setValidacion('El nombre no puede repetirse entre plantillas')
+            setTimeout(() => setValidacion(''), 10000)
             return
         }
 

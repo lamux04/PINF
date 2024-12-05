@@ -17,6 +17,9 @@ export const NombreAsignaturaEditable = ({ asignatura, curso, setCurso}) => {
         {
             setValidacion('El nombre no puede estar vacío')
             setTimeout(() => setValidacion(''), 10000)
+        } else if (nombre.length > 30) {
+            setValidacion('El nombre no puede tener más de 30 caracteres')
+            setTimeout(() => setValidacion(''), 10000)
         } else if (curso.asignaturas.find(el => el.codigo !== asignatura.codigo && el.nombre === nombre)) {
             // Validación fallida
             setValidacion('Ya existe un curso con ese nombre')

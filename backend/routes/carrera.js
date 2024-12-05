@@ -13,12 +13,12 @@ const carreraSchemeGet = z.object({
 
 const carreraSchemePost = z.object({
     plantilla: z.string().length(36),
-    nombre: z.string()
+    nombre: z.string().max(30)
 })
 
 const carreraSchemePatch = z.object({
     plantilla: z.string().length(36).optional(),
-    nombre: z.string().optional()
+    nombre: z.string().max(30).optional()
 })
 
 CarreraRouter.get('/', authMiddleware, validateRequest(carreraSchemeGet), CarreraController.getByPlantiilla);

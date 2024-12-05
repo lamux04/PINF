@@ -12,8 +12,10 @@ export const NuevoCurso = ({ plantilla, setPlantilla, setValidacion, codigoCarre
         {
             setValidacion('El nombre no puede estar vacío')
             setTimeout(() => setValidacion(''), 10000)
-        }
-        else if (plantilla.carreras.find(carrera => (carrera.codigo === codigoCarrera) ? carrera.cursos.find(curso => curso.nombre === nombre) : false)) {
+        } else if (nombre.length > 30) {
+            setValidacion('El nombre no puede tener más de 30 caracteres')
+            setTimeout(() => setValidacion(''), 10000)
+        } else if (plantilla.carreras.find(carrera => (carrera.codigo === codigoCarrera) ? carrera.cursos.find(curso => curso.nombre === nombre) : false)) {
             // Validación fallida
             setValidacion('Ya existe una curso con ese nombre')
             setTimeout(() => setValidacion(''), 10000)

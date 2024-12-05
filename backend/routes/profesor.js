@@ -13,15 +13,15 @@ const profesorSchemeGet = z.object({
 
 const profesorSchemePost = z.object({
     plantilla: z.string().length(36),
-    nombre: z.string().min(1),
-    apellido1: z.string().min(1),
-    apellido2: z.string().min(1),
+    nombre: z.string().min(1).max(20),
+    apellido1: z.string().max(20),
+    apellido2: z.string().max(20),
 })
 
 const profesorSchemePatch = z.object({
-    nombre: z.string().min(1).optional(),
-    apellido1: z.string().min(1).optional(),
-    apellido2: z.string().min(1).optional(),
+    nombre: z.string().min(1).max(20).optional(),
+    apellido1: z.string().max(20).optional(),
+    apellido2: z.string().max(20).optional(),
 })
 
 ProfesorRouter.get('/', authMiddleware, ProfesorController.getProfesores)

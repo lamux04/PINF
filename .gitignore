@@ -1,3 +1,4 @@
 */node_modules
+backend/ca.pem
 backend/.env
 frontend2

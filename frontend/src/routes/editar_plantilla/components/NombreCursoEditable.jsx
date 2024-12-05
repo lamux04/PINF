@@ -13,12 +13,13 @@ export const NombreCursoEditable = ({ curso, plantilla, setPlantilla, codigoCarr
     const handleClick = (ev) => {
         ev.preventDefault()
 
-        if (nombre === '')
-        {
+        if (nombre === '') {
             setValidacion('El nombre no puede estar vacío')
             setTimeout(() => setValidacion(''), 10000)
-        }
-        else if (plantilla.carreras.find(carrera => (carrera.codigo === codigoCarrera) ? carrera.cursos.find(el => el.nombre === nombre && el.codigo !== curso.codigo) : false)) {
+        }  else if (nombre.length > 30) {
+            setValidacion('El nombre no puede tener más de 30 caracteres')
+            setTimeout(() => setValidacion(''), 10000)
+        } else if (plantilla.carreras.find(carrera => (carrera.codigo === codigoCarrera) ? carrera.cursos.find(el => el.nombre === nombre && el.codigo !== curso.codigo) : false)) {
             // Validación fallida
             setValidacion('Existe una carrera con el mismo nombre')
             setTimeout(() => setValidacion(''), 10000)

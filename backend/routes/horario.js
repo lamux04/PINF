@@ -11,7 +11,7 @@ const horarioVisualizarScheme = z.object({
 })
 
 const horarioCrearScheme = z.object({
-    nombre: z.string(),
+    nombre: z.string().max(50),
     plantilla: z.string().length(36)
 })
 

@@ -13,18 +13,18 @@ const claseSchemeGet = z.object({
 
 const claseSchemePost = z.object({
     asignatura: z.string().length(36),
-    descripcion: z.string(),
-    tipo: z.string(),
-    tipo_aula: z.string(),
+    descripcion: z.string().max(100),
+    tipo: z.string().max(20),
+    tipo_aula: z.string().max(40),
     profesor: z.string().length(36),
     duracion: z.number().int().positive(),
     importante: z.boolean(),
 })
 
 const claseSchemePatch = z.object({
-    descripcion: z.string().optional(),
-    tipo: z.string().optional(),
-    tipo_aula: z.string().optional(),
+    descripcion: z.string().max(100).optional(),
+    tipo: z.string().max(20).optional(),
+    tipo_aula: z.string().max(40).optional(),
     profesor: z.string().length(36).optional(),
     duracion: z.number().int().positive().optional(),
     importante: z.boolean().optional(),

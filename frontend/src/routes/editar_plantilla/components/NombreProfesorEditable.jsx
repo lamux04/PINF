@@ -17,6 +17,12 @@ export const NombreProfesorEditable = ({ profesor, plantilla, setPlantilla }) =>
         {
             setValidacion('El nombre no puede estar vacío')
             setTimeout(() => setValidacion(''), 10000)
+        } else if (nombre.split(' ').length < 2) {
+            setValidacion('El nombre debe tener al menos un apellido')
+            setTimeout(() => setValidacion(''), 10000)
+        } else if (nombre.split(' ')[0].length > 20 || nombre.split(' ')[1].length > 20 || nombre.split(' ').slice(2).join(' ').length > 20) {
+            setValidacion('El nombre es demasiado largo')
+            setTimeout(() => setValidacion(''), 10000)
         } else if (plantilla.profesores.find(profe => profe.codigo != profesor.codigo && `${profe.nombre} ${profe.apellidos}` === nombre)) {
             // Validación fallida
             setValidacion('Ya existe un profesor con ese nombre')

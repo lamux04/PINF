@@ -13,26 +13,32 @@
     transition: border 0.3s;
 }
 
+.input:hover {
+    border-color: var(--orange);
+
+}
+
 .input:focus {
     border: 2px solid var(--button-hover);
+    border-color: var(--orange);
 }
 
 .select {
     font-size: inherit;
     outline: none;
     border: 2px solid #000000;
-    padding: 6px 10px;
     transition: border 0.3s;
     border-radius: 10px;
     outline: none;
 }
 
 .select:hover {
-    cursor: pointer;
+    border-color: var(--orange);
 }
 
 .select:focus {
-    outline: none;
+    border-color: var(--orange);
+    
 }
 
 .button {

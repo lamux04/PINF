@@ -13,11 +13,11 @@ const cursoSchemeGet = z.object({
 
 const cursoSchemePost = z.object({
     carrera: z.string().length(36),
-    nombre: z.string()
+    nombre: z.string().max(30)
 })
 
 const cursoSchemePatch = z.object({
-    nombre: z.string().optional()
+    nombre: z.string().max(30).optional()
 })
 
 CursoRouter.get('/', authMiddleware, validateRequest(cursoSchemeGet), CursoController.getAll)

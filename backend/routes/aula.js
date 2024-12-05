@@ -13,13 +13,13 @@ const aulaSchemeGet = z.object({
 
 const aulaSchemePost = z.object({
     plantilla: z.string().length(36),
-    nombre: z.string().min(1),
-    tipo: z.string().min(1),
+    nombre: z.string().min(1).max(15),
+    tipo: z.string().min(1).max(40),
 })
 
 const aulaSchemePatch = z.object({
-    nombre: z.string().min(1).optional(),
-    tipo: z.string().min(1).optional(),
+    nombre: z.string().min(1).max(15).optional(),
+    tipo: z.string().min(1).max(40).optional(),
 })
 
 AulaRouter.get('/', authMiddleware, AulaController.getAulas)

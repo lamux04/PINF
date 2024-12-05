@@ -16,11 +16,17 @@ export const NuevaAula = ({ plantilla, setPlantilla, setValidacion }) => {
         {
             setValidacion('El nombre no puede estar vacío')
             setTimeout(() => setValidacion(''), 10000)
+        } else if (nombre.length > 15) {
+            setValidacion('El nombre no puede tener más de 15 caracteres')
+            setTimeout(() => setValidacion(''), 10000)
         } else if (tipo === '')
         {
             setValidacion('El tipo de aula no puede estar vacío')
             setTimeout(() => setValidacion(''), 10000)
-        } else if (plantilla.aulas.find(aula => aula.nombre === nombre)) {
+        } else if (tipo.length > 40) {
+            setValidacion('El tipo no puede tener más de 40 caracteres')
+            setTimeout(() => setValidacion(''), 10000)
+        }  else if (plantilla.aulas.find(aula => aula.nombre === nombre)) {
             // Validación fallida
             setValidacion('Ya existe un aula con ese nombre')
             setTimeout(() => setValidacion(''), 10000)

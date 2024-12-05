@@ -13,7 +13,7 @@ export const Main = ({ codigo }) => {
 
     return (
         <main className={styles.bloque_principal}>
-            <Atras onClick={() => navigator(`/plantillas/${curso.plant_cod}`)} />
+            <Atras onClick={() => navigator(`/modificar_plantilla/${curso.plant_cod}`)} />
             {
                 (curso) && 
                     <div className={styles.main}>

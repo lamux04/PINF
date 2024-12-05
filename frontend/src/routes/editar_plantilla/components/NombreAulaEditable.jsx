@@ -17,6 +17,9 @@ export const NombreAulaEditable = ({ aula, plantilla, setPlantilla }) => {
         {
             setValidacion('El nombre no puede estar vacío')
             setTimeout(() => setValidacion(''), 10000)
+        } else if (nombre.length > 15) {
+            setValidacion('El nombre no puede tener más de 15 caracteres')
+            setTimeout(() => setValidacion(''), 10000)
         } else if (plantilla.aulas.find(el => el.codigo != aula.codigo && el.nombre === nombre)) {
             // Validación fallida
             setValidacion('Ya existe un profesor con ese nombre')

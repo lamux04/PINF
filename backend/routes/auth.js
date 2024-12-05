@@ -6,8 +6,8 @@ import { validateRequest } from "../middlewares/validateRequest.js";
 import { z } from 'zod';
 
 const registerSchema = z.object({
-    username: z.string(),
-    password: z.string(),
+    username: z.string().max(30),
+    password: z.string().max(60),
 });
 
 AuthRouter.get('/verify', authMiddleware, AuthController.verify)

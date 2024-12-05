@@ -16,12 +16,21 @@ export const GenerarHorario = ({ codigo, horarios, agregarHorario }) => {
         if (horarios.find(el => el.nombre === nombre))
         {
             setValidacion('Ya existe un horario con ese nombre')
-            return
+            setTimeout(() => setValidacion(''), 10000)
+        } else if (nombre === '') {
+            setValidacion('El nombre no puede estar vacío')
+            setTimeout(() => setValidacion(''), 10000)
+        } else if (nombre.length > 50) {
+            setValidacion('El nombre no puede tener más de 50 caracteres')
+            setTimeout(() => setValidacion(''), 10000)
+        } else {
+            setValidacion('')
+            // LLamar a agregarHorario
+
+
+            
         }
 
-        setValidacion('')
-
-        // LLamar a agregarHorario
     }
 
     return (
