@@ -14,13 +14,14 @@ import os
 #Quinta prueba: añadimos las clases de 2º de GIA
 #Sexta prueba: añadimos las clases de 3º de GII
 #Séptima prueba: añadimos las clases de todas las ramas de 4º de GII
+#Octava prueba: añadimos las clases de 3º de GIA
+#Novena prueba: añadimos las clases de 1º de GIM
 
 #CREAMOS TODAS LAS AULAS
 mg = "Magna grande"
 mp = "Magna pequeña"
 sem = "Problemas"
 pi = "Practicas Informáticas"
-#DE MOMENTO SOLO CONSIDERAMOS LABORATORIOS EN GENERAL, AUNQUE HABRÍA QUE SEPARARLOS
 #lab = "Laboratorio"
 fs = "Seminario pasillo F"
 aulas_tipo = []
@@ -152,7 +153,7 @@ Blanca = profesor("Blanca")
 Alicia = profesor("Alicia")
 Nuria = profesor("Nuria")
 Elena = profesor("Elena")
-MariaEugenia = profesor("MariaEugenia")
+MariaEugenia = profesor("Maria Eugenia Cornejo Piñero")
 Miguel = profesor("Miguel")
 #Tercera prueba
 Alfonso = profesor("Alfonso")
@@ -231,6 +232,12 @@ AntonioLuis = profesor("Antonio Luis Delgado")
 PabloMoreno = profesor("Pablo Moreno")
 CristobalRuiz= profesor("Cristobal Ruiz")
 Alvaroruiz = profesor("Álvaro Ruiz")
+#Novena Prueba
+SalvadorChulian = profesor("Salvador Chulian Garcia")
+AlbertoFndz = profesor("Alberto Fernandez Ros")
+SolSaez = profesor("Sol Saez Martinez")
+DanielMarin = profesor("Daniel Marin Aragon")
+#Quedan los de diseño, física I y fundamentos de informatica
 
 #CREAMOS LAS CARRERAS, LOS CURSOS Y LAS ASIGNATURAS
 #Primera prueba
