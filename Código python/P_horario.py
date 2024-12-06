@@ -564,7 +564,7 @@ Clases.append(clase("Diseño de Algoritmos B3 Problemas","Problemas",sem,60,"NO"
 Clases.append(clase("Diseño de Algoritmos B4 Problemas","Problemas",sem,60,"NO",disalg,Leopoldo))
 Clases.append(clase("Diseño de Algoritmos C1 Prácticas","Prácticas",pi,150,"NO",disalg,AlfredoSnchz))
 Clases.append(clase("Diseño de Algoritmos C2 Prácticas","Prácticas",pi,150,"NO",disalg,PacoPalomo))
-Clases.append(clase("Diseño de Algoritmos C3 Prácticas","Prácticas",pi,150,"NO",disalg,AlbertoSanchez))
+Clases.append(clase("Diseño de Algoritmos C3 Prácticas","Prácticas",pi,150,"NO",disalg,Leopoldo))
 Clases.append(clase("Diseño de Algoritmos C4 Prácticas","Prácticas",pi,150,"NO",disalg,AlfredoSnchz))
 Clases.append(clase("Diseño de Algoritmos C5 Prácticas","Prácticas",pi,150,"NO",disalg,PedroFdz))
 Clases.append(clase("Diseño de Algoritmos C6 Prácticas","Prácticas",pi,150,"NO",disalg,PedroFdz))
