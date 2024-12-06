@@ -27,3 +27,33 @@
     font-weight: 600;
     padding-right: 10px;
 }
+
+.modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: space-around;
+    width: auto;
+    height: 250px;
+}
+
+.p {
+    font-size: 22px;
+    line-height: 40px;
+}
+
+.button {
+    font-size: 24px;
+    border: 2px solid var(--button-bg);
+    border-radius: 20px;
+    padding: 6px 10px;
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    transition: background-color 0.3s, border 0.3s;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: var(--button-hover);
+    border: 2px solid var(--button-hover)
+}

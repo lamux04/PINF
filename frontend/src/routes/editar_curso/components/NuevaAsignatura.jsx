@@ -36,7 +36,7 @@ export const NuevaAsignatura = ({ curso, setCurso, setValidacion }) => {
         <form onSubmit={handleClick}>
             <input id='checkboxId' className={styles.checkbox} type="checkbox" placeholder='Nombre asignatura' checked={aprobabilidad} onChange={() => setAprobabilidad(!aprobabilidad)} />
             <label htmlFor='checkboxId' className={styles.label}>
-                Aprobable
+                {aprobabilidad ? 'Aprobable' : 'No aprobable'}
             </label>
             
             <input className={styles.input} type="text" placeholder='Nombre asignatura' value={nombre} onChange={ev => setNombre(ev.target.value)} />

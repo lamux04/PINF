@@ -1,7 +1,10 @@
 .form {
-    display: flex;
-    flex-direction: column;
-    width: 400px;
+    display: grid;
+    grid-template-columns: 300px 300px;
+    gap: 10px 50px;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
 }
 
 .input {
@@ -11,11 +14,11 @@
     border-radius: 10px;
     padding: 6px 10px;
     transition: border 0.3s;
+    width: 300px;
 }
 
 .input:hover {
     border-color: var(--orange);
-
 }
 
 .input:focus {
@@ -30,6 +33,7 @@
     transition: border 0.3s;
     border-radius: 10px;
     outline: none;
+    width: 300px;
 }
 
 .select:hover {
@@ -44,11 +48,13 @@
 .button {
     font-size: inherit;
     border: 2px solid var(--button-bg);
-    border-radius: 10px;
+    border-radius: 50%;
     padding: 6px 10px;
     background-color: var(--button-bg);
     color: var(--button-text);
     transition: background-color 0.3s, border 0.3s;
+    width: 40px;
+    height: 40px;
 }
 
 .button:hover {
@@ -60,22 +66,33 @@
 .checkbox {
     border-radius: 10px;
     display: none;
+    width: 300px;
 }
 
 .label {
     display: inline-block;
     border-radius: 10px;
     padding: 10px 20px;
-    background-color: var(--button-bg);
+    background-color: var(--state-disabled);
     color: var(--button-text);
-    border: 2px solid #000000;
+    border: 2px solid var(--state-disabled);
     cursor: pointer;
     text-align: center;
     transition: all 0.3s ease;
+    width: 300px;
+}
+
+.label:hover {
+    background-color: var(--button-bg);
 }
 
 .checkbox:checked + .label {
     background-color: var(--button-hover);
     border: 2px solid var(--button-hover);
     color: var(--button-text);
+}
+
+.checkbox:checked + .label:hover {
+    background-color: var(--orange-hover);
+    border-color: var(--orange-hover);
 }

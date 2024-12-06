@@ -2,6 +2,7 @@
     font-size: inherit;
     outline: none;
     border: 2px solid #000000;
+    border-radius: 0 10px 10px 0;
     padding: 6px 10px;
     transition: border 0.3s;
 }
@@ -13,10 +14,11 @@
 .button {
     font-size: inherit;
     border: 2px solid var(--button-bg);
-    border-radius: 0 10px 10px 0;
+    border-radius: 50%;
     padding: 6px 10px;
     background-color: var(--button-bg);
     color: var(--button-text);
+    margin-left: 20px;
     transition: background-color 0.3s, border 0.3s;
 }
 
@@ -32,18 +34,27 @@
 
 .label {
     display: inline-block;
-    padding: 10px 20px;
-    background-color: var(--button-bg);
-    color: var(--button-text);
-    border: 2px solid #000000;
     border-radius: 10px 0 0 10px;
+    padding: 10px 20px;
+    background-color: var(--state-disabled);
+    color: var(--button-text);
+    border: 2px solid var(--state-disabled);
     cursor: pointer;
     text-align: center;
     transition: all 0.3s ease;
+}
+
+.label:hover {
+    background-color: var(--button-bg);
 }
 
 .checkbox:checked + .label {
     background-color: var(--button-hover);
     border: 2px solid var(--button-hover);
     color: var(--button-text);
+}
+
+.checkbox:checked + .label:hover {
+    background-color: var(--orange-hover);
+    border-color: var(--orange-hover);
 }

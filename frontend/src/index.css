@@ -75,6 +75,8 @@ body, :root {
   --red-hover: #880000;
   --button-disabled: #383838;
   --input-disabled: #dcdcdc;
+  --state-disabled: #333;
+  --orange-hover: #933526;
 }
 
 [data-theme='dark'] {

@@ -120,14 +120,12 @@ export const NuevaClase = ({ asignatura, curso, setCurso, setValidacion }) => {
             setTipo('')
         }
     }
-        
-        
 
     return (
         <form className={styles.form} onSubmit={handleSave}>
             <input id={`inputId${asignatura.codigo}`} className={styles.checkbox} type="checkbox" placeholder='Nombre asignatura' checked={importante} onChange={() => setImportante(!importante)} />
             <label htmlFor={`inputId${asignatura.codigo}`} className={styles.label}>
-                Importante
+                {importante ? 'Importante' : 'No importante'}
             </label>
             <input className={styles.input} type="text" placeholder='Tipo clase' value={tipo} onChange={ev => setTipo(ev.target.value)} />
             <input className={styles.input} type="number" placeholder='Duracion clase' value={duracion} onChange={ev => setDuracion(ev.target.value)} />

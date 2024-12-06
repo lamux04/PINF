@@ -38,7 +38,7 @@ export const EditarAsignatura = ({ asignatura, curso, setCurso}) => {
     }
 
     return (
-        <span className={styles.bloque}>
+        <span className={styles.bloque_asignatura}>
             <Titulo3>
                 <span className={styles.bloque_titulo}>
                     <span className={styles.titulo}>
@@ -49,19 +49,25 @@ export const EditarAsignatura = ({ asignatura, curso, setCurso}) => {
                     <button onClick={() => handleEliminarAsignatura()} className={styles.borrar}><i className="fa-solid fa-trash"></i></button>
                 </span>
             </Titulo3>
+            <p><span className={styles.clave}>Aprobable:</span> {asignatura.aprobabilidad ? 'SI' : 'NO'}</p>
+            <h4 className={styles.h4}>Clases</h4>
             <span className={styles.agregar}>
                 <MiniValidacion>{validacion}</MiniValidacion>
                 <NuevaClase asignatura={asignatura} curso={curso} setCurso={setCurso} setValidacion={setValidacion} />
             </span>
-            <p>Aprobable: {asignatura.aprobabilidad ? 'SI' : 'NO'}</p>
             <div className={styles.bloque}>
                 {
                     (asignatura.clases.length !== 0)
                     ?   asignatura.clases.map((clase) => (
                             <details className={styles.details} key={clase.codigo}>
-                            <summary className={styles.summary}>{clase.tipo} - {clase.duracion} minutos</summary>
+                            <summary className={styles.summary}>
+                                <span className={styles.nombre_details}>
+                                    {clase.tipo} - {clase.duracion} minutos
+                                </span>
+                                <button onClick={() => handleEliminar(clase.codigo)} className={styles.borrar}><i className="fa-solid fa-trash"></i></button>
+                            </summary>
                                 <div className={styles.bloque_clase}>
-                                    <button onClick={() => handleEliminar(clase.codigo)} className={styles.borrar}><i className="fa-solid fa-trash"></i></button>
+                                    
                                     <p><span className={styles.clave}>Tipo: </span><span>{clase.tipo}</span></p>
                                     <p><span className={styles.clave}>Duración: </span><span>{clase.duracion} minutos</span></p>
                                     <p><span className={styles.clave}>Importante: </span><span>{clase.importante ? 'SI' : 'NO'}</span></p>
