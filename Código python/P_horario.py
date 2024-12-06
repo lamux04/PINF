@@ -175,7 +175,7 @@ David = profesor("David Lobo")
 NicoMiguel = profesor("Nicolas Miguel Madrid")
 AlbertoSanchez = profesor("Alberto Sanchez Alzola")
 AlfonsoJose = profesor("Alfonso Jose Bello")
-InmaculadaRamos = profesor("Inmaculada Concepción Ramon")
+InmaculadaRamos = profesor("Inmaculada Concepción Ramon Lerate")
 AguedaVazquez = profesor("Agueda Vazquez Lopez-Escobar")
 JoseLuisCardenas = profesor("Jose Luis Cardenas Leal")
 MariaIsabelEgea = profesor("Maria Isabel Egea Gonzalez")
@@ -197,7 +197,7 @@ Lauraromero = profesor("Laura Romero Rodriguez")
 PedroFdz = profesor("Pedro Fernández Fernández")
 PacoPalomo = profesor("Paco Palomo Lozano")
 AlfredoSnchz = profesor("Alfredo Sánchez-Roselly Navarro")
-AntonioTomeu = profesor("Antonio J Tomeu Hardasmal")
+AntonioTomeu = profesor("Antonio Jorge Tomeu Hardasmal")
 JuanCarlosTorre = profesor("Juan Carlos de la TOrre Macías")
 KevinJesus = profesor("Kevin Jesus del Valle")
 JuanBoubeta = profesor("Juan Boubeta Puig")
@@ -212,7 +212,7 @@ MariPaz = profesor("María de la Paz Guerrero Lebrero")
 GuillermoBar = profesor("Guillermo Bárcena González")
 AndresYa = profesor("Andrés Escolano")
 Joaquinpiz = profesor("Joaquín Pizarro")
-AlejandroCal = profesor("Alejandro Calderón")
+AlejandroCal = profesor("Alejandro Calderón Sanchez")
 Nestormora = profesor("Néstor Mora")
 BernabeDorronsoro = profesor("Bernabé Dorronsoro")
 MiguelBol = profesor("Miguel Ángel Bolivar")
@@ -237,7 +237,10 @@ SalvadorChulian = profesor("Salvador Chulian Garcia")
 AlbertoFndz = profesor("Alberto Fernandez Ros")
 SolSaez = profesor("Sol Saez Martinez")
 DanielMarin = profesor("Daniel Marin Aragon")
-#Quedan los de diseño, física I y fundamentos de informatica
+ElenaCabrera = profesor("Elena Cabrera Revuelta")
+JDiosLopez = profesor("Juan de Dios Lopez Castro")
+JMariaRdgz = profesor("Jose Maria Rodriguez Corral")
+
 
 #CREAMOS LAS CARRERAS, LOS CURSOS Y LAS ASIGNATURAS
 #Primera prueba
@@ -329,6 +332,14 @@ vibra = asignatura("Mecánica y Vibraciones","NO",gia3)
 navaerea = asignatura("Navegación Aérea","SI",gia3)
 mataero = asignatura("Materiales Aeroespaciales","SI",gia3)
 elemestructaero = asignatura("Elementos Estructurales Aeronáuticos","NO",gia3)
+#Novena prueba
+gimC = carrera("GIM")
+gim1 = curso("1º GIM", gimC)
+algYgeoGIM = asignatura("Álgebra y Geometría GIM", "SI", gim1)
+calGIM = asignatura("Cálculo GIM", "SI", gim1)
+dibujoDigitalGIM = asignatura("Expresión gráfica y Diseño asistido GIM", "SI", gim1)
+fis1GIM = asignatura("Física I GIM", "SI", gim1)
+informaticaGIM = asignatura("Fundamentos de informática GIM", "SI", gim1)
 
 #CREAMOS LAS CLASES
 #Primera Prueba 1ªA GII
@@ -552,12 +563,12 @@ Clases.append(clase("Diseño de Algoritmos B2 Problemas","Problemas",sem,60,"NO"
 Clases.append(clase("Diseño de Algoritmos B3 Problemas","Problemas",sem,60,"NO",disalg,Leopoldo))
 Clases.append(clase("Diseño de Algoritmos B4 Problemas","Problemas",sem,60,"NO",disalg,Leopoldo))
 Clases.append(clase("Diseño de Algoritmos C1 Prácticas","Prácticas",pi,150,"NO",disalg,AlfredoSnchz))
-Clases.append(clase("Diseño de Algoritmos C2 Prácticas","Prácticas",pi,150,"NO",disalg,AlfredoSnchz))
+Clases.append(clase("Diseño de Algoritmos C2 Prácticas","Prácticas",pi,150,"NO",disalg,PacoPalomo))
 Clases.append(clase("Diseño de Algoritmos C3 Prácticas","Prácticas",pi,150,"NO",disalg,AlbertoSanchez))
 Clases.append(clase("Diseño de Algoritmos C4 Prácticas","Prácticas",pi,150,"NO",disalg,AlfredoSnchz))
 Clases.append(clase("Diseño de Algoritmos C5 Prácticas","Prácticas",pi,150,"NO",disalg,PedroFdz))
 Clases.append(clase("Diseño de Algoritmos C6 Prácticas","Prácticas",pi,150,"NO",disalg,PedroFdz))
-Clases.append(clase("Diseño de Algoritmos C7 Prácticas","Prácticas",pi,150,"NO",disalg,PedroFdz))
+Clases.append(clase("Diseño de Algoritmos C7 Prácticas","Prácticas",pi,150,"NO",disalg,PacoPalomo))
 Clases.append(clase("Programación Concurrente y de Tiempo Real A1 Teoria","Teoría",mp,90,"SI",pctr,KevinJesus))
 Clases.append(clase("Programación Concurrente y de Tiempo Real A1 Teoria Extra","Teoría",mp,90,"SI",pctr,KevinJesus))
 Clases.append(clase("Programación Concurrente y de Tiempo Real A2 Teoria","Teoría",mp,90,"SI",pctr,KevinJesus))
@@ -705,6 +716,39 @@ Clases.append(clase("Materiales Aerospaciales A1 Teoría 1","Teoría",sem,120,"S
 Clases.append(clase("Materiales Aerospaciales A1 Teoría 2","Teoría",sem,120,"SI",mataero,DanielAraujo))
 Clases.append(clase("Materiales Aerospaciales B1 Problemas","Problemas",mp,120,"SI",mataero,LuisRubio))
 Clases.append(clase("Materiales Aerospaciales E1 Salidas de campo","Salida de Campo",Campo,240,"NO",mataero,LuisRubio))
+#Novena Prueba
+Clases.append(clase("AlG A1 Teoría 1", "Teoría", mg, 90, "SI", algYgeoGIM, TamaraMaria))
+Clases.append(clase("AlG A1 Teoría 2", "Teoría", mg, 90, "SI", algYgeoGIM, TamaraMaria))
+Clases.append(clase("AlG B1 Problemas", "Problemas", sem, 60, "NO", algYgeoGIM, AlbertoFndz))
+Clases.append(clase("AlG B2 Problemas", "Problemas", sem, 60, "NO", algYgeoGIM, AlbertoFndz))
+Clases.append(clase("AlG C1 Practicas Informaticas", "Prácticas", pi, 120, "NO", algYgeoGIM, SalvadorChulian))
+Clases.append(clase("AlG C2 Practicas Informaticas", "Prácticas", pi, 120, "NO", algYgeoGIM, SolSaez))
+Clases.append(clase("AlG C3 Practicas Informaticas", "Prácticas", pi, 120, "NO", algYgeoGIM, SolSaez))
+Clases.append(clase("CAL A1 Teoría 1", "Teoría", mg, 90, "SI", calGIM, MariaEugenia))
+Clases.append(clase("CAL A1 Teoría 2", "Teoría", mg, 90, "SI", calGIM, MariaEugenia))
+Clases.append(clase("CAL B1 Problemas", "Problemas", sem, 60, "NO", calGIM, DanielMarin))
+Clases.append(clase("CAL B2 Problemas", "Problemas", sem, 60, "NO", calGIM, DanielMarin))
+Clases.append(clase("CAL C1 Prácticas informáticas", "Prácticas", pi, 120, "NO", calGIM, MariaEugenia))
+Clases.append(clase("CAL C2 Prácticas informáticas", "Prácticas", pi, 120, "NO", calGIM, DanielMarin))
+Clases.append(clase("CAL C3 Prácticas informáticas", "Prácticas", pi, 120, "NO", calGIM, DanielMarin))
+Clases.append(clase("EG A1 Teoría 1", "Teoría", mg, 90, "SI", dibujoDigitalGIM, ElenaCabrera))
+Clases.append(clase("EG A1 Teoría 2", "Teoría", mg, 90, "SI", dibujoDigitalGIM, ElenaCabrera))
+Clases.append(clase("EG B1 Problemas", "Problemas", sem, 120, "NO", dibujoDigitalGIM, JDiosLopez))
+Clases.append(clase("EG B2 Problemas", "Problemas", sem, 120, "NO", dibujoDigitalGIM, JDiosLopez))
+Clases.append(clase("EG C1 C2 Prácticas informáticas", "Prácticas", sem, 120, "NO", dibujoDigitalGIM, ElenaCabrera))
+Clases.append(clase("FIS1 A1 Teoría 1", "Teoría", mg, 90, "SI", fis1GIM, JoseLuisCardenas))
+Clases.append(clase("FIS1 A1 Teoría 2", "Teoría", mg, 90, "SI", fis1GIM, JoseLuisCardenas))
+Clases.append(clase("FIS1 B1 Problemas", "Problemas", sem, 60, "NO", fis1GIM, MariaIsabelEgea))
+Clases.append(clase("FIS1 B2 Problemas", "Problemas", sem, 60, "NO", fis1GIM, MariaIsabelEgea))
+Clases.append(clase("FIS1 D1 Laboratorio", "Laboratorio", Fisica_lab, 120, "NO", fis1GIM, InmaculadaRamos))
+Clases.append(clase("FIS1 D2 Laboratorio", "Laboratorio", Fisica_lab, 120, "NO", fis1GIM, AguedaVazquez))
+Clases.append(clase("FIS1 D3 Laboratorio", "Laboratorio", Fisica_lab, 120, "NO", fis1GIM, AguedaVazquez))
+Clases.append(clase("FI A1 Teoría", "Teoría", mg, 150, "SI", informaticaGIM, JMariaRdgz))
+Clases.append(clase("FI A1 Teoría Extra", "Teoría", mg, 60, "SI", informaticaGIM, JMariaRdgz))
+Clases.append(clase("FI C1 Prácticas informáticas", "Prácticas", pi, 120, "NO", informaticaGIM, AlejandroCal))
+Clases.append(clase("FI C2 Prácticas informáticas", "Prácticas", pi, 120, "NO", informaticaGIM, AntonioTomeu))
+Clases.append(clase("FI C3 Prácticas informáticas", "Prácticas", pi, 120, "NO", informaticaGIM, Eloysa))
+
 
 #COMIENZAN LAS PRUEBAS
 #Primera prueba
@@ -734,9 +778,14 @@ gii[gii4sisinfo.nombre] = [[],[],[],[],[]]
 gii[gii4software.nombre] = [[],[],[],[],[]]
 #Octava Prueba
 gia[gia3.nombre] = [[],[],[],[],[]]
+#Novena Prueba
+gim: dict
+gim = {}
+gim[gim1.nombre] = [[],[],[],[],[]]
 
 Horarios[giiC.nombre] = gii
 Horarios[giaC.nombre] = gia
+Horarios[gimC.nombre] = gim
 
 #v1.colocarClases(Clases, Aulas, Horarios)
 v2.colocarClases(Clases, Aulas, Horarios)
