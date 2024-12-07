@@ -17,6 +17,7 @@ const horarioCrearScheme = z.object({
 
 HorarioRouter.get('/', authMiddleware, HorarioController.getAll)
 HorarioRouter.get('/horarios_generados/:plant_cod', authMiddleware, HorarioController.getHorariosGenerados)
+HorarioRouter.get('/verificar/:horar_cod', authMiddleware, HorarioController.verificar)
 HorarioRouter.get('/:horar_cod', authMiddleware, HorarioController.getByCodigo)
 HorarioRouter.post('/', authMiddleware, validateRequest(horarioCrearScheme), HorarioController.create)
 HorarioRouter.post('/visualizar', authMiddleware, validateRequest(horarioVisualizarScheme), HorarioController.visualizar)

@@ -3,7 +3,7 @@ POST http://localhost:1234/api/auth/login
 content-type: application/json
 
 {
-    "username": "lamux04",
+    "username": "Mascayicle",
     "password": "1234"
 }
 

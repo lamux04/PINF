@@ -1,10 +1,10 @@
 ### GET /api/horario
 GET http://localhost:1234/api/horario
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzIwMDk4NzQsImV4cCI6MTczMjAxNzA3NH0.u8tApxW3ewjEJoFt6qRT0wGZ1WkZ01fIQEDKmJHMgaQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMDEiLCJpYXQiOjE3MzM1ODU4OTIsImV4cCI6MTczMzU5MzA5Mn0.2pdYGE7oXuHLyDIzvlNQ2WHvpVZ6zSlfp_fnwBh-L9M
 
 ### GET /api/horario/:horar_cod
-GET http://localhost:1234/api/horario/cfd6a8f7-a385-11ef-951a-cecd02c24f20
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzIwMDk4NzQsImV4cCI6MTczMjAxNzA3NH0.u8tApxW3ewjEJoFt6qRT0wGZ1WkZ01fIQEDKmJHMgaQ
+GET http://localhost:1234/api/horario/6d164848-14f0-4d9b-9d03-11788c4e6e9a
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMDEiLCJpYXQiOjE3MzM1ODYwOTYsImV4cCI6MTczMzU5MzI5Nn0.tKKV7opZfQJfNpLOkO37JpQxAU5pb_QmcStdtyCKCd8
 
 ### DELETE /api/horario/:horar_cod
 DELETE http://localhost:1234/api/horario/e23fc302-a382-11ef-951a-cecd02c24f20
@@ -12,7 +12,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc
 
 ### POST /api/horario/visualizar  { horario }
 POST http://localhost:1234/api/horario/visualizar
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzI3MTMzMzQsImV4cCI6MTczMjcyMDUzNH0._jK2c34cvqpy7orOsOMVPmJ3yyQEpkR0pFyw_zrmRiQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMDEiLCJpYXQiOjE3MzM1ODYwOTYsImV4cCI6MTczMzU5MzI5Nn0.tKKV7opZfQJfNpLOkO37JpQxAU5pb_QmcStdtyCKCd8
 Content-Type: application/json
 
 {
@@ -21,10 +21,10 @@ Content-Type: application/json
 
 ### POST /api/horario/  { plantilla, nombre }
 POST http://localhost:1234/api/horario/
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzI3MTMzMzQsImV4cCI6MTczMjcyMDUzNH0._jK2c34cvqpy7orOsOMVPmJ3yyQEpkR0pFyw_zrmRiQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzM1ODcyODQsImV4cCI6MTczMzU5NDQ4NH0.NBTkJwoNpxICk4ZngNzsr7TRIYRGm6AM4i44MEEdmeA
 Content-Type: application/json
 
 {
     "plantilla": "f5cacd26-170b-465b-9720-430314945ef7",
-    "nombre": "prueba"
+    "nombre": "Horario de prueba"
 }

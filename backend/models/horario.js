@@ -43,13 +43,13 @@ export class HorarioModel
                         clase["clase_gen_hinicio"] = clase_generada["hinicio"]
                         clase["clase_gen_hfin"] = clase_generada["hfin"]
                         clase["clase_gen_dia"] = clase_generada["dia"]
-                        clase["aula_cod"] = clase_generada["aula_cod"]
-                        clase["asignatura_cod"] = asignatura["codigo"]
-                        clase["asignatura_nombre"] = asignatura["nombre"]
-                        clase["curso_cod"] = curso["codigo"]
-                        clase["curso_nombre"] = curso["nombre"]
-                        clase["carrera_cod"] = carrera["codigo"]
-                        clase["carrera_nombre"] = carrera["nombre"]
+                        clase["aula"] = clase_generada["aula"]
+                        // clase["asignatura_cod"] = asignatura["codigo"]
+                        // clase["asignatura_nombre"] = asignatura["nombre"]
+                        // clase["curso_cod"] = curso["codigo"]
+                        // clase["curso_nombre"] = curso["nombre"]
+                        // clase["carrera_cod"] = carrera["codigo"]
+                        // clase["carrera_nombre"] = carrera["nombre"]
                     }
                 }
             }

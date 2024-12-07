@@ -64,7 +64,7 @@ export class ClaseModel
     // Postcondicion: Devuelve la clase generada de la clase en el horario
     static async getClaseGenerada({ clase_cod, horar_cod })
     {
-        const [rows] = await promisePool.query('SELECT clase_gen_cod AS codigo, clase_gen_hinicio AS hinicio, clase_gen_hfin AS hfin, clase_gen_dia AS dia, aula_cod FROM CLAE_GENERADA WHERE clase_cod = ? AND horar_cod = ?', [clase_cod, horar_cod])
+        const [rows] = await promisePool.query('SELECT clase_gen_cod AS codigo, clase_gen_hinicio AS hinicio, clase_gen_hfin AS hfin, clase_gen_dia AS dia, AULA.aula_nombre AS aula FROM CLAE_GENERADA LEFT JOIN AULA ON CLAE_GENERADA.aula_cod = AULA.aula_cod WHERE clase_cod = ? AND horar_cod = ?', [clase_cod, horar_cod])
 
         if (rows.length === 0) return { exists: false }
 

@@ -151,4 +151,18 @@ export class HorarioController
 
         res.json({ horarios })
     }
+
+    // GET /horario/verificar/:horar_cod
+    static async verificar(req, res)
+    {
+        // Obtenemos el nombre de usuario del token
+        const { username } = req.user
+        const { horar_cod } = req.params
+
+        // Comprobamos que el horario sea del usuario
+        const { valido } = await HorarioModel.puedeVer({ horar_cod, username })
+        if (!valido) return res.status(400).json({ message: 'El usuario no puede ver el horario' })
+
+        res.json({ username, horar_cod })
+    }
 }

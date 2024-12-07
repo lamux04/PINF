@@ -1,0 +1,30 @@
+.checkbox {
+    display: none;
+}
+
+.label {
+    display: inline-block;
+    border-radius: 10px;
+    padding: 10px 20px;
+    background-color: var(--state-disabled);
+    color: var(--button-text);
+    border: 2px solid var(--state-disabled);
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.label:hover {
+    background-color: var(--button-bg);
+}
+
+.checkbox:checked + .label {
+    background-color: var(--button-hover);
+    border: 2px solid var(--button-hover);
+    color: var(--button-text);
+}
+
+.checkbox:checked + .label:hover {
+    background-color: var(--orange-hover);
+    border-color: var(--orange-hover);
+}
