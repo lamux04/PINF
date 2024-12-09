@@ -13,8 +13,8 @@ export const NuevaAsignatura = ({ curso, setCurso, setValidacion }) => {
         {
             setValidacion('El nombre no puede estar vacío')
             setTimeout(() => setValidacion(''), 10000)
-        } else if (nombre.length > 30) {
-            setValidacion('El nombre no puede tener más de 30 caracteres')
+        } else if (nombre.length > 60) {
+            setValidacion('El nombre no puede tener más de 60 caracteres')
             setTimeout(() => setValidacion(''), 10000)
         } else if (curso.asignaturas.find(el => el.nombre === nombre)) {
             // Validación fallida
