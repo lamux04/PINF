@@ -6,7 +6,7 @@ const app = express()
 app.use(express.json())
 app.use(cors({
     // Todos los origenes
-    origin: 'http://www.sched4all.site',
+    origin: 'true',
     credentials: true
 }))
 app.disable('x-powered-by')
