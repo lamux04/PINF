@@ -6,9 +6,10 @@ const app = express()
 app.use(express.json())
 app.use(cors({
     // Todos los origenes
-    origin: true,
+    origin: 'http://www.sched4all.com',
     credentials: true
 }))
+app.options('*', cors());
 app.disable('x-powered-by')
 app.use(cookieParser())
 
