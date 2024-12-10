@@ -1,6 +1,8 @@
+import { host } from "../../variables"
+
 export const fetchCerrarSesion = async () => {
     try {
-        await fetch('http://localhost:1234/api/auth/logout', {
+        await fetch(`${host}/api/auth/logout`, {
             method: 'POST',
             credentials: 'include'
         })

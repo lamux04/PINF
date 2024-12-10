@@ -7,6 +7,8 @@ app.use(express.json())
 app.use(cors({
     // Todos los origenes
     origin: 'http://www.sched4all.site',
+    methods: 'GET, POST, OPTIONS, PUT, DELETE',
+    allowedHeaders: 'Content-Type, Authorization, X-Requested-With',
     credentials: true
 }))
 app.options('*', cors())
