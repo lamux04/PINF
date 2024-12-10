@@ -9,6 +9,7 @@ app.use(cors({
     origin: 'true',
     credentials: true
 }))
+app.options('*', cors())
 app.disable('x-powered-by')
 app.use(cookieParser())
 
