@@ -21,7 +21,8 @@ export class AuthController
         const token = jwt.sign({ username }, process.env.JWT_SECRET, { expiresIn: '2h' })
         res.cookie('authToken', token, {
             httpOnly: true,
-            sameSite: 'Strict',
+            sameSite: 'None',
+            secure: true,
             maxAge: 2 * 60 * 60 * 1000
         })
         
@@ -45,7 +46,8 @@ export class AuthController
 
         res.cookie('authToken', token, {
             httpOnly: true,
-            sameSite: 'Strict',
+            sameSite: 'None',
+            secure: true,
             maxAge: 2 * 60 * 60 * 1000
         })
 

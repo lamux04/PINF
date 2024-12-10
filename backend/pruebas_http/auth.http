@@ -1,5 +1,5 @@
 ### login
-POST http://localhost:1234/api/auth/login
+POST http://192.168.68.200:1234/api/auth/login
 content-type: application/json
 
 {

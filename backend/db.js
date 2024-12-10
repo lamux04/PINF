@@ -4,7 +4,7 @@ import fs from 'fs'
 
 dotenv.config()
 
-const sslCert = fs.readFileSync('/home/lamux/Documentos/Repositorios/PINF/backend/ca.pem')
+const sslCert = fs.readFileSync('./ca.pem')
 
 const pool = mysql.createPool({
     host: process.env.DB_HOST,
