@@ -3,6 +3,7 @@ import { Input } from '../../components/Input'
 import styles from './GenerarHorario.module.css'
 import { Loading } from '../../components/Loading'
 import { Validacion } from '../../components/Validacion'
+import { host } from '../../../variables'
 
 export const GenerarHorario = ({ codigo, horarios, agregarHorario }) => {
     const [nombre, setNombre] = useState('')
@@ -10,7 +11,7 @@ export const GenerarHorario = ({ codigo, horarios, agregarHorario }) => {
     const [validacion, setValidacion] = useState('')
     
 
-    const handleClickGenerarHorario = (ev) => {
+    const handleClickGenerarHorario = async (ev) => {
         ev.preventDefault()
 
         if (horarios.find(el => el.nombre === nombre))
@@ -25,10 +26,16 @@ export const GenerarHorario = ({ codigo, horarios, agregarHorario }) => {
             setTimeout(() => setValidacion(''), 10000)
         } else {
             setValidacion('')
-            // LLamar a agregarHorario
+            setCargando(true)
+            const data = await fetch(`${host}/horarios_generados/${codigo}`, {
+                method: 'POST',
+                include: 'credentials',
+            })
 
-
-            
+            const { horar_cod } = await data.json()
+            agregarHorario({ nombre, horar_cod })
+        
+            setCargando(false)
         }
 
     }
