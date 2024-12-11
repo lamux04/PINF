@@ -27,7 +27,7 @@ export const GenerarHorario = ({ codigo, horarios, agregarHorario }) => {
         } else {
             setValidacion('')
             setCargando(true)
-            const data = await fetch(`${host}/horarios_generados/${codigo}`, {
+            const data = await fetch(`${host}/api/horario/${codigo}`, {
                 method: 'POST',
                 include: 'credentials',
             })
