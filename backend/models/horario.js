@@ -66,6 +66,7 @@ export class HorarioModel
             clases_obj[clase["codigo"]] = clase
         }
 
+        console.log(clases_obj)
         for (let carrera of plantilla["carreras"])
         {
             for (let curso of carrera["cursos"])
