@@ -82,7 +82,8 @@ export class AuthController
     {
         res.clearCookie('authToken', {
             httpOnly: true,
-            sameSite: 'Strict'
+            sameSite: 'Strict',
+            secure: true
         })
         res.json({ message: 'Sesion cerrada correctamente' })
     }
