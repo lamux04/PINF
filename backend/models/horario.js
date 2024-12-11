@@ -93,7 +93,7 @@ export class HorarioModel
             }
             horario["carreras"].push(carrera)
         }
-
+        console.log(horario)
         return { horario, exists: rows.length > 0 }
     }
 
