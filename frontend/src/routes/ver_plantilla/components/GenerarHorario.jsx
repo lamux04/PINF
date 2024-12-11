@@ -29,7 +29,7 @@ export const GenerarHorario = ({ codigo, horarios, agregarHorario }) => {
             setCargando(true)
             const data = await fetch(`${host}/api/horario/`, {
                 method: 'POST',
-                include: 'credentials',
+                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json'
                 },

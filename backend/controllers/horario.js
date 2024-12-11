@@ -1,8 +1,9 @@
 import { HorarioModel } from '../models/horario.js'
 import { AuthModel } from '../models/auth.js'
 import { PlantillaModel } from '../models/plantilla.js'
+import { json } from 'express'
 
-const endpoint = 'http://www.sched4all.site/sched4AllAPI'
+const endpoint = 'http://10.182.111.71:8084/sched4allAPI'
 
 export class HorarioController
 {
@@ -54,11 +55,11 @@ export class HorarioController
 
         // ----------- Generamos el horario con la API ------------
         // Obtenemos los datos necesarios
-        const { datos } = HorarioModel.getDatos({ plant_cod })
+        const { datos } = await HorarioModel.getDatos({ plant_cod })
 
         // Creamos el horario con la API
         const response = await fetch(`${endpoint}`, {
-            method: 'GET',
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },

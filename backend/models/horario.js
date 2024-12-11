@@ -190,7 +190,6 @@ export class HorarioModel
         // Obtenemos las aulas
         const aulas = {}
         const [rows] = await promisePool.query('SELECT aula_cod, aula_tipo FROM AULA WHERE plant_cod = ?', [plant_cod])
-
         for (let aula of rows)
         {
             if (!aulas[aula["aula_tipo"]])
@@ -201,6 +200,7 @@ export class HorarioModel
                 aulas[aula["aula_tipo"]].push(aula["aula_cod"])
             }
         }
+
         datos["aulas"] = aulas
 
         // Obtenemos los profesores
@@ -226,10 +226,11 @@ export class HorarioModel
             let c = 1
             for (let curso of rows4)
             {
+                const codigo_curso = curso["nombre"]
                 curso["nombre"] = `${c}º${curso["nombre"]}`
                 // Obtenemos las asignaturas
                 const asignaturas = []
-                const [rows5] = await promisePool.query('SELECT asig_cod AS nombre, asig_probabilidad AS aprobable FROM ASIGNATURA WHERE curso_cod = ?', [curso["nombre"]])
+                const [rows5] = await promisePool.query('SELECT asig_cod AS nombre, asig_probabilidad AS aprobable FROM ASIGNATURA WHERE curso_cod = ?', [codigo_curso])
 
                 for (let asignatura of rows5)
                 {
@@ -280,7 +281,7 @@ export class HorarioModel
             for (let curso of carrera["cursos"])
             {
                 let d = 0
-                for (let dia of carrera["clases"])
+                for (let dia of curso["clases"])
                 {
                     for (let lista of dia)
                     {
@@ -289,10 +290,13 @@ export class HorarioModel
                             const clase_gen_cod = v4()
                             promisePool.query('INSERT INTO CLAE_GENERADA (clase_gen_cod, clase_gen_hinicio, clase_gen_hfin, clase_gen_dia, clase_cod, aula_cod, horar_cod) VALUES (?, ?, ?, ?, ?, ?, ?)', [clase_gen_cod, lista["h_ini"], lista["h_fin"], d, lista["nombre"], lista["aula"], horar_cod])
                         }
-                        for (let clase of lista)
-                        {
-                            const clase_gen_cod = v4()
-                            promisePool.query('INSERT INTO CLAE_GENERADA (clase_gen_cod, clase_gen_hinicio, clase_gen_hfin, clase_gen_dia, clase_cod, aula_cod, horar_cod) VALUES (?, ?, ?, ?, ?, ?, ?)', [clase_gen_cod, clase["h_ini"], clase["h_fin"], d, clase["nombre"], clase["aula"], horar_cod])
+                        else {
+
+                            for (let clase of lista)
+                            {
+                                const clase_gen_cod = v4()
+                                promisePool.query('INSERT INTO CLAE_GENERADA (clase_gen_cod, clase_gen_hinicio, clase_gen_hfin, clase_gen_dia, clase_cod, aula_cod, horar_cod) VALUES (?, ?, ?, ?, ?, ?, ?)', [clase_gen_cod, clase["h_ini"], clase["h_fin"], d, clase["nombre"], clase["aula"], horar_cod])
+                            }
                         }
                     }
                     d++
