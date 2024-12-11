@@ -1,1 +1,1 @@
-export const host =  'http://www.sched4all.site'
+export const host =  'https://www.sched4all.site'
