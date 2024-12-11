@@ -78,6 +78,7 @@ export class HorarioModel
                         // const { clase_generada, exists } = await ClaseModel.getClaseGenerada({ clase_cod: clase["codigo"], horar_cod: horario["codigo"] })
                         console.log(clase)
                         const clase_generada = clases_obj[clase["codigo"]]
+                        console.log(clase_generada)
                         clase["clase_gen_cod"] = clase_generada["codigo"]
                         clase["clase_gen_hinicio"] = clase_generada["hinicio"]
                         clase["clase_gen_hfin"] = clase_generada["hfin"]
