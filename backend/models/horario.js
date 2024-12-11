@@ -57,7 +57,7 @@ export class HorarioModel
         // }
 
         // Lo mismo que lo comentado pero solo con una llamada a la base de datos
-        const [clases] = await promisePool.query('SELECT clase_cod AS codigo, clase_gen_cod AS codigo, clase_gen_hinicio AS hinicio, clase_gen_hfin AS hfin, clase_gen_dia AS dia, aula_cod AS aula FROM CLAE_GENERADA WHERE horar_cod = ?', [horar_cod])
+        const [clases] = await promisePool.query('SELECT clase_cod AS codigo, clase_gen_cod AS codigo, clase_gen_hinicio AS hinicio, clase_gen_hfin AS hfin, clase_gen_dia AS dia, aula_cod AS aula, clase_cod FROM CLAE_GENERADA WHERE horar_cod = ?', [horar_cod])
 
         // cambiar clases por un objeto cuyo codigo sea la clave
         const clases_obj = {}
@@ -75,9 +75,8 @@ export class HorarioModel
                     for (let clase of asignatura["clases"])
                     {
                         // const { clase_generada, exists } = await ClaseModel.getClaseGenerada({ clase_cod: clase["codigo"], horar_cod: horario["codigo"] })
-                        const clase_generada = clases_obj[clase["codigo"]]
+                        const clase_generada = clases_obj[clase["clase_cod"]]
                         if (!clase_generada) continue
-                        console.log(clase_generada)
                         clase["clase_gen_cod"] = clase_generada["codigo"]
                         clase["clase_gen_hinicio"] = clase_generada["hinicio"]
                         clase["clase_gen_hfin"] = clase_generada["hfin"]
