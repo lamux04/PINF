@@ -2,7 +2,7 @@ import { HorarioModel } from '../models/horario.js'
 import { AuthModel } from '../models/auth.js'
 import { PlantillaModel } from '../models/plantilla.js'
 
-const endpoint = 'http://localhost:3000/Sched4AllAPI'
+const endpoint = 'http://localhost:8084/sched4AllAPI'
 
 export class HorarioController
 {
