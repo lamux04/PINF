@@ -3,8 +3,8 @@ GET http://localhost:1234/api/horario
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMDEiLCJpYXQiOjE3MzM1ODU4OTIsImV4cCI6MTczMzU5MzA5Mn0.2pdYGE7oXuHLyDIzvlNQ2WHvpVZ6zSlfp_fnwBh-L9M
 
 ### GET /api/horario/:horar_cod
-GET http://localhost:1234/api/horario/6d164848-14f0-4d9b-9d03-11788c4e6e9a
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluMDEiLCJpYXQiOjE3MzM1ODYwOTYsImV4cCI6MTczMzU5MzI5Nn0.tKKV7opZfQJfNpLOkO37JpQxAU5pb_QmcStdtyCKCd8
+GET https://www.sched4all.site/api/horario/6d164848-14f0-4d9b-9d03-11788c4e6e9a
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzM5MTQxMzEsImV4cCI6MTczMzkyMTMzMX0.sSr1RQkova1s8QXqtMcV7PZmnauFWpCSRgIgoQaHusY
 
 ### DELETE /api/horario/:horar_cod
 DELETE http://localhost:1234/api/horario/e23fc302-a382-11ef-951a-cecd02c24f20

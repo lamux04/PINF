@@ -1,5 +1,5 @@
 ### login
-POST http://www.sched4all.site/api/auth/login
+POST https://www.sched4all.site/api/auth/login
 content-type: application/json
 
 {
