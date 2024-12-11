@@ -27,7 +27,7 @@ export const Login = ({ volverAtras, modificarError }) => {
     return (
         <form className={styles.bloque}>
             <Atras onClick={volverAtras} />
-            <h1 className={`${styles2.titulo} ${styles.bloque_elemento}`}>Iniciar sesion</h1>
+            <h1 className={`${styles2.titulo} ${styles.bloque_elemento}`}>Iniciar sesión</h1>
             <label className={styles2.label}>
                 <p className={styles.texto}>Nombre de usuario</p>
                 <Input type="text" setValue={setUsername} value={username} />
