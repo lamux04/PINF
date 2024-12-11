@@ -63,7 +63,7 @@ export class HorarioModel
         const clases_obj = {}
         for (let clase of clases)
         {
-            clases_obj[clase["codigo"]] = clase
+            clases_obj[clase["clase_cod"]] = clase
         }
 
         for (let carrera of plantilla["carreras"])
@@ -75,7 +75,7 @@ export class HorarioModel
                     for (let clase of asignatura["clases"])
                     {
                         // const { clase_generada, exists } = await ClaseModel.getClaseGenerada({ clase_cod: clase["codigo"], horar_cod: horario["codigo"] })
-                        const clase_generada = clases_obj[clase["clase_cod"]]
+                        const clase_generada = clases_obj[clase["codigo"]]
                         if (!clase_generada) continue
                         clase["clase_gen_cod"] = clase_generada["codigo"]
                         clase["clase_gen_hinicio"] = clase_generada["hinicio"]
