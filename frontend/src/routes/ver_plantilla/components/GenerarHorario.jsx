@@ -44,7 +44,7 @@ export const GenerarHorario = ({ codigo, horarios, agregarHorario }) => {
         <>
             <form onSubmit={handleClickGenerarHorario} className={styles.generar}>
                 <Input disabled={cargando} placeholder='Nombre horario' type='text' value={nombre} setValue={setNombre}></Input>
-                <button disabled={cargando} className={styles.button}>Generar horario</button>
+                <button onClick={handleClickGenerarHorario} disabled={cargando} className={styles.button}>Generar horario</button>
                 {(cargando) && <Loading />}
             </form>
             {
