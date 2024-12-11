@@ -29,6 +29,43 @@ export class HorarioModel
 
         horario["carreras"] = []
 
+        // for (let carrera of plantilla["carreras"])
+        // {
+        //     for (let curso of carrera["cursos"])
+        //     {
+        //         for (let asignatura of curso["asignaturas"])
+        //         {
+        //             for (let clase of asignatura["clases"])
+        //             {
+        //                 const { clase_generada, exists } = await ClaseModel.getClaseGenerada({ clase_cod: clase["codigo"], horar_cod: horario["codigo"] })
+        //                 if (!exists) continue
+        //                 clase["clase_gen_cod"] = clase_generada["codigo"]
+        //                 clase["clase_gen_hinicio"] = clase_generada["hinicio"]
+        //                 clase["clase_gen_hfin"] = clase_generada["hfin"]
+        //                 clase["clase_gen_dia"] = clase_generada["dia"]
+        //                 clase["aula"] = clase_generada["aula"]
+        //                 // clase["asignatura_cod"] = asignatura["codigo"]
+        //                 // clase["asignatura_nombre"] = asignatura["nombre"]
+        //                 // clase["curso_cod"] = curso["codigo"]
+        //                 // clase["curso_nombre"] = curso["nombre"]
+        //                 // clase["carrera_cod"] = carrera["codigo"]
+        //                 // clase["carrera_nombre"] = carrera["nombre"]
+        //             }
+        //         }
+        //     }
+        //     horario["carreras"].push(carrera)
+        // }
+
+        // Lo mismo que lo comentado pero solo con una llamada a la base de datos
+        const [clases] = await promisePool.query('SELECT clase_cod AS codigo, clase_gen_cod AS clase_gen_cod, clase_gen_hinicio AS clase_gen_hinicio, clase_gen_hfin AS clase_gen_hfin, clase_gen_dia AS clase_gen_dia, aula_cod AS aula FROM CLASE_GENERADA WHERE horar_cod = ?', [horar_cod])
+
+        // cambiar clases por un objeto cuyo codigo sea la clave
+        const clases_obj = {}
+        for (let clase of clases)
+        {
+            clases_obj[clase["codigo"]] = clase
+        }
+
         for (let carrera of plantilla["carreras"])
         {
             for (let curso of carrera["cursos"])
@@ -37,8 +74,9 @@ export class HorarioModel
                 {
                     for (let clase of asignatura["clases"])
                     {
-                        const { clase_generada, exists } = await ClaseModel.getClaseGenerada({ clase_cod: clase["codigo"], horar_cod: horario["codigo"] })
-                        if (!exists) continue
+                        // const { clase_generada, exists } = await ClaseModel.getClaseGenerada({ clase_cod: clase["codigo"], horar_cod: horario["codigo"] })
+                        const clase_generada = clases_obj[clase["codigo"]]
+                        if (!clases_obj[clase.codigo]) continue
                         clase["clase_gen_cod"] = clase_generada["codigo"]
                         clase["clase_gen_hinicio"] = clase_generada["hinicio"]
                         clase["clase_gen_hfin"] = clase_generada["hfin"]
