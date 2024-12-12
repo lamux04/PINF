@@ -32,7 +32,7 @@ export const ListaPlantillas = ({ plantillas, hayPlantillas, eliminarPlantilla }
                         <div className={styles.parte_derecha}>
                             <button className={styles.ver} onClick={() => verPlantilla(el.codigo)}><i className="fa-solid fa-eye"></i></button>
                             <button className={styles.ver} onClick={() => modificarPlantilla(el.codigo)}><i className="fa-solid fa-pen"></i></button>
-                            <button className={styles.eliminar} onClick={() => borrarPlantilla(el.codigo)}><i className="fa-solid fa-trash"></i></button>
+                            <button className={styles.eliminar} disabled onClick={() => borrarPlantilla(el.codigo)}><i className="fa-solid fa-trash"></i></button>
                         </div>
                     </li>)
             }
