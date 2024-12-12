@@ -13,29 +13,29 @@ const convertirMinutosAFormatoFullCalendar = (minutos) => {
 };
 
 const colores = [
-  { backgroundColor: "#3357FF", textColor: "#FFFFFF" }, // Azul
-  { backgroundColor: "#FFC300", textColor: "#000000" }, // Amarillo
-  { backgroundColor: "#C70039", textColor: "#FFFFFF" }, // Rojo oscuro
-  { backgroundColor: "#900C3F", textColor: "#FFFFFF" }, // Vino
-  { backgroundColor: "#581845", textColor: "#FFFFFF" }, // Púrpura oscuro
-  { backgroundColor: "#28A745", textColor: "#FFFFFF" }, // Verde oscuro
-  { backgroundColor: "#17A2B8", textColor: "#FFFFFF" }, // Cian
-  { backgroundColor: "#F39C12", textColor: "#FFFFFF" }, // Naranja dorado
-  { backgroundColor: "#D35400", textColor: "#FFFFFF" }, // Naranja quemado
-  { backgroundColor: "#7D3C98", textColor: "#FFFFFF" }, // Púrpura
-  { backgroundColor: "#2E86C1", textColor: "#FFFFFF" }, // Azul cielo
-  { backgroundColor: "#1ABC9C", textColor: "#FFFFFF" }, // Turquesa
-  { backgroundColor: "#E74C3C", textColor: "#FFFFFF" }, // Rojo coral
-  { backgroundColor: "#34495E", textColor: "#FFFFFF" }, // Azul grisáceo
-  { backgroundColor: "#95A5A6", textColor: "#000000" }, // Gris claro
-  { backgroundColor: "#F7DC6F", textColor: "#000000" }, // Amarillo pastel
-  { backgroundColor: "#48C9B0", textColor: "#000000" }, // Verde agua
-  { backgroundColor: "#5DADE2", textColor: "#FFFFFF" }, // Azul suave
-  { backgroundColor: "#AF7AC5", textColor: "#FFFFFF" }, // Lila
-  { backgroundColor: "#F1948A", textColor: "#000000" }, // Rosa coral
-  { backgroundColor: "#52BE80", textColor: "#FFFFFF" }, // Verde vibrante
-  { backgroundColor: "#7FB3D5", textColor: "#000000" }, // Azul pastel
-  { backgroundColor: "#A569BD", textColor: "#FFFFFF" }, // Morado brillante
+  { backgroundColor: "#A2B8FF", textColor: "#000000" }, // Azul pastel
+  { backgroundColor: "#FFD966", textColor: "#000000" }, // Amarillo pastel
+  { backgroundColor: "#F1A1B8", textColor: "#000000" }, // Rojo oscuro pastel
+  { backgroundColor: "#E8A2B3", textColor: "#000000" }, // Vino pastel
+  { backgroundColor: "#9D7FBF", textColor: "#000000" }, // Púrpura oscuro pastel
+  { backgroundColor: "#A7D8A3", textColor: "#000000" }, // Verde pastel
+  { backgroundColor: "#A5D8E3", textColor: "#000000" }, // Cian pastel
+  { backgroundColor: "#F9D58D", textColor: "#000000" }, // Naranja dorado pastel
+  { backgroundColor: "#F2A380", textColor: "#000000" }, // Naranja quemado pastel
+  { backgroundColor: "#B19ACF", textColor: "#000000" }, // Púrpura pastel
+  { backgroundColor: "#A5C8E1", textColor: "#000000" }, // Azul cielo pastel
+  { backgroundColor: "#A4D6D1", textColor: "#000000" }, // Turquesa pastel
+  { backgroundColor: "#F5A7A4", textColor: "#000000" }, // Rojo coral pastel
+  { backgroundColor: "#A0B4C1", textColor: "#000000" }, // Azul grisáceo pastel
+  { backgroundColor: "#BCC6C0", textColor: "#000000" }, // Gris claro pastel
+  { backgroundColor: "#F9E294", textColor: "#000000" }, // Amarillo pastel suave
+  { backgroundColor: "#9DDAD1", textColor: "#000000" }, // Verde agua pastel
+  { backgroundColor: "#A9C9E8", textColor: "#000000" }, // Azul suave pastel
+  { backgroundColor: "#D1A4D9", textColor: "#000000" }, // Lila pastel
+  { backgroundColor: "#F6C5B4", textColor: "#000000" }, // Rosa coral pastel
+  { backgroundColor: "#A8D8A6", textColor: "#000000" }, // Verde pastel suave
+  { backgroundColor: "#B6CFE7", textColor: "#000000" }, // Azul pastel suave
+  { backgroundColor: "#C3A4D9", textColor: "#000000" }, // Morado brillante pastel
 ];
 
 let i = 0
