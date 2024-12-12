@@ -66,6 +66,8 @@ export class HorarioController
             body: JSON.stringify(datos)
         })
 
+        console.log(response)
+
         // Guardamos los datos en la base de datos
         const data = await response.json()
         await HorarioModel.saveData({ horar_cod, data })
