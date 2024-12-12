@@ -3,7 +3,7 @@ import { AuthModel } from '../models/auth.js'
 import { PlantillaModel } from '../models/plantilla.js'
 import { json } from 'express'
 
-const endpoint = 'http://10.182.111.71:8084/sched4allAPI'
+const endpoint = 'https://www.shed4all.site/sched4allAPI'
 
 export class HorarioController
 {

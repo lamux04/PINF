@@ -1,1 +1,1 @@
-export const host =  'http://localhost:1234'
+export const host =  'https://www.sched4all.site'
