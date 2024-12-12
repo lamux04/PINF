@@ -3,8 +3,9 @@ from ClasesProyecto import *
 from bottle import *
 import json
 
+app = Bottle()
 
-@post("/sched4allAPI")
+@app.post("/sched4allAPI")
 def insertar():
     try:
         cuerpo = request.body.read()
@@ -13,7 +14,7 @@ def insertar():
             return json.dumps({"Error": "Json vacio"})
 
         datos = json.loads(cuerpo)
-        print(datos)                        #DEBUG
+        # print(datos)                        #DEBUG
     except:
         response.headers["Content-Type"] = "application/json"
         response.status = 404
@@ -144,7 +145,5 @@ def insertar():
     response.headers["Content-Type"] = "application/json"
     return json.dumps(Respuesta)
 
-    
-
-
-run(host = "10.182.111.71", port = 8084)
+if __name__ == "__main__":
+    run(app, host='localhost', port=8084)
