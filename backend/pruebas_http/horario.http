@@ -20,11 +20,11 @@ Content-Type: application/json
 }
 
 ### POST /api/horario/  { plantilla, nombre }
-POST http://localhost:1234/api/horario/
+POST https://sched4all.site/api/horario/
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzM1ODcyODQsImV4cCI6MTczMzU5NDQ4NH0.NBTkJwoNpxICk4ZngNzsr7TRIYRGm6AM4i44MEEdmeA
 Content-Type: application/json
 
 {
-    "plantilla": "f5cacd26-170b-465b-9720-430314945ef7",
+    "plantilla": "7e578203-a03f-49ff-9249-6127955e9976",
     "nombre": "Horario de prueba"
 }
