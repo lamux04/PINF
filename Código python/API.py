@@ -5,7 +5,7 @@ import json
 
 app = Bottle()
 
-@app.post("/sched4allAPI")
+@app.post("/sched4allAPI/")
 def insertar():
     try:
         cuerpo = request.body.read()
