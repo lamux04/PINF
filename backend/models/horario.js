@@ -253,14 +253,17 @@ export class HorarioModel
                         
                     }
 
+                    if (clases.length == 0) continue
                     asignatura["clases"] = clases
                     asignaturas.push(asignatura)
                 }
 
+                if (asignaturas.length == 0) continue
                 curso["asignaturas"] = asignaturas
                 cursos.push(curso)
             }
 
+            if (cursos.length == 0) continue
             carrera["cursos"] = cursos
             carreras.push(carrera)
         }
