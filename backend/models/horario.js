@@ -57,7 +57,7 @@ export class HorarioModel
         // }
 
         // Lo mismo que lo comentado pero solo con una llamada a la base de datos
-        const [clases] = await promisePool.query('SELECT clase_cod AS codigo, clase_gen_cod AS codigo, clase_gen_hinicio AS hinicio, clase_gen_hfin AS hfin, clase_gen_dia AS dia, aula_cod AS aula, clase_cod FROM CLAE_GENERADA WHERE horar_cod = ?', [horar_cod])
+        const [clases] = await promisePool.query('SELECT clase_cod AS codigo, clase_gen_cod AS codigo, clase_gen_hinicio AS hinicio, clase_gen_hfin AS hfin, clase_gen_dia AS dia, AULA.nombre AS aula, clase_cod FROM CLAE_GENERADA INNER JOIN AULA ON AULA.aula_cod = CLAE_GENERADA.aula_cod WHERE horar_cod = ?', [horar_cod])
 
         // cambiar clases por un objeto cuyo codigo sea la clave
         const clases_obj = {}
