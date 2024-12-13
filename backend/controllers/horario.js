@@ -3,7 +3,7 @@ import { AuthModel } from '../models/auth.js'
 import { PlantillaModel } from '../models/plantilla.js'
 import { json } from 'express'
 
-const endpoint = 'https://www.sched4all.site/sched4allAPI/'
+const endpoint = `${process.env.API_HOST}/sched4allAPI/`
 
 export class HorarioController
 {
@@ -65,8 +65,6 @@ export class HorarioController
             },
             body: JSON.stringify(datos)
         })
-
-        console.log(response)
 
         // Guardamos los datos en la base de datos
         const data = await response.json()
