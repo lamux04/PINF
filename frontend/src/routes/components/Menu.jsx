@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
 import { UserContext } from '../../context/UserContext'
 import { fetchCerrarSesion } from '../helpers/fetchCerrarSesion'
+import { CambiarTema } from './CambiarTema'
 
 export const Menu = () => {
     const { username } = useContext(UserContext)
@@ -24,6 +25,7 @@ export const Menu = () => {
                     <a className={styles.enlace} onClick={() => navigator('/plantillas')}>Mis plantillas</a>
                     <a className={styles.enlace} onClick={cerrarSesion}>Cerrar sesión</a>
                     <span className={styles.texto}>{username}</span>
+                    <CambiarTema/>
                 </div>
             </nav>
         </div>

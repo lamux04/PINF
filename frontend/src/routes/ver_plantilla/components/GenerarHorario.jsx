@@ -37,8 +37,8 @@ export const GenerarHorario = ({ codigo, horarios, agregarHorario }) => {
             })
 
             const { horar_cod } = await data.json()
-            agregarHorario({ nombre, horar_cod })
-        
+            agregarHorario({ nombre, codigo: horar_cod })
+            setNombre('')
             setCargando(false)
         }
 

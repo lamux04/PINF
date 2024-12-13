@@ -15,7 +15,6 @@ export const ListaHorarios = ({ horarios, hayHorarios, quitarHorario, fetchElimi
             await fetchEliminarHorario({ codigo })
             quitarHorario(codigo)
         }
-
     }
 
     return (
@@ -23,13 +22,13 @@ export const ListaHorarios = ({ horarios, hayHorarios, quitarHorario, fetchElimi
             {   
                 (!hayHorarios)
                     ? 'No hay horarios'
-                    : horarios.map(el => <li className={styles.li} key={el.codigo}>
+                    : horarios.map(el => (<li className={styles.li} key={el.codigo}>
                         <span className={styles.nombre}>{el.nombre}</span>
                         <div className={styles.parte_derecha}>
                             <button className={styles.ver} onClick={() => verHorario(el.codigo)}><i className="fa-solid fa-eye"></i></button>
                             <button className={styles.eliminar} onClick={() => eliminarHorario(el.codigo)}><i className="fa-solid fa-trash"></i></button>
                         </div>
-                    </li>)
+                    </li>))
             }
         </ul>
     )

@@ -21,11 +21,19 @@ export const NuevoHorario = ({ agregarHorario }) => {
         else 
         {
             if (response.data.message === 'Error de validación')
+            {
                 setValidacion('El codigo del horario debe tener 36 carácteres')
-            else if (response.data.message === 'Horario no encontrado')
+                setTimeout(() => setValidacion(''), 10000)
+            } else if (response.data.message === 'Horario no encontrado')
+            {
                 setValidacion('El horario no existe')
+                setTimeout(() => setValidacion(''), 10000)
+            }
             else 
+            {
                 setValidacion('El horario ya ha sido añadido')
+                setTimeout(() => setValidacion(''), 10000)
+            }
         }
     }
 

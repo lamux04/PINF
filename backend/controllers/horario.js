@@ -27,8 +27,9 @@ export class HorarioController
         const { horar_cod } = req.params
 
         // Comprobamos que el usuario es valido
-        const { valido: puedeVer } = await HorarioModel.puedeVer({ horar_cod, username })
-        if (!puedeVer) return res.status(401).json({ message: 'No autorizado' })
+        const { valido: valido1 } = await HorarioModel.puedeVer({ horar_cod, username })
+        const { valido: valido2 } = await HorarioModel.perteneceAUsuario({ horar_cod, username })
+        if (!valido1 && !valido2) return res.status(401).json({ message: 'No autorizado' })
 
         // Extraemos el horario con el modelo
         const { horario, exists: existsh } = await HorarioModel.getByCodigo({ horar_cod })
@@ -162,7 +163,8 @@ export class HorarioController
 
         // Comprobamos que el horario sea del usuario
         const { valido } = await HorarioModel.puedeVer({ horar_cod, username })
-        if (!valido) return res.status(400).json({ message: 'El usuario no puede ver el horario' })
+        const { valido: valido2 } = await HorarioModel.perteneceAUsuario({ horar_cod, username })
+        if (!valido && !valido2) return res.status(400).json({ message: 'El usuario no puede ver el horario' })
 
         res.json({ username, horar_cod })
     }

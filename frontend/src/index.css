@@ -80,11 +80,23 @@ body, :root {
 }
 
 [data-theme='dark'] {
-  --background-color: #121212;
-  --text-color: #ffffff;
-  --button-bg: #1f1f1f;
-  --button-text: #007bff;
-  --input-placeholder: #828282;
+    --details: #ffffff;
+    --details-open: #fa5b41;
+    --orange: #fa5b41;
+    --light-orange: #ffeae7;
+    --gris: #f4f4f4;
+    --red: #d10000;
+    --red-hover: #880000;
+    --button-disabled: #383838;
+    --input-disabled: #dcdcdc;
+    --state-disabled: #333;
+    --orange-hover: #933526;
+    --background-color: #272727;
+    --text-color: #afafaf;
+    --button-bg: #ffffff;
+    --button-text: #000000;
+    --button-hover: #fa5b41;
+    --input-placeholder: #828282;
 }
 
 p {
