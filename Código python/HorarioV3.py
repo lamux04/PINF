@@ -5,6 +5,8 @@ import ClasesProyecto as CP
 import random
 
 
+
+
 #Precondición: la estructura de Horarios debe ser un diccionario de la forma que se indica en los requisitos. Aulas ha de ser un diccionario donde la clase
 #sea el tipo del aula y el valor sea la lista de nombres de aulas de dicho tipo. Se debe pasar la hora de inicio, hora de fin, el inicio del descanso y el
 #final del descanso, TODOS MÚLTIPLO DE 15. Los valores por defecto de estos 4 últimos son: las 0:00, las 24:00, las 24:00 y las 24:00 (es decir, no hay descanso)
@@ -38,7 +40,9 @@ def colocarClases(Clases, Aulas, Horarios, H_inicio = 0, H_final = 1440, Inicio_
     tarde = []                              #Cola donde iremos colocando las clases que no se han podido colocar por la mañana.
 
     #Primer bucle para intentar colocar las clases por la mañana
-    print("toca mañana")
+    if debug:
+        print("toca mañana")
+
     while(len(porcolocar) != 0):
         colocado = False
         if(n_import > 0):
@@ -86,7 +90,8 @@ def colocarClases(Clases, Aulas, Horarios, H_inicio = 0, H_final = 1440, Inicio_
                 h_ini += 15     #Miramos en la siguiente franja horaria
                 h_fin += 15
 
-                #print(f"Hora de inicio: {h_ini}\nHora de fin: {h_fin}")
+                if debug:
+                    print(f"Hora de inicio: {h_ini}\nHora de fin: {h_fin}")
             
             dia += 1
         
@@ -97,7 +102,8 @@ def colocarClases(Clases, Aulas, Horarios, H_inicio = 0, H_final = 1440, Inicio_
             else:
                 tarde.append(clase)
     #Segundo bucle para colocar las que no han podido colocarse por la mañana
-    print("toca tarde")
+    if debug:
+        print("toca tarde")
 
     while(len(tarde) != 0):
         colocado = False
@@ -145,7 +151,8 @@ def colocarClases(Clases, Aulas, Horarios, H_inicio = 0, H_final = 1440, Inicio_
                     h_ini = fin_comer
                     h_fin = fin_comer + clase.duracion
 
-                #print(f"Hora de inicio: {h_ini}\nHora de fin: {h_fin}")
+                if debug:
+                    print(f"Hora de inicio: {h_ini}\nHora de fin: {h_fin}")
             
             dia += 1
         
@@ -153,7 +160,8 @@ def colocarClases(Clases, Aulas, Horarios, H_inicio = 0, H_final = 1440, Inicio_
         if not colocado:
             denegadas.append(clase)
     #Tercer bucle para colocar las clases de la cola de denegadas
-    print("toca denegadas")
+    if debug:
+        print("toca denegadas")
 
     Errores = []
     #print("Entra al bucle de colas de colas denegadas")
@@ -233,7 +241,8 @@ def colocarClases(Clases, Aulas, Horarios, H_inicio = 0, H_final = 1440, Inicio_
                     h_ini = fin_comer
                     h_fin = fin_comer + clase.duracion
 
-                #print(f"Hora de inicio: {h_ini}\nHora de fin: {h_fin}")
+                if debug:
+                    print(f"Hora de inicio: {h_ini}\nHora de fin: {h_fin}")
             
             dia += 1
         
