@@ -1,4 +1,5 @@
 import HorarioV2 as v2
+import HorarioV3 as v3
 from ClasesProyecto import *
 from bottle import *
 import json
@@ -29,7 +30,7 @@ def insertar():
     for tipo in tipos_aulas:
         aulas_horario[tipo] = []                    #Inicializamos a lista vacía
 
-        print("---------------------- DICCIONARIO AULAS ------------------------")
+        #print("---------------------- DICCIONARIO AULAS ------------------------")
         
         for a in datos["aulas"][tipo]:
             aulas_horario[tipo].append(a)
@@ -38,33 +39,39 @@ def insertar():
     profesores = {}                                 #Diccionario donde la clave es el nombre del profesor
     for profe in datos["profesores"]:               #y el valor es el objeto
 
-        print("---------------------- DICCIONARIO PROFESORES ------------------------")
+        #print("---------------------- DICCIONARIO PROFESORES ------------------------")
 
         profesores[profe] = profesor(profe)
 
     Horarios = {}
     clases = []
 
-    print("---------------------- DICCIONARIO CARRERA ------------------------")
+    #Pillamos las franjas
+    #H_inicio = int(datos["h_ini"])
+    #H_final = int(datos["h_fin"])
+    #Inicio_desc = int(datos["inicio_desc"])
+    #Fin_desc = int(datos["fin_desc"])
+
+    #print("---------------------- DICCIONARIO CARRERA ------------------------")
 
     for Carre in datos["carrera"]:                  #Carrera por carrera
 
         carrera_actual = carrera(Carre["nombre"])
 
-        print("---------------------- DICCIONARIO CURSOS ------------------------")
+        #print("---------------------- DICCIONARIO CURSOS ------------------------")
 
         dict_curso = {}
 
         for Cur in Carre["cursos"]:                     #Curso por curso
 
-            print("---------------------- CONSTRUYE HORARIO CARRERA ------------------------")
+            #print("---------------------- CONSTRUYE HORARIO CARRERA ------------------------")
 
-            print("---------------------- CONSTRUYE HORARIO CARRERA 1 ------------------------")
+            #print("---------------------- CONSTRUYE HORARIO CARRERA 1 ------------------------")
 
             curso_actual = curso(Cur["nombre"], carrera_actual)
             curso_actual.mostrar()
 
-            print("---------------------- CONSTRUYE HORARIO CARRERA 2 ------------------------")
+            #print("---------------------- CONSTRUYE HORARIO CARRERA 2 ------------------------")
 
             
             dict_curso[curso_actual.nombre] = [[],[],[],[],[]]
@@ -72,14 +79,14 @@ def insertar():
             #dict_carrera[carrera_actual.nombre] = dict_curso    #Horario vacío para el curso
             #Horarios[carrera_actual.nombre] = dict_curso    #Horario vacío para el curso
 
-            print("---------------------- CONSTRUYE HORARIO CARRERA 3 ------------------------")
+            #print("---------------------- CONSTRUYE HORARIO CARRERA 3 ------------------------")
 
             asignaturas =  Cur["asignaturas"]    #Asignaturas del curso
             for asig in asignaturas:
                 asignatura_actual = asignatura(asig["nombre"], asig["aprobable"], curso_actual)     #Creamos asignatura
                 clases_asignatura = asig["clases"]
 
-                print("---------------------- CONSTRUYE CLASES ASIGNATURA ------------------------")
+                #print("---------------------- CONSTRUYE CLASES ASIGNATURA ------------------------")
 
                 for clas in clases_asignatura:
                     clase_actual = clase(clas["nombre"], clas["tipo"], clas["tipo_aula"], int(clas["duracion"]), clas["importante"], asignatura_actual, profesores[clas["profesor"]])   #Creamos clase
@@ -91,6 +98,8 @@ def insertar():
 
 
     v2.colocarClases(clases, aulas_horario, Horarios)
+
+    #v3.colocarClases(clases, aulas_horario, Horarios, H_inicio, H_final, Inicio_desc, Fin_desc)
 
     
     l2: c_horario

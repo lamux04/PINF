@@ -7,21 +7,22 @@
 
 "profesores": ["De la huerta", "Palomo", "Sus muertos"],
 
-"carrera": 
-[
+"h_ini": 0,
+"h_fin": 1440,
+"inicio_desc": 1440,
+"fin_desc": 1440,
+
+"carrera": [
     {
         "nombre": "GII",
-        "cursos": 
-        [
+        "cursos": [
             {
                 "nombre": "1ºGII",
-                "asignaturas": 
-                [
+                "asignaturas": [
                     {
                         "nombre": "Mecanica de fluidos",
                         "aprobable": "SI",
-                        "clases": 
-                        [
+                        "clases": [
                             {
                                 "nombre": "Mecanica de fluidos A1 Teoría",
                                 "tipo": "Teoría",

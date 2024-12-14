@@ -1,5 +1,6 @@
 import Horario as v1
 import HorarioV2 as v2
+import HorarioV3 as v3
 from ClasesProyecto import*
 
 import shutil
@@ -788,7 +789,10 @@ Horarios[giaC.nombre] = gia
 Horarios[gimC.nombre] = gim
 
 #v1.colocarClases(Clases, Aulas, Horarios)
-v2.colocarClases(Clases, Aulas, Horarios)
+#v2.colocarClases(Clases, Aulas, Horarios)
+#v3.colocarClases(Clases, Aulas, Horarios, 510, 1260, 840, 900)         #Con las franjas del HorarioV2
+#v3.colocarClases(Clases, Aulas, Horarios, 510, 1260)                   #Sin descanso (esclavismo)
+v3.colocarClases(Clases, Aulas, Horarios)                               #Sin descanso y con clases las 24 horas (crímenes de guerra)
 print("Horario terminado", end="\n\n")
 
 

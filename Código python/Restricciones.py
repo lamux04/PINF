@@ -19,7 +19,7 @@ def NoAprobableSobreSi(horario, c_actual, h_ini, h_fin, dia) -> bool:
     cursos = list(horario.keys())
     i = 0
 
-    print(f"Entra en la función NoAprobableSobreSi con {h_ini} y {h_fin} en el dia {dia}")
+    #print(f"Entra en la función NoAprobableSobreSi con {h_ini} y {h_fin} en el dia {dia}")
 
     #while (i < len(cursos) and ((int(cursos[i][0]) - int(c_actual[0])) != 1)): #Buscamos el curso siguiente al que estamos actualmente fijándonos en el
     #    i = i + 1                                                              #primer caracter del nombre del mismo
@@ -47,7 +47,7 @@ def NoAprobableSobreSi(horario, c_actual, h_ini, h_fin, dia) -> bool:
 
                             if importante and aprobable and coinciden(h_ini, h_fin, ch_ini, ch_fin):
 
-                                calendario[i][j].clase.mostrar()
+                                #calendario[i][j].clase.mostrar()
 
                                 puede = False
 
@@ -65,7 +65,7 @@ def NoAprobableSobreSi(horario, c_actual, h_ini, h_fin, dia) -> bool:
 
                         if importante and aprobable and coinciden(h_ini, h_fin, ch_ini, ch_fin):
 
-                            calendario[i].clase.mostrar()
+                            #calendario[i].clase.mostrar()
 
                             puede = False
 
@@ -82,7 +82,7 @@ def SiAprobableSobreNo(horario, c_actual, h_ini, h_fin, dia) -> bool:
     cursos = list(horario.keys())
     i = 0
 
-    print(f"Entra en la función SiAprobableSobreNo con {h_ini} y {h_fin} en el dia {dia}")
+    #print(f"Entra en la función SiAprobableSobreNo con {h_ini} y {h_fin} en el dia {dia}")
 
     #while (i < len(cursos) and ((int(cursos[i][0]) - int(c_actual[0])) != -1)): #Buscamos el curso anterior al que estamos actualmente fijándonos en el
     #    i = i + 1                                                               #primer caracter del nombre del mismo
@@ -110,7 +110,7 @@ def SiAprobableSobreNo(horario, c_actual, h_ini, h_fin, dia) -> bool:
 
                             if importante and not aprobable and coinciden(h_ini, h_fin, ch_ini, ch_fin):         #Comprobamos si coinciden
                                 
-                                calendario[i][j].mostrar()
+                                #calendario[i][j].mostrar()
                                 
                                 puede = False
 
@@ -128,7 +128,7 @@ def SiAprobableSobreNo(horario, c_actual, h_ini, h_fin, dia) -> bool:
 
                         if importante and not aprobable and coinciden(h_ini, h_fin, ch_ini, ch_fin):
 
-                            calendario[i].mostrar()
+                            #calendario[i].mostrar()
 
                             puede = False
 
@@ -142,7 +142,7 @@ def SiAprobableSobreNo(horario, c_actual, h_ini, h_fin, dia) -> bool:
 def ProfesorOcupado(horario, profesor, h_ini, h_fin, dia) -> bool:
     ocupado = False
 
-    print(f"Entra en la funcion ProfesorOcupado con {h_ini} y {h_fin}")
+    #print(f"Entra en la funcion ProfesorOcupado con {h_ini} y {h_fin}")
 
     carreras = list(horario.keys())
     i = 0
@@ -162,7 +162,7 @@ def ProfesorOcupado(horario, profesor, h_ini, h_fin, dia) -> bool:
                             p_profesor = calendario[k][q].clase.profesor.nombre
                             if (p_profesor == profesor) and coinciden(h_ini, h_fin, ch_ini, ch_fin):        #Comprobamos si coinciden
                                 
-                                calendario[k][q].mostrar()
+                                #calendario[k][q].mostrar()
                                 
                                 ocupado = True
                             q = q + 1
@@ -176,7 +176,7 @@ def ProfesorOcupado(horario, profesor, h_ini, h_fin, dia) -> bool:
                         p_profesor = calendario[k].clase.profesor.nombre
                         if (p_profesor == profesor) and coinciden(h_ini, h_fin, ch_ini, ch_fin):
 
-                            calendario[k].mostrar()
+                            #calendario[k].mostrar()
 
                             ocupado = True
                         k = k + 1
@@ -193,7 +193,7 @@ def ProfesorOcupado(horario, profesor, h_ini, h_fin, dia) -> bool:
 def AulaOcupada(horario, aula, h_ini, h_fin, dia) -> bool:
     ocupada = False
 
-    print(f"Entra en la funcion AulaOcupada con {h_ini} y {h_fin} , el día {dia} y el aula {aula}")
+    #print(f"Entra en la funcion AulaOcupada con {h_ini} y {h_fin} , el día {dia} y el aula {aula}")
 
     carreras = list(horario.keys())
     i = 0
@@ -218,7 +218,7 @@ def AulaOcupada(horario, aula, h_ini, h_fin, dia) -> bool:
                             p_aula = calendario[k][q].aula
                             if (p_aula == aula) and coinciden(h_ini, h_fin, ch_ini, ch_fin):                #Comprobamos si coinciden
                                 
-                                calendario[k][q].mostrar()
+                                #calendario[k][q].mostrar()
                                 
                                 ocupada = True
                             q = q + 1
@@ -232,7 +232,7 @@ def AulaOcupada(horario, aula, h_ini, h_fin, dia) -> bool:
                         p_aula = calendario[k].aula
                         if (p_aula == aula) and coinciden(h_ini, h_fin, ch_ini, ch_fin):
                             
-                            calendario[k].mostrar()
+                            #calendario[k].mostrar()
                             
                             ocupada = True
                         k = k + 1
@@ -250,7 +250,7 @@ def AulaOcupada(horario, aula, h_ini, h_fin, dia) -> bool:
 def HayClaseImportante(horario, h_ini, h_fin) -> bool:
     no_puede = False
 
-    print(f"Entra en la funcion HayClaseImportante con {h_ini} y {h_fin}")
+    #print(f"Entra en la funcion HayClaseImportante con {h_ini} y {h_fin}")
 
     i = 0
     if type(horario[0]) is list:
@@ -263,7 +263,7 @@ def HayClaseImportante(horario, h_ini, h_fin) -> bool:
 
                 if importante and coinciden(h_ini, h_fin, ch_ini, ch_fin):
 
-                    horario[i][j].mostrar()
+                    #horario[i][j].mostrar()
 
                     no_puede = True
 
@@ -278,7 +278,7 @@ def HayClaseImportante(horario, h_ini, h_fin) -> bool:
 
             if importante and coinciden(h_ini, h_fin, ch_ini, ch_fin):
                 
-                horario[i].mostrar()
+                #horario[i].mostrar()
 
                 no_puede = True
             i = i + 1
@@ -292,7 +292,7 @@ def HayYaClase(horario, h_ini, h_fin) -> bool:
     puede = True
     i = 0
 
-    print(f"Entra en la funcion HayYaClase con {h_ini} y con {h_fin}")
+    #print(f"Entra en la funcion HayYaClase con {h_ini} y con {h_fin}")
 
     if len(horario) > 0:
         if type(horario[0]) is list:                                  #Si hay más de un horario por día, hay que comprobar uno a uno
@@ -305,7 +305,7 @@ def HayYaClase(horario, h_ini, h_fin) -> bool:
 
                     if coinciden(h_ini, h_fin, ch_ini, ch_fin):
 
-                        horario[i][j].mostrar()
+                        #horario[i][j].mostrar()
 
                         puede = False
 
@@ -322,7 +322,7 @@ def HayYaClase(horario, h_ini, h_fin) -> bool:
 
                 if coinciden(h_ini, h_fin, ch_ini, ch_fin):
 
-                    horario[i].mostrar()
+                    #horario[i].mostrar()
 
                     puede = False
 
@@ -338,7 +338,7 @@ def HayYaClase(horario, h_ini, h_fin) -> bool:
 #Postcondición: devuelve True si en la lista correspondiente al curso no hay clase que coincida (esta función solo se utilizará cuando haya más de una lista por día)
 def HayYaClaseLista(horario, h_ini, h_fin) -> bool:
     
-    print(f"Entra en la funcion HayYaClaseLista con {h_ini} y {h_fin}")
+    #print(f"Entra en la funcion HayYaClaseLista con {h_ini} y {h_fin}")
 
     i = 0
     no_puede = False
@@ -348,7 +348,7 @@ def HayYaClaseLista(horario, h_ini, h_fin) -> bool:
 
         if coinciden(h_ini, h_fin, ch_ini, ch_fin):
 
-            horario[i].mostrar()
+            #horario[i].mostrar()
 
             no_puede = True
         
@@ -361,7 +361,7 @@ def HayYaClaseLista(horario, h_ini, h_fin) -> bool:
 def HayYaClaseAsignatura(horario, clase, h_ini, h_fin) -> bool:
     clase_actual: c_horario
 
-    print(f"Entra en la funcion HayYaClaseAsignatura con {h_ini} y {h_fin}, y con la asignatura {clase.asignatura.nombre}")
+    #print(f"Entra en la funcion HayYaClaseAsignatura con {h_ini} y {h_fin}, y con la asignatura {clase.asignatura.nombre}")
 
     no_puede = False
     if type(horario[0]) is list:
@@ -373,7 +373,7 @@ def HayYaClaseAsignatura(horario, clase, h_ini, h_fin) -> bool:
 
                 if (clase_actual.clase.asignatura == clase.asignatura) and coinciden(h_ini, h_fin, clase_actual.h_ini, clase_actual.h_fin):
                     
-                    clase_actual.mostrar()
+                    #clase_actual.mostrar()
                     
                     no_puede = True
                 j = j + 1
@@ -386,7 +386,7 @@ def HayYaClaseAsignatura(horario, clase, h_ini, h_fin) -> bool:
 
             if (clase_actual.clase.asignatura == clase.asignatura) and coinciden(h_ini, h_fin, clase_actual.h_ini, clase_actual.h_fin):
                 
-                clase_actual.mostrar()
+                #clase_actual.mostrar()
 
                 no_puede = True
             i = i + 1
