@@ -38,14 +38,14 @@ export class HorarioController
         res.json(horario)
     }
 
-    // POST /horario { plantilla }
+    // POST /horario { plantilla, nombre, h_ini, h_fin, inicio_desc, fin_desc }
     static async create(req, res)
     {
         // Obtenemos el nombre de usuario del token
         const { username } = req.user
 
         // Obtenemos el codigo de la plantilla a usar
-        const { plantilla: plant_cod, nombre } = req.body
+        const { plantilla: plant_cod, nombre, h_ini, h_fin, inicio_desc, fin_desc } = req.body
 
         // Comprobamos que la plantilla es valida
         const { valida } = await PlantillaModel.perteneceAUsuario({ plant_cod, username })
@@ -57,6 +57,11 @@ export class HorarioController
         // ----------- Generamos el horario con la API ------------
         // Obtenemos los datos necesarios
         const { datos } = await HorarioModel.getDatos({ plant_cod })
+
+        datos['h_ini'] = h_ini
+        datos['h_fin'] = h_fin
+        datos['inicio_desc'] = inicio_desc
+        datos['fin_desc'] = fin_desc
 
         // Creamos el horario con la API
         const response = await fetch(`${endpoint}`, {

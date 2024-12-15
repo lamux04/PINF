@@ -9,6 +9,16 @@ export const GenerarHorario = ({ codigo, horarios, agregarHorario }) => {
     const [nombre, setNombre] = useState('')
     const [cargando, setCargando] = useState(false)
     const [validacion, setValidacion] = useState('')
+    const [h_ini, setH_ini] = useState('')
+    const [h_fin, setH_fin] = useState('')
+    const [inicio_desc, setInicio_desc] = useState('')
+    const [fin_desc, setFin_Desc] = useState('')
+
+    const getMinutes = (time) => {
+    if (!time) return 0; // Si no hay valor, retorna 0
+    const [hours, minutes] = time.split(":").map(Number); // Divide el string en horas y minutos
+    return hours * 60 + minutes; // Convierte las horas a minutos y las suma
+  };
     
 
     const handleClickGenerarHorario = async (ev) => {
@@ -24,6 +34,21 @@ export const GenerarHorario = ({ codigo, horarios, agregarHorario }) => {
         } else if (nombre.length > 50) {
             setValidacion('El nombre no puede tener más de 50 caracteres')
             setTimeout(() => setValidacion(''), 10000)
+        } else if (h_ini === '' || h_fin === '' || inicio_desc === '' || fin_desc === '') {
+            setValidacion('Las horas no pueden estar vacías')
+            setTimeout(() => setValidacion(''), 10000)
+        } else if (getMinutes(h_ini) >= getMinutes(h_fin)) {
+            setValidacion('La hora de inicio no puede ser mayor o igual a la hora de fin')
+            setTimeout(() => setValidacion(''), 10000)
+        } else if (getMinutes(inicio_desc) >= getMinutes(fin_desc)) {
+            setValidacion('La hora de inicio de descanso no puede ser mayor o igual a la hora de fin de descanso')
+            setTimeout(() => setValidacion(''), 10000)
+        } else if (getMinutes(h_ini) > getMinutes(inicio_desc)) {
+            setValidacion('La hora de inicio no puede ser mayor a la hora de inicio de descanso')
+            setTimeout(() => setValidacion(''), 10000)
+        } else if (getMinutes(fin_desc) > getMinutes(h_fin)) {
+            setValidacion('La hora de fin de descanso no puede ser mayor a la hora de fin')
+            setTimeout(() => setValidacion(''), 10000)
         } else {
             setValidacion('')
             setCargando(true)
@@ -33,7 +58,7 @@ export const GenerarHorario = ({ codigo, horarios, agregarHorario }) => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ plantilla: codigo, nombre })
+                body: JSON.stringify({ plantilla: codigo, nombre, h_ini: getMinutes(h_ini), h_fin: getMinutes(h_fin), inicio_desc: getMinutes(inicio_desc), fin_desc: getMinutes(fin_desc) })
             })
 
             const { horar_cod } = await data.json()
@@ -47,7 +72,26 @@ export const GenerarHorario = ({ codigo, horarios, agregarHorario }) => {
     return (
         <>
             <form onSubmit={handleClickGenerarHorario} className={styles.generar}>
-                <Input disabled={cargando} placeholder='Nombre horario' type='text' value={nombre} setValue={setNombre}></Input>
+                <label className={styles.label}>
+                    Nombre horario
+                    <input id='nombre_horario' className={styles.input} type="text" value={nombre} onChange={ev => setNombre(ev.target.value)} />
+                </label>
+                <label className={styles.label}>
+                    Hora inicio
+                    <input className={styles.input} type="time" value={h_ini} onChange={ev => setH_ini(ev.target.value)} />
+                </label>
+                <label className={styles.label}>
+                    Hora fin
+                    <input className={styles.input} type="time" value={h_fin} onChange={ev => setH_fin(ev.target.value)} />
+                </label>
+                <label className={styles.label}>
+                    Inicio descanso
+                    <input className={styles.input} type="time" value={inicio_desc} onChange={ev => setInicio_desc(ev.target.value)} />
+                </label>
+                <label className={styles.label}>
+                    Fin descanso
+                    <input className={styles.input} type="time" value={fin_desc} onChange={ev => setFin_Desc(ev.target.value)} />
+                </label>
                 <button onClick={handleClickGenerarHorario} disabled={cargando} className={styles.button}>Generar horario</button>
                 {(cargando) && <Loading />}
             </form>
