@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Input } from '../../components/Input'
 import styles from './GenerarHorario.module.css'
 import { Loading } from '../../components/Loading'
 import { Validacion } from '../../components/Validacion'
