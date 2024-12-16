@@ -19,7 +19,7 @@ export class HorarioModel
     // Postcondicion: Devuelve el horario con el codigo dado
     static async getByCodigo({ horar_cod })
     {
-        const [rows] = await promisePool.query('SELECT horar_cod AS codigo, horar_nombre AS nombre, plant_cod FROM HORARIO WHERE horar_cod = ?', [horar_cod])
+        const [rows] = await promisePool.query('SELECT horar_cod AS codigo, horar_nombre AS nombre, plant_cod, horar_h_ini h_ini, horar_h_fin h_fin FROM HORARIO WHERE horar_cod = ?', [horar_cod])
 
         if (rows.length == 0) return { horario: null, exists: false }
 
@@ -173,10 +173,10 @@ export class HorarioModel
 
     // Precondicion: Existe la plantilla
     // Postcondicion: Crea un horario con la plantilla dada
-    static async create({ plant_cod, nombre })
+    static async create({ plant_cod, nombre, h_ini, h_fin })
     {
         const horar_cod = v4()
-        const [rows] = await promisePool.query('INSERT INTO HORARIO (horar_cod, horar_nombre, plant_cod) VALUES (?, ?, ?)', [horar_cod, nombre, plant_cod])
+        const [rows] = await promisePool.query('INSERT INTO HORARIO (horar_cod, horar_nombre, plant_cod, horar_h_ini, horar_h_fin) VALUES (?, ?, ?, ?, ?)', [horar_cod, nombre, plant_cod, h_ini, h_fin])
 
         return { horar_cod, nombre }
     }

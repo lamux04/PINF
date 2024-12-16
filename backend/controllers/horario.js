@@ -52,7 +52,7 @@ export class HorarioController
         if (!valida) return res.status(400).json({ message: 'Plantilla no encontrada' })
         
         // Creamos el horario
-        const { horar_cod } = await HorarioModel.create({ plant_cod, nombre })
+        const { horar_cod } = await HorarioModel.create({ plant_cod, nombre, h_ini, h_fin })
 
         // ----------- Generamos el horario con la API ------------
         // Obtenemos los datos necesarios

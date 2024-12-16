@@ -40,7 +40,7 @@ const colores = [
 
 let i = 0
 
-export const HorarioVisual = ({ horario }) => {
+export const HorarioVisual = ({ horario, h_ini, h_fin }) => {
     const [eventos, setEventos] = useState([])
 
     useEffect(() => {
@@ -84,8 +84,8 @@ export const HorarioVisual = ({ horario }) => {
             initialView="timeGridWeek"
             weekends={false} // Oculta sábados y domingos
             allDaySlot={false} // Oculta el slot de todo el día
-            slotMinTime="08:00:00" // Hora de inicio
-            slotMaxTime="21:00:00" // Hora de fin
+            slotMinTime={h_ini} // Hora de inicio
+            slotMaxTime={h_fin} // Hora de fin
             headerToolbar={{
                 left: '',
                 center: '',
