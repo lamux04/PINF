@@ -34,22 +34,27 @@ export const GenerarHorario = ({ codigo, horarios, agregarHorario }) => {
         } else if (nombre.length > 50) {
             setValidacion('El nombre no puede tener más de 50 caracteres')
             setTimeout(() => setValidacion(''), 10000)
-        } else if (h_ini === '' || h_fin === '' || inicio_desc === '' || fin_desc === '') {
-            setValidacion('Las horas no pueden estar vacías')
+        } else if (h_ini === '' || h_fin === '') {
+            setValidacion('Las horas inicio y fin no pueden estar vacías')
             setTimeout(() => setValidacion(''), 10000)
         } else if (getMinutes(h_ini) >= getMinutes(h_fin)) {
             setValidacion('La hora de inicio no puede ser mayor o igual a la hora de fin')
             setTimeout(() => setValidacion(''), 10000)
-        } else if (getMinutes(inicio_desc) >= getMinutes(fin_desc)) {
-            setValidacion('La hora de inicio de descanso no puede ser mayor o igual a la hora de fin de descanso')
+        } else if (inicio_desc !== '' && fin_desc === '') {
+            setValidacion('Si hay una hora de inicio de descanso, también debe haber una hora de fin de descanso')
             setTimeout(() => setValidacion(''), 10000)
-        } else if (getMinutes(h_ini) > getMinutes(inicio_desc)) {
-            setValidacion('La hora de inicio no puede ser mayor a la hora de inicio de descanso')
+        } else if (inicio_desc === '' && fin_desc !== '') {
+            setValidacion('Si hay una hora de fin de descanso, también debe haber una hora de inicio de descanso')
             setTimeout(() => setValidacion(''), 10000)
-        } else if (getMinutes(fin_desc) > getMinutes(h_fin)) {
-            setValidacion('La hora de fin de descanso no puede ser mayor a la hora de fin')
+        } else if (inicio_desc !== '' && getMinutes(inicio_desc) > getMinutes(fin_desc)) {
+            setValidacion('La hora de inicio de descanso no puede ser mayor a la hora de fin de descanso')
+            setTimeout(() => setValidacion(''), 10000)
+        } else if (inicio_desc !== '' && getMinutes(h_ini) > getMinutes(inicio_desc)) {
+            setValidacion('La hora de inicio de descanso no puede ser mayor a la hora de inicio')
             setTimeout(() => setValidacion(''), 10000)
         } else {
+            if (inicio_desc === '') setInicio_desc('24:00')
+            if (fin_desc === '') setFin_Desc('24:00')
             setValidacion('')
             setCargando(true)
             const data = await fetch(`${host}/api/horario/`, {
@@ -64,6 +69,10 @@ export const GenerarHorario = ({ codigo, horarios, agregarHorario }) => {
             const { horar_cod } = await data.json()
             agregarHorario({ nombre, codigo: horar_cod })
             setNombre('')
+            setH_ini('')
+            setH_fin('')
+            setInicio_desc('')
+            setFin_Desc('')
             setCargando(false)
         }
 
