@@ -9,6 +9,8 @@ import { EditarProfesor } from './EditarProfesor'
 export const EditarProfesores = ({ plantilla, setPlantilla }) => {
     const [validacion, setValidacion] = useState('')
 
+    const profesoresOrdenados = [...plantilla.profesores].sort((a, b) => a.nombre.localeCompare(b.nombre))
+
     return (
         <div className={styles.bloque_carreras}>
             <div className={styles.bloque_input}>
@@ -21,7 +23,7 @@ export const EditarProfesores = ({ plantilla, setPlantilla }) => {
             <div className={styles.bloque}>
             {
                 (plantilla.profesores.length !== 0) ?
-                plantilla.profesores.map(profesores => (
+                profesoresOrdenados.map(profesores => (
                     <EditarProfesor key={profesores.codigo} profesor={profesores} plantilla={plantilla} setPlantilla={setPlantilla} />
                 ))
                 : <p>No hay profesores</p>

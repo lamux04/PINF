@@ -1,9 +1,15 @@
 import { useNavigate } from 'react-router-dom'
 import { Titulo2 } from '../../components/Titulo2'
 import styles from './VerCarreras.module.css'
+import { useEffect, useState } from 'react'
 
 export const VerCarreras = ({ carreras }) => {
+    const [carrerasOrdenadas, setCarrerasOrdenadas] = useState([])
     const navigator = useNavigate()
+
+    useEffect(() => {
+        setCarrerasOrdenadas([...carreras].sort((a, b) => a.nombre.localeCompare(b.nombre)))
+    }, [carreras])
 
     return (
         <div className={styles.bloque}>
@@ -11,7 +17,7 @@ export const VerCarreras = ({ carreras }) => {
             <div className={styles.bloque}>
             {
                 (carreras.length !== 0) ?
-                carreras.map(el => (
+                carrerasOrdenadas.map(el => (
                     <details className={styles.details} key={el.codigo}>
                         <summary className={styles.summary}>{el.nombre}</summary>
                         <ul className={styles.ul}>

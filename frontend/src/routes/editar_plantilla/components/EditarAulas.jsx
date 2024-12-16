@@ -22,6 +22,8 @@ export const EditarAulas = ({ plantilla, setPlantilla }) => {
         setAulas(nuevaAulas)
     }, [plantilla])
 
+    const tiposOrdenados = [...Object.keys(aulas)].sort((a, b) => a.localeCompare(b))
+
     return (
         <div className={styles.bloque_carreras}>
             <div className={styles.bloque_input}>
@@ -34,7 +36,7 @@ export const EditarAulas = ({ plantilla, setPlantilla }) => {
             <div className={styles.bloque}>
             {
                 (Object.keys(aulas).length !== 0) ?
-                Object.keys(aulas).map(tipo => (
+                tiposOrdenados.map(tipo => (
                     <EditarTipoAula key={tipo} tipoAula={tipo} aulas={aulas[tipo]} plantilla={plantilla} setPlantilla={setPlantilla} />
                 ))
                 : <p>No hay aulas</p>

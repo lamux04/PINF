@@ -37,6 +37,8 @@ export const EditarAsignatura = ({ asignatura, curso, setCurso}) => {
         })
     }
 
+    const clasesOrdenadas = [...asignatura.clases].sort((a, b) => a.tipo.localeCompare(b.tipo))
+
     return (
         <span className={styles.bloque_asignatura}>
             <Titulo3>
@@ -58,7 +60,7 @@ export const EditarAsignatura = ({ asignatura, curso, setCurso}) => {
             <div className={styles.bloque}>
                 {
                     (asignatura.clases.length !== 0)
-                    ?   asignatura.clases.map((clase) => (
+                    ?   clasesOrdenadas.map((clase) => (
                             <details className={styles.details} key={clase.codigo}>
                             <summary className={styles.summary}>
                                 <span className={styles.nombre_details}>

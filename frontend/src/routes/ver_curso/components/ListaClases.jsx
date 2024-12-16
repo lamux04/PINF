@@ -1,12 +1,13 @@
 import styles from './ListaClases.module.css'
 
 export const ListaClases = ({ clases }) => {
+    const clasesOrdenadas = [...clases].sort((a, b) => a.tipo.localeCompare(b.tipo))
 
     return (
         <div className={styles.bloque}>
             {
                 (clases.length !== 0)
-                ?   clases.map((clase) => (
+                ?   clasesOrdenadas.map((clase) => (
                         <details className={styles.details} key={clase.codigo}>
                         <summary className={styles.summary}>{clase.tipo} - {clase.duracion} minutos</summary>
                             <div className={styles.bloque_clase}>

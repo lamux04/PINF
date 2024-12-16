@@ -2,6 +2,8 @@ import { Titulo2 } from '../../components/Titulo2'
 import styles from './VerAulas.module.css'
 
 export const VerAulas = ({ aulas }) => {
+    const aulasOrdenadas = [...aulas].sort((a, b) => a.nombre.localeCompare(b.nombre))
+
     return (
         <div className={styles.bloque}>
             <Titulo2>Aulas</Titulo2>
@@ -10,7 +12,7 @@ export const VerAulas = ({ aulas }) => {
                 (aulas.length !== 0) 
                 ?   <ul className={styles.ul}>
                         {
-                            aulas.map(el => (
+                            aulasOrdenadas.map(el => (
                                 <li key={el.codigo}>{el.nombre} - {el.tipo}</li>
                             ))
                         }

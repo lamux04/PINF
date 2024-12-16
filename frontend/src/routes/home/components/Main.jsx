@@ -12,7 +12,7 @@ export const Main = () => {
     const [horariosGenerados, setHorariosGenerados] = useState([])
 
     useEffect(() => {
-        setHorariosGenerados(horarios.sort((a, b) => a.nombre.localeCompare(b.nombre)))
+        setHorariosGenerados([...horarios].sort((a, b) => a.nombre.localeCompare(b.nombre)))
     }, [horarios])
 
 

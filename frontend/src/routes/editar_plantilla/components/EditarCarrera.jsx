@@ -9,6 +9,7 @@ import { MiniValidacion } from '../../components/MiniValidacion'
 
 export const EditarCarrera = ({ plantilla, setPlantilla, carrera }) => {
     const [validacion, setValidacion] = useState('')
+    const cursosOrdenados = [...carrera.cursos].sort((a, b) => a.nombre.localeCompare(b.nombre))
 
     return (
         <>
@@ -26,7 +27,7 @@ export const EditarCarrera = ({ plantilla, setPlantilla, carrera }) => {
             <ul className={styles.ul}>
                 {
                     (carrera.cursos.length !== 0)
-                    ? carrera.cursos.map(curso => (
+                    ? cursosOrdenados.map(curso => (
                         <EditarCurso key={curso.codigo} curso={curso} plantilla={plantilla} setPlantilla={setPlantilla} codigoCarrera={carrera.codigo} />
                     ))
                     : <p>No hay cursos</p>

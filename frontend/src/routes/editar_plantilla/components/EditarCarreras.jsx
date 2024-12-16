@@ -8,6 +8,7 @@ import { EditarCarrera } from './EditarCarrera'
 
 export const EditarCarreras = ({ plantilla, setPlantilla }) => {
     const [validacion, setValidacion] = useState('')
+    const carrerasOrdenadas = [...plantilla.carreras].sort((a, b) => a.nombre.localeCompare(b.nombre))
 
     return (
         <div className={styles.bloque_carreras}>
@@ -19,7 +20,7 @@ export const EditarCarreras = ({ plantilla, setPlantilla }) => {
             <div className={styles.bloque}>
             {
                 (plantilla.carreras.length !== 0) ?
-                plantilla.carreras.map(el => (
+                carrerasOrdenadas.map(el => (
                     <EditarCarrera key={el.codigo} carrera={el} plantilla={plantilla} setPlantilla={setPlantilla} />
                 ))
                 : <p>No hay carreras</p>
