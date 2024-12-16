@@ -22,6 +22,7 @@ export const Menu = () => {
                     <img className={styles.img} src={logo} alt="Logo de Shed4All" onClick={() => navigator('/home')}/>
                 </div>
                 <div className={styles.bloque_derecha}>
+                    <a className={styles.enlace} onClick={() => navigator('/home')}>Home</a>
                     <a className={styles.enlace} onClick={() => navigator('/plantillas')}>Mis plantillas</a>
                     <a className={styles.enlace} onClick={cerrarSesion}>Cerrar sesión</a>
                     <span className={styles.texto}>{username}</span>
