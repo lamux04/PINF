@@ -47,10 +47,10 @@ def insertar():
     clases = []
 
     #Pillamos las franjas
-    #H_inicio = int(datos["h_ini"])
-    #H_final = int(datos["h_fin"])
-    #Inicio_desc = int(datos["inicio_desc"])
-    #Fin_desc = int(datos["fin_desc"])
+    H_inicio = int(datos["h_ini"])
+    H_final = int(datos["h_fin"])
+    Inicio_desc = int(datos["inicio_desc"])
+    Fin_desc = int(datos["fin_desc"])
 
     #print("---------------------- DICCIONARIO CARRERA ------------------------")
 
@@ -97,9 +97,9 @@ def insertar():
     #print(Horarios)
 
 
-    v2.colocarClases(clases, aulas_horario, Horarios)
+    # v2.colocarClases(clases, aulas_horario, Horarios)
 
-    #v3.colocarClases(clases, aulas_horario, Horarios, H_inicio, H_final, Inicio_desc, Fin_desc)
+    v3.colocarClases(clases, aulas_horario, Horarios, H_inicio, H_final, Inicio_desc, Fin_desc)
 
     
     l2: c_horario
