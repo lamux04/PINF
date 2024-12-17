@@ -124,8 +124,11 @@ def insertar():
             for k in range(5):                                                      #Día por día
                 if len(Horarios[carreras[i]][cursos[j]][k]) != 0:
                     if type(Horarios[carreras[i]][cursos[j]][k][0]) is list:
+                        Respuesta["carrera"][i]["cursos"][j]["clases"][k] = [[]]
                         for l1 in range(len(Horarios[carreras[i]][cursos[j]][k])):      #l1 va desde 0 hasta número_de_listas_del_dia - 1
-                            Respuesta["carrera"][i]["cursos"][j]["clases"][k][l1] = []
+                            #Respuesta["carrera"][i]["cursos"][j]["clases"][k][l1] = []
+                            if l1 > 0:
+                                Respuesta["carrera"][i]["cursos"][j]["clases"][k].append([])
                             for l2 in Horarios[carreras[i]][cursos[j]][k][l1]:
                                 classe = {
                                     "nombre": l2.clase.nombre,
