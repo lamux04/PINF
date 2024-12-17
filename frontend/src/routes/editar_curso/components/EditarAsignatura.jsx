@@ -48,7 +48,7 @@ export const EditarAsignatura = ({ asignatura, curso, setCurso}) => {
                             <NombreAsignaturaEditable curso={curso} setCurso={setCurso} asignatura={asignatura} />
                         </span>
                     </span>
-                    <button onClick={() => handleEliminarAsignatura()} className={styles.borrar}><i className="fa-solid fa-trash"></i></button>
+                    <button disabled onClick={() => handleEliminarAsignatura()} className={styles.borrar}><i className="fa-solid fa-trash"></i></button>
                 </span>
             </Titulo3>
             <p><span className={styles.clave}>Aprobable:</span> {asignatura.aprobabilidad ? 'SI' : 'NO'}</p>

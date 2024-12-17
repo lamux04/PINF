@@ -15,7 +15,7 @@ export const EditarAula = ({ aula, plantilla, setPlantilla }) => {
 
     return (
         <div className={styles.bloque}>
-            <button onClick={handleEliminar} className={styles.borrar}><i className="fa-solid fa-trash"></i></button>
+            <button disabled onClick={handleEliminar} className={styles.borrar}><i className="fa-solid fa-trash"></i></button>
             <NombreAulaEditable aula={aula} plantilla={plantilla} setPlantilla={setPlantilla} />
         </div>
     )
