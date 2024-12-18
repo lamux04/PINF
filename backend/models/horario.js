@@ -261,6 +261,7 @@ export class HorarioModel
                 if (asignaturas.length == 0) continue
                 curso["asignaturas"] = asignaturas
                 cursos.push(curso)
+                c++;
             }
 
             if (cursos.length == 0) continue
@@ -288,7 +289,7 @@ export class HorarioModel
                 {
                     for (let lista of dia)
                     {
-                        if (typeof lista === 'object')
+                        if (!Array.isArray(lista))
                         {
                             const clase_gen_cod = v4()
                             promisePool.query('INSERT INTO CLAE_GENERADA (clase_gen_cod, clase_gen_hinicio, clase_gen_hfin, clase_gen_dia, clase_cod, aula_cod, horar_cod) VALUES (?, ?, ?, ?, ?, ?, ?)', [clase_gen_cod, lista["h_ini"], lista["h_fin"], d, lista["nombre"], lista["aula"], horar_cod])

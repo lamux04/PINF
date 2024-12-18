@@ -9,6 +9,7 @@ import { FiltrarCarreras } from './FiltrarCarreras'
 import { FiltrarCursos } from './FiltrarCursos'
 import { FiltrarAsignaturas } from './FiltrarAsignaturas'
 import { FiltrarClases } from './FiltrarClases'
+import { useEffect } from 'react'
 
 export const Main = ({ codigo }) => {
     const { horario, setHorario } = useHorario(codigo)  

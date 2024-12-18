@@ -14,10 +14,10 @@ export const GenerarHorario = ({ codigo, horarios, agregarHorario }) => {
     const [fin_desc, setFin_Desc] = useState('')
 
     const getMinutes = (time) => {
-    if (!time) return 0; // Si no hay valor, retorna 0
-    const [hours, minutes] = time.split(":").map(Number); // Divide el string en horas y minutos
-    return hours * 60 + minutes; // Convierte las horas a minutos y las suma
-  };
+        if (!time) return 0; // Si no hay valor, retorna 0
+        const [hours, minutes] = time.split(":").map(Number); // Divide el string en horas y minutos
+        return hours * 60 + minutes; // Convierte las horas a minutos y las suma
+    };
     
 
     const handleClickGenerarHorario = async (ev) => {

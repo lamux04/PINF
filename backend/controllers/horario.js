@@ -63,6 +63,7 @@ export class HorarioController
         datos['inicio_desc'] = inicio_desc
         datos['fin_desc'] = fin_desc
 
+        
         // Creamos el horario con la API
         const response = await fetch(`${endpoint}`, {
             method: 'POST',
@@ -71,9 +72,10 @@ export class HorarioController
             },
             body: JSON.stringify(datos)
         })
-
+        
         // Guardamos los datos en la base de datos
         const data = await response.json()
+        console.log(JSON.stringify(data))
         await HorarioModel.saveData({ horar_cod, data })
 
         // Agregamos al usuario como visualizador
