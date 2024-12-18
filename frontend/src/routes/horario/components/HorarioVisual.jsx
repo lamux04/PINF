@@ -36,7 +36,26 @@ const colores = [
   { backgroundColor: "#A8D8A6", textColor: "#000000" }, // Verde pastel suave
   { backgroundColor: "#B6CFE7", textColor: "#000000" }, // Azul pastel suave
   { backgroundColor: "#C3A4D9", textColor: "#000000" }, // Morado brillante pastel
+  { backgroundColor: "#FFB3AB", textColor: "#000000" }, // Rosa pastel
+  { backgroundColor: "#F1E6B7", textColor: "#000000" }, // Amarillo suave pastel
+  { backgroundColor: "#B9F4B9", textColor: "#000000" }, // Verde menta pastel
+  { backgroundColor: "#E0BBE4", textColor: "#000000" }, // Lavanda pastel
+  { backgroundColor: "#E3D0B9", textColor: "#000000" }, // Beige pastel
+  { backgroundColor: "#FFDFDF", textColor: "#000000" }, // Rosa pálido pastel
+  { backgroundColor: "#A2C2E9", textColor: "#000000" }, // Azul claro pastel
+  { backgroundColor: "#D4E2D4", textColor: "#000000" }, // Verde pálido pastel
+  { backgroundColor: "#C6D7B9", textColor: "#000000" }, // Verde oliva pastel
+  { backgroundColor: "#F0C8A6", textColor: "#000000" }, // Naranja pastel
+  { backgroundColor: "#D2E0F7", textColor: "#000000" }, // Azul celeste pastel
+  { backgroundColor: "#F5D5D5", textColor: "#000000" }, // Rosa claro pastel
+  { backgroundColor: "#B9A6D3", textColor: "#000000" }, // Lila suave pastel
+  { backgroundColor: "#E0A8B3", textColor: "#000000" }, // Rosa rubor pastel
+  { backgroundColor: "#A3D6D8", textColor: "#000000" }, // Verde agua claro pastel
+  { backgroundColor: "#A5A7D8", textColor: "#000000" }, // Azul lavanda pastel
+  { backgroundColor: "#C8D6F1", textColor: "#000000" }, // Azul lavanda pálido pastel
+  { backgroundColor: "#E4C8E1", textColor: "#000000" }, // Rosa pastel pálido
 ];
+
 
 let i = 0
 
