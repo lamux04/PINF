@@ -60,27 +60,34 @@ body, :root {
 }
 
 :root {
-  --background-color: #ffffff;
-  --text-color: #000000;
-  --button-bg: #000000;
-  --button-text: #ffffff;
-  --button-hover: #fa5b41;
-  --details: #000000;
-  --details-open: #fa5b41;
-  --orange: #fa5b41;
-  --light-orange: #ffeae7;
-  --input-placeholder: #828282;
-  --gris: #f4f4f4;
-  --red: #d10000;
-  --red-hover: #880000;
-  --button-disabled: #383838;
-  --input-disabled: #dcdcdc;
-  --state-disabled: #333;
-  --orange-hover: #933526;
+    --font-family: 'Inter', sans-serif;
+    --h1-size: 4.210rem;
+    --h2-size: 3.158rem;
+    --h3-size: 2.369rem;
+    --h4-size: 1.777rem;
+    --h5-size: 1.333rem;
+    --small-size: 0.750rem;
+    /* --background-color: #ffffff;
+    --text-color: #000000;
+    --button-bg: #000000;
+    --button-text: #ffffff;
+    --button-hover: #fa5b41;
+    --details: #000000;
+    --details-open: #fa5b41;
+    --orange: #fa5b41;
+    --light-orange: #ffeae7;
+    --input-placeholder: #828282;
+    --gris: #f4f4f4;
+    --red: #d10000;
+    --red-hover: #880000;
+    --button-disabled: #383838;
+    --input-disabled: #dcdcdc;
+    --state-disabled: #333;
+    --orange-hover: #933526; */
 }
 
 [data-theme='dark'] {
-    --details: #ffffff;
+    /* --details: #ffffff;
     --details-open: #fa5b41;
     --orange: #fa5b41;
     --light-orange: #ffeae7;
@@ -96,7 +103,7 @@ body, :root {
     --button-bg: #ffffff;
     --button-text: #000000;
     --button-hover: #fa5b41;
-    --input-placeholder: #828282;
+    --input-placeholder: #828282; */
 }
 
 p {

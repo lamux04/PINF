@@ -73,9 +73,10 @@ export class HorarioController
             body: JSON.stringify(datos)
         })
         
+        if (response.status !== 200) return res.status(400).json({ message: 'Error al generar el horario' })
+
         // Guardamos los datos en la base de datos
         const data = await response.json()
-        console.log(JSON.stringify(data))
         await HorarioModel.saveData({ horar_cod, data })
 
         // Agregamos al usuario como visualizador

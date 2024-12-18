@@ -18,10 +18,13 @@ export const NuevoProfesor = ({ plantilla, setPlantilla, setValidacion }) => {
             // Validación fallida
             setValidacion('Ya existe un profesor con ese nombre')
             setTimeout(() => setValidacion(''), 10000)
+        } else if (nombre.split(' ')[0].length > 20 || nombre.split(' ')[1]?.length > 20 || nombre.split(' ')[2]?.length > 20) {
+            // Validación fallida
+            setValidacion('El nombre es demasiado largo')
+            setTimeout(() => setValidacion(''), 10000)
         } else {
             // Validación correcta
             const data = await fetchCrearProfesor({ plantilla: plantilla.codigo, nombre: nombre.split(' ')[0], apellido1: nombre.split(' ')[1] || ' ', apellido2: nombre.split(' ').slice(2).join(' ') || ' ' })
-            console.log(data)
             setValidacion('')
             setNombre('')
             setPlantilla(plantilla => ({

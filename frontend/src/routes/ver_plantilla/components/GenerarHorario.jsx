@@ -65,14 +65,23 @@ export const GenerarHorario = ({ codigo, horarios, agregarHorario }) => {
                 body: JSON.stringify({ plantilla: codigo, nombre, h_ini: getMinutes(h_ini), h_fin: getMinutes(h_fin), inicio_desc: getMinutes(inicio_desc), fin_desc: getMinutes(fin_desc) })
             })
 
-            const { horar_cod } = await data.json()
-            agregarHorario({ nombre, codigo: horar_cod })
-            setNombre('')
-            setH_ini('')
-            setH_fin('')
-            setInicio_desc('')
-            setFin_Desc('')
-            setCargando(false)
+            
+            if (data.status !== 200) {
+                setValidacion('Error al generar el horario')
+                setTimeout(() => setValidacion(''), 10000)
+                setCargando(false)
+            } else {
+                const { horar_cod } = await data.json()
+    
+                agregarHorario({ nombre, codigo: horar_cod })
+                setNombre('')
+                setH_ini('')
+                setH_fin('')
+                setInicio_desc('')
+                setFin_Desc('')
+                setCargando(false)
+            }
+
         }
 
     }
