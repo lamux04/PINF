@@ -22,7 +22,7 @@ def insertar():
 
         print("Error con el JSON")
 
-        return json.dumps({"Error": "Ha habido una excepción"})
+        return json.dumps({"Error": "Ha habido un error con el json"})
     
     #Creamos las aulas
     aulas_horario = {}
@@ -98,9 +98,15 @@ def insertar():
 
 
     # v2.colocarClases(clases, aulas_horario, Horarios)
+    try:
+        v3.colocarClases(clases, aulas_horario, Horarios, H_inicio, H_final, Inicio_desc, Fin_desc)
+    except:
+        response.headers["Content-Type"] = "application/json"
+        response.status = 400
 
-    v3.colocarClases(clases, aulas_horario, Horarios, H_inicio, H_final, Inicio_desc, Fin_desc)
+        print("Error a la hora de crear el horario")
 
+        return json.dumps({"Error": "Error de generacion"})
     
     l2: c_horario
 
