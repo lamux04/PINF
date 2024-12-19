@@ -22,6 +22,8 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+    color: var(--color-text);
+    background-color: var(--color-bg);
 }
 
 
@@ -72,7 +74,7 @@ body, :root {
     --color-bg: #fbfbfe;
     --color-primary: #cf7124;
     --color-primary-hover: #99541b;
-    --color-secondary: #e3e1ff;
+    --color-secondary: #ecebff;
     --color-secondary-hover: #818092;
     --color-acent: #4e49da;
     --color-acent-hover: #3834a8;

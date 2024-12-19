@@ -1,7 +1,7 @@
 /* Este archivo contiene estilos aislados para el botón */
 .button {
-    background-color: var(--button-bg);
-    color: var(--button-text);
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
     padding: 10px 20px;
     border: none;
     border-radius: 10px;
@@ -13,5 +13,5 @@
 }
 
 .button:hover {
-    background-color: var(--button-hover);
+    background-color: var(--color-acent);
 }
