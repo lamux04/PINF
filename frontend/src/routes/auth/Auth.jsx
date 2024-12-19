@@ -12,6 +12,7 @@ import { Register } from './components/Register'
 import styles from './Auth.module.css'
 import { useVerificar } from '../hooks/useVerificar'
 import { Validacion } from '../components/Validacion'
+import { CambiarTema } from '../components/CambiarTema'
 
 export const Auth = () => {
     const [formato, setFormato] = useState('default')
@@ -37,6 +38,7 @@ export const Auth = () => {
 
     return (
         <main className={styles.main}>
+            <CambiarTema />
             {validacion !== '' && <Validacion>{validacion}</Validacion>}
             
             <div className={styles.bloque}>

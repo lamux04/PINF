@@ -19,7 +19,10 @@ export const Login = ({ volverAtras, modificarError }) => {
         ev.preventDefault()
         fetchLogin({ username, password })
             .then(error => {
-                if (error) modificarError('El usuario o contraseña es incorrecto')
+                if (error) {
+                    modificarError('El usuario o contraseña es incorrecto')
+                    setTimeout(() => modificarError(''), 10000)
+                }
                 else navigate('/home')
             })
     }

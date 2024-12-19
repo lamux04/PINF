@@ -17,5 +17,5 @@
 .logo {
     width: 300px;
     margin: 50px;
-    color: var(--color-primary);
+    fill: var(--color-text);
 }

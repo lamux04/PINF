@@ -20,11 +20,15 @@ export const Register = ({ volverAtras, modificarError }) => {
         ev.preventDefault()
         const error = validacionPrevia({ username, password })
         modificarError(error)
+        setTimeout(() => modificarError(''), 10000)
         if (error === '')
         {
             fetchRegister({ username, password })
                 .then(error => {
-                    if (error) modificarError('El usuario ya existe')
+                    if (error) {
+                        modificarError('El usuario o contraseña es incorrecto')
+                        setTimeout(() => modificarError(''), 10000)
+                    }
                     else navigate('/home')
                 })
         }

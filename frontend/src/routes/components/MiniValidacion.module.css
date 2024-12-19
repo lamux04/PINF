@@ -1,4 +1,6 @@
 .validacion {
-    font-size: 18px;
-    color: var(--red);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-red);
+    margin: 10px;
 }

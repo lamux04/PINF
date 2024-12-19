@@ -32,12 +32,13 @@ body {
 
 .moon {
   background: url('../../assets/sun.svg') no-repeat center center;
-  background-size: cover;
+  background-size: fill;
   transform: rotate(0deg);
 }
 
 .sun {
-  background: url('../../assets/moon.svg') no-repeat center center;
-  background-size: cover;
-  transform: rotate(180deg);
+    background: url('../../assets/moon.svg') no-repeat center center;
+    background-size: fill;
+    filter: invert(90%);
+    transform: rotate(360deg);
 }

@@ -6,10 +6,12 @@
     transition: background-color 0.3s;
     top: 10px;
     left: 10px;
+    background-color: var(--color-red);
+    color: var(--color-white);
 }
 
 .flecha:hover {
-    background-color: var(--red);
-    color: white;
+    background-color: var(--color-red-hover);
+    color: var(--color-white);
     cursor: pointer;
 }

@@ -13,5 +13,5 @@
 }
 
 .button:hover {
-    background-color: var(--color-acent);
+    background-color: var(--color-primary-hover);
 }
