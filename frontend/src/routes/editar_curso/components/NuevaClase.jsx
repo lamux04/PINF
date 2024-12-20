@@ -8,19 +8,20 @@ import Select from 'react-select'
 const customStyles = {
     control: (provided, state) => ({
         ...provided,
-        borderColor: state.isFocused ? 'var(--orange)' : '#0000',
+        borderColor: state.isFocused ? 'var(--color-primary)' : '#0000',
         borderRadius: '10px',
-        boxShadow: state.isFocused ? '0 0 5px rgba(0,123,255,0.5)' : 'none',
+        boxShadow: state.isFocused ? '0 0 5px var(--color-primary)' : 'none',
         '&:hover': {
-            borderColor: 'var(--orange)',
+            borderColor: 'var(--color-primary)',
         },
+        backgroundColor: 'var(--color-secondary)',
     }),
     option: (provided, state) => ({
         ...provided,
         backgroundColor: state.isSelected
-        ? 'var(--orange)'
+        ? 'var(--color-primary)'
         : state.isFocused
-        ? 'var(--light-orange)'
+        ? 'var(--color-primary-hover)'
         : 'white',
         color: state.isSelected ? 'white' : 'black',
         padding: '10px',
@@ -32,7 +33,7 @@ const customStyles = {
     }),
     singleValue: (provided) => ({
         ...provided,
-        color: 'black',
+        color: 'var(--color-text)',
         fontWeight: 'bold',
     }),
     placeholder: (provided) => ({

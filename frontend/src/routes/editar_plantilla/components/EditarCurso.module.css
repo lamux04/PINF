@@ -4,33 +4,33 @@
 }
 
 .editar {
-    background-color: var(--button-bg);
-    color: var(--button-text);
-    padding: 3px 6px;
+    background-color: var(--color-acent);
+    color: var(--color-white);
+    padding: 5px 10px;
     border-radius: 5px;
     border: none;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 14px;
     transition: background-color 0.3s;
 }
 
 .editar:hover {
-    background-color: var(--button-hover);
+    background-color: var(--color-acent-hover);
 }
 
 .borrar {
-    background-color: var(--red);
-    color: var(--button-text);
-    padding: 3px 6px;
+    color: var(--color-white);
+    background-color: var(--color-red);
+    padding: 5px 10px;
     border-radius: 5px;
     border: none;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 14px;
     transition: background-color 0.3s;
 }
 
 .borrar:hover {
-    background-color: var(--red-hover);
+    background-color: var(--color-red-hover);
 }
 
 .li {

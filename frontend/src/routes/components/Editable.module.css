@@ -1,23 +1,23 @@
 .noEditable {
     padding: 2px 10px;
-    border: 2px solid #00000000;
-    border-bottom: 2px solid #737373;
+    border: 2px solid var(--color-secondary);
+    background-color: var(--color-secondary);
     transition: color 0.3s;
     font-size: inherit;
     transition: border 0.3s;
+    border-radius: 5px;
 }
 
 .noEditable:hover {
-    border-radius: 5px;
-    border: 2px solid var(--orange);
+    border: 2px solid var(--color-primary);
     cursor: pointer;
 }
 
 .editable {
+    color: var(--color-text);
     padding: 2px 10px;
-    background-color: var(--gris);
-    border: none;
-    outline: 2px solid var(--button-bg);
+    background-color: var(--color-secondary);
+    border: 2px solid var(--color-primary);
     border-radius: 5px 0 0 5px;
     transition: color 0.3s;
     font-size: inherit;
@@ -25,10 +25,10 @@
 }
 
 .guardar {
-    background-color: var(--button-bg);
-    color: var(--button-text);
+    background-color: var(--color-primary);
+    color: var(--color-text);
     padding: 2px 7px;
-    outline: 2px solid var(--button-bg);
+    outline: 2px solid var(--color-primary);
     font-size: inherit;
     border-radius: 0 5px 5px 0;
     border: none;
@@ -38,6 +38,6 @@
 }
 
 .guardar:hover {
-    outline: 2px solid var(--button-hover);
-    background-color: var(--button-hover);
+    outline: 2px solid var(--color-primary-hover);
+    background-color: var(--color-primary-hover);
 }

@@ -1,4 +1,5 @@
 import { Checkbox } from '../../components/Checkbox'
+import { Titulo2 } from '../../components/Titulo2'
 import { Titulo3 } from '../../components/Titulo3'
 import styles from './FiltrarCursos.module.css'
 
@@ -25,7 +26,7 @@ export const FiltrarCursos = ({ horario, setHorario }) => {
 
     return (
         <div className={styles.filtrar_cursos}>
-            <Titulo3>Cursos</Titulo3>
+            <Titulo2>Cursos</Titulo2>
             <div className={styles.bloque}>
             {
                 horario.carreras.map(carrera => {

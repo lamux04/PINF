@@ -14,8 +14,8 @@
 }
 
 .button {
-    background-color: var(--button-bg);
-    color: var(--button-text);
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
     padding: 10px 20px;
     border: none;
     border-radius: 10px;
@@ -27,32 +27,28 @@
 }
 
 .button:hover {
-    background-color: var(--button-hover);
+    background-color: var(--color-primary-hover);
 }
 
 .button:disabled {
-    background-color: var(--button-disabled);
-    color: var(--button-text);
+    background-color: var(--color-primary-hover);
     cursor: not-allowed;
 }
 
 .input {
     font-size: inherit;
     outline: none;
-    border: 2px solid #000000;
+    border: 1px solid var(--color-text);
+    background-color: var(--color-bg);
+    color: var(--color-text);
     border-radius: 10px;
     padding: 6px 10px;
     transition: border 0.3s;
     font-size: 20px;
 }
 
-.input:hover {
-    border-color: var(--orange);
-}
-
 .input:focus {
-    border: 2px solid var(--button-hover);
-    border-color: var(--orange);
+    border: 1px solid var(--color-primary);
 }
 
 .input[type="number"] {

@@ -27,14 +27,16 @@ export const Main = ({ codigo }) => {
                         onRequestClose={() => setModalIsOpen(false)}
                         style={{
                             overlay: {
-                                backgroundColor: "rgba(0, 0, 0, 0.5)"
+                                backgroundColor: "var(--color-bg)"
                             },
                             content: {
-                                color: "black",
+                                backgroundColor: "var(--color-secondary)",
+                                color: "var(--color-text)",
                                 margin: "auto",
                                 width: "700px",
                                 height: "300px",
                                 padding: "20px",
+                                border: "none",
                                 borderRadius: "10px"
                             }
                         }}

@@ -26,6 +26,7 @@
     font-size: 20px;
     font-weight: 600;
     padding-right: 10px;
+    color: var(--color-acent);
 }
 
 .modal {
@@ -44,16 +45,15 @@
 
 .button {
     font-size: 24px;
-    border: 2px solid var(--button-bg);
     border-radius: 20px;
+    border: none;
     padding: 6px 10px;
-    background-color: var(--button-bg);
-    color: var(--button-text);
+    background-color: var(--color-acent);
+    color: var(--color-bg);
     transition: background-color 0.3s, border 0.3s;
 }
 
 .button:hover {
     cursor: pointer;
-    background-color: var(--button-hover);
-    border: 2px solid var(--button-hover)
+    background-color: var(--color-acent-hover);
 }

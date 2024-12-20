@@ -1,7 +1,8 @@
+
 .borrar {
-    background-color: var(--red);
-    color: var(--button-text);
-    padding: 4px 8px;
+    color: var(--color-white);
+    background-color: var(--color-red);
+    padding: 5px 10px;
     border-radius: 5px;
     border: none;
     cursor: pointer;
@@ -10,9 +11,8 @@
 }
 
 .borrar:hover {
-    background-color: var(--red-hover);
+    background-color: var(--color-red-hover);
 }
-
 .bloque {
     margin-left: 30px;
     display: flex;

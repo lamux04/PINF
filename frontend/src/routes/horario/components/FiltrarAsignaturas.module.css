@@ -22,8 +22,7 @@
 }
 
 .details {
-    background-color: var(--gris);
-    border: 2px solid #ccc;
+    background-color: var(--color-secondary);
     padding: 10px;
     border-radius: 5px;
 }
@@ -34,14 +33,8 @@
     font-weight: bold;
     font-size: 20px;
     padding: 5px;
-    background-color: var(--gris);
     border-radius: 3px;
     transition: color 0.3s;
-}
-
-.details:closed {
-    background-color: #f4f4f4; /* Color de fondo cuando está cerrado */
-    border-color: #ccc;        /* Borde cuando está cerrado */
 }
 
 .summary::before {
@@ -51,7 +44,7 @@
 }
 
 .summary:hover {
-    color: var(--button-hover);
+    color: var(--color-text-hover);
 }
 
 .details[open] .summary::before {

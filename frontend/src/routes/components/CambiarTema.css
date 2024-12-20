@@ -18,7 +18,7 @@ body {
   background: none;
   border: none;
   cursor: pointer;
-  position: fixed;
+  position: sticky;
   top: 20px;
   right: 20px;
 }
