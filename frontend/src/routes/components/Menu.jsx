@@ -1,5 +1,6 @@
 import styles from './Menu.module.css'
-import logo from '../../assets/logo.svg'
+import logoN from '../../assets/logoN.svg'
+import logoB from '../../assets/logoB.svg'
 import { useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
 import { UserContext } from '../../context/UserContext'
@@ -19,7 +20,7 @@ export const Menu = () => {
         <div className={styles.bloque}>
             <nav className={styles.menu}>
                 <div className={styles.bloque_izquierda}>
-                    <img className={styles.img} src={logo} alt="Logo de Shed4All" onClick={() => navigator('/home')}/>
+                    <img className={styles.img} src={logoN} alt="Logo de Shed4All" onClick={() => navigator('/home')} />
                 </div>
                 <div className={styles.bloque_derecha}>
                     <a className={styles.enlace} onClick={() => navigator('/home')}>Home</a>

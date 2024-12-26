@@ -51,6 +51,6 @@
     border: 1px solid var(--color-primary);
 }
 
-.input[type="number"] {
+.input[type="time"] {
     text-align: center;
 }

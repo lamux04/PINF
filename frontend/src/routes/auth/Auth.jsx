@@ -1,7 +1,8 @@
 import { useState } from 'react'
 
 // Importamos el logo
-import logo from '../../assets/logo.svg'
+import logoN from '../../assets/logoN.svg'
+import logoB from '../../assets/logoB.svg'
 
 // Importamos los componentes
 import { Principal } from './components/Principal'
@@ -42,7 +43,9 @@ export const Auth = () => {
             {validacion !== '' && <Validacion>{validacion}</Validacion>}
             
             <div className={styles.bloque}>
-                <img src={logo} alt="Logo de Sched4All" className={styles.logo}/>
+                
+                <img className={styles.logo} src={logoN} alt="Logo de Shed4All" onClick={() => navigator('/home')} />
+                
                 {
                     formato == 'default'
                         ? <Principal cambiarALogin={cambiarALogin} cambiarARegistro={cambiarARegistro} />

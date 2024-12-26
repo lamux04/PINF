@@ -15,6 +15,7 @@ export const ListaAsignaturas = ({ asignaturas }) => {
                     : asignaturasOrdenadas.map(el => (
                         <React.Fragment key={el.codigo}>
                             <Titulo2>{el.nombre}</Titulo2>
+                            
                             <ListaClases clases={el.clases} />
                         </React.Fragment>
                     ))
