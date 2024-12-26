@@ -6,11 +6,14 @@ import { NombreAulaEditable } from './NombreAulaEditable'
 export const EditarAula = ({ aula, plantilla, setPlantilla }) => {
 
     const handleEliminar = () => {
-        fetchEliminarAula({ codigo: aula.codigo })
-        setPlantilla({
-            ...plantilla,
-            aulas: plantilla.aulas.filter(el => el.codigo !== aula.codigo)
-        })
+        if (confirm('¿Estás seguro de que deseas eliminar el aula? Se eliminaran también todas las clases que usen este aula'))
+        {
+            fetchEliminarAula({ codigo: aula.codigo })
+            setPlantilla({
+                ...plantilla,
+                aulas: plantilla.aulas.filter(el => el.codigo !== aula.codigo)
+            })
+        }
     }
 
     return (

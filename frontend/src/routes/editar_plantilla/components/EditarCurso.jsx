@@ -7,14 +7,17 @@ export const EditarCurso = ({ curso, plantilla, setPlantilla, codigoCarrera }) =
     const navigator = useNavigate()
 
     const handleEliminar = () => {
-        fetchEliminarCurso({ codigo: curso.codigo })
-        setPlantilla(() => ({
-            ...plantilla,
-            carreras: plantilla.carreras.map(carrera => (carrera.codigo === codigoCarrera)
-                ? { ...carrera, cursos: carrera.cursos.filter((el) => el.codigo !== curso.codigo) }
-                : carrera
-            )
-        }))
+        if (confirm('¿Estás seguro de que deseas eliminar el curso? Se elminarán también todas las clases del curso'))
+        {
+            fetchEliminarCurso({ codigo: curso.codigo })
+            setPlantilla(() => ({
+                ...plantilla,
+                carreras: plantilla.carreras.map(carrera => (carrera.codigo === codigoCarrera)
+                    ? { ...carrera, cursos: carrera.cursos.filter((el) => el.codigo !== curso.codigo) }
+                    : carrera
+                )
+            }))
+        }
     }
 
     return (

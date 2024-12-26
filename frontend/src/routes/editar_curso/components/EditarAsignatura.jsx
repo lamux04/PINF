@@ -12,6 +12,8 @@ export const EditarAsignatura = ({ asignatura, curso, setCurso}) => {
     const [validacion, setValidacion] = useState('')
 
     const handleEliminarAsignatura = async () => {
+        if (!confirm('¿Estás seguro de que deseas eliminar la asignatura? Se eliminarán también todas las clases de la asignatura'))
+            return
         await fetchEliminarAsignatura({ codigo: asignatura.codigo })
 
         setCurso({

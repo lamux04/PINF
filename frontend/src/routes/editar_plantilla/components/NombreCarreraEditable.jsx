@@ -15,6 +15,8 @@ export const NombreCarreraEditable = ({ plantilla, setPlantilla, codigoCarrera }
     const [validacion, setValidacion] = useState('')
 
     const handleEliminar = async () => {
+        if (!confirm('¿Estás seguro de que deseas eliminar la carrera? Se eliminarán también todos los cursos y clases de la carrera'))
+            return
         await fetchEliminarCarrera({ codigo: codigoCarrera })
         setPlantilla(plantilla => ({
             ...plantilla,
