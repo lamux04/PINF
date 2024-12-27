@@ -2,7 +2,6 @@ import { useState } from 'react'
 
 // Importamos el logo
 import logoN from '../../assets/logoN.svg'
-import logoB from '../../assets/logoB.svg'
 
 // Importamos los componentes
 import { Principal } from './components/Principal'

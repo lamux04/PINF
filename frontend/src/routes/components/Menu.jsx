@@ -1,6 +1,5 @@
 import styles from './Menu.module.css'
 import logoN from '../../assets/logoN.svg'
-import logoB from '../../assets/logoB.svg'
 import { useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
 import { UserContext } from '../../context/UserContext'

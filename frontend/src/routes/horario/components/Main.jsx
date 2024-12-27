@@ -31,8 +31,6 @@ export const Main = ({ codigo }) => {
         }
     }
 
-    const horarioConColores
-
     return (
         <div className={styles.bloque_principal}>
             <Atras onClick={() => navigator('/plantillas')} />
