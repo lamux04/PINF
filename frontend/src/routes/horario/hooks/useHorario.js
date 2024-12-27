@@ -4,6 +4,11 @@ import { fetchConsultarHorario } from "../helpers/fetchConsultarHorario"
 export const useHorario = (codigo) => {
     const [horario, setHorario] = useState(null)
 
+    const cambiarHorario = (nuevoHorario) => {
+        setHorario(nuevoHorario)
+        localStorage.setItem(codigo, JSON.stringify(nuevoHorario))
+    }
+
     const consultarHorario = async ({codigo}) => {
         const data = await fetchConsultarHorario({ codigo })
         const visible = false
@@ -27,12 +32,18 @@ export const useHorario = (codigo) => {
                     })),
                 })),
             };
-        setHorario(dataConVisibilidad)
+        cambiarHorario(dataConVisibilidad)
     }
 
     useEffect(() => {
-        consultarHorario({codigo})
+        if (localStorage.getItem(codigo) ) {
+            const data = JSON.parse(localStorage.getItem(codigo))
+            setHorario(data)
+        } else {
+            consultarHorario({ codigo })
+        }
     }, [codigo])
+    
 
-    return { horario, setHorario }
+    return { horario, setHorario: cambiarHorario }
 }
