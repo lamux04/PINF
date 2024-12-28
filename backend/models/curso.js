@@ -1,5 +1,6 @@
 import { promisePool } from '../db.js';
 import { AsignaturaModel } from './asignatura.js';
+import { v4 } from 'uuid'
 
 /**
  * Modelo para gestionar los cursos asociados a una carrera. 
