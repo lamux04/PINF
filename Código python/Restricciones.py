@@ -3,6 +3,7 @@ from ClasesProyecto import *
 
 debug = False
 
+#Precondición: hi1 <= hf1 y hi2 <= hf2 
 #Postcondición: devuelve True si ambas franjas se solapan y False en caso contrario
 def coinciden(hi1, hf1, hi2, hf2) -> bool:
     coincide = True
