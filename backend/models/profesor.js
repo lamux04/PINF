@@ -3,8 +3,13 @@ import { v4 } from 'uuid'
 
 export class ProfesorModel
 {
-    // Precondicion: La plantilla existe
-    // Postcondicion: Devuelve un array con los profesores de dicha plantilla
+    /**
+     * Devuelve un array con los profesores de una plantilla dada.
+     * 
+     * @param {Object} param0 - Objeto con el código de la plantilla.
+     * @param {string} param0.plant_cod - Código de la plantilla.
+     * @returns {Promise} - Promesa que se resuelve con un array de profesores de la plantilla.
+     */
     static async getByPlantilla({ plant_cod })
     {
         // Seleccionamos todos los profesores de la plantilla
@@ -13,8 +18,14 @@ export class ProfesorModel
         return { profesores: rows }
     }
 
-    // Precondicion: Ninguna
-    // Postcondicion: Devuelve true si el profesor existe, false en caso contrario
+    /**
+     * Comprueba si un profesor existe en una plantilla dada.
+     * 
+     * @param {Object} param0 - Objeto con el código del profesor y el código de la plantilla.
+     * @param {string} param0.prof_cod - Código del profesor.
+     * @param {string} param0.plant_cod - Código de la plantilla.
+     * @returns {Promise} - Promesa que se resuelve con un objeto que indica si el profesor existe en la plantilla.
+     */
     static async existe({ prof_cod, plant_cod })
     {
         // Comprobamos si el profesor existe
@@ -25,8 +36,13 @@ export class ProfesorModel
         return { valida: valida === 1 }
     }
 
-    // Precondicion: El profesor existe
-    // Postcondicion: Devuelve un objeto con los datos del profesor
+    /**
+     * Devuelve los datos de un profesor dado su código.
+     * 
+     * @param {Object} param0 - Objeto con el código del profesor.
+     * @param {string} param0.prof_cod - Código del profesor.
+     * @returns {Promise} - Promesa que se resuelve con los datos del profesor.
+     */
     static async getByCodigo({ prof_cod })
     {
         // Seleccionamos el profesor
@@ -35,8 +51,14 @@ export class ProfesorModel
         return { profesor: rows[0] }
     }
 
-    // Precondicion: Ninguna
-    // Postcondicion: Devuelve true si el profesor pertenece al usuario, false en caso contrario
+    /**
+     * Comprueba si un profesor pertenece a un usuario dado su código y nombre de usuario.
+     * 
+     * @param {Object} param0 - Objeto con el código del profesor y el nombre de usuario.
+     * @param {string} param0.prof_cod - Código del profesor.
+     * @param {string} param0.username - Nombre de usuario.
+     * @returns {Promise} - Promesa que se resuelve con un objeto que indica si el profesor pertenece al usuario.
+     */
     static async perteneceAUsuario({ prof_cod, username })
     {
         // Comprobamos si el profesor pertenece al usuario
@@ -47,8 +69,16 @@ export class ProfesorModel
         return { valida: true, plant_cod: rows[0]['plant_cod'] }
     }
 
-    // Precondicion: Ninguna
-    // Postcondicion: Crea un nuevo profesor
+    /**
+     * Crea un nuevo profesor en una plantilla dada.
+     * 
+     * @param {Object} param0 - Objeto con los datos del profesor y el código de la plantilla.
+     * @param {string} param0.plant_cod - Código de la plantilla.
+     * @param {string} param0.prof_nombre - Nombre del profesor.
+     * @param {string} param0.prof_apell1 - Primer apellido del profesor.
+     * @param {string} param0.prof_apell2 - Segundo apellido del profesor.
+     * @returns {Promise} - Promesa que se resuelve con el código del nuevo profesor.
+     */
     static async create({ plant_cod, prof_nombre, prof_apell1, prof_apell2 })
     {
         const prof_cod = v4()
@@ -58,16 +88,29 @@ export class ProfesorModel
         return { prof_cod }
     }
 
-    // Precondicion: El profesor existe
-    // Postcondicion: Actualiza los datos del profesor
+    /**
+     * Actualiza los datos de un profesor.
+     * 
+     * @param {Object} param0 - Objeto con el código del profesor y los datos a actualizar.
+     * @param {string} param0.prof_cod - Código del profesor.
+     * @param {string} param0.prof_nombre - Nuevo nombre del profesor.
+     * @param {string} param0.prof_apell1 - Nuevo primer apellido del profesor.
+     * @param {string} param0.prof_apell2 - Nuevo segundo apellido del profesor.
+     * @returns {Promise} - Promesa que se resuelve cuando los datos son actualizados.
+     */
     static async update({ prof_cod, prof_nombre, prof_apell1, prof_apell2 })
     {
         // Actualizamos el profesor
         await promisePool.query('UPDATE PROFESOR SET prof_nombre = ?, prof_apell1 = ?, prof_apell2 = ? WHERE prof_cod = ?', [prof_nombre, prof_apell1, prof_apell2, prof_cod])
     }
 
-    // Precondicion: El profesor existe
-    // Postcondicion: Elimina el profesor
+    /**
+     * Elimina un profesor dado su código.
+     * 
+     * @param {Object} param0 - Objeto con el código del profesor.
+     * @param {string} param0.prof_cod - Código del profesor.
+     * @returns {Promise} - Promesa que se resuelve cuando el profesor es eliminado.
+     */
     static async delete({ prof_cod })
     {
         // Eliminamos el profesor
