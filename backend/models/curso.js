@@ -1,3 +1,6 @@
+import { promisePool } from '../db.js';
+import { AsignaturaModel } from './asignatura.js';
+
 /**
  * Modelo para gestionar los cursos asociados a una carrera. 
  * Contiene métodos para obtener, crear, actualizar y eliminar cursos, así como comprobar la pertenencia de un usuario a un curso.
