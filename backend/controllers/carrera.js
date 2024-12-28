@@ -2,11 +2,17 @@ import { CarreraModel } from "../models/carrera.js";
 import { HorarioModel } from "../models/horario.js";
 import { PlantillaModel } from "../models/plantilla.js";
 
-export class CarreraController
-{
-    // GET /api/carrera { plantilla }
-    static async getByPlantiilla(req, res)
-    {
+/**
+ * Controlador para gestionar las carreras asociadas a plantillas.
+ * Proporciona métodos para obtener, crear, actualizar y eliminar carreras.
+ */
+export class CarreraController {
+    /**
+     * Obtiene las carreras asociadas a una plantilla específica.
+     * @param {Object} req - Objeto de solicitud HTTP que contiene la plantilla en el cuerpo de la solicitud.
+     * @param {Object} res - Objeto de respuesta HTTP.
+     */
+    static async getByPlantiilla(req, res) {
         // Obtenemos los atributos
         const { plantilla } = req.body;
         const { username } = req.user;
@@ -24,9 +30,12 @@ export class CarreraController
         res.json({ carreras });
     }
 
-    // GET /api/carrera/:carre_cod
-    static async getByCodigo(req, res)
-    {
+    /**
+     * Obtiene la información de una carrera por su código.
+     * @param {Object} req - Objeto de solicitud HTTP que contiene el código de la carrera como parámetro de ruta.
+     * @param {Object} res - Objeto de respuesta HTTP.
+     */
+    static async getByCodigo(req, res) {
         // Obtenemos los atributos
         const { carre_cod } = req.params;
         const { username } = req.user;
@@ -41,9 +50,12 @@ export class CarreraController
         res.json(carrera);
     }
 
-    // POST /api/carrera { plantilla, nombre }
-    static async create(req, res)
-    {
+    /**
+     * Crea una nueva carrera asociada a una plantilla específica.
+     * @param {Object} req - Objeto de solicitud HTTP que contiene los datos de la carrera en el cuerpo de la solicitud.
+     * @param {Object} res - Objeto de respuesta HTTP.
+     */
+    static async create(req, res) {
         // Obtenemos los atributos
         const { plantilla, nombre } = req.body;
         const { username } = req.user;
@@ -68,9 +80,12 @@ export class CarreraController
         });
     }
 
-    // PATCH /api/carrera/:carre_cod { nombre }
-    static async update(req, res)
-    {
+    /**
+     * Actualiza la información de una carrera específica.
+     * @param {Object} req - Objeto de solicitud HTTP que contiene los datos actualizados en el cuerpo de la solicitud.
+     * @param {Object} res - Objeto de respuesta HTTP.
+     */
+    static async update(req, res) {
         // Obtenemos los atributos
         const { carre_cod } = req.params;
         const { nombre } = req.body;
@@ -90,9 +105,12 @@ export class CarreraController
         res.json({ codigo: carrera.carre_cod, nombre: carrera.carre_nombre });
     }
 
-    // DELETE /api/carrera/:carre_cod
-    static async delete(req, res)
-    {
+    /**
+     * Elimina una carrera específica y sus horarios asociados a la plantilla.
+     * @param {Object} req - Objeto de solicitud HTTP que contiene el código de la carrera como parámetro de ruta.
+     * @param {Object} res - Objeto de respuesta HTTP.
+     */
+    static async delete(req, res) {
         // Obtenemos los atributos
         const { carre_cod } = req.params;
         const { username } = req.user;
@@ -102,7 +120,7 @@ export class CarreraController
         if (!valida) return res.status(401).json({ message: 'No autorizado' });
 
         // Obtenemos el código de la plantilla
-        const { plant_cod } = await CarreraModel.getPlantilla({ carre_cod })
+        const { plant_cod } = await CarreraModel.getPlantilla({ carre_cod });
         
         // Eliminamos la carrera
         await CarreraModel.delete({ carre_cod });

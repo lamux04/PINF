@@ -1,178 +1,210 @@
 import { AuthModel } from "../models/auth.js"
 import { PlantillaModel } from "../models/plantilla.js"
 
-export class PlantillaController
-{
-    // Funcion de /api/plantilla
-    static async getAll(req, res)
-    {
-        // Obtenemos el nombre de usuario del token
-        const { username } = req.user
+/**
+ * Controlador para la gestión de plantillas.
+ */
+export class PlantillaController {
+    /**
+     * Obtiene todas las plantillas de un usuario.
+     * 
+     * @route GET /api/plantilla
+     * @param {Object} req - Objeto de solicitud.
+     * @param {Object} res - Objeto de respuesta.
+     * @returns {Object} - Lista de plantillas del usuario.
+     */
+    static async getAll(req, res) {
+        const { username } = req.user;
 
-        // Comprobamos que el usuario es valido
-        const { exists } = await AuthModel.getByUsername({ username })            // Devuelve un objeto con usuario y password
-        if (!exists) return res.status(400).json({ message: 'Usuario no encontrado' })
+        // Verificación de la existencia del usuario
+        const { exists } = await AuthModel.getByUsername({ username });
+        if (!exists) return res.status(400).json({ message: 'Usuario no encontrado' });
         
-        // Extraemos las plantillas con el modelo
-        const { plantillas } = await PlantillaModel.getByUsername({ username })
-
-        res.json({ plantillas })
+        // Obtención de las plantillas del usuario
+        const { plantillas } = await PlantillaModel.getByUsername({ username });
+        res.json({ plantillas });
     }
 
-    // Funcion de /api/plantilla/lista_plantillas
-    static async getLista(req, res)
-    {
-        // Obtenemos el nombre de usuario del token
-        const { username } = req.user
+    /**
+     * Obtiene una lista de plantillas asociadas al usuario.
+     * 
+     * @route GET /api/plantilla/lista_plantillas
+     * @param {Object} req - Objeto de solicitud.
+     * @param {Object} res - Objeto de respuesta.
+     * @returns {Object} - Lista de plantillas del usuario.
+     */
+    static async getLista(req, res) {
+        const { username } = req.user;
 
-        // Comprobamos que el usuario es valido
-        const { exists } = await AuthModel.getByUsername({ username })            // Devuelve un objeto con usuario y password
-        if (!exists) return res.status(400).json({ message: 'Usuario no encontrado' })
-        
-        // Extraemos las plantillas con el modelo
-        const { plantillas } = await PlantillaModel.getListaPlantillas({ username })
+        // Verificación de la existencia del usuario
+        const { exists } = await AuthModel.getByUsername({ username });
+        if (!exists) return res.status(400).json({ message: 'Usuario no encontrado' });
 
-        res.json({ plantillas })
+        // Obtención de la lista de plantillas del usuario
+        const { plantillas } = await PlantillaModel.getListaPlantillas({ username });
+        res.json({ plantillas });
     }
 
-    // Funcion de /api/plantilla/:plant_cod
-    static async getByCodigo(req, res)
-    {
-        // Obtenemos el nombre de usuario del token
-        const { username } = req.user
+    /**
+     * Obtiene una plantilla específica por su código.
+     * 
+     * @route GET /api/plantilla/:plant_cod
+     * @param {Object} req - Objeto de solicitud.
+     * @param {Object} res - Objeto de respuesta.
+     * @returns {Object} - Detalles de la plantilla.
+     */
+    static async getByCodigo(req, res) {
+        const { username } = req.user;
+        const { plant_cod } = req.params;
 
-        // Comprobamos que el usuario es valido
-        const { exists } = await AuthModel.getByUsername({ username })            // Devuelve un objeto con usuario y password
-        if (!exists) return res.status(400).json({ message: 'Usuario no encontrado' })
+        // Verificación de la existencia del usuario
+        const { exists } = await AuthModel.getByUsername({ username });
+        if (!exists) return res.status(400).json({ message: 'Usuario no encontrado' });
 
-        // Obtenemos el codigo de la plantilla
-        const { plant_cod } = req.params
+        // Verificación de la pertenencia de la plantilla al usuario
+        const { valida } = await PlantillaModel.perteneceAUsuario({ plant_cod, username });
+        if (!valida) return res.status(400).json({ message: 'Plantilla no encontrada' });
 
-        // La plantilla pertenece al usuario
-        const { valida } = await PlantillaModel.perteneceAUsuario({ plant_cod, username })
-        if (!valida) return res.status(400).json({ message: 'Plantilla no encontrada' })
+        // Obtención de la plantilla por su código
+        const { plantilla, exists: existsp } = await PlantillaModel.getByCodigo({ plant_cod });
+        if (!existsp) return res.status(400).json({ message: 'Plantilla no encontrada' });
 
-        // Extraemos las plantilla con el modelo
-        const { plantilla, exists: existsp } = await PlantillaModel.getByCodigo({ plant_cod })
-        if (!existsp) return res.status(400).json({ message: 'Plantilla no encontrada' })
-
-        res.json(plantilla)
+        res.json(plantilla);
     }
 
-    // Funcion de POST /api/plantilla
-    static async create(req, res)
-    {
-        // Obtenemos el nombre de usuario del token
-        const { username } = req.user
+    /**
+     * Crea una nueva plantilla para el usuario.
+     * 
+     * @route POST /api/plantilla
+     * @param {Object} req - Objeto de solicitud.
+     * @param {Object} res - Objeto de respuesta.
+     * @returns {Object} - Detalles de la nueva plantilla creada.
+     */
+    static async create(req, res) {
+        const { username } = req.user;
+        const { nombre } = req.body;
 
-        // Comprobamos que el usuario es valido
-        const { exists } = await AuthModel.getByUsername({ username })            // Devuelve un objeto con usuario y password
-        if (!exists) return res.status(400).json({ message: 'Usuario no encontrado' })
+        // Verificación de la existencia del usuario
+        const { exists } = await AuthModel.getByUsername({ username });
+        if (!exists) return res.status(400).json({ message: 'Usuario no encontrado' });
 
-        // Obtenemos el nombre de la plantilla
-        const { nombre } = req.body
-        if (!nombre) return res.status(400).json({ message: 'Falta el nombre de la plantilla' })
+        // Validación del nombre de la plantilla
+        if (!nombre) return res.status(400).json({ message: 'Falta el nombre de la plantilla' });
 
-        // Creamos la plantilla con el modelo
-        const { plant_cod } = await PlantillaModel.create({ nombre, username })
+        // Creación de la plantilla
+        const { plant_cod } = await PlantillaModel.create({ nombre, username });
 
-        res.json({ codigo: plant_cod, nombre })
+        res.json({ codigo: plant_cod, nombre });
     }
 
-    // Funcion de PATCH /api/plantilla/:plant_cod
-    static async update(req, res)
-    {
-        // Obtenemos el nombre de usuario del token
-        const { username } = req.user
+    /**
+     * Actualiza una plantilla existente.
+     * 
+     * @route PATCH /api/plantilla/:plant_cod
+     * @param {Object} req - Objeto de solicitud.
+     * @param {Object} res - Objeto de respuesta.
+     * @returns {Object} - Detalles de la plantilla actualizada.
+     */
+    static async update(req, res) {
+        const { username } = req.user;
+        const { plant_cod } = req.params;
+        const { nombre } = req.body;
 
-        // Comprobamos que el usuario es valido
-        const { exists } = await AuthModel.getByUsername({ username })            // Devuelve un objeto con usuario y password
-        if (!exists) return res.status(400).json({ message: 'Usuario no encontrado' })
+        // Verificación de la existencia del usuario
+        const { exists } = await AuthModel.getByUsername({ username });
+        if (!exists) return res.status(400).json({ message: 'Usuario no encontrado' });
 
-        // Obtenemos el codigo de la plantilla
-        const { plant_cod } = req.params
+        // Verificación de la pertenencia de la plantilla al usuario
+        const { valida } = await PlantillaModel.perteneceAUsuario({ plant_cod, username });
+        if (!valida) return res.status(400).json({ message: 'Plantilla no encontrada' });
 
-        // La plantilla pertenece al usuario
-        const { valida } = await PlantillaModel.perteneceAUsuario({ plant_cod, username })
-        if (!valida) return res.status(400).json({ message: 'Plantilla no encontrada' })
-
-        // Obtenemos el nombre de la plantilla
-        const { nombre } = req.body
-        if (!nombre)
-        {
-            // Obtenemos el nombre actual
-            const { plantilla, exists: existsp } = await PlantillaModel.getSoloPlantillaByCodigo({ plant_cod })
-            if (!existsp) return res.status(400).json({ message: 'Plantilla no encontrada' })
-            return res.json(plantilla)
+        // Si no se proporciona nombre, devolvemos la plantilla actual
+        if (!nombre) {
+            const { plantilla, exists: existsp } = await PlantillaModel.getSoloPlantillaByCodigo({ plant_cod });
+            if (!existsp) return res.status(400).json({ message: 'Plantilla no encontrada' });
+            return res.json(plantilla);
         }
 
-        // Actualizamos la plantilla con el modelo
-        const { exists: existsp } = await PlantillaModel.update({ plant_cod, nombre })
-        if (!existsp) return res.status(400).json({ message: 'Plantilla no encontrada' })
+        // Actualización de la plantilla
+        const { exists: existsp } = await PlantillaModel.update({ plant_cod, nombre });
+        if (!existsp) return res.status(400).json({ message: 'Plantilla no encontrada' });
 
-        res.json({ codigo: plant_cod, nombre })
+        res.json({ codigo: plant_cod, nombre });
     }
 
-    // Funcion de DELETE /api/plantilla/:plant_cod
-    static async delete(req, res)
-    {
-        // Obtenemos el nombre de usuario del token
-        const { username } = req.user
+    /**
+     * Elimina una plantilla.
+     * 
+     * @route DELETE /api/plantilla/:plant_cod
+     * @param {Object} req - Objeto de solicitud.
+     * @param {Object} res - Objeto de respuesta.
+     * @returns {Object} - Mensaje de confirmación de eliminación.
+     */
+    static async delete(req, res) {
+        const { username } = req.user;
+        const { plant_cod } = req.params;
 
-        // Comprobamos que el usuario es valido
-        const { exists } = await AuthModel.getByUsername({ username })            // Devuelve un objeto con usuario y password
-        if (!exists) return res.status(400).json({ message: 'Usuario no encontrado' })
+        // Verificación de la existencia del usuario
+        const { exists } = await AuthModel.getByUsername({ username });
+        if (!exists) return res.status(400).json({ message: 'Usuario no encontrado' });
 
-        // Obtenemos el codigo de la plantilla
-        const { plant_cod } = req.params
+        // Verificación de la pertenencia de la plantilla al usuario
+        const { valida } = await PlantillaModel.perteneceAUsuario({ plant_cod, username });
+        if (!valida) return res.status(400).json({ message: 'Plantilla no encontrada' });
 
-        // La plantilla pertenece al usuario
-        const { valida } = await PlantillaModel.perteneceAUsuario({ plant_cod, username })
-        if (!valida) return res.status(400).json({ message: 'Plantilla no encontrada' })
+        // Eliminación de la plantilla
+        const { exists: existsp } = await PlantillaModel.delete({ plant_cod });
+        if (!existsp) return res.status(400).json({ message: 'Plantilla no encontrada' });
 
-        // Eliminamos la plantilla con el modelo
-        const { exists: existsp } = await PlantillaModel.delete({ plant_cod })
-        if (!existsp) return res.status(400).json({ message: 'Plantilla no encontrada' })
-
-        res.json({ message: 'Plantilla eliminada' })
+        res.json({ message: 'Plantilla eliminada' });
     }
 
-    // Funcion de /api/plantilla/verificar
-    static async verificar(req, res)
-    {
-        // Obtenemos el nombre de usuario del token
-        const { username } = req.user
-        const { plant_cod } = req.params
+    /**
+     * Verifica si una plantilla pertenece al usuario.
+     * 
+     * @route GET /api/plantilla/verificar
+     * @param {Object} req - Objeto de solicitud.
+     * @param {Object} res - Objeto de respuesta.
+     * @returns {Object} - Mensaje de validación.
+     */
+    static async verificar(req, res) {
+        const { username } = req.user;
+        const { plant_cod } = req.params;
 
-        // Comprobamos que el usuario es valido
-        const { exists } = await AuthModel.getByUsername({ username })            // Devuelve un objeto con usuario y password
-        if (!exists) return res.status(400).json({ message: 'Usuario no encontrado' })
-        
-        // Comprobamos que la plantilla sea del usuario
-        const { valida } = await PlantillaModel.perteneceAUsuario({ plant_cod, username }) 
-        if (!valida) return res.status(400).json({ message: 'Plantilla no encontrada' })
+        // Verificación de la existencia del usuario
+        const { exists } = await AuthModel.getByUsername({ username });
+        if (!exists) return res.status(400).json({ message: 'Usuario no encontrado' });
 
-        res.json({ message: 'Usuario valido', username })
+        // Verificación de la pertenencia de la plantilla al usuario
+        const { valida } = await PlantillaModel.perteneceAUsuario({ plant_cod, username });
+        if (!valida) return res.status(400).json({ message: 'Plantilla no encontrada' });
+
+        res.json({ message: 'Usuario válido', username });
     }
 
-    // Funcion de /api/plantilla/ver_plantilla
-    static async verPlantilla(req, res)
-    {
-        // Obtenemos el nombre de usuario del token
-        const { username } = req.user
-        const { plant_cod } = req.params
+    /**
+     * Obtiene los detalles de una plantilla.
+     * 
+     * @route GET /api/plantilla/ver_plantilla
+     * @param {Object} req - Objeto de solicitud.
+     * @param {Object} res - Objeto de respuesta.
+     * @returns {Object} - Detalles de la plantilla.
+     */
+    static async verPlantilla(req, res) {
+        const { username } = req.user;
+        const { plant_cod } = req.params;
 
-        // Comprobamos que el usuario es valido
-        const { exists } = await AuthModel.getByUsername({ username })            // Devuelve un objeto con usuario y password
-        if (!exists) return res.status(400).json({ message: 'Usuario no encontrado' })
-        
-        // Comprobamos que la plantilla sea del usuario
-        const { valida } = await PlantillaModel.perteneceAUsuario({ plant_cod, username }) 
-        if (!valida) return res.status(400).json({ message: 'Plantilla no encontrada' })
+        // Verificación de la existencia del usuario
+        const { exists } = await AuthModel.getByUsername({ username });
+        if (!exists) return res.status(400).json({ message: 'Usuario no encontrado' });
 
-        // Extraemos las plantilla con el modelo
-        const { plantilla } = await PlantillaModel.getVerPlantilla({ plant_cod })
+        // Verificación de la pertenencia de la plantilla al usuario
+        const { valida } = await PlantillaModel.perteneceAUsuario({ plant_cod, username });
+        if (!valida) return res.status(400).json({ message: 'Plantilla no encontrada' });
 
-        res.json(plantilla)
+        // Obtención de los detalles de la plantilla
+        const { plantilla } = await PlantillaModel.getVerPlantilla({ plant_cod });
+
+        res.json(plantilla);
     }
 }

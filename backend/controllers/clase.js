@@ -3,100 +3,121 @@ import { ClaseModel } from "../models/clase.js"
 import { PlantillaModel } from "../models/plantilla.js"
 import { ProfesorModel } from "../models/profesor.js"
 
+/**
+ * Controlador para gestionar las clases relacionadas con las asignaturas de un usuario.
+ * Proporciona métodos para listar, obtener, crear, actualizar y eliminar clases.
+ */
 export class ClaseController
 {
-    // GET /api/clase { asignatura: string }
+    /**
+     * Obtiene todas las clases asociadas a una asignatura específica.
+     * @route GET /api/clase
+     * @param {Object} req - Objeto de solicitud HTTP con la asignatura en el cuerpo de la petición.
+     * @param {Object} res - Objeto de respuesta HTTP.
+     */
     static async getClases(req, res)
     {
-        // Obtenemos los atributos
-        const { asignatura: asig_cod } = req.body
-        const { username } = req.user
+        const { asignatura: asig_cod } = req.body; // Código de la asignatura
+        const { username } = req.user; // Nombre de usuario autenticado
 
-        // Validamos los atributos
-        if (!asig_cod) return res.status(400).json({ message: 'Asignatura es requerida' })
+        // Validar que se haya proporcionado la asignatura
+        if (!asig_cod) return res.status(400).json({ message: 'Asignatura es requerida' });
         
-        // Comprobamos que la asignatura sea del usuario
-        const { valida } = await AsignaturaModel.perteneceAUsuario({ asig_cod, username })
-        if (!valida) return res.status(401).json({ message: 'No autorizado' })
+        // Comprobar si la asignatura pertenece al usuario autenticado
+        const { valida } = await AsignaturaModel.perteneceAUsuario({ asig_cod, username });
+        if (!valida) return res.status(401).json({ message: 'No autorizado' });
         
-        // Obtenemos las clases
-        const { clases } = await ClaseModel.getByAsignatura({ asig_cod })
+        // Obtener las clases asociadas a la asignatura
+        const { clases } = await ClaseModel.getByAsignatura({ asig_cod });
 
-        res.json({ clases })
+        res.json({ clases });
     }
 
-    // GET /api/clase/:clase_cod
+    /**
+     * Obtiene los detalles de una clase específica.
+     * @route GET /api/clase/:clase_cod
+     * @param {Object} req - Objeto de solicitud HTTP con el código de la clase en los parámetros.
+     * @param {Object} res - Objeto de respuesta HTTP.
+     */
     static async getClase(req, res)
     {
-        // Obtenemos los atributos
-        const { clase_cod } = req.params
-        const { username } = req.user
+        const { clase_cod } = req.params; // Código de la clase
+        const { username } = req.user; // Nombre de usuario autenticado
 
-        // Comprobamos que la clase sea del usuario
-        const { valida } = await ClaseModel.perteneceAUsuario({ clase_cod, username })
-        if (!valida) return res.status(401).json({ message: 'No autorizado' })
+        // Comprobar si la clase pertenece al usuario autenticado
+        const { valida } = await ClaseModel.perteneceAUsuario({ clase_cod, username });
+        if (!valida) return res.status(401).json({ message: 'No autorizado' });
 
-        // Obtenemos la clase
-        const { clase } = await ClaseModel.getByCodigo({ clase_cod })
+        // Obtener los detalles de la clase
+        const { clase } = await ClaseModel.getByCodigo({ clase_cod });
 
-        res.json(clase)
+        res.json(clase);
     }
 
-    // POST /api/clase { descripcion: string, tipo: string, tipo aula: string, duracion: int, profesor codigo: string, importante: int }
+    /**
+     * Crea una nueva clase asociada a una asignatura específica.
+     * @route POST /api/clase
+     * @param {Object} req - Objeto de solicitud HTTP con los datos de la clase en el cuerpo de la petición.
+     * @param {Object} res - Objeto de respuesta HTTP.
+     */
     static async postClase(req, res)
     {
-        // Obtenemos los atributos
-        const { descripcion, tipo, tipo_aula, duracion, profesor, asignatura: asig_cod, importante } = req.body
-        const { username } = req.user
+        const { descripcion, tipo, tipo_aula, duracion, profesor, asignatura: asig_cod, importante } = req.body; // Datos de la clase
+        const { username } = req.user; // Nombre de usuario autenticado
 
-        // Validamos los atributos
-        if (!descripcion) return res.status(400).json({ message: 'Descripcion es requerida' })
-        if (!tipo) return res.status(400).json({ message: 'Tipo es requerido' })
-        if (!tipo_aula) return res.status(400).json({ message: 'Tipo aula es requerido' })
-        if (!duracion) return res.status(400).json({ message: 'Duracion es requerida' })
-        if (!profesor) return res.status(400).json({ message: 'Profesor es requerido' })
-        if (!asig_cod) return res.status(400).json({ message: 'Asignatura es requerida' })
-        if (importante === undefined) return res.status(400).json({ message: 'Importante es requerido' })
-            
-        // Comprobamos que la asignatura sea del usuario
-        const { valida, plant_cod } = await AsignaturaModel.perteneceAUsuario({ asig_cod, username })
-        if (!valida) return res.status(401).json({ message: 'No autorizado' })
+        // Validar que se proporcionen todos los campos requeridos
+        if (!descripcion) return res.status(400).json({ message: 'Descripcion es requerida' });
+        if (!tipo) return res.status(400).json({ message: 'Tipo es requerido' });
+        if (!tipo_aula) return res.status(400).json({ message: 'Tipo aula es requerido' });
+        if (!duracion) return res.status(400).json({ message: 'Duracion es requerida' });
+        if (!profesor) return res.status(400).json({ message: 'Profesor es requerido' });
+        if (!asig_cod) return res.status(400).json({ message: 'Asignatura es requerida' });
+        if (importante === undefined) return res.status(400).json({ message: 'Importante es requerido' });
         
-        // Comprobamos que el profesor exista y que pertenezca a la plantilla
-        const { valida: validop } = await ProfesorModel.existe({ prof_cod: profesor, plant_cod })
-        if (!validop) return res.status(400).json({ message: 'Profesor no existe' })
+        // Comprobar si la asignatura pertenece al usuario autenticado
+        const { valida, plant_cod } = await AsignaturaModel.perteneceAUsuario({ asig_cod, username });
+        if (!valida) return res.status(401).json({ message: 'No autorizado' });
         
-        // Insertamos la clase
-        const { clase_cod } = await ClaseModel.create({ clase_descrip: descripcion, clase_tipo: tipo, clase_tipo_aula: tipo_aula, clase_duracion: duracion, prof_cod: profesor, asig_cod, clase_importante: importante })
+        // Comprobar si el profesor existe y pertenece a la plantilla
+        const { valida: validop } = await ProfesorModel.existe({ prof_cod: profesor, plant_cod });
+        if (!validop) return res.status(400).json({ message: 'Profesor no existe' });
+        
+        // Crear la nueva clase
+        const { clase_cod } = await ClaseModel.create({ clase_descrip: descripcion, clase_tipo: tipo, clase_tipo_aula: tipo_aula, clase_duracion: duracion, prof_cod: profesor, asig_cod, clase_importante: importante });
 
-        // Eliminamos todos los horarios de la plantilla
-        await PlantillaModel.deleteHorarios({ plant_cod })
+        // Eliminar los horarios asociados a la plantilla para garantizar la consistencia
+        await PlantillaModel.deleteHorarios({ plant_cod });
 
-        res.json({ codigo: clase_cod, descripcion, tipo, tipo_aula, duracion, profesor, importante })
+        res.json({ codigo: clase_cod, descripcion, tipo, tipo_aula, duracion, profesor, importante });
     }
 
-    // PATCH /api/clase/:clase_cod { descripcion: string, tipo: string, tipo aula: string, duracion: int, profesor codigo: string }
+    /**
+     * Actualiza los datos de una clase existente.
+     * @route PATCH /api/clase/:clase_cod
+     * @param {Object} req - Objeto de solicitud HTTP con los datos actualizados de la clase.
+     * @param {Object} res - Objeto de respuesta HTTP.
+     */
     static async patchClase(req, res)
     {
-        // Obtenemos los atributos
-        const { descripcion, tipo, tipo_aula, duracion, profesor, importante } = req.body
-        const { clase_cod } = req.params
-        const { username } = req.user
+        const { descripcion, tipo, tipo_aula, duracion, profesor, importante } = req.body; // Nuevos datos de la clase
+        const { clase_cod } = req.params; // Código de la clase
+        const { username } = req.user; // Nombre de usuario autenticado
         
-        // Comprobamos que la clase sea del usuario
-        const { valida, plant_cod } = await ClaseModel.perteneceAUsuario({ clase_cod, username })
-        if (!valida) return res.status(401).json({ message: 'No autorizado' })
+        // Comprobar si la clase pertenece al usuario autenticado
+        const { valida, plant_cod } = await ClaseModel.perteneceAUsuario({ clase_cod, username });
+        if (!valida) return res.status(401).json({ message: 'No autorizado' });
         
         if (profesor)
         {
-            // Comprobamos que el profesor exista
-            const { valida: validop } = await ProfesorModel.existe({ prof_cod: profesor, plant_cod })
-            if (!validop) return res.status(400).json({ message: 'Profesor no existe' })
+            // Comprobar si el profesor existe
+            const { valida: validop } = await ProfesorModel.existe({ prof_cod: profesor, plant_cod });
+            if (!validop) return res.status(400).json({ message: 'Profesor no existe' });
         }
         
-        // Obtenemos solo la clase
-        const { clase } = await ClaseModel.getByCodigo({ clase_cod })
+        // Obtener los datos actuales de la clase
+        const { clase } = await ClaseModel.getByCodigo({ clase_cod });
 
+        // Preparar los datos actualizados, manteniendo los valores actuales donde no se proporcionen nuevos
         const nuevaClase = {
             clase_cod: clase['codigo'],
             clase_descrip: descripcion ?? clase['descripcion'],
@@ -105,34 +126,38 @@ export class ClaseController
             clase_duracion: duracion ?? clase['duracion'],
             prof_cod: profesor ?? clase['codigo profesor'],
             clase_importante: importante ?? clase['importante']
-        }
+        };
         
-        // Actualizamos la clase
-        await ClaseModel.update(nuevaClase)
+        // Actualizar la clase en la base de datos
+        await ClaseModel.update(nuevaClase);
 
-        // Eliminamos todos los horarios de la plantilla
-        await PlantillaModel.deleteHorarios({ plant_cod })
+        // Eliminar los horarios asociados a la plantilla para garantizar la consistencia
+        await PlantillaModel.deleteHorarios({ plant_cod });
 
-        res.json({ codigo: nuevaClase['clase_cod'], descripcion: nuevaClase['clase_descrip'], tipo: nuevaClase['clase_tipo'], tipo_aula: nuevaClase['clase_tipo_aula'], duracion: nuevaClase['clase_duracion'], profesor: nuevaClase['prof_cod'], importante: nuevaClase['clase_importante'] })
+        res.json({ codigo: nuevaClase['clase_cod'], descripcion: nuevaClase['clase_descrip'], tipo: nuevaClase['clase_tipo'], tipo_aula: nuevaClase['clase_tipo_aula'], duracion: nuevaClase['clase_duracion'], profesor: nuevaClase['prof_cod'], importante: nuevaClase['clase_importante'] });
     }
 
-    // DELETE /api/clase/:clase_cod
+    /**
+     * Elimina una clase existente.
+     * @route DELETE /api/clase/:clase_cod
+     * @param {Object} req - Objeto de solicitud HTTP con el código de la clase en los parámetros.
+     * @param {Object} res - Objeto de respuesta HTTP.
+     */
     static async deleteClase(req, res)
     {
-        // Obtenemos los atributos
-        const { clase_cod } = req.params
-        const { username } = req.user
+        const { clase_cod } = req.params; // Código de la clase
+        const { username } = req.user; // Nombre de usuario autenticado
 
-        // Comprobamos que la clase sea del usuario
-        const { valida, plant_cod } = await ClaseModel.perteneceAUsuario({ clase_cod, username })
-        if (!valida) return res.status(401).json({ message: 'No autorizado' })
+        // Comprobar si la clase pertenece al usuario autenticado
+        const { valida, plant_cod } = await ClaseModel.perteneceAUsuario({ clase_cod, username });
+        if (!valida) return res.status(401).json({ message: 'No autorizado' });
 
-        // Eliminamos la clase
-        await ClaseModel.delete({ clase_cod })
+        // Eliminar la clase de la base de datos
+        await ClaseModel.delete({ clase_cod });
 
-        // Eliminamos todos los horarios de la plantilla
-        await PlantillaModel.deleteHorarios({ plant_cod })
+        // Eliminar los horarios asociados a la plantilla para garantizar la consistencia
+        await PlantillaModel.deleteHorarios({ plant_cod });
 
-        res.json({ message: 'Clase eliminada' })
+        res.json({ message: 'Clase eliminada' });
     }
 }

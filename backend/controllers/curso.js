@@ -1,186 +1,217 @@
-import { CursoModel } from '../models/curso.js'
-import { CarreraModel } from '../models/carrera.js'
-import { HorarioModel } from '../models/horario.js'
+import { CursoModel } from '../models/curso.js';
+import { CarreraModel } from '../models/carrera.js';
+import { HorarioModel } from '../models/horario.js';
 
-export class CursoController
-{
-    // GET /api/curso { carrera }
-    static async getAll(req, res)
-    {
-        // Obtenemos los atributos
-        const { username } = req.user
-        const { carrera } = req.body
+/**
+ * Controlador para la gestión de cursos.
+ */
+export class CursoController {
+    /**
+     * Obtiene todos los cursos de una carrera específica.
+     * 
+     * @route GET /api/curso
+     * @param {Object} req - Objeto de solicitud.
+     * @param {Object} res - Objeto de respuesta.
+     * @returns {Object} - Lista de cursos de la carrera.
+     */
+    static async getAll(req, res) {
+        const { username } = req.user;
+        const { carrera } = req.body;
 
-        // Validamos los atributos
-        if (!carrera) return res.status(400).json({ message: 'Carrera es requerido' })
-        
-        // Comprobamos que la carrera sea del usuario
-        const { valida } = await CarreraModel.perteneceAUsuario({ carre_cod: carrera, username })
-        if (!valida) return res.status(401).json({ message: 'No autorizado' })
-        
-        // Obtenemos los cursos
-        const { cursos } = await CursoModel.getByCarrera({ carre_cod: carrera })
+        // Validación de datos
+        if (!carrera) return res.status(400).json({ message: 'Carrera es requerido' });
 
-        res.json({ cursos })
+        // Verificación de la carrera asociada al usuario
+        const { valida } = await CarreraModel.perteneceAUsuario({ carre_cod: carrera, username });
+        if (!valida) return res.status(401).json({ message: 'No autorizado' });
+
+        // Obtención de los cursos
+        const { cursos } = await CursoModel.getByCarrera({ carre_cod: carrera });
+        res.json({ cursos });
     }
 
-    // GET /api/curso/:curs_cod
-    static async getByCodigo(req, res)
-    {
-        // Obtenemos los atributos
-        const { username } = req.user
-        const { curso_cod } = req.params
+    /**
+     * Obtiene la información de un curso específico.
+     * 
+     * @route GET /api/curso/:curso_cod
+     * @param {Object} req - Objeto de solicitud.
+     * @param {Object} res - Objeto de respuesta.
+     * @returns {Object} - Detalles del curso.
+     */
+    static async getByCodigo(req, res) {
+        const { username } = req.user;
+        const { curso_cod } = req.params;
 
-        // Comprobamos que el curso sea del usuario
-        const { valida } = await CursoModel.perteneceAUsuario({ curso_cod, username })
-        if (!valida) return res.status(401).json({ message: 'No autorizado' })
+        // Verificación de la relación entre el curso y el usuario
+        const { valida } = await CursoModel.perteneceAUsuario({ curso_cod, username });
+        if (!valida) return res.status(401).json({ message: 'No autorizado' });
 
-        // Obtenemos el curso
-        const { curso } = await CursoModel.getByCodigo({ curso_cod })
-
-        res.json(curso)
+        // Obtención del curso
+        const { curso } = await CursoModel.getByCodigo({ curso_cod });
+        res.json(curso);
     }
 
-    // POST /api/curso { carrera, nombre }
-    static async create(req, res)
-    {
-        // Obtenemos los atributos
-        const { username } = req.user
-        const { carrera, nombre } = req.body
+    /**
+     * Crea un nuevo curso asociado a una carrera.
+     * 
+     * @route POST /api/curso
+     * @param {Object} req - Objeto de solicitud.
+     * @param {Object} res - Objeto de respuesta.
+     * @returns {Object} - Detalles del curso creado.
+     */
+    static async create(req, res) {
+        const { username } = req.user;
+        const { carrera, nombre } = req.body;
 
-        // Validamos los atributos
-        if (!carrera) return res.status(400).json({ message: 'Carrera es requerido' })
-        if (!nombre) return res.status(400).json({ message: 'Nombre es requerido' })
+        // Validación de datos
+        if (!carrera) return res.status(400).json({ message: 'Carrera es requerido' });
+        if (!nombre) return res.status(400).json({ message: 'Nombre es requerido' });
 
-        // Comprobamos que la carrera sea del usuario
-        const { valida } = await CarreraModel.perteneceAUsuario({ carre_cod: carrera, username })
-        if (!valida) return res.status(401).json({ message: 'No autorizado' })
+        // Verificación de la carrera asociada al usuario
+        const { valida } = await CarreraModel.perteneceAUsuario({ carre_cod: carrera, username });
+        if (!valida) return res.status(401).json({ message: 'No autorizado' });
 
-        // Creamos el curso
-        const { curso_cod } = await CursoModel.create({ carre_cod: carrera, carre_nombre: nombre })
+        // Creación del curso
+        const { curso_cod } = await CursoModel.create({ carre_cod: carrera, carre_nombre: nombre });
 
-        // Obtenemos la plantilla de la carrera
-        const { plant_cod } = await CarreraModel.getPlantilla({ carre_cod: carrera })
-
-        // Eliminamos todos los horarios de la plantilla
+        // Eliminación de horarios existentes en la plantilla
+        const { plant_cod } = await CarreraModel.getPlantilla({ carre_cod: carrera });
         await HorarioModel.deleteByPlantilla({ plant_cod });
 
-        res.json({ codigo: curso_cod, nombre })
+        res.json({ codigo: curso_cod, nombre });
     }
 
-    // PATCH /api/curso/:curs_cod { nombre }
-    static async update(req, res)
-    {
-        // Obtenemos los atributos
-        const { username } = req.user
-        const { curso_cod } = req.params
-        const { nombre } = req.body
+    /**
+     * Actualiza la información de un curso existente.
+     * 
+     * @route PATCH /api/curso/:curso_cod
+     * @param {Object} req - Objeto de solicitud.
+     * @param {Object} res - Objeto de respuesta.
+     * @returns {Object} - Detalles del curso actualizado.
+     */
+    static async update(req, res) {
+        const { username } = req.user;
+        const { curso_cod } = req.params;
+        const { nombre } = req.body;
 
-        // Validamos los atributos
-        if (!curso_cod) return res.status(400).json({ message: 'Codigo de curso es requerido' })
+        // Validación de datos
+        if (!curso_cod) return res.status(400).json({ message: 'Codigo de curso es requerido' });
 
-        // Comprobamos que el curso sea del usuario
-        const { valida } = await CursoModel.perteneceAUsuario({ curso_cod, username })
-        if (!valida) return res.status(401).json({ message: 'No autorizado' })
-        
-        // Obtenemos el nombre actual del curso
-        const { curso_nombre, exists } = await CursoModel.getSoloCurso({ curso_cod })
-        if (!exists) return res.status(404).json({ message: 'Curso no encontrado' })
+        // Verificación de la relación entre el curso y el usuario
+        const { valida } = await CursoModel.perteneceAUsuario({ curso_cod, username });
+        if (!valida) return res.status(401).json({ message: 'No autorizado' });
 
-        // Actualizamos el curso
-        await CursoModel.update({ curso_cod, curso_nombre: nombre ?? curso_nombre })
+        // Actualización del curso
+        const { curso_nombre, exists } = await CursoModel.getSoloCurso({ curso_cod });
+        if (!exists) return res.status(404).json({ message: 'Curso no encontrado' });
 
-        res.json({ codigo: curso_cod, nombre: nombre ?? curso_nombre })
+        await CursoModel.update({ curso_cod, curso_nombre: nombre ?? curso_nombre });
+        res.json({ codigo: curso_cod, nombre: nombre ?? curso_nombre });
     }
 
-    // DELETE /api/curso/:curs_cod
-    static async delete(req, res)
-    {
-        // Obtenemos los atributos
-        const { username } = req.user
-        const { curso_cod } = req.params
+    /**
+     * Elimina un curso y sus horarios asociados.
+     * 
+     * @route DELETE /api/curso/:curso_cod
+     * @param {Object} req - Objeto de solicitud.
+     * @param {Object} res - Objeto de respuesta.
+     * @returns {Object} - Mensaje de confirmación.
+     */
+    static async delete(req, res) {
+        const { username } = req.user;
+        const { curso_cod } = req.params;
 
-        // Validamos los atributos
-        if (!curso_cod) return res.status(400).json({ message: 'Codigo de curso es requerido' })
+        // Validación de datos
+        if (!curso_cod) return res.status(400).json({ message: 'Codigo de curso es requerido' });
 
-        // Comprobamos que el curso sea del usuario
-        const { valida } = await CursoModel.perteneceAUsuario({ curso_cod, username })
-        if (!valida) return res.status(401).json({ message: 'No autorizado' })
+        // Verificación de la relación entre el curso y el usuario
+        const { valida } = await CursoModel.perteneceAUsuario({ curso_cod, username });
+        if (!valida) return res.status(401).json({ message: 'No autorizado' });
 
-        // Obtenemos la plantilla del curso
-        const { plant_cod } = await CursoModel.getPlantilla({ curso_cod })
-
-        // Eliminamos el curso
-        await CursoModel.delete({ curso_cod })
-
-        // Eliminamos todos los horarios de la plantilla
+        // Eliminación del curso
+        const { plant_cod } = await CursoModel.getPlantilla({ curso_cod });
+        await CursoModel.delete({ curso_cod });
         await HorarioModel.deleteByPlantilla({ plant_cod });
 
-        res.json({ message: 'Curso eliminado' })
+        res.json({ message: 'Curso eliminado' });
     }
 
-    // GET /api/curso/verificar/:curso_cod
-    static async verifyCurso(req, res)
-    {
-        // Obtenemos los atributos
-        const { username } = req.user
-        const { curso_cod } = req.params
+    /**
+     * Verifica si un curso es válido para el usuario.
+     * 
+     * @route GET /api/curso/verificar/:curso_cod
+     * @param {Object} req - Objeto de solicitud.
+     * @param {Object} res - Objeto de respuesta.
+     * @returns {Object} - Mensaje de validación.
+     */
+    static async verifyCurso(req, res) {
+        const { username } = req.user;
+        const { curso_cod } = req.params;
 
-        // Comprobamos que el curso sea del usuario
-        const { valida } = await CursoModel.perteneceAUsuario({ curso_cod, username })
-        if (!valida) return res.status(400).json({ message: 'Curso no encontrado' })
+        // Verificación del curso asociado al usuario
+        const { valida } = await CursoModel.perteneceAUsuario({ curso_cod, username });
+        if (!valida) return res.status(400).json({ message: 'Curso no encontrado' });
 
-        res.json({ message: 'Curso valido', username })
+        res.json({ message: 'Curso valido', username });
     }
 
-    // GET /api/curso/ver_curso/:curso_cod
-    static async verCurso(req, res)
-    {
-        // Obtenemos los atributos
-        const { username } = req.user
-        const { curso_cod } = req.params
+    /**
+     * Obtiene los detalles de un curso específico.
+     * 
+     * @route GET /api/curso/ver_curso/:curso_cod
+     * @param {Object} req - Objeto de solicitud.
+     * @param {Object} res - Objeto de respuesta.
+     * @returns {Object} - Detalles del curso.
+     */
+    static async verCurso(req, res) {
+        const { username } = req.user;
+        const { curso_cod } = req.params;
 
-        // Comprobamos que el curso sea del usuario
-        const { valida } = await CursoModel.perteneceAUsuario({ curso_cod, username })
-        if (!valida) return res.status(400).json({ message: 'Curso no encontrado' })
+        // Verificación del curso asociado al usuario
+        const { valida } = await CursoModel.perteneceAUsuario({ curso_cod, username });
+        if (!valida) return res.status(400).json({ message: 'Curso no encontrado' });
 
-        // Obtenemos el curso
-        const { curso } = await CursoModel.getByCodigo({ curso_cod })
-
-        res.json(curso)
+        const { curso } = await CursoModel.getByCodigo({ curso_cod });
+        res.json(curso);
     }
 
-    // GET /api/curso/consultar_cursos/:curso_cod
-    static async getCursosByCodigo(req, res)
-    {
-        // Obtenemos los atributos
-        const { username } = req.user
-        const { curso_cod } = req.params
+    /**
+     * Obtiene los cursos relacionados a un código específico.
+     * 
+     * @route GET /api/curso/consultar_cursos/:curso_cod
+     * @param {Object} req - Objeto de solicitud.
+     * @param {Object} res - Objeto de respuesta.
+     * @returns {Object} - Lista de cursos relacionados.
+     */
+    static async getCursosByCodigo(req, res) {
+        const { username } = req.user;
+        const { curso_cod } = req.params;
 
-        // Comprobamos que el curso sea del usuario
-        const { valida, carre_cod } = await CursoModel.perteneceAUsuario({ curso_cod, username })
-        if (!valida) return res.status(400).json({ message: 'Curso no encontrado' })
-        
-        // Obtenemos los cursos de la carrera
-        const { cursos } = await CarreraModel.getCursos({ carre_cod })
+        // Verificación del curso asociado al usuario
+        const { valida, carre_cod } = await CursoModel.perteneceAUsuario({ curso_cod, username });
+        if (!valida) return res.status(400).json({ message: 'Curso no encontrado' });
 
-        res.json({ cursos })
+        const { cursos } = await CarreraModel.getCursos({ carre_cod });
+        res.json({ cursos });
     }
 
-    // GET /api/curso/ver_plantilla/:curso_cod
-    static async getCodigoPlantilla(req, res)
-    {
-        // Obtenemos los atributos
-        const { username } = req.user
-        const { curso_cod } = req.params
+    /**
+     * Obtiene el código de la plantilla asociada a un curso.
+     * 
+     * @route GET /api/curso/ver_plantilla/:curso_cod
+     * @param {Object} req - Objeto de solicitud.
+     * @param {Object} res - Objeto de respuesta.
+     * @returns {Object} - Código de la plantilla.
+     */
+    static async getCodigoPlantilla(req, res) {
+        const { username } = req.user;
+        const { curso_cod } = req.params;
 
-        // Comprobamos que el curso sea del usuario
-        const { valida } = await CursoModel.perteneceAUsuario({ curso_cod, username })
-        if (!valida) return res.status(400).json({ message: 'Curso no encontrado' })
+        // Verificación del curso asociado al usuario
+        const { valida } = await CursoModel.perteneceAUsuario({ curso_cod, username });
+        if (!valida) return res.status(400).json({ message: 'Curso no encontrado' });
 
-        // Obtenemos la plantilla del curso
-        const { plant_cod } = await CursoModel.getPlantilla({ curso_cod })
-
-        res.json({ plant_cod })
+        const { plant_cod } = await CursoModel.getPlantilla({ curso_cod });
+        res.json({ plant_cod });
     }
 }

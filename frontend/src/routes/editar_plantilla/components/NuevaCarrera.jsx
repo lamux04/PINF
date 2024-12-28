@@ -13,8 +13,8 @@ export const NuevaCarrera = ({ plantilla, setPlantilla, setValidacion }) => {
         {
             setValidacion('El nombre no puede estar vacío')
             setTimeout(() => setValidacion(''), 10000)
-        } else if (nombre.length > 30) {
-            setValidacion('El nombre no puede tener más de 30 caracteres')
+        } else if (nombre.length > 100) {
+            setValidacion('El nombre no puede tener más de 100 caracteres')
             setTimeout(() => setValidacion(''), 10000)
         } else if (plantilla.carreras.find(carrera => carrera.nombre === nombre)) {
             // Validación fallida

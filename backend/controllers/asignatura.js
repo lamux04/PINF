@@ -1,107 +1,137 @@
+// Importación de los modelos necesarios para manejar la lógica de negocio
 import { AsignaturaModel } from '../models/asignatura.js'
 import { CursoModel } from '../models/curso.js'
 import { PlantillaModel } from '../models/plantilla.js'
 
+// Definición del controlador para gestionar asignaturas
 export class AsignaturaController
 {
-    // GET /api/asignatura  { curso }
+    /**
+     * Obtiene todas las asignaturas de un curso específico.
+     * Endpoint: GET /api/asignatura
+     * @param {Object} req - Objeto de solicitud HTTP.
+     * @param {Object} res - Objeto de respuesta HTTP.
+     */
     static async getAsignaturas(req, res)
     {
-        // Obtenemos los parametros
+        // Extraemos el código del curso y el usuario autenticado
         const { curso: curso_cod } = req.body
         const { username } = req.user
 
-        // Validamos los atributos
+        // Validación de entrada: se requiere el código del curso
         if (!curso_cod) return res.status(400).json({ message: 'Curso es requerido' })
 
-        // Comprobamos que el curso sea del usuario
+        // Verificación de que el curso pertenece al usuario autenticado
         const { valida } = await CursoModel.perteneceAUsuario({ curso_cod, username })
         if (!valida) return res.status(401).json({ message: 'No autorizado' })
 
-        // Obtenemos las asignaturas
+        // Obtención de las asignaturas asociadas al curso
         const { asignaturas } = await AsignaturaModel.getByCurso({ curso_cod })
 
         res.json({ asignaturas })
     }
 
-    // GET /api/asignatura/:asig_cod
+    /**
+     * Obtiene los detalles de una asignatura específica.
+     * Endpoint: GET /api/asignatura/:asig_cod
+     * @param {Object} req - Objeto de solicitud HTTP.
+     * @param {Object} res - Objeto de respuesta HTTP.
+     */
     static async getAsignatura(req, res)
     {
-        // Obtenemos los parametros
+        // Extraemos el código de la asignatura y el usuario autenticado
         const { asig_cod } = req.params
         const { username } = req.user
 
-        // Comprobamos que la asignatura sea del usuario
+        // Verificación de que la asignatura pertenece al usuario autenticado
         const { valida } = await AsignaturaModel.perteneceAUsuario({ asig_cod, username })
         if (!valida) return res.status(401).json({ message: 'No autorizado' })
 
-        // Obtenemos la asignatura
+        // Obtención de los detalles de la asignatura
         const { asignatura } = await AsignaturaModel.getByCodigo({ asig_cod })
 
         res.json(asignatura)
     }
 
-    // POST /api/asignatura
+    /**
+     * Crea una nueva asignatura para un curso específico.
+     * Endpoint: POST /api/asignatura
+     * @param {Object} req - Objeto de solicitud HTTP.
+     * @param {Object} res - Objeto de respuesta HTTP.
+     */
     static async postAsignatura(req, res)
     {
-        // Obtenemos los parametros
-        const { nombre, aprobabilidad } = req.body
+        // Extraemos los datos necesarios para la creación
+        const { nombre, aprobabilidad, curso: curso_cod } = req.body
         const { username } = req.user
-        const { curso: curso_cod } = req.body
 
-        // Validamos los atributos
+        // Validación de entrada: nombre y aprobabilidad son obligatorios
         if (!nombre) return res.status(400).json({ message: 'Nombre es requerido' })
         if (aprobabilidad === undefined) return res.status(400).json({ message: 'Aprobabilidad es requerida' })
 
-        // Comprobamos que el curso sea del usuario
+        // Verificación de que el curso pertenece al usuario autenticado
         const { valida, plant_cod } = await CursoModel.perteneceAUsuario({ curso_cod, username })
         if (!valida) return res.status(401).json({ message: 'No autorizado' })
 
-        // Insertamos la asignatura
+        // Creación de la nueva asignatura
         const { asig_cod } = await AsignaturaModel.create({ asig_nombre: nombre, asig_aprobabilidad: aprobabilidad, curso_cod })
-        
-        // Eliminamos todos los horarios de la plantilla
+
+        // Eliminación de todos los horarios relacionados con la plantilla del curso
         await PlantillaModel.deleteHorarios({ plant_cod })
 
         res.json({ codigo: asig_cod, nombre, aprobabilidad })
     }
 
-    // PATCH /api/asignatura/:asig_cod
+    /**
+     * Actualiza los datos de una asignatura específica.
+     * Endpoint: PATCH /api/asignatura/:asig_cod
+     * @param {Object} req - Objeto de solicitud HTTP.
+     * @param {Object} res - Objeto de respuesta HTTP.
+     */
     static async patchAsignatura(req, res)
     {
-        // Obtenemos los parametros
+        // Extraemos el código de la asignatura, los nuevos datos y el usuario autenticado
         const { asig_cod } = req.params
         const { nombre, aprobabilidad } = req.body
         const { username } = req.user
 
-        // Comprobamos que la asignatura sea del usuario
+        // Verificación de que la asignatura pertenece al usuario autenticado
         const { valida } = await AsignaturaModel.perteneceAUsuario({ asig_cod, username })
         if (!valida) return res.status(401).json({ message: 'No autorizado' })
 
-        // Obtenemos solo la asignatura
+        // Obtención de los datos actuales de la asignatura
         const { asig_nombre: nombreActual, asig_aprobabilidad: aprobabilidadActual } = await AsignaturaModel.getSoloAsignatura({ asig_cod })
 
-        // Actualizamos la asignatura
-        await AsignaturaModel.update({ asig_cod, asig_nombre: nombre ?? nombreActual, asig_aprobabilidad: aprobabilidad ?? aprobabilidadActual })
+        // Actualización de los datos de la asignatura
+        await AsignaturaModel.update({ 
+            asig_cod, 
+            asig_nombre: nombre ?? nombreActual, 
+            asig_aprobabilidad: aprobabilidad ?? aprobabilidadActual 
+        })
 
         res.json({ codigo: asig_cod, nombre: nombre ?? nombreActual, aprobabilidad: aprobabilidad ?? aprobabilidadActual })
     }
 
-    // DELETE /api/asignatura/:asig_cod
+    /**
+     * Elimina una asignatura específica.
+     * Endpoint: DELETE /api/asignatura/:asig_cod
+     * @param {Object} req - Objeto de solicitud HTTP.
+     * @param {Object} res - Objeto de respuesta HTTP.
+     */
     static async deleteAsignatura(req, res)
     {
-        // Obtenemos los parametros
+        // Extraemos el código de la asignatura y el usuario autenticado
         const { asig_cod } = req.params
         const { username } = req.user
 
-        // Comprobamos que la asignatura sea del usuario
+        // Verificación de que la asignatura pertenece al usuario autenticado
         const { valida, plant_cod } = await AsignaturaModel.perteneceAUsuario({ asig_cod, username })
         if (!valida) return res.status(401).json({ message: 'No autorizado' })
 
-        // Eliminamos la asignatura
+        // Eliminación de la asignatura
         await AsignaturaModel.delete({ asig_cod })
 
-        // Eliminamos todos los horarios de la plantilla
+        // Eliminación de todos los horarios relacionados con la plantilla del curso
         await PlantillaModel.deleteHorarios({ plant_cod })
 
         res.json({ message: 'Asignatura eliminada' })
