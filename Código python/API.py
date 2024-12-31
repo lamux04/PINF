@@ -85,7 +85,6 @@ def insertar():
     #Construimos el JSON a enviar
     l2: c_horario
     Respuesta = {}
-    #n_carreras = 0
     carreras = list(Horarios.keys())
     Respuesta["carrera"] = []
     for i in range(len(carreras)):          #Carrera por carrera
@@ -106,7 +105,6 @@ def insertar():
                     if type(Horarios[carreras[i]][cursos[j]][k][0]) is list:            #En caso de haber más de una lista de clases por día
                         Respuesta["carrera"][i]["cursos"][j]["clases"][k] = [[]]
                         for l1 in range(len(Horarios[carreras[i]][cursos[j]][k])):      #l1 va desde 0 hasta número_de_listas_del_dia - 1
-                            #Respuesta["carrera"][i]["cursos"][j]["clases"][k][l1] = []
                             if l1 > 0:
                                 Respuesta["carrera"][i]["cursos"][j]["clases"][k].append([])
                             for l2 in Horarios[carreras[i]][cursos[j]][k][l1]:
