@@ -60,14 +60,13 @@ export class HorarioController {
         const { valida } = await PlantillaModel.perteneceAUsuario({ plant_cod, username });
         if (!valida) return res.status(400).json({ message: 'Plantilla no encontrada' });
 
-        const { horar_cod } = await HorarioModel.create({ plant_cod, nombre, h_ini, h_fin });
-
+        
         const { datos } = await HorarioModel.getDatos({ plant_cod });
         datos['h_ini'] = h_ini;
         datos['h_fin'] = h_fin;
         datos['inicio_desc'] = inicio_desc;
         datos['fin_desc'] = fin_desc;
-
+        
         const response = await fetch(`${endpoint}`, {
             method: 'POST',
             headers: {
@@ -75,8 +74,9 @@ export class HorarioController {
             },
             body: JSON.stringify(datos)
         });
-
+        
         if (response.status !== 200) return res.status(400).json({ message: 'Error al generar el horario' });
+        const { horar_cod } = await HorarioModel.create({ plant_cod, nombre, h_ini, h_fin });
 
         const data = await response.json();
         await HorarioModel.saveData({ horar_cod, data });
