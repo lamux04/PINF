@@ -58,7 +58,7 @@ export const NombreCarreraEditable = ({ plantilla, setPlantilla, codigoCarrera }
     return (
         <span className={styles.bloque}>
             <Editable editable={editable} setEditable={setEditable} value={nombre} setValue={setNombre} onClick={handleClick} />
-            <button disabled onClick={handleEliminar} className={styles.boton}><i className="fa-solid fa-trash"></i></button>
+            <button onClick={handleEliminar} className={styles.boton}><i className="fa-solid fa-trash"></i></button>
             <MiniValidacion>{validacion}</MiniValidacion>
 
         </span>

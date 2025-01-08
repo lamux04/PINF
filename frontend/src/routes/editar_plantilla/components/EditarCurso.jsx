@@ -27,7 +27,7 @@ export const EditarCurso = ({ curso, plantilla, setPlantilla, codigoCarrera }) =
             </span>
             <span className={styles.botones}>
                 <button className={styles.editar} onClick={() => navigator(`/modificar_curso/${curso.codigo}`)}><i className="fa-solid fa-pen"></i></button>
-                <button disabled className={styles.borrar} onClick={handleEliminar}><i className="fa-solid fa-trash"></i></button>
+                <button className={styles.borrar} onClick={handleEliminar}><i className="fa-solid fa-trash"></i></button>
             </span>
         </li>
     )

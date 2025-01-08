@@ -17,7 +17,7 @@ export const EditarProfesor = ({ profesor, plantilla, setPlantilla }) => {
 
     return (
         <div className={styles.bloque}>
-            <button disabled onClick={handleEliminar} className={styles.borrar}><i className="fa-solid fa-trash"></i></button>
+            <button onClick={handleEliminar} className={styles.borrar}><i className="fa-solid fa-trash"></i></button>
             <NombreProfesorEditable profesor={profesor} plantilla={plantilla} setPlantilla={setPlantilla} />
         </div>
     )
