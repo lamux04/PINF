@@ -23,6 +23,9 @@ export const NombreCursoEditable = ({ curso, plantilla, setPlantilla, codigoCarr
             // Validación fallida
             setValidacion('Existe una carrera con el mismo nombre')
             setTimeout(() => setValidacion(''), 10000)
+        } else if (!/^\d/.test(nombre)) {
+            setValidacion('El nombre del curso debe empezar por un dígito')
+            setTimeout(() => setValidacion(''), 10000)
         } else {
             // Validación correcta, guardamos los datos en la base de datos
             fetchModificarNombreCurso({ codigo: curso.codigo, nombre })

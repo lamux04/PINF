@@ -19,6 +19,9 @@ export const NuevoCurso = ({ plantilla, setPlantilla, setValidacion, codigoCarre
             // Validación fallida
             setValidacion('Ya existe una curso con ese nombre')
             setTimeout(() => setValidacion(''), 10000)
+        } else if (!/^\d/.test(nombre)) {
+            setValidacion('El nombre del curso debe empezar por un dígito')
+            setTimeout(() => setValidacion(''), 10000)
         } else {
             // Validación correcta
             const data = await fetchCrearCurso({ nombre, carrera: codigoCarrera })

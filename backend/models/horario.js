@@ -259,13 +259,13 @@ export class HorarioModel
         {
             // Obtenemos los cursos
             const cursos = []
-            const [rows4] = await promisePool.query('SELECT curso_cod AS nombre FROM CURSO WHERE carre_cod = ?', [carrera["nombre"]])
+            const [rows4] = await promisePool.query('SELECT curso_cod AS nombre, curso_nombre AS nom FROM CURSO WHERE carre_cod = ?', [carrera["nombre"]])
 
             let c = 1
             for (let curso of rows4)
             {
                 const codigo_curso = curso["nombre"]
-                curso["nombre"] = `${c}º${curso["nombre"]}`
+                curso["nombre"] = `${curso["nom"]}$${curso["nombre"]}`
                 // Obtenemos las asignaturas
                 const asignaturas = []
                 const [rows5] = await promisePool.query('SELECT asig_cod AS nombre, asig_probabilidad AS aprobable FROM ASIGNATURA WHERE curso_cod = ?', [codigo_curso])
