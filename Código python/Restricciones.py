@@ -1,7 +1,7 @@
 #FUNCIONES PARA COMPROBAR CADA TIPO DE RESTRICCIÓN
 from ClasesProyecto import *
 
-debug = True
+debug = False
 
 #Precondición: hi1 <= hf1 y hi2 <= hf2 
 #Postcondición: devuelve True si ambas franjas se solapan y False en caso contrario
