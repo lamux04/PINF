@@ -1,0 +1,134 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body, :root {
+    font-family:  'Arial Narrow Bold', sans-serif;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+:root {
+    --font-family: 'Inter', sans-serif;
+    --h1-size: 3.210rem;
+    --h2-size: 2.158rem;
+    --h3-size: 1.369rem;
+    --h4-size: 1.0rem;
+    --h5-size: 0.7rem;
+    --small-size: 0.750rem;
+    --color-text: #040316;
+    --color-text-hover: #676767;
+    --color-bg: #fbfbfe;
+    --color-primary: #cf7124;
+    --color-primary-hover: #99541b;
+    --color-secondary: #e9e9e9;
+    --color-secondary-hover: #d1d1d1;
+    --color-acent: #2924a5;
+    --color-acent-hover: #272563;
+    --color-red: #dc4040;
+    --color-red-hover: #9e2c2c;
+    --color-white: #fbfbfe;
+    /* --background-color: #ffffff;
+    --text-color: #000000;
+    --button-bg: #000000;
+    --button-text: #ffffff;
+    --button-hover: #fa5b41;
+    --details: #000000;
+    --details-open: #fa5b41;
+    --orange: #fa5b41;
+    --light-orange: #ffeae7;
+    --input-placeholder: #828282;
+    --gris: #f4f4f4;
+    --red: #d10000;
+    --red-hover: #880000;
+    --button-disabled: #383838;
+    --input-disabled: #dcdcdc;
+    --state-disabled: #333;
+    --orange-hover: #933526; */
+}
+
+[data-theme='dark'] {
+    --color-text: #d1d1d1;
+    --color-text-hover: #b2b1c3;
+    --color-bg: #151515;
+    --color-primary: #da7c2f;
+    --color-primary-hover: #ea9753;
+    --color-secondary: #181818;
+    --color-secondary-hover: #333333;
+    --color-acent: #267ea9;
+    --color-acent-hover: #4c96bb;
+    --color-red: #8e1a1a;
+    --color-red-hover: #bb3434;
+    /* --details: #ffffff;
+    --details-open: #fa5b41;
+    --orange: #fa5b41;
+    --light-orange: #ffeae7;
+    --gris: #f4f4f4;
+    --red: #d10000;
+    --red-hover: #880000;
+    --button-disabled: #383838;
+    --input-disabled: #dcdcdc;
+    --state-disabled: #333;
+    --orange-hover: #933526;
+    --background-color: #272727;
+    --text-color: #afafaf;
+    --button-bg: #ffffff;
+    --button-text: #000000;
+    --button-hover: #fa5b41;
+    --input-placeholder: #828282; */
+}
+
+p {
+    font-size: 18px;
+}

@@ -1,0 +1,14 @@
+.bloque_principal {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.main {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    gap: 50px;
+}

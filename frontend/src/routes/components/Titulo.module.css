@@ -1,0 +1,5 @@
+.titulo {
+    font-size: var(--h1-size);
+    font-weight: 700;
+    color: var(--color-acent)
+}

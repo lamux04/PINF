@@ -1,0 +1,90 @@
+.h4 {
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--color-primary);
+}
+
+.bloque, .bloque_asignatura {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.bloque_asignatura {
+    border-radius: 10px;
+    padding: 20px;
+    background-color: var(--color-secondary);
+}
+
+.bloque_titulo {
+    display: flex;
+    align-items: center;
+    font-size: 28px;
+    font-weight: 600;
+    gap: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #000;
+}
+
+.details {
+    background-color: var(--color-secondary-hover);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.summary {
+    list-style: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 3px;
+    transition: color 0.3s;
+}
+
+.summary::before {
+    content: "▶"; /* Agrega un triángulo apuntando a la derecha */
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.summary:hover {
+    color: var(--color-text-hover);
+}
+
+.details[open] .summary::before {
+    content: "▼"; /* Cambia el triángulo a apuntar hacia abajo cuando está abierto */
+}
+
+
+.bloque_clase {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    background-color: var(--gris);
+}
+
+.clave {
+    font-weight: bold;
+    margin-right: 5px;
+    color: var(--color-primary)
+}
+
+
+.borrar {
+    color: var(--color-white);
+    background-color: var(--color-red);
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.borrar:hover {
+    background-color: var(--color-red-hover);
+}

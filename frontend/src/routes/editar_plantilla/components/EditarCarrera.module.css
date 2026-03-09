@@ -1,0 +1,20 @@
+.ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 40px;
+    list-style-type: disc;
+}
+
+.titulo {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.agregar {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}

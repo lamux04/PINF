@@ -1,0 +1,33 @@
+### get todas las plantillas
+GET http://localhost:1234/api/plantilla
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzIwMDk4NzQsImV4cCI6MTczMjAxNzA3NH0.u8tApxW3ewjEJoFt6qRT0wGZ1WkZ01fIQEDKmJHMgaQ
+
+### get una plantilla
+GET http://localhost:1234/api/plantilla/f5cacd26-170b-465b-9720-430314945ef7
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzE2OTY2NjEsImV4cCI6MTczMTcwMzg2MX0.bEAEP3Crp2uaejQZY0mu5dM6b1jawyGCK6d9IlAePCw
+
+### get una plantilla (optimizado)
+GET http://localhost:1234/api/plantilla/ver_plantilla/f5cacd26-170b-465b-9720-430314945ef7
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzE2OTY2NjEsImV4cCI6MTczMTcwMzg2MX0.bEAEP3Crp2uaejQZY0mu5dM6b1jawyGCK6d9IlAePCw
+
+### post
+POST http://localhost:1234/api/plantilla
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzIwMDk4NzQsImV4cCI6MTczMjAxNzA3NH0.u8tApxW3ewjEJoFt6qRT0wGZ1WkZ01fIQEDKmJHMgaQ
+Content-Type: application/json
+
+{
+    "nombre": "Lora Tamayo"
+}
+
+### patch
+PATCH http://localhost:1234/api/plantilla/f5cacd26-170b-465b-9720-430314945ef7
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzE3MDA3ODcsImV4cCI6MTczMTcwNzk4N30.a7RHh7fFsswlqwAeA-qpOHti0LWe53MaAWN57aOviE0
+Content-Type: application/json
+
+{
+    "nombre": "Lora Tamayo"
+}
+
+### delete
+DELETE http://localhost:1234/api/plantilla/3e67df53-3de3-46af-bf63-47fed48d55aa
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImxhbXV4MDQiLCJpYXQiOjE3MzEwODY3NDcsImV4cCI6MTczMTA5Mzk0N30.pzWZCM6PANj9pYlhrBdm7D4IEqEe_eTTn-_B1sKWvbE

@@ -1,0 +1,34 @@
+### GET /api/carrera
+GET http://localhost:1234/api/carrera
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzE2MDgyNTQsImV4cCI6MTczMTYxNTQ1NH0.jKKz4w35wd6r1splKcIgUhWA1cEsm8fySOk8eCmjkJU
+Content-Type: application/json
+
+{
+    "plantilla": "f5cacd26-170b-465b-9720-430314945ef7"
+}
+
+### GET /api/carrera/:carre_cod
+GET http://localhost:1234/api/carrera/1e53fbca-5ad8-4d03-9790-c3c9f92e7e56
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzE2MDgyNTQsImV4cCI6MTczMTYxNTQ1NH0.jKKz4w35wd6r1splKcIgUhWA1cEsm8fySOk8eCmjkJU
+
+### POST /api/carrera  Esto eliminara todos los horarios
+POST http://localhost:1234/api/carrera
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzE2MDgyNTQsImV4cCI6MTczMTYxNTQ1NH0.jKKz4w35wd6r1splKcIgUhWA1cEsm8fySOk8eCmjkJU
+Content-Type: application/json
+
+{
+    "plantilla": "f5cacd26-170b-465b-9720-430314945ef",
+    "nombre": "Robótica"
+}
+
+### PATCH /api/carrera 
+PATCH http://localhost:1234/api/carrera/b9c6240f-d5bc-45d6-87ff-0b4058bad87b
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzE2MDgyNTQsImV4cCI6MTczMTYxNTQ1NH0.jKKz4w35wd6r1splKcIgUhWA1cEsm8fySOk8eCmjkJU
+Content-Type: application/json
+
+{
+}
+
+### DELETE /api/carrera/:carre_cod Esto eliminara todos los horarios de la plantilla
+DELETE http://localhost:1234/api/carrera/d20df8e4-c7bb-4e0e-a9ae-c4f0e1992822
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzE2MDgyNTQsImV4cCI6MTczMTYxNTQ1NH0.jKKz4w35wd6r1splKcIgUhWA1cEsm8fySOk8eCmjkJU

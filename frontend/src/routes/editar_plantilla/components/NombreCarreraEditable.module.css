@@ -1,0 +1,20 @@
+.bloque {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.boton {
+    color: var(--color-white);
+    background-color: var(--color-red);
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.boton:hover {
+    background-color: var(--color-red-hover);
+}

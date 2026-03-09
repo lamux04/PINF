@@ -1,0 +1,12 @@
+.caracteristica {
+    font-size: 18px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.clave {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-acent);
+}

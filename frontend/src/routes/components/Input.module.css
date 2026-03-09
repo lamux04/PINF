@@ -1,0 +1,59 @@
+.input {
+    width: 230px;
+    font-size: 20px;
+    padding: 5px 10px;
+    border: none;
+    border: 1px solid var(--color-text);
+    border-radius: 10px;
+    outline: none;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+}
+
+.input:focus {
+    border: 1px solid var(--color-primary);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+}
+
+.input:disabled {
+    background-color: var(--input-disabled);
+    border-color: var(--input-disabled);
+    cursor: not-allowed;
+}
+
+.label {
+    position: relative;
+    display: flex;
+    width: 230px;
+}
+
+.input_password {
+    width: 100%;
+    font-size: 20px;
+    padding: 5px 10px;
+    border: none;
+    border: 1px solid var(--color-text);
+    border-radius: 10px;
+    outline: none;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+}
+
+.input_password:focus {
+    border: 1px solid var(--color-primary);
+
+}
+
+.icono {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    transform: translateY(-50%);
+}
+
+.icono:hover {
+    color: var(--boton-hover);
+}

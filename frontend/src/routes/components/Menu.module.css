@@ -1,0 +1,46 @@
+.bloque {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border-bottom: 2px solid var(--color-text);
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 50px;
+}
+
+.bloque_derecha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.enlace, .texto {
+    text-decoration: none;
+    color: var(--color-text-hover);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.enlace:hover {
+    color: var(--color-acent);
+    cursor: pointer;
+}
+
+.img {
+    width: 120px;
+    height: 120px;
+    transition: transform 0.3s;
+}
+
+.img:hover {
+    cursor: pointer;
+}

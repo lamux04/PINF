@@ -1,0 +1,17 @@
+.flecha {
+    font-size: 24px;
+    position: absolute;
+    border-radius: 50%;
+    padding: 5px;
+    transition: background-color 0.3s;
+    top: 10px;
+    left: 10px;
+    background-color: var(--color-red);
+    color: var(--color-white);
+}
+
+.flecha:hover {
+    background-color: var(--color-red-hover);
+    color: var(--color-white);
+    cursor: pointer;
+}

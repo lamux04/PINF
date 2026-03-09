@@ -1,0 +1,71 @@
+.bloque {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.details {
+    background-color: var(--color-secondary);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.summary {
+    list-style: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 3px;
+    transition: color 0.3s;
+}
+
+.summary::before {
+    content: "▶"; /* Agrega un triángulo apuntando a la derecha */
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.summary:hover {
+    color: var(--color-text-hover);
+}
+
+.details[open] .summary::before {
+    content: "▼"; /* Cambia el triángulo a apuntar hacia abajo cuando está abierto */
+}
+
+
+.ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 40px;
+    list-style-type: disc;
+}
+
+.ver {
+    background-color: var(--color-acent);
+    color: var(--color-white);
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.ver:hover {
+    background-color: var(--color-acent-hover);
+}
+
+
+.li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: var(--gris);
+}

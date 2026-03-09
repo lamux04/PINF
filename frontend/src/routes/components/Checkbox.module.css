@@ -1,0 +1,27 @@
+.checkbox {
+    display: none;
+}
+
+.label {
+    display: inline-block;
+    border-radius: 10px;
+    padding: 10px 20px;
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.label:hover {
+    background-color: var(--color-secondary-hover);
+}
+
+.checkbox:checked + .label {
+    background-color: var(--color-primary);
+    color: var(--color-white)
+}
+
+.checkbox:checked + .label:hover {
+    background-color: var(--color-primary-hover);
+}

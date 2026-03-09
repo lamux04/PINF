@@ -1,0 +1,36 @@
+### GET /api/asignatura
+GET http://localhost:1234/api/asignatura
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzE2MTU0NjcsImV4cCI6MTczMTYyMjY2N30.gMPuRVdWhL_AkYSgSSw5G3rHX0DuGoe8COIbZctp3VQ
+Content-Type: application/json
+
+{
+    "curso": "853b78be-a64e-4bae-88e4-59000768a5cd"
+}
+
+### GET /api/asignatura/:asig_cod
+GET http://localhost:1234/api/asignatura/af037c51-cfe6-43bd-90ef-f5515de8599a
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzE2MDgyNTQsImV4cCI6MTczMTYxNTQ1NH0.jKKz4w35wd6r1splKcIgUhWA1cEsm8fySOk8eCmjkJU
+
+### POST /api/asignatura/:asig_cod    Elimina todos los horarios de la plantilla
+POST http://localhost:1234/api/asignatura
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzI3MzYzODEsImV4cCI6MTczMjc0MzU4MX0.CP0CddAdQukT0WxJ-43gayFpeUYhVj1v5guTdZ4De5g
+Content-Type: application/json
+
+{
+    "curso": "853b78be-a64e-4bae-88e4-59000768a5cd",
+    "nombre": "AAED",
+    "aprobabilidad": 1
+}
+
+### PATCH /api/asignatura/:asig_cod
+PATCH http://localhost:1234/api/asignatura/047f3206-f34a-46c1-b31d-f68fe3b01954
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzE2MTU0NjcsImV4cCI6MTczMTYyMjY2N30.gMPuRVdWhL_AkYSgSSw5G3rHX0DuGoe8COIbZctp3VQ
+Content-Type: application/json
+
+{
+    "aprobabilidad": 1
+}
+
+### DELETE /api/asignatura/:asig_cod    Elimina todos los horarios de la plantilla
+DELETE http://localhost:1234/api/asignatura/bee978d0-5b70-4bdb-ab7f-61d542f008de
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1hc2NheWljbGUiLCJpYXQiOjE3MzE2MTU0NjcsImV4cCI6MTczMTYyMjY2N30.gMPuRVdWhL_AkYSgSSw5G3rHX0DuGoe8COIbZctp3VQ

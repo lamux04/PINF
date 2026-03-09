@@ -1,0 +1,1 @@
+export const host = import.meta.env.DEV ? 'http://localhost:1234' : 'https://www.sched4all.site';
